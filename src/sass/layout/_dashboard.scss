@@ -1,0 +1,8 @@
+@import "../globals";
+
+.dashboard {
+  width: calc(100% - 300px);
+  min-height: 100vh;
+  margin-left: 300px;
+  background-color: #f8f8f8;
+}

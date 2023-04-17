@@ -1,11 +1,12 @@
 import React from 'react'
 import hotelIcon from '../../img/icons/hotel.svg';
 import { Button } from './styled';
+import profilePic from '../../img/profile-pic.jpg';
 
-const Sidebar = () => {
+const Sidebar = ({ hideSidebar }) => { 
   return (
     <>
-      <div className='sidebar'>
+      <div className={`sidebar ${hideSidebar ? 'sidebar--hidden' : ''}`}>
         <div className='sidebar__logo'>
           <img width={45} height={45} src={hotelIcon} alt="" />
           <div style={{ textAlign: 'left', marginLeft: '20px' }}>
@@ -37,7 +38,7 @@ const Sidebar = () => {
             </div>
           </div>
           <div className='sidebar__card'>
-            <div className='sidebar__card__img'></div>
+            <img className='sidebar__card__img' src={profilePic} alt="" />
             <p className='sidebar__card__name'>Nicolás Cousillas</p>
             <p className='sidebar__card__mail'>nicolascousillas1@gmail.com</p>
             <Button className='sidebar__card__btn'>Contact us</Button>

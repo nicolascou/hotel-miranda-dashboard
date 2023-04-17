@@ -2,6 +2,12 @@
 
 .sidebar {
   width: 300px;
+  box-shadow: 13px 3px 40px #00000005;
+  position: absolute;
+
+  &--hidden {
+    display: none;
+  }
 
   &__logo {
     height: 100px;
@@ -67,8 +73,6 @@
 
     &__img {
       border-radius: 8px;
-      background: url('../img/profile-pic.jpg');
-      object-fit: cover;
       height: 70px;
       width: 70px;
       margin: 0 auto;
