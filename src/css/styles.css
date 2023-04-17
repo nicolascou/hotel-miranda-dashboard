@@ -77,6 +77,44 @@
 }
 .sidebar__nav {
   color: #799283;
+  margin: 20px 0;
+}
+.sidebar__nav__box {
+  display: flex;
+  align-items: center;
+}
+.sidebar__card {
+  padding: 20px;
+  border-radius: 18px;
+  margin: 0 auto;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.0784313725);
+  width: fit-content;
+  text-align: center;
+}
+.sidebar__card__img {
+  border-radius: 8px;
+  background: url("../img/profile-pic.jpg");
+  object-fit: cover;
+  height: 70px;
+  width: 70px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+.sidebar__card__name {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.sidebar__card__mail {
+  font-size: 10px;
+  color: #B2B2B2;
+  margin-bottom: 15px;
+}
+.sidebar__card__btn {
+  color: #135846;
+  background-color: rgba(19, 88, 70, 0.2);
+  font-weight: 700;
+  text-transform: capitalize;
 }
 
 * {

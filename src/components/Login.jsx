@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Dashboard from '../components/Dashboard';
 import hotelIcon from '../img/icons/hotel.svg';
-import { Button } from './styled';
+import { Button } from './layout/styled';
 
 const Login = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(Boolean(localStorage.getItem('miranda-auth') === '1'));

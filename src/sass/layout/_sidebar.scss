@@ -18,5 +18,49 @@
 
   &__nav {
     color: $text-color;
+    margin: 20px 0;
+
+    &__box {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__card {
+    padding: 20px;
+    border-radius: 18px;
+    margin: 0 auto;
+    box-shadow: 0px 20px 30px #00000014;
+    width: fit-content;
+    text-align: center;
+
+    &__img {
+      border-radius: 8px;
+      background: url('../img/profile-pic.jpg');
+      object-fit: cover;
+      height: 70px;
+      width: 70px;
+      margin: 0 auto;
+      margin-bottom: 15px;
+    }
+
+    &__name {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    &__mail {
+      font-size: 10px;
+      color: $gray-color;
+      margin-bottom: 15px;
+    }
+
+    &__btn {
+      color: $primary-color;
+      background-color: rgba($color: $primary-color, $alpha: .2);
+      font-weight: 700;
+      text-transform: capitalize;
+    }
   }
 }
