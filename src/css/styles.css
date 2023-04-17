@@ -60,6 +60,25 @@
   margin-top: 20px;
 }
 
+.sidebar {
+  width: 20%;
+}
+.sidebar__logo {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar__logo h1 {
+  height: 38px;
+}
+.sidebar__logo p {
+  font-size: 12px;
+}
+.sidebar__nav {
+  color: #799283;
+}
+
 * {
   margin: 0;
   padding: 0;
