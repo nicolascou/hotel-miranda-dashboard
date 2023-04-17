@@ -34,22 +34,30 @@
   justify-content: center;
   flex-direction: column;
 }
+.login__card__form__box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px;
+  width: 100%;
+}
+.login__card__form label {
+  font-size: 14px;
+  color: #212121;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
 .login__card__form__input {
   border: none;
   border-bottom: #5D5449 solid 3px;
   outline: none;
-  margin: 30px;
-  margin-top: 10px;
   width: 100%;
   padding: 5px 10px;
 }
 .login__card__form button {
   background-color: #E23428;
-  padding: 5px 20px;
   color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
+  margin-top: 20px;
 }
 
 * {
