@@ -13,38 +13,40 @@ const Sidebar = () => {
             <p>Hotel Admin Dashboard</p>
           </div>
         </div>
-        <div className='sidebar__nav'>
-          <div className='sidebar__nav__box'>
-
-            <p>Dashboard</p>
+        <div style={{ padding: '30px' }}>
+          <div className='sidebar__nav'>
+            <div className='sidebar__nav__box sidebar__nav__box--active'>
+              <i className="fa-solid fa-table-columns"></i>
+              <a href='/'>Dashboard</a>
+            </div>
+            <div className='sidebar__nav__box'>
+              <i className='fa-solid fa-key'></i>
+              <a href='rooms/'>Room</a>
+            </div>
+            <div className='sidebar__nav__box'>
+              <i className="fa-regular fa-calendar-check"></i>
+              <a href='bookings/'>Bookings</a>
+            </div>
+            <div className='sidebar__nav__box'>
+              <i className="fa-solid fa-user"></i>
+              <a href='users/'>Users</a>
+            </div>
+            <div className='sidebar__nav__box'>
+              <i className="fa-solid fa-puzzle-piece"></i>
+              <a href='contact/'>Contact</a>
+            </div>
           </div>
-          <div className='sidebar__nav__box'>
-
-            <p>Room</p>
+          <div className='sidebar__card'>
+            <div className='sidebar__card__img'></div>
+            <p className='sidebar__card__name'>Nicolás Cousillas</p>
+            <p className='sidebar__card__mail'>nicolascousillas1@gmail.com</p>
+            <Button className='sidebar__card__btn'>Contact us</Button>
           </div>
-          <div className='sidebar__nav__box'>
-
-            <p>Bookings</p>
+          <div className='sidebar__rights'>
+            <p className='sidebar__rights__bold'>Travl Hotel Admin Dashboard</p>
+            <p>© 2020 All Rights Reserved</p>
+            <p className='sidebar__rights__bottom-text'>Made with ♥ by Peterdraw</p>
           </div>
-          <div className='sidebar__nav__box'>
-
-            <p>Users</p>
-          </div>
-          <div className='sidebar__nav__box'>
-
-            <p>Contact</p>
-          </div>
-        </div>
-        <div className='sidebar__card'>
-          <div className='sidebar__card__img'></div>
-          <p className='sidebar__card__name'>Nicolás Cousillas</p>
-          <p className='sidebar__card__mail'>nicolascousillas1@gmail.com</p>
-          <Button className='sidebar__card__btn'>Contact us</Button>
-        </div>
-        <div className='sidebar__rights'>
-          <p className='sidebar__rights__bold'>Travl Hotel Admin Dashboard</p>
-          <p>© 2020 All Rights Reserved</p>
-          <p className='sidebar__rights__bottom-text'>Made with ♥ by Peterdraw</p>
         </div>
       </div>
     </>
