@@ -41,6 +41,11 @@ const Sidebar = () => {
           <p className='sidebar__card__mail'>nicolascousillas1@gmail.com</p>
           <Button className='sidebar__card__btn'>Contact us</Button>
         </div>
+        <div className='sidebar__rights'>
+          <p className='sidebar__rights__bold'>Travl Hotel Admin Dashboard</p>
+          <p>© 2020 All Rights Reserved</p>
+          <p className='sidebar__rights__bottom-text'>Made with ♥ by Peterdraw</p>
+        </div>
       </div>
     </>
   )
