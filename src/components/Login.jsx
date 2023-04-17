@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Dashboard from '../components/Dashboard';
+import hotelIcon from '../img/icons/hotel.svg';
 
 const Login = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(Boolean(localStorage.getItem('miranda-auth') === '1'));
@@ -19,6 +20,7 @@ const Login = () => {
       {
       isAuthenticated ? <Dashboard /> :
         <div className='login'>
+          <img width={100} height={100} src={hotelIcon} alt="" />
           <form method='post'>
             <input 
               value={userInput} onChange={e => setUserInput(e.target.value)} 
