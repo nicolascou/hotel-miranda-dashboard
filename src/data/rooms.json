@@ -29,7 +29,7 @@
   {
     "id": 4,
     "room_name": "Deluxe D-456",
-    "bed_type": "Single Bed",
+    "bed_type": "Suite",
     "room_floor": "Floor 4",
     "amenities": ["Wifi", "Towels", "Shower"],
     "rate": 114,
@@ -38,7 +38,7 @@
   {
     "id": 5,
     "room_name": "Deluxe E-567",
-    "bed_type": "Double Bed",
+    "bed_type": "Double Superior",
     "room_floor": "Floor 5",
     "amenities": ["Wifi", "Towels", "LED TV"],
     "rate": 563,

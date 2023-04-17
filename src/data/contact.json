@@ -1,0 +1,47 @@
+[
+  {
+      "full_name": "John Smith",
+      "employer_id": "EMP001",
+      "email": "john.smith@example.com",
+      "start_date": "2022-07-15",
+      "description": "Software Engineer",
+      "contact": "+1 (555) 123-4567",
+      "status": "ACTIVE"
+  },
+  {
+      "full_name": "Mary Johnson",
+      "employer_id": "EMP002",
+      "email": "mary.johnson@example.com",
+      "start_date": "2022-08-01",
+      "description": "Sales Associate",
+      "contact": "+1 (555) 234-5678",
+      "status": "ACTIVE"
+  },
+  {
+      "full_name": "William Davis",
+      "employer_id": "EMP003",
+      "email": "william.davis@example.com",
+      "start_date": "2022-09-01",
+      "description": "Marketing Manager",
+      "contact": "+1 (555) 345-6789",
+      "status": "INACTIVE"
+  },
+  {
+      "full_name": "Elizabeth Wilson",
+      "employer_id": "EMP004",
+      "email": "elizabeth.wilson@example.com",
+      "start_date": "2022-10-01",
+      "description": "Human Resources Coordinator",
+      "contact": "+1 (555) 456-7890",
+      "status": "ACTIVE"
+  },
+  {
+      "full_name": "Christopher Lee",
+      "employer_id": "EMP005",
+      "email": "christopher.lee@example.com",
+      "start_date": "2022-11-01",
+      "description": "Graphic Designer",
+      "contact": "+1 (555) 567-8901",
+      "status": "INACTIVE"
+  }
+]
