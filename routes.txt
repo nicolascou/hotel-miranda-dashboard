@@ -1,0 +1,21 @@
+url('/', dashboard or login);
+
+url('/bookings/', bookings list);
+url('/bookings/create', create booking);
+url('/bookings/:id', detalles booking);
+url('/bookings/update/:id', edit booking);
+
+url('/rooms/', rooms list);
+url('/rooms/create', create booking);
+url('/rooms/:id', detalles booking);
+url('/rooms/update/:id', edit booking);
+
+url('/users/', users list);
+url('/users/create', create booking);
+url('/users/:id', detalles booking);
+url('/users/update/:id', edit booking);
+
+url('/contact/', contact list);
+url('/contact/create', create booking);
+url('/contact/:id', detalles booking);
+url('/contact/update/:id', edit booking);
