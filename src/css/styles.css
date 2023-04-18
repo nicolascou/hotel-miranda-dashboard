@@ -260,8 +260,9 @@
   height: 50px;
   display: flex;
   align-items: center;
-  background-color: #fcfcfc;
+  background-color: rgba(248, 248, 248, 0.9725490196);
   padding: 0 10px;
+  padding-right: 20px;
   margin-right: 40px;
 }
 .header__search i {
@@ -385,7 +386,7 @@
   padding: 10px 20px;
 }
 .bookings__table {
-  margin-top: 20px;
+  margin-top: 30px;
   border-radius: 20px;
   background-color: white;
 }
@@ -422,8 +423,14 @@
   cursor: pointer;
   font-weight: 500;
   font-size: 16px;
-  padding: 15px 35px;
+  padding: 15px 40px;
   border-radius: 12px;
+  border: 1px solid transparent;
+}
+.bookings__table__row__item__btn:hover {
+  color: #135846;
+  background-color: white;
+  border: 1px solid #135846;
 }
 .bookings__table__row__ellipsis {
   position: absolute;

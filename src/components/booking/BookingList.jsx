@@ -28,7 +28,7 @@ const BookingList = () => {
         </div>
         <ul style={{ listStyle: 'none' }}>
           {bookings.slice(0, 8).map((b) => (
-            <div className='bookings__table__row'>
+            <div key={b.id} className='bookings__table__row'>
               <div className='bookings__table__row__item'>
                 <div className='bookings__table__row__item__photo'></div>
                 <div>
