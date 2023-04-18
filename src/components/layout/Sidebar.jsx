@@ -22,19 +22,19 @@ const Sidebar = ({ hideSidebar }) => {
             </div>
             <div className='sidebar__nav__box'>
               <i className='fa-solid fa-key'></i>
-              <a href='rooms/'>Room</a>
+              <a href='/rooms'>Room</a>
             </div>
             <div className='sidebar__nav__box'>
               <i className="fa-regular fa-calendar-check"></i>
-              <a href='bookings/'>Bookings</a>
+              <a href='/bookings'>Bookings</a>
             </div>
             <div className='sidebar__nav__box'>
               <i className="fa-solid fa-user"></i>
-              <a href='users/'>Users</a>
+              <a href='/users'>Users</a>
             </div>
             <div className='sidebar__nav__box'>
               <i className="fa-solid fa-puzzle-piece"></i>
-              <a href='contact/'>Contact</a>
+              <a href='/contact'>Contact</a>
             </div>
           </div>
           <div className='sidebar__card'>

@@ -1,137 +1,96 @@
 [
-  {
-      "id": 1,
-      "guest": "John Smith",
-      "order_date": "2023-04-01",
-      "check_in": "2023-04-15",
-      "check_out": "2023-04-20",
-      "room_type": "Deluxe A-01",
-      "status": "Check Out"
-  },
-  {
-      "id": 2,
-      "guest": "Mary Johnson",
-      "order_date": "2023-04-03",
-      "check_in": "2023-04-18",
-      "check_out": "2023-04-21",
-      "room_type": "Deluxe B-02",
-      "status": "Check In"
-  },
-  {
-      "id": 3,
-      "guest": "David Lee",
-      "order_date": "2023-04-04",
-      "check_in": "2023-04-19",
-      "check_out": "2023-04-24",
-      "room_type": "Deluxe C-03",
-      "status": "Check In"
-  },
-  {
-      "id": 4,
-      "guest": "Amy Chen",
-      "order_date": "2023-04-06",
-      "check_in": "2023-04-22",
-      "check_out": "2023-04-24",
-      "room_type": "Deluxe A-01",
-      "status": "Check Out"
-  },
-  {
-      "id": 5,
-      "guest": "Michael Brown",
-      "order_date": "2023-04-06",
-      "check_in": "2023-04-23",
-      "check_out": "2023-04-28",
-      "room_type": "Deluxe B-02",
-      "status": "In Progress"
-  },
-  {
-      "id": 6,
-      "guest": "Sarah Kim",
-      "order_date": "2023-04-08",
-      "check_in": "2023-04-25",
-      "check_out": "2023-04-28",
-      "room_type": "Deluxe A-02",
-      "status": "Check In"
-  },
-  {
-      "id": 7,
-      "guest": "Christopher Lee",
-      "order_date": "2023-04-09",
-      "check_in": "2023-04-26",
-      "check_out": "2023-04-29",
-      "room_type": "Deluxe C-03",
-      "status": "In Progress"
-  },
-  {
-      "id": 8,
-      "guest": "Karen Wong",
-      "order_date": "2023-04-10",
-      "check_in": "2023-04-27",
-      "check_out": "2023-05-01",
-      "room_type": "Deluxe B-01",
-      "status": "Check Out"
-  },
-  {
-      "id": 9,
-      "guest": "William Chen",
-      "order_date": "2023-04-11",
-      "check_in": "2023-04-28",
-      "check_out": "2023-05-01",
-      "room_type": "Deluxe A-02",
-      "status": "Check In"
-  },
-  {
-      "id": 10,
-      "guest": "Emily Zhang",
-      "order_date": "2023-04-12",
-      "check_in": "2023-04-29",
-      "check_out": "2023-05-01",
-      "room_type": "Deluxe B-03",
-      "status": "Check Out"
-  },
-  {
-      "id": 11,
-      "guest": "Jason Patel",
-      "order_date": "2023-04-13",
-      "check_in": "2023-04-30",
-      "check_out": "2023-05-02",
-      "room_type": "Deluxe B-02",
-      "status": "Check In"
-  },
-  {
-      "id": 12,
-      "guest": "Olivia Rodriguez",
-      "order_date": "2023-04-14",
-      "check_in": "2023-05-01",
-      "check_out": "2023-05-05",
-      "room_type": "Deluxe A-01",
-      "status": "Check Out"
-  },
-  {
-      "id": 13,
-      "guest": "Ethan Nguyen",
-      "order_date": "2023-04-15",
-      "check_in": "2023-05-02",
-      "check_out": "2023-05-05",
-      "room_type": "Deluxe C-03",
-      "status": "In Progress"
-  },
-  {
-      "id": 14,
-      "guest": "Isabella Kim",
-      "order_date": "2023-04-16",
-      "check_in": "2023-05-03",
-      "check_out": "2023-05-06",
-      "room_type": "Deluxe B-01",
-      "status": "Check In"
-  },
-  {
-      "id": 15,
-      "guest": "Lucas Chen",
-      "order_date": "2023-04-17",
-      "check_in": "2023-05-04",
-      "check_out": "2023-05-08",
-      "room_type": "Deluxe A-02",
-      "status": "In Progress"
-  }
+    {
+        "id": 1,
+        "guest": "Eva Green",
+        "guest_id": "#87654321",
+        "order_date": "Apr 3rd 2023 02:13 PM",
+        "check_in": "Apr 18th, 2023",
+        "check_out": "Apr 23rd, 2023",
+        "room_type": "Premium B-03",
+        "special_request": "Extra pillows",
+        "status": "Booked"
+    },
+        
+    {
+        "id": 2,
+        "guest": "John Johnson",
+        "guest_id": "#23456789",
+        "order_date": "Apr 4th 2023 09:27 AM",
+        "check_in": "Apr 20th, 2023",
+        "check_out": "Apr 25th, 2023",
+        "room_type": "Deluxe A-02",
+        "special_request": "Early check-in",
+        "status": "Canceled"
+    },
+        
+    {
+        "id": 3,
+        "guest": "Sarah Lee",
+        "guest_id": "#34567890",
+        "order_date": "Apr 5th 2023 04:51 PM",
+        "check_in": "Apr 21st, 2023",
+        "check_out": "Apr 26th, 2023",
+        "room_type": "Standard C-01",
+        "special_request": "",
+        "status": "Refund"
+    },
+        
+    {
+        "id": 4,
+        "guest": "David Kim",
+        "guest_id": "#45678901",
+        "order_date": "Apr 7th 2023 11:14 AM",
+        "check_in": "Apr 23rd, 2023",
+        "check_out": "Apr 26th, 2023",
+        "room_type": "Deluxe A-03",
+        "special_request": "Late check-out",
+        "status": "Booked"
+    },
+        
+    {
+        "id": 5,
+        "guest": "Michael Brown",
+        "guest_id": "#56789012",
+        "order_date": "Apr 9th 2023 06:38 PM",
+        "check_in": "Apr 25th, 2023",
+        "check_out": "Apr 28th, 2023",
+        "room_type": "Premium B-01",
+        "special_request": "Extra blankets",
+        "status": "Pending"
+    },
+        
+    {
+        "id": 6,
+        "guest": "Emily White",
+        "guest_id": "#67890123",
+        "order_date": "Apr 11th 2023 01:02 PM",
+        "check_in": "Apr 27th, 2023",
+        "check_out": "Apr 30th, 2023",
+        "room_type": "Standard C-02",
+        "special_request": "",
+        "status": "Canceled"
+    },
+        
+    {
+        "id": 7,
+        "guest": "James Lee",
+        "guest_id": "#78901234",
+        "order_date": "Apr 12th 2023 08:26 AM",
+        "check_in": "Apr 28th, 2023",
+        "check_out": "May 1st, 2023",
+        "room_type": "Deluxe A-04",
+        "special_request": "Non-smoking room",
+        "status": "Booked"
+    },
+    {
+        "id": 8,
+        "guest": "John Smith",
+        "guest_id": "#12345678",
+        "order_date": "Apr 1st 2023 10:43 AM",
+        "check_in": "Apr 15th, 2023",
+        "check_out": "Apr 20th, 2023",
+        "room_type": "Deluxe A-01",
+        "special_request": "Late check-out",
+        "status": "Booked"
+    }
 ]

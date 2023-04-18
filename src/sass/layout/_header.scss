@@ -10,17 +10,17 @@
   background-color: white;
 
   &__hamburger {
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
     border-radius: 50%;
     transition: all .3s;
     padding: 12px;
 
     &:hover {
-      background-color: $gray-color;
+      background-color: rgba($color: $gray-color, $alpha: .5);
     }
     &:active {
-      background-color: #888;
+      background-color: $gray-color;
     }
   }
 
