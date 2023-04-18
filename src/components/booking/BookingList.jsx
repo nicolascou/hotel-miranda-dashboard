@@ -2,6 +2,7 @@ import React from 'react';
 import bookings from '../../data/bookings.json';
 
 const BookingList = () => {
+  
   return (
     <div className='bookings'>
       <div className='bookings__top'>
@@ -67,8 +68,20 @@ const BookingList = () => {
                   </p>
                 </div>
                 <i className='fa-solid fa-ellipsis-vertical bookings__table__row__ellipsis'></i>
-              </div> )})}
+              </div> 
+            )})}
         </ul>
+      </div>
+      <div className='bookings__bottom'>
+        <p className='bookings__bottom__text'>Showing 5 of 102 Data</p>
+        <div className='bookings__bottom__pagination'>
+          <button className='bookings__bottom__pagination__btn1'>Prev</button>
+          <button className='bookings__bottom__pagination__btn2'>1</button>
+          <button className='bookings__bottom__pagination__btn2'>2</button>
+          <button className='bookings__bottom__pagination__btn2'>3</button>
+          <button className='bookings__bottom__pagination__btn2'>4</button>
+          <button className='bookings__bottom__pagination__btn1'>Next</button>
+        </div>
       </div>
     </div>
   )
