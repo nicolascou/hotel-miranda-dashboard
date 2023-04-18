@@ -12,7 +12,7 @@ const Header = ({ hideSidebar, setHideSidebar }) => {
     <header className='header'>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <i onClick={() => setHideSidebar(!hideSidebar)} className="fa-solid fa-bars-staggered header__hamburger"></i>
-        <h2 className='header__title'>Dashboard</h2>
+        <h2 className='header__title'>{window.location.pathname.split('/').pop() || 'Dashboard'}</h2>
       </div>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div className='header__search'>
