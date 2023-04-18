@@ -6,19 +6,19 @@ const BookingList = () => {
   const [pagination, setPagination] = useState(1);
 
   const handlePagination = (page) => {
-    setPagination(page);
-    if (pagination <= 0) {
+    if (page <= 0) {
       setPagination(1);
-    } else if (pagination > 4) {
-      setPagination(4);
-    } 
+    } else if (allBookings.length < page*8 ) {
+      return;
+    } else {
+      setPagination(page);
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   useEffect(() => {
-    console.log(pagination)
     let index = pagination === 1 ? 0 : (pagination-1)*7+1;
     setBookings(allBookings.slice(index, index+8));
-    
   }, [pagination])
   
   return (

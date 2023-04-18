@@ -186,7 +186,7 @@
 }
 .sidebar__card__btn {
   color: #135846;
-  background-color: rgba(19, 88, 70, 0.2);
+  background-color: #EBF1EF;
   text-transform: capitalize;
 }
 .sidebar__rights {
@@ -254,6 +254,7 @@
 .header__title {
   margin-left: 40px;
   font-weight: 600;
+  text-transform: capitalize;
 }
 .header__search {
   width: 300px;
