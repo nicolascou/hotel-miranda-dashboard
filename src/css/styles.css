@@ -35,6 +35,7 @@
   background-color: white;
   box-shadow: 4px 10px 20px rgba(25, 25, 25, 0.25);
   text-align: center;
+  width: 400px;
   padding: 30px;
 }
 .login__card__logo {
@@ -283,8 +284,8 @@
   color: #135846;
 }
 .header__img {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 8px;
   margin-left: 20px;
 }
@@ -507,10 +508,10 @@
   width: 70px;
 }
 .bookings__bottom__pagination__btn1:first-child {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 .bookings__bottom__pagination__btn1:last-child {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .bookings__bottom__pagination__btn2 {
   background: none;
