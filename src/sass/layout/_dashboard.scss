@@ -1,20 +1,7 @@
 @import "../globals";
 
 .dashboard {
-  width: calc(100% - 300px);
-  min-height: 100vh;
-  margin-left: 300px;
-  background-color: #f8f8f8;
-  transition: all .3s;
-
-  &--100w {
-    width: 100%;
-    margin-left: 0;
-  }
-
-  &__main {
-    padding: 50px;
-  }
+  padding: 50px;
 
   &__kpis {
     display: flex;

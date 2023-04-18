@@ -2,3 +2,16 @@ $primary-color: #135846;
 $secondary-color: #E23428;
 $text-color: #799283;
 $gray-color: #B2B2B2;
+
+.page-content {
+  width: calc(100% - 300px);
+  min-height: 100vh;
+  margin-left: 300px;
+  background-color: #f8f8f8;
+  transition: all .3s;
+
+  &--100w {
+    width: 100%;
+    margin-left: 0;
+  }
+}

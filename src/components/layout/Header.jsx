@@ -2,6 +2,12 @@ import React from 'react'
 import profilePic from '../../img/profile-pic.jpg';
 
 const Header = ({ hideSidebar, setHideSidebar }) => {
+  
+  const handleLogout = () => {
+    localStorage.removeItem('miranda-auth');
+    window.location.href = '/';
+  }
+  
   return (
     <header className='header'>
       <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -17,7 +23,7 @@ const Header = ({ hideSidebar, setHideSidebar }) => {
         <i className='header__icon fa-regular fa-bell'></i>
         <img className='header__img' src={profilePic} alt="profile" />
         <div className='header__bar'></div>
-        <i className='header__icon fa-solid fa-right-from-bracket'></i>
+        <i onClick={handleLogout} className='header__icon fa-solid fa-right-from-bracket'></i>
       </div>
     </header>
   )

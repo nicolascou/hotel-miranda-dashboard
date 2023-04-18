@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Login from './components/Login';
@@ -23,6 +23,9 @@ import ContactDetails from './components/contact/ContactDetails';
 import ContactCreate from './components/contact/ContactCreate';
 import ContactUpdate from './components/contact/ContactUpdate';
 
+import Sidebar from './components/layout/Sidebar';
+import Header from './components/layout/Header';
+
 function App() {
   const router = createBrowserRouter([
     { path: '/', element: <Login /> },
@@ -43,9 +46,17 @@ function App() {
     { path: '/contact/:id', element: <ContactDetails /> },
     { path: '/contact/update/:id', element: <ContactUpdate /> },
   ]);
+
+  const [hideSidebar, setHideSidebar] = useState(false);
   
   return (
-    <RouterProvider router={router} />
+    <>
+      <Sidebar hideSidebar={hideSidebar} />
+      <div className={`page-content ${hideSidebar ? 'page-content--100w' : ''}`}> 
+        <Header hideSidebar={hideSidebar} setHideSidebar={setHideSidebar} />
+        <RouterProvider router={router} />
+      </div>
+    </>
   );
 }
 
