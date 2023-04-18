@@ -48,14 +48,23 @@ function App() {
   ]);
 
   const [hideSidebar, setHideSidebar] = useState(false);
+  const isAuthenticated = Boolean(localStorage.getItem('miranda-auth') === '1');
   
   return (
     <>
-      <Sidebar hideSidebar={hideSidebar} />
-      <div className={`page-content ${hideSidebar ? 'page-content--100w' : ''}`}> 
-        <Header hideSidebar={hideSidebar} setHideSidebar={setHideSidebar} />
+      {
+        isAuthenticated ? 
+        <>
+          <Sidebar hideSidebar={hideSidebar} />
+          <div className={`page-content ${hideSidebar ? 'page-content--100w' : ''}`}> 
+            <Header hideSidebar={hideSidebar} setHideSidebar={setHideSidebar} />
+            <div style={{ padding: '50px' }}>
+              <RouterProvider router={router} />
+            </div>
+          </div>
+        </> :
         <RouterProvider router={router} />
-      </div>
+      }
     </>
   );
 }

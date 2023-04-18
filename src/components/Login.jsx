@@ -4,15 +4,15 @@ import hotelIcon from '../img/icons/hotel.svg';
 import { Button } from './layout/styled';
 
 const Login = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(Boolean(localStorage.getItem('miranda-auth') === '1'));
   const [userInput, setUserInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
+  const isAuthenticated = Boolean(localStorage.getItem('miranda-auth') === '1');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (userInput === 'hola' && passwordInput === '1234') {
-      setIsAuthenticated(true);
       localStorage.setItem('miranda-auth', '1');
+      window.location.href = '/';
     }
   }
   
