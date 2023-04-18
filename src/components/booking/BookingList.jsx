@@ -61,7 +61,9 @@ const BookingList = () => {
             return (  
               <div key={b.id} className='bookings__table__row'>
                 <div className='bookings__table__row__item'>
-                  <div className='bookings__table__row__item__photo'></div>
+                  <div className='bookings__table__row__item__photo'>
+                    <i className='fa-solid fa-user'></i>
+                  </div>
                   <div>
                     <p className='weight-500'>{b.guest}</p>
                     <p className='bookings__table__row__item__id'>{b.guest_id}</p>
