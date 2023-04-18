@@ -432,6 +432,31 @@
   background-color: white;
   border: 1px solid #135846;
 }
+.bookings__table__row__item__status {
+  width: 115px;
+  height: 50px;
+  border-radius: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bookings__table__row__item__status--red {
+  color: #E23428;
+  background-color: #FFEDEC;
+}
+.bookings__table__row__item__status--green {
+  color: #5AD07A;
+  background-color: #E8FFEE;
+}
+.bookings__table__row__item__status--gray {
+  color: #6D6D6D;
+  background-color: #E2E2E2;
+}
+.bookings__table__row__item__status--black {
+  background-color: #575757;
+  color: #BEBEBE;
+}
 .bookings__table__row__ellipsis {
   position: absolute;
   right: 30px;

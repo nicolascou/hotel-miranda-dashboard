@@ -86,6 +86,33 @@
             border: 1px solid $primary-color;
           }
         }
+
+        &__status {
+          width: 115px;
+          height: 50px;
+          border-radius: 12px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &--red {
+            color: $secondary-color;
+            background-color: #FFEDEC;
+          }
+          &--green {
+            color: #5AD07A;
+            background-color: #E8FFEE;
+          }
+          &--gray {
+            color: #6D6D6D;
+            background-color: #E2E2E2;
+          }
+          &--black {
+            background-color: #575757;
+            color: #BEBEBE;
+          }
+        }
       }
 
       &__ellipsis {
