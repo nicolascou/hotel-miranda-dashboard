@@ -23,3 +23,15 @@ $gray-color: #B2B2B2;
 .weight-500 {
   font-weight: 500;
 }
+
+.animate-fadeIn {
+  animation: fadeIn .4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
