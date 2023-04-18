@@ -1,11 +1,11 @@
 import React from 'react'
 import profilePic from '../../img/profile-pic.jpg';
 
-const Header = () => {
+const Header = ({ hideSidebar, setHideSidebar }) => {
   return (
     <header className='header'>
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <i className="fa-solid fa-bars-staggered header__hamburger"></i>
+        <i onClick={() => setHideSidebar(!hideSidebar)} className="fa-solid fa-bars-staggered header__hamburger"></i>
         <h2 className='header__title'>Dashboard</h2>
       </div>
       <div style={{ display: 'flex', alignItems: 'center' }}>
