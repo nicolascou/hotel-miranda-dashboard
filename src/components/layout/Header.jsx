@@ -13,16 +13,11 @@ const Header = ({ hideSidebar, setHideSidebar }) => {
           <input type="text" />
           <i className='fa-solid fa-search'></i>
         </div>
-        <i className='header__icon fa-regular fa-heart'></i>
         <i className='header__icon fa-regular fa-envelope'></i>
         <i className='header__icon fa-regular fa-bell'></i>
-        <i className='header__icon fa-regular fa-comment-dots'></i>
         <img className='header__img' src={profilePic} alt="profile" />
         <div className='header__bar'></div>
-        <div className='header__language'>
-          <p>EN</p>
-          <i className='fa-solid fa-angle-down'></i>
-        </div>
+        <i className='header__icon fa-solid fa-right-from-bracket'></i>
       </div>
     </header>
   )

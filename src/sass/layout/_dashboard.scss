@@ -11,4 +11,32 @@
     width: 100%;
     margin-left: 0;
   }
+
+  &__main {
+    padding: 50px;
+  }
+
+  &__kpis {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__icon {
+      font-size: 22px;
+    }
+  }
+
+  &__content {
+    margin-left: 22px;
+
+    &__number {
+      font-size: 24px;
+      font-weight: 600;
+    }
+    &__text {
+      font-size: 14px;
+      font-weight: 300;
+      color: #787878;
+    }
+  }
 }

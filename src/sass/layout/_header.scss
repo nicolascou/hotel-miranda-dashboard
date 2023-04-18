@@ -69,17 +69,7 @@
     height: 40px;
     width: 1px;
     background-color: $gray-color;
-    margin: 0 30px;
-  }
-
-  &__language {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    p {
-      margin-right: 10px;
-      color: $secondary-color;
-      font-weight: 600;
-    }
+    margin-left: 30px;
+    margin-right: 10px;
   }
 }

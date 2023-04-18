@@ -225,17 +225,8 @@
   height: 40px;
   width: 1px;
   background-color: #B2B2B2;
-  margin: 0 30px;
-}
-.header__language {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-.header__language p {
+  margin-left: 30px;
   margin-right: 10px;
-  color: #E23428;
-  font-weight: 600;
 }
 
 .dashboard {
@@ -248,6 +239,29 @@
 .dashboard--100w {
   width: 100%;
   margin-left: 0;
+}
+.dashboard__main {
+  padding: 50px;
+}
+.dashboard__kpis {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard__kpis__icon {
+  font-size: 22px;
+}
+.dashboard__content {
+  margin-left: 22px;
+}
+.dashboard__content__number {
+  font-size: 24px;
+  font-weight: 600;
+}
+.dashboard__content__text {
+  font-size: 14px;
+  font-weight: 300;
+  color: #787878;
 }
 
 * {
