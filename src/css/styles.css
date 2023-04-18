@@ -110,6 +110,8 @@
   width: 300px;
   box-shadow: 13px 3px 40px rgba(0, 0, 0, 0.0196078431);
   position: absolute;
+  background-color: white;
+  z-index: 5;
 }
 .sidebar--hidden {
   display: none;

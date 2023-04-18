@@ -58,7 +58,7 @@ function App() {
           <Sidebar hideSidebar={hideSidebar} />
           <div className={`page-content ${hideSidebar ? 'page-content--100w' : ''}`}> 
             <Header hideSidebar={hideSidebar} setHideSidebar={setHideSidebar} />
-            <div style={{ padding: '50px' }}>
+            <div className='animate__animated animate__fadeIn' style={{ padding: '50px' }}>
               <RouterProvider router={router} />
             </div>
           </div>
