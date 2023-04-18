@@ -1,7 +1,25 @@
-import React from 'react';
-import bookings from '../../data/bookings.json';
+import React, { useEffect, useState } from 'react';
+import allBookings from '../../data/bookings.json';
 
 const BookingList = () => {
+  const [bookings, setBookings] = useState(allBookings.slice(0, 8));
+  const [pagination, setPagination] = useState(1);
+
+  const handlePagination = (page) => {
+    setPagination(page);
+    if (pagination <= 0) {
+      setPagination(1);
+    } else if (pagination > 4) {
+      setPagination(4);
+    } 
+  }
+
+  useEffect(() => {
+    console.log(pagination)
+    let index = pagination === 1 ? 0 : (pagination-1)*7+1;
+    setBookings(allBookings.slice(index, index+8));
+    
+  }, [pagination])
   
   return (
     <div className='bookings'>
@@ -28,7 +46,7 @@ const BookingList = () => {
           <p className='bookings__table__row__item'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
-          {bookings.slice(0, 8).map((b) => {
+          {bookings.map((b) => {
             let statusClass;
             if (b.status === 'Booked') {
               statusClass = 'bookings__table__row__item__status--green';
@@ -75,12 +93,14 @@ const BookingList = () => {
       <div className='bookings__bottom'>
         <p className='bookings__bottom__text'>Showing 5 of 102 Data</p>
         <div className='bookings__bottom__pagination'>
-          <button className='bookings__bottom__pagination__btn1'>Prev</button>
-          <button className='bookings__bottom__pagination__btn2'>1</button>
-          <button className='bookings__bottom__pagination__btn2'>2</button>
-          <button className='bookings__bottom__pagination__btn2'>3</button>
-          <button className='bookings__bottom__pagination__btn2'>4</button>
-          <button className='bookings__bottom__pagination__btn1'>Next</button>
+          <button onClick={() => handlePagination(pagination-1)} className='bookings__bottom__pagination__btn1'>Prev</button>
+          <button onClick={() => handlePagination(1)} 
+            className='bookings__bottom__pagination__btn2 bookings__bottom__pagination__btn2--active'
+          >1</button>
+          <button onClick={() => handlePagination(2)} className='bookings__bottom__pagination__btn2'>2</button>
+          <button onClick={() => handlePagination(3)} className='bookings__bottom__pagination__btn2'>3</button>
+          <button onClick={() => handlePagination(4)} className='bookings__bottom__pagination__btn2'>4</button>
+          <button onClick={() => handlePagination(pagination+1)} className='bookings__bottom__pagination__btn1'>Next</button>
         </div>
       </div>
     </div>
