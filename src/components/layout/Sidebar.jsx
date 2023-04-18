@@ -4,6 +4,8 @@ import { Button } from './styled';
 import profilePic from '../../img/profile-pic.jpg';
 
 const Sidebar = ({ hideSidebar }) => { 
+  const route = window.location.pathname.split('/')[1];
+  
   return (
     <>
       <div className={`sidebar ${hideSidebar ? 'sidebar--hidden' : ''}`}>
@@ -16,23 +18,23 @@ const Sidebar = ({ hideSidebar }) => {
         </div>
         <div style={{ padding: '30px' }}>
           <div className='sidebar__nav'>
-            <div className='sidebar__nav__box sidebar__nav__box--active'>
+            <div className={`sidebar__nav__box ${!route ? 'sidebar__nav__box--active' : ''}`}>
               <i className="fa-solid fa-table-columns"></i>
               <a href='/'>Dashboard</a>
             </div>
-            <div className='sidebar__nav__box'>
+            <div className={`sidebar__nav__box ${route === 'rooms' ? 'sidebar__nav__box--active' : ''}`}>
               <i className='fa-solid fa-key'></i>
               <a href='/rooms'>Room</a>
             </div>
-            <div className='sidebar__nav__box'>
+            <div className={`sidebar__nav__box ${route === 'bookings' ? 'sidebar__nav__box--active' : ''}`}>
               <i className="fa-regular fa-calendar-check"></i>
               <a href='/bookings'>Bookings</a>
             </div>
-            <div className='sidebar__nav__box'>
+            <div className={`sidebar__nav__box ${route === 'users' ? 'sidebar__nav__box--active' : ''}`}>
               <i className="fa-solid fa-user"></i>
               <a href='/users'>Users</a>
             </div>
-            <div className='sidebar__nav__box'>
+            <div className={`sidebar__nav__box ${route === 'contact' ? 'sidebar__nav__box--active' : ''}`}>
               <i className="fa-solid fa-puzzle-piece"></i>
               <a href='/contact'>Contact</a>
             </div>
