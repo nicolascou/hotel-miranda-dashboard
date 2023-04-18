@@ -27,11 +27,34 @@
 
     &__select {
       border-radius: 12px;
-      border: none;
-      outline: none;
       border: 1px solid $primary-color;
+      padding: 10px 25px;
       color: $primary-color;
-      padding: 10px 20px;
+      cursor: pointer;
+      position: relative;
+      &__text {
+        display: inline-block;
+        font-weight: 600;
+        appearance: none;
+        border: none;
+        outline: none;
+        background: none;
+        margin-right: 10px;
+      }
+      &__options {
+        position: absolute;
+        display: none;
+        background-color: #eee;
+        border-radius: 12px;
+        padding: 10px 25px;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &--clicked {
+          display: block;
+        }
+      }
     }
   }
 

@@ -30,10 +30,13 @@ const BookingList = () => {
           <li className='bookings__top__menu__item'>Check In</li>
           <li className='bookings__top__menu__item'>Check Out</li>
         </ul>
-        <select className='bookings__top__select' name="orderby">
-          <option value="">Newest</option>
-          <option value="">Oldest</option>
-        </select>
+        <div className='bookings__top__select'>
+          <p className='bookings__top__select__text'>Newest</p>
+          <i className='fa-solid fa-chevron-down'></i>
+          <div className='bookings__top__select__options'>
+            <p>Oldest</p>
+          </div>
+        </div>
       </div>
       <div className='bookings__table'>
         <div className='bookings__table__row bookings__table__row--first'>
