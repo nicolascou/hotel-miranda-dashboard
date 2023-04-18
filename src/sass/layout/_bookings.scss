@@ -64,13 +64,20 @@
           margin-right: 15px;
         }
 
-        &__name {
-          font-weight: 600;
-        }
-
         &__id {
           font-size: 14px;
           color: $primary-color;
+        }
+
+        &__btn {
+          background: none;
+          border: none;
+          background-color: #EEF9F2;
+          cursor: pointer;
+          font-weight: 500;
+          font-size: 16px;
+          padding: 15px 35px;
+          border-radius: 12px;
         }
       }
 
