@@ -5,7 +5,7 @@ const Header = ({ hideSidebar, setHideSidebar }) => {
   
   const handleLogout = () => {
     localStorage.removeItem('auth-miranda');
-    window.location.href = '/';
+    window.location.href = '/login'
   }
   
   return (

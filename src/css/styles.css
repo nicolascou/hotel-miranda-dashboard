@@ -481,9 +481,17 @@
   align-items: center;
   padding: 20px 30px;
   border-bottom: 2px solid #f8f8f8;
+  cursor: pointer;
+}
+.bookings__table__row:hover {
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1019607843);
 }
 .bookings__table__row--first {
   font-weight: 600;
+  cursor: auto;
+}
+.bookings__table__row--first:hover {
+  box-shadow: none;
 }
 .bookings__table__row__item {
   display: flex;
@@ -510,7 +518,6 @@
 .bookings__table__row__item__btn {
   background: none;
   border: none;
-  text-decoration: none;
   color: #135846;
   background-color: #EEF9F2;
   cursor: pointer;

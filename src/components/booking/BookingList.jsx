@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import allBookings from '../../data/bookings.json';
+import { useNavigate } from 'react-router-dom';
 
 const BookingList = () => {
   const [bookings, setBookings] = useState(allBookings.slice(0, 8));
   const [pagination, setPagination] = useState(1);
   const [orderByNewest, setOrderByNewest] = useState(true);
   // const [filterBy, setFilterBy] = useState('all');
+
+  const navigate = useNavigate();
 
   const handlePagination = (page) => {
     if (page <= 0) {
@@ -16,10 +19,6 @@ const BookingList = () => {
       setPagination(page);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  const handleOrderBy = () => {
-    setOrderByNewest(!orderByNewest);
   }
 
   useEffect(() => {
@@ -49,7 +48,7 @@ const BookingList = () => {
           <i className='fa-solid fa-chevron-down'></i>
           {
             false &&
-            <div onClick={handleOrderBy} className='bookings__top__select__options'>
+            <div onClick={() => setOrderByNewest(prev => !prev)} className='bookings__top__select__options'>
               <p>{orderByNewest ? 'Oldest' : 'Newest'}</p>
             </div>
           }
@@ -79,7 +78,7 @@ const BookingList = () => {
             }
               
             return (  
-              <div key={b.id} className='bookings__table__row'>
+              <div key={b.id} onClick={() => navigate(`/bookings/${b.id}`)} className='bookings__table__row'>
                 <div className='bookings__table__row__item'>
                   <div className='bookings__table__row__item__photo'>
                     <i className='fa-solid fa-user'></i>
@@ -99,7 +98,7 @@ const BookingList = () => {
                   <p className='small-text'>9.00AM</p>
                 </div>
                 <div className='bookings__table__row__item'>
-                  <a href={`/bookings/${b.id}`} className='bookings__table__row__item__btn'>View Notes</a>
+                  <button onClick={(e) => e.stopPropagation()} className='bookings__table__row__item__btn'>View Notes</button>
                 </div>
                 <p className='bookings__table__row__item weight-500'>{b.room_type}</p>
                 <div className='bookings__table__row__item'>
@@ -107,7 +106,7 @@ const BookingList = () => {
                     {b.status}
                   </p>
                 </div>
-                <i className='fa-solid fa-ellipsis-vertical bookings__table__row__ellipsis'></i>
+                <i onClick={(e) => e.stopPropagation()} className='fa-solid fa-ellipsis-vertical bookings__table__row__ellipsis'></i>
               </div> 
             )})}
         </ul>

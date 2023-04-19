@@ -67,9 +67,19 @@
       align-items: center;
       padding: 20px 30px;
       border-bottom: 2px solid #f8f8f8;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0px 4px 30px #0000001A;
+      }
 
       &--first {
         font-weight: 600;
+        cursor: auto;
+
+        &:hover {
+          box-shadow: none;
+        }
       }
 
       &__item {
@@ -99,7 +109,6 @@
         &__btn {
           background: none;
           border: none;
-          text-decoration: none;
           color: $primary-color;
           background-color: #EEF9F2;
           cursor: pointer;
