@@ -54,6 +54,32 @@ const BookingDetails = () => {
           </div>
         </div>
         <p className='booking-details__left__text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        <p className='booking-details__left__facilities'>Facilities</p>
+        <div className='booking-details__left__amenities'>
+          <div className='booking-details__left__amenities__box'>
+            <i className='fa-solid fa-bed'></i>
+            <p>3 Bed Space</p>
+          </div>
+          <div className='booking-details__left__amenities__box'>
+            <i className='fa-solid fa-shield-halved'></i>
+            <p>24 Hours Guard</p>
+          </div>
+          <div className='booking-details__left__amenities__box'>
+            <i className='fa-solid fa-wifi'></i>
+            <p>Free Wifi</p>
+          </div>
+        </div>
+        <div className='booking-details__left__amenities'>
+          <div className='booking-details__left__amenities__box booking-details__left__amenities__box--small'>
+            <p>2 Bathroom</p>
+          </div>
+          <div className='booking-details__left__amenities__box booking-details__left__amenities__box--small'>
+            <p>Air Conditioner</p>
+          </div>
+          <div className='booking-details__left__amenities__box booking-details__left__amenities__box--small'>
+            <p>Television</p>
+          </div>
+        </div>
       </div>  
       <div className='booking-details__right'>
         <img className='booking-details__right__img' src={room1} alt="" />

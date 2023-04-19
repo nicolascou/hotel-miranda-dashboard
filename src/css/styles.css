@@ -642,7 +642,6 @@
   width: 100%;
   display: flex;
   align-items: center;
-  height: 700px;
 }
 .booking-details__row {
   display: flex;
@@ -749,6 +748,39 @@
 .booking-details__left__text {
   font-size: 14px;
   color: #363636;
+  margin-bottom: 30px;
+}
+.booking-details__left__facilities {
+  font-size: 14px;
+  color: #888;
+}
+.booking-details__left__amenities {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+.booking-details__left__amenities__box {
+  display: flex;
+  align-items: center;
+  background-color: #E8F2EF;
+  color: #135846;
+  padding: 20px;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+.booking-details__left__amenities__box p {
+  font-weight: 500;
+  margin-left: 15px;
+  font-size: 15px;
+}
+.booking-details__left__amenities__box i {
+  font-size: 20px;
+}
+.booking-details__left__amenities__box--small {
+  padding: 10px 20px;
+}
+.booking-details__left__amenities__box--small p {
+  margin-left: 0;
 }
 .booking-details__right {
   width: 50%;
