@@ -4,6 +4,8 @@ import allBookings from '../../data/bookings.json';
 const BookingList = () => {
   const [bookings, setBookings] = useState(allBookings.slice(0, 8));
   const [pagination, setPagination] = useState(1);
+  const [orderByNewest, setOrderByNewest] = useState(true);
+  // const [filterBy, setFilterBy] = useState('all');
 
   const handlePagination = (page) => {
     if (page <= 0) {
@@ -16,26 +18,41 @@ const BookingList = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  const handleOrderBy = () => {
+    setOrderByNewest(!orderByNewest);
+  }
+
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*7+1;
     setBookings(allBookings.slice(index, index+8));
   }, [pagination])
+
+  // useEffect(() => {
+  //   if (filterBy === 'all') {
+  //     setBookings(allBookings.slice(0, 8));
+  //   } else if (filterBy === 'in_progress') {
+  //     setBookings(allBookings.filter((b) => b.))
+  //   }
+  // }, [filterBy])
   
   return (
     <div className='bookings'>
       <div className='bookings__top'>
         <ul className='bookings__top__menu'>
-          <li className='bookings__top__menu__item bookings__top__menu__item--active'>All Guest</li>
-          <li className='bookings__top__menu__item'>Order Date</li>
-          <li className='bookings__top__menu__item'>Check In</li>
-          <li className='bookings__top__menu__item'>Check Out</li>
+          <li className='bookings__top__menu__item bookings__top__menu__item--active'>All Bookings</li>
+          <li className='bookings__top__menu__item'>Checking In</li>
+          <li className='bookings__top__menu__item'>Checking Out</li>
+          <li className='bookings__top__menu__item'>In Progress</li>
         </ul>
         <div className='bookings__top__select'>
-          <p className='bookings__top__select__text'>Newest</p>
+          <p className='bookings__top__select__text'>{orderByNewest ? 'newest' : 'oldest'}</p>
           <i className='fa-solid fa-chevron-down'></i>
-          <div className='bookings__top__select__options'>
-            <p>Oldest</p>
-          </div>
+          {
+            false &&
+            <div onClick={handleOrderBy} className='bookings__top__select__options'>
+              <p>{orderByNewest ? 'Oldest' : 'Newest'}</p>
+            </div>
+          }
         </div>
       </div>
       <div className='bookings__table'>
@@ -82,7 +99,7 @@ const BookingList = () => {
                   <p className='small-text'>9.00AM</p>
                 </div>
                 <div className='bookings__table__row__item'>
-                  <button className='bookings__table__row__item__btn'>View Notes</button>
+                  <a href={`/bookings/${b.id}`} className='bookings__table__row__item__btn'>View Notes</a>
                 </div>
                 <p className='bookings__table__row__item weight-500'>{b.room_type}</p>
                 <div className='bookings__table__row__item'>
