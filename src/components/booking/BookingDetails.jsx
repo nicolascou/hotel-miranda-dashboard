@@ -1,14 +1,10 @@
 import React from 'react'
 import allBookings from '../../data/bookings.json';
-import { useLoaderData } from 'react-router-dom';
-
-export const loader = ({params}) => {
-  const booking = allBookings.find((b) => b.id === Number(params.id));
-  return booking || null;
-}
+import { useParams } from 'react-router-dom';
 
 const BookingDetails = () => {
-  const booking = useLoaderData();
+  const params = useParams();
+  const booking = allBookings.find(b => b.id === Number(params.id));
 
   if (!booking) {
     return <h2>This booking does not exist</h2>
