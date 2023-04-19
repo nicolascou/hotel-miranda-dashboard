@@ -1,8 +1,14 @@
 import React from 'react'
 import allBookings from '../../data/bookings.json';
+import { useLoaderData } from 'react-router-dom';
+
+export const loader = ({params}) => {
+  const booking = allBookings.find((b) => b.id === Number(params.id));
+  return booking;
+}
 
 const BookingDetails = () => {
-  const booking = allBookings.find((b) => b.id == window.location.pathname.split('/').pop());
+  const booking = useLoaderData();
   
   return (
     <div className='booking-details'>

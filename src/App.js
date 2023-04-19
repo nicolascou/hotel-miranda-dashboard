@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './components/Login';
 
 import BookingList from './components/booking/BookingList';
-import BookingDetails from './components/booking/BookingDetails';
+import BookingDetails, { loader as bookingLoader } from './components/booking/BookingDetails';
 import BookingCreate from './components/booking/BookingCreate';
 import BookingUpdate from './components/booking/BookingUpdate';
 
@@ -31,7 +31,7 @@ function App() {
     { path: '/', element: <Login /> },
     { path: '/bookings', element: <BookingList /> },
     { path: '/bookings/create', element: <BookingCreate /> },
-    { path: '/bookings/:id', element: <BookingDetails /> },
+    { path: '/bookings/:id', element: <BookingDetails />, loader: bookingLoader },
     { path: '/bookings/update/:id', element: <BookingUpdate /> },
     { path: '/rooms/', element: <RoomList /> },
     { path: '/rooms/create', element: <RoomCreate /> },
