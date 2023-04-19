@@ -8,13 +8,14 @@
 
   &__row {
     display: flex;
+    margin-bottom: 30px;
   }
 
   &__left {
     width: 50%;
     height: 100%;
     background-color: white;
-    padding: 30px;
+    padding: 40px;
     border-radius: 20px 0 0 20px;
 
     &__photo {
@@ -76,6 +77,47 @@
           margin-right: 15px;
         }
       }
+    }
+
+    &__check {
+      width: 50%;
+      p:first-child {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 5px;
+      }
+      p:last-child {
+        font-weight: 500;
+      }
+    }
+
+    &__room {
+      width: 50%;
+      p:first-child {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 5px;
+      }
+      p:last-child {
+        font-weight: 500;
+        font-size: 24px;
+        span {
+          font-size: 14px;
+          color: #888;
+        }
+      }
+    }
+
+    &__bar {
+      height: 2px;
+      background-color: #f8f8f8;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    &__text {
+      font-size: 14px;
+      color: #363636;
     }
   }
   
