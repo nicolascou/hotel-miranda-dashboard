@@ -25,6 +25,7 @@ import ContactCreate from './components/contact/ContactCreate';
 
 import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
 
@@ -32,25 +33,39 @@ function App() {
   const [auth, setAuth] = useState(localStorage.getItem('auth-miranda') === '1');
   
   const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <Dashboard />
-    },
-    { path: '/bookings', element: <BookingList /> },
-    { path: '/bookings/create', element: <BookingCreate /> },
-    { path: '/bookings/:id', element: <BookingDetails /> },
-    { path: '/bookings/update/:id', element: <BookingUpdate /> },
-    { path: '/rooms/', element: <RoomList /> },
-    { path: '/rooms/create', element: <RoomCreate /> },
-    { path: '/rooms/:id', element: <RoomDetails /> },
-    { path: '/rooms/update/:id', element: <RoomUpdate /> },
-    { path: '/users/', element: <UserList /> },
-    { path: '/users/create', element: <UserCreate /> },
-    { path: '/users/:id', element: <UserDetails /> },
-    { path: '/users/update/:id', element: <UserUpdate /> },
-    { path: '/contact/', element: <ContactList /> },
-    { path: '/contact/create', element: <ContactCreate /> },
-    { path: '/contact/:id', element: <ContactDetails /> },
+    { path: '/login', element: <Login setAuth={setAuth} /> },
+    { path: '/', 
+      element: <PrivateRoute auth={auth}><Dashboard /></PrivateRoute> },
+    { path: '/bookings', 
+      element: <PrivateRoute auth={auth}><BookingList /></PrivateRoute> },
+    { path: '/bookings/create', 
+      element: <PrivateRoute auth={auth}><BookingCreate /></PrivateRoute> },
+    { path: '/bookings/:id', 
+      element: <PrivateRoute auth={auth}><BookingDetails /></PrivateRoute> },
+    { path: '/bookings/update/:id', 
+      element: <PrivateRoute auth={auth}><BookingUpdate /></PrivateRoute> },
+    { path: '/rooms/', 
+      element: <PrivateRoute auth={auth}><RoomList /></PrivateRoute> },
+    { path: '/rooms/create', 
+      element: <PrivateRoute auth={auth}><RoomCreate /></PrivateRoute> },
+    { path: '/rooms/:id', 
+      element: <PrivateRoute auth={auth}><RoomDetails /></PrivateRoute> },
+    { path: '/rooms/update/:id', 
+      element: <PrivateRoute auth={auth}><RoomUpdate /></PrivateRoute> },
+    { path: '/users/', 
+      element: <PrivateRoute auth={auth}><UserList /></PrivateRoute> },
+    { path: '/users/create', 
+      element: <PrivateRoute auth={auth}><UserCreate /></PrivateRoute> },
+    { path: '/users/:id', 
+      element: <PrivateRoute auth={auth}><UserDetails /></PrivateRoute> },
+    { path: '/users/update/:id', 
+      element: <PrivateRoute auth={auth}><UserUpdate /></PrivateRoute> },
+    { path: '/contact/', 
+      element: <PrivateRoute auth={auth}><ContactList /></PrivateRoute> },
+    { path: '/contact/create', 
+      element: <PrivateRoute auth={auth}><ContactCreate /></PrivateRoute> },
+    { path: '/contact/:id', 
+      element: <PrivateRoute auth={auth}><ContactDetails /></PrivateRoute> },
   ]);
 
   useEffect(() => {
@@ -61,19 +76,13 @@ function App() {
   
   return (
     <>
-      {
-        auth ? 
-        <>
-          <Sidebar hideSidebar={hideSidebar} />
-          <div className={`page-content ${hideSidebar ? 'page-content--100w' : ''}`}> 
-            <Header hideSidebar={hideSidebar} setHideSidebar={setHideSidebar} />
-            <div className='animate-fadeIn' style={{ padding: '50px' }}>
-              <RouterProvider router={router} />
-            </div>
-          </div>
-        </> :
-        <Login setAuth={setAuth} />
-      }
+      <Sidebar hideSidebar={hideSidebar} />
+      <div className={`page-content ${hideSidebar ? 'page-content--100w' : ''}`}> 
+        <Header hideSidebar={hideSidebar} setHideSidebar={setHideSidebar} />
+        <div style={{ padding: '50px' }}>
+          <RouterProvider router={router} />
+        </div>
+      </div>
     </>
   );
 }

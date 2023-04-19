@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
 import hotelIcon from '../img/icons/hotel.svg';
 import { Button } from './layout/styled';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ setAuth }) => {
   const [userInput, setUserInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (userInput === 'hola' && passwordInput === '1234') {
       setAuth(true);
+      navigate('/');
     }
   }
   

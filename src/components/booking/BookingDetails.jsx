@@ -83,10 +83,10 @@ const BookingDetails = () => {
       </div>  
       <div className='booking-details__right'>
         <img className='booking-details__right__img' src={room1} alt="" />
-        <div className='booking-details__right__text'>
+        {/* <div className='booking-details__right__text'>
           <h3 className='booking-details__right__text__title'>Bed Room</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet facere earum expedita dolore, fuga nobis debitis sint illo. Nisi recusandae eveniet dolor adipisci quod sapiente accusantium sunt fugit ipsum molestias?</p>
-        </div>
+        </div> */}
       </div>
     </div>
   )
