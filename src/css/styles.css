@@ -642,15 +642,86 @@
   width: 100%;
   display: flex;
   align-items: center;
+  height: 700px;
+}
+.booking-details__row {
+  display: flex;
 }
 .booking-details__left {
   width: 50%;
   height: 100%;
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px 0 0 20px;
+}
+.booking-details__left__photo {
+  height: 120px;
+  width: 120px;
+  background-color: #EEF9F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-right: 30px;
+}
+.booking-details__left__photo i {
+  color: #135846;
+  font-size: 50px;
+}
+.booking-details__left__main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.booking-details__left__main h2 {
+  font-size: 28px;
+  height: 28px;
+  font-weight: 600;
+}
+.booking-details__left__main p {
+  font-size: 14px;
+  font-weight: 300;
+  color: #135846;
+}
+.booking-details__left__main button {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.booking-details__left__main button i {
+  font-size: 20px;
+}
+.booking-details__left__main__phone-btn {
+  justify-content: center;
+  width: 50px;
+  border: #E8F2EF 1px solid;
+  color: #135846;
+  margin-right: 20px;
+  background: none;
+}
+.booking-details__left__main__message-btn {
+  border: none;
+  justify-content: space-between;
+  color: white;
+  background-color: #135846;
+  padding: 20px;
+}
+.booking-details__left__main__message-btn i {
+  margin-right: 15px;
 }
 .booking-details__right {
   width: 50%;
   height: 100%;
-  background-color: #EEF9F2;
+  border-radius: 0 20px 20px 0;
+}
+.booking-details__right__img {
+  border-radius: 0 20px 20px 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 * {

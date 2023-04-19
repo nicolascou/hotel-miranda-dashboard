@@ -4,15 +4,91 @@
   width: 100%;
   display: flex;
   align-items: center;
+  height: 700px;
+
+  &__row {
+    display: flex;
+  }
 
   &__left {
     width: 50%;
     height: 100%;
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px 0 0 20px;
+
+    &__photo {
+      height: 120px;
+      width: 120px;
+      background-color: #EEF9F2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      margin-right: 30px;
+      i {
+        color: $primary-color;
+        font-size: 50px;
+      }
+    }
+
+    &__main {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-direction: column;
+      
+      h2 {
+        font-size: 28px;
+        height: 28px;
+        font-weight: 600;
+      }
+      p {
+        font-size: 14px;
+        font-weight: 300;
+        color: $primary-color;
+      }
+      button {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        border-radius: 12px;
+        cursor: pointer;
+        i {
+          font-size: 20px;
+        }
+      }
+      &__phone-btn {
+        justify-content: center;
+        width: 50px;
+        border: #E8F2EF 1px solid;
+        color: $primary-color;
+        margin-right: 20px;
+        background: none;
+      }
+      &__message-btn {
+        border: none;
+        justify-content: space-between;
+        color: white;
+        background-color: $primary-color;
+        padding: 20px;
+        i {
+          margin-right: 15px;
+        }
+      }
+    }
   }
   
   &__right {
     width: 50%;
     height: 100%;
-    background-color: #EEF9F2;
+    border-radius: 0 20px 20px 0;
+    
+    &__img {
+      border-radius: 0 20px 20px 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
