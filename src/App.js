@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import PrivateRoute from './components/PrivateRoute';
 
 import BookingList from './components/booking/BookingList';
 import BookingDetails, { loader as bookingLoader } from './components/booking/BookingDetails';
@@ -21,14 +23,20 @@ import UserUpdate from './components/user/UserUpdate';
 import ContactList from './components/contact/ContactList';
 import ContactDetails from './components/contact/ContactDetails';
 import ContactCreate from './components/contact/ContactCreate';
-import ContactUpdate from './components/contact/ContactUpdate';
 
 import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
 
 function App() {
+
+  const [hideSidebar, setHideSidebar] = useState(false);
+  const [auth, setAuth] = useState(localStorage.getItem('auth-miranda') === '1');
+  
   const router = createBrowserRouter([
-    { path: '/', element: <Login /> },
+    {
+      path: '/',
+      element: <Dashboard />
+    },
     { path: '/bookings', element: <BookingList /> },
     { path: '/bookings/create', element: <BookingCreate /> },
     { path: '/bookings/:id', element: <BookingDetails />, loader: bookingLoader },
@@ -44,16 +52,18 @@ function App() {
     { path: '/contact/', element: <ContactList /> },
     { path: '/contact/create', element: <ContactCreate /> },
     { path: '/contact/:id', element: <ContactDetails /> },
-    { path: '/contact/update/:id', element: <ContactUpdate /> },
   ]);
 
-  const [hideSidebar, setHideSidebar] = useState(false);
-  const isAuthenticated = Boolean(localStorage.getItem('miranda-auth') === '1');
+  useEffect(() => {
+    if (auth === true) {
+      localStorage.setItem('auth-miranda', '1');
+    }
+  }, [auth])
   
   return (
     <>
       {
-        isAuthenticated ? 
+        auth ? 
         <>
           <Sidebar hideSidebar={hideSidebar} />
           <div className={`page-content ${hideSidebar ? 'page-content--100w' : ''}`}> 
@@ -63,7 +73,7 @@ function App() {
             </div>
           </div>
         </> :
-        <RouterProvider router={router} />
+        <Login setAuth={setAuth} />
       }
     </>
   );

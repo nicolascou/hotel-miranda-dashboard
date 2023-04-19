@@ -4,11 +4,15 @@ import { useLoaderData } from 'react-router-dom';
 
 export const loader = ({params}) => {
   const booking = allBookings.find((b) => b.id === Number(params.id));
-  return booking;
+  return booking || null;
 }
 
 const BookingDetails = () => {
   const booking = useLoaderData();
+
+  if (!booking) {
+    return <h2>This booking does not exist</h2>
+  }
   
   return (
     <div className='booking-details'>

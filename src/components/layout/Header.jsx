@@ -4,7 +4,7 @@ import profilePic from '../../img/profile-pic.jpg';
 const Header = ({ hideSidebar, setHideSidebar }) => {
   
   const handleLogout = () => {
-    localStorage.removeItem('miranda-auth');
+    localStorage.removeItem('auth-miranda');
     window.location.href = '/';
   }
   

@@ -16,3 +16,4 @@ url('/users/:id', detalles booking);
 url('/users/update/:id', edit booking);
 
 url('/contact/', contact list);
+url('/contact/:id', detalles contact);
