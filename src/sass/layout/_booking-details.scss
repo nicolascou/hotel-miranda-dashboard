@@ -4,6 +4,7 @@
   width: 100%;
   display: flex;
   align-items: center;
+  height: 730px;
 
   &__row {
     display: flex;
@@ -12,8 +13,8 @@
 
   &__left {
     width: 50%;
-    height: 100%;
     background-color: white;
+    height: 100%;
     padding: 40px;
     border-radius: 20px 0 0 20px;
 
@@ -161,11 +162,45 @@
     width: 50%;
     height: 100%;
     border-radius: 0 20px 20px 0;
+    position: relative;
     
     &__img {
       border-radius: 0 20px 20px 0;
+      z-index: -1;
       width: 100%;
-      object-fit: cover;
+      height: 730px;
+      
+      &--1 {
+        background: url('../img/rooms-3.jpg') center / cover;
+      }
+      &--2 {
+        background: url('../img/rooms-1.jpg') center / cover;
+      }
+      &--3 {
+        background: url('../img/rooms-2.jpg') center / cover;
+      }
+      &--4 {
+        background: url('../img/rooms-4.jpg') center / cover;
+      }
+    }
+
+    &__btn {
+      z-index: 6;
+      position: absolute;
+      top: 60%;
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      border: 2px white solid;
+      background: rgba($color: #fff, $alpha: .65);
+      cursor: pointer;
+      font-size: 20px;
+      &-prev {
+        left: 8%;
+      }
+      &-next {
+        right: 8%;
+      }
     }
   }
 }

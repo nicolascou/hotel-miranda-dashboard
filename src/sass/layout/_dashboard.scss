@@ -80,9 +80,9 @@
           font-weight: 500;
           border-radius: 12px;
           padding: 10px 0;
-  
-          &:hover {
-            background-color: #EBF1EF;
+          &--active {
+            background-color: $primary-color;
+            color: white;
           }
         }
         &__month-view {

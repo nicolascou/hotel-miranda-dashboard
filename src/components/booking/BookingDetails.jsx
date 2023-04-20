@@ -1,11 +1,15 @@
 import React from 'react'
 import allBookings from '../../data/bookings.json';
-import room1 from '../../img/rooms-3.jpg';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { useParams } from 'react-router-dom';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const BookingDetails = () => {
   const params = useParams();
   const booking = allBookings.find(b => b.id === Number(params.id));
+  const swiper = useSwiper();
 
   if (!booking) {
     return <h2>This booking does not exist</h2>
@@ -82,11 +86,33 @@ const BookingDetails = () => {
         </div>
       </div>  
       <div className='booking-details__right'>
-        {/* <img className='booking-details__right__img' src={room1} alt="" /> */}
-        {/* <div className='booking-details__right__text'>
+        <Swiper
+          loop={true}
+          spaceBetween={0}
+        >
+          <SwiperSlide>
+            <div className='booking-details__right__img booking-details__right__img--1'></div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='booking-details__right__img booking-details__right__img--2'></div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='booking-details__right__img booking-details__right__img--3'></div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='booking-details__right__img booking-details__right__img--4'></div>
+          </SwiperSlide>
+          <button className='booking-details__right__btn booking-details__right__btn-prev' onClick={() => swiper.slidePrev()}>
+            <i className='fa-solid fa-arrow-left'></i>
+          </button>
+          <button className='booking-details__right__btn booking-details__right__btn-next' onClick={() => swiper.slideNext()}>
+            <i className='fa-solid fa-arrow-right'></i>
+          </button>
+        </Swiper>
+        <div className='booking-details__right__text'>
           <h3 className='booking-details__right__text__title'>Bed Room</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet facere earum expedita dolore, fuga nobis debitis sint illo. Nisi recusandae eveniet dolor adipisci quod sapiente accusantium sunt fugit ipsum molestias?</p>
-        </div> */}
+        </div>
       </div>
     </div>
   )
