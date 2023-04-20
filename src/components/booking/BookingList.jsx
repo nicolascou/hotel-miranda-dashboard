@@ -37,6 +37,8 @@ const BookingList = () => {
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*7+1;
     setSliceBookings(bookings.slice(index, index+8));
+
+    // eslint-disable-next-line
   }, [pagination])
 
   useEffect(() => {
@@ -59,11 +61,12 @@ const BookingList = () => {
       }))
 
     } else if (orderBy === 'check_in') {
+      setBookings([])
     }
     
   }, [orderBy])
 
-  useEffect(() => setSliceBookings(bookings.slice(0, 8)), []); 
+  useEffect(() => setSliceBookings(bookings.slice(0, 8)), [bookings]); 
   
   return (
     <div className='bookings'>
