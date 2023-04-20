@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import bookings_json from '../../data/bookings.json';
 import { useNavigate } from 'react-router-dom';
-import sort from 'array-sort';
+import moment from 'moment';
 
 const BookingList = () => {
   const [bookings, setBookings] = useState(bookings_json);
@@ -41,11 +41,24 @@ const BookingList = () => {
 
   useEffect(() => {
     if (orderBy === 'guest') {
-      setBookings(sort(bookings_json, 'guest'));
+      setBookings(bookings_json.sort((a, b) => {
+        if (a.guest < b.guest) return -1;
+        if (a.guest > b.guest) return 1;
+        return 0;
+      }))
+
     } else if (orderBy === 'order_date') {
-      setBookings(sort(bookings_json, 'order_date'));
+      setBookings(bookings_json.sort((a, b) => {
+        const dateA = moment(a.date, "MMM Do YYYY h:mm A").toDate();
+        const dateB = moment(b.date, "MMM Do YYYY hh:mm A").toDate();
+        console.log(dateA)
+      
+        if (dateA < dateB) return -1;
+        if (dateA > dateB) return 1;
+        return 0;
+      }))
+
     } else if (orderBy === 'check_in') {
-      setBookings(sort(bookings_json, 'check_in'));
     }
     
   }, [orderBy])
