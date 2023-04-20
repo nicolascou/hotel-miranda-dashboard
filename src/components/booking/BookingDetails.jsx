@@ -2,9 +2,11 @@ import React from 'react'
 import allBookings from '../../data/bookings.json';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { useParams } from 'react-router-dom';
+import SwiperButtonNext from '../layout/SwiperButtonNext';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import SwiperButtonPrev from '../layout/SwiperButtonPrev';
 
 const BookingDetails = () => {
   const params = useParams();
@@ -102,12 +104,8 @@ const BookingDetails = () => {
           <SwiperSlide>
             <div className='booking-details__right__img booking-details__right__img--4'></div>
           </SwiperSlide>
-          <button className='booking-details__right__btn booking-details__right__btn-prev' onClick={() => swiper.slidePrev()}>
-            <i className='fa-solid fa-arrow-left'></i>
-          </button>
-          <button className='booking-details__right__btn booking-details__right__btn-next' onClick={() => swiper.slideNext()}>
-            <i className='fa-solid fa-arrow-right'></i>
-          </button>
+          <SwiperButtonPrev />
+          <SwiperButtonNext />
         </Swiper>
         <div className='booking-details__right__text'>
           <h3 className='booking-details__right__text__title'>Bed Room</h3>
