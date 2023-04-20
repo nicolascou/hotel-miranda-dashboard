@@ -13,14 +13,12 @@ const BookingDetails = () => {
   const booking = allBookings.find(b => b.id === Number(params.id));
   
   let statusTagClass;
-  if (booking.status === 'Booked') {
+  if (booking.status === 'Check In') {
     statusTagClass = 'booking-details__right__status-tag--green';
-  } else if (booking.status === 'Refund') {
+  } else if (booking.status === 'Check Out') {
     statusTagClass = 'booking-details__right__status-tag--red';
-  } else if (booking.status === 'Pending') {
-    statusTagClass = 'booking-details__right__status-tag--gray';
-  } else {
-    statusTagClass = 'booking-details__right__status-tag--black';
+  } else if (booking.status === 'In Progress') {
+    statusTagClass = 'booking-details__right__status-tag--yellow';
   }
 
   if (!booking) {

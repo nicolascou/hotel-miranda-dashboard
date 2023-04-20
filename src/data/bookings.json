@@ -8,7 +8,7 @@
         "check_out": "Apr 23rd, 2023",
         "room_type": "Premium B-03",
         "special_request": "Extra pillows",
-        "status": "Booked"
+        "status": "Check Out"
     },
         
     {
@@ -20,7 +20,7 @@
         "check_out": "Apr 25th, 2023",
         "room_type": "Deluxe A-02",
         "special_request": "Early check-in",
-        "status": "Canceled"
+        "status": "Check Out"
     },
         
     {
@@ -32,7 +32,7 @@
         "check_out": "Apr 24th, 2023",
         "room_type": "Standard C-01",
         "special_request": "",
-        "status": "Refund"
+        "status": "In Progress"
     },
         
     {
@@ -44,7 +44,7 @@
         "check_out": "Apr 26th, 2023",
         "room_type": "Deluxe A-03",
         "special_request": "Late check-out",
-        "status": "Booked"
+        "status": "In Progress"
     },
         
     {
@@ -56,7 +56,7 @@
         "check_out": "Apr 28th, 2023",
         "room_type": "Premium B-01",
         "special_request": "Extra blankets",
-        "status": "Pending"
+        "status": "Check In"
     },
         
     {
@@ -68,7 +68,7 @@
         "check_out": "Apr 30th, 2023",
         "room_type": "Standard C-02",
         "special_request": "",
-        "status": "Canceled"
+        "status": "Check In"
     },
         
     {
@@ -80,7 +80,7 @@
         "check_out": "May 1st, 2023",
         "room_type": "Deluxe A-04",
         "special_request": "Non-smoking room",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 8,
@@ -91,7 +91,7 @@
         "check_out": "Apr 20th, 2023",
         "room_type": "Deluxe A-01",
         "special_request": "Late check-out",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 9,
@@ -102,7 +102,7 @@
         "check_out": "May 5th, 2023",
         "room_type": "Executive B-03",
         "special_request": "",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 10,
@@ -113,7 +113,7 @@
         "check_out": "May 2nd, 2023",
         "room_type": "Standard C-07",
         "special_request": "Extra towels",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 11,
@@ -124,7 +124,7 @@
         "check_out": "May 15th, 2023",
         "room_type": "Deluxe A-02",
         "special_request": "",
-        "status": "Pending"
+        "status": "Check Out"
     },
     {
         "id": 12,
@@ -135,7 +135,7 @@
         "check_out": "May 6th, 2023",
         "room_type": "Executive B-04",
         "special_request": "Early check-in",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 13,
@@ -146,7 +146,7 @@
         "check_out": "May 24th, 2023",
         "room_type": "Standard C-02",
         "special_request": "Room with a view",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 14,
@@ -157,7 +157,7 @@
         "check_out": "May 9th, 2023",
         "room_type": "Deluxe A-03",
         "special_request": "",
-        "status": "Refund"
+        "status": "In Progress"
     },
     {
         "id": 15,
@@ -168,7 +168,7 @@
         "check_out": "May 17th, 2023",
         "room_type": "Executive B-01",
         "special_request": "King-sized bed",
-        "status": "Canceled"
+        "status": "Check Out"
     },
     {
         "id": 16,
@@ -179,7 +179,7 @@
         "check_out": "June 2nd, 2023",
         "room_type": "Standard C-09",
         "special_request": "Adjoining rooms",
-        "status": "Pending"
+        "status": "Check Out"
     },
     {
         "id": 17,
@@ -190,7 +190,7 @@
         "check_out": "May 28th, 2023",
         "room_type": "Deluxe A-04",
         "special_request": "Late check-out",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 18,
@@ -201,7 +201,7 @@
         "check_out": "June 1st, 2023",
         "room_type": "Executive B-02",
         "special_request": "",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 19,
@@ -212,7 +212,7 @@
         "check_out": "June 15th, 2023",
         "room_type": "Standard C-04",
         "special_request": "Quiet room",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 20,
@@ -223,7 +223,7 @@
         "check_out": "May 10th, 2023",
         "room_type": "Deluxe A-05",
         "special_request": "",
-        "status": "Refund"
+        "status": "In Progress"
     },
     {
         "id": 21,
@@ -234,7 +234,7 @@
         "check_out": "June 9th, 2023",
         "room_type": "Executive B-03",
         "special_request": "",
-        "status": "Canceled"
+        "status": "Check Out"
     },
     {
         "id": 22,
@@ -245,7 +245,7 @@
         "check_out": "June 24th, 2023",
         "room_type": "Standard C-01",
         "special_request": "Room near elevator",
-        "status": "Pending"
+        "status": "Check Out"
     },
     {
         "id": 23,
@@ -256,7 +256,7 @@
         "check_out": "June 19th, 2023",
         "room_type": "Deluxe A-06",
         "special_request": "",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 24,
@@ -267,7 +267,7 @@
         "check_out": "May 6th, 2023",
         "room_type": "Standard C-02",
         "special_request": "",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 25,
@@ -278,7 +278,7 @@
         "check_out": "June 5th, 2023",
         "room_type": "Deluxe A-02",
         "special_request": "Extra towels",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 26,
@@ -289,7 +289,7 @@
         "check_out": "July 2nd, 2023",
         "room_type": "Executive B-01",
         "special_request": "",
-        "status": "Canceled"
+        "status": "Check Out"
     },
     {
         "id": 27,
@@ -300,7 +300,7 @@
         "check_out": "May 12th, 2023",
         "room_type": "Standard C-03",
         "special_request": "",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 28,
@@ -311,7 +311,7 @@
         "check_out": "May 20th, 2023",
         "room_type": "Deluxe A-03",
         "special_request": "",
-        "status": "Refund"
+        "status": "In Progress"
     },
     {
         "id": 29,
@@ -322,7 +322,7 @@
         "check_out": "June 18th, 2023",
         "room_type": "Executive B-02",
         "special_request": "",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 30,
@@ -333,7 +333,7 @@
         "check_out": "June 4th, 2023",
         "room_type": "Standard C-01",
         "special_request": "Early check-in",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 31,
@@ -344,7 +344,7 @@
         "check_out": "May 20th, 2023",
         "room_type": "Deluxe A-01",
         "special_request": "",
-        "status": "Pending"
+        "status": "Check Out"
     },
     {
         "id": 32,
@@ -355,7 +355,7 @@
         "check_out": "June 11th, 2023",
         "room_type": "Executive B-03",
         "special_request": "Ocean view",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 33,
@@ -366,7 +366,7 @@
         "check_out": "May 13th, 2023",
         "room_type": "Standard C-02",
         "special_request": "",
-        "status": "Canceled"
+        "status": "Check Out"
     },
     {
         "id": 34,
@@ -377,7 +377,7 @@
         "check_out": "May 25th, 2023",
         "room_type": "Deluxe A-02",
         "special_request": "",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 35,
@@ -388,7 +388,7 @@
         "check_out": "June 15th, 2023",
         "room_type": "Executive B-01",
         "special_request": "Late check-out",
-        "status": "Refund"
+        "status": "In Progress"
     },
     {
         "id": 36,
@@ -399,7 +399,7 @@
         "check_out": "June 22nd, 2023",
         "room_type": "Standard C-03",
         "special_request": "",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 37,
@@ -410,7 +410,7 @@
         "check_out": "May 31st, 2023",
         "room_type": "Deluxe A-03",
         "special_request": "",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 38,
@@ -421,7 +421,7 @@
         "check_out": "June 5th, 2023",
         "room_type": "Executive B-02",
         "special_request": "",
-        "status": "Canceled"
+        "status": "Check Out"
     },
     {
         "id": 39,
@@ -432,7 +432,7 @@
         "check_out": "June 29th, 2023",
         "room_type": "Standard C-01",
         "special_request": "",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 40,
@@ -443,7 +443,7 @@
         "check_out": "May 21st, 2023",
         "room_type": "Deluxe A-01",
         "special_request": "",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 41,
@@ -454,7 +454,7 @@
         "check_out": "June 1st, 2023",
         "room_type": "Executive B-03",
         "special_request": "",
-        "status": "Pending"
+        "status": "Check Out"
     },
     {
         "id": 42,
@@ -465,7 +465,7 @@
         "check_out": "May 26th, 2023",
         "room_type": "Deluxe A-02",
         "special_request": "King-sized bed",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 43,
@@ -476,7 +476,7 @@
         "check_out": "June 8th, 2023",
         "room_type": "Standard C-02",
         "special_request": "",
-        "status": "Booked"
+        "status": "Check In"
     },
     {
         "id": 44,
@@ -487,6 +487,6 @@
         "check_out": "June 25th, 2023",
         "room_type": "Deluxe A-03",
         "special_request": "",
-        "status": "Canceled"
+        "status": "Check Out"
     }      
 ]

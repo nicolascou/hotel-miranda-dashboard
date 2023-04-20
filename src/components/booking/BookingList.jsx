@@ -8,7 +8,7 @@ const BookingList = () => {
   const [bookings, setBookings] = useState(bookings_json);
   const [sliceBookings, setSliceBookings] = useState(bookings.slice(0, 7));
   const [pagination, setPagination] = useState(1);
-  const [orderBy, setOrderBy] = useState('guest');
+  const [orderBy, setOrderBy] = useState('order_date');
   const [filterBy, setFilterBy] = useState('all');
 
   const navigate = useNavigate();
@@ -75,20 +75,15 @@ const BookingList = () => {
 
   useEffect(() => {
     if (filterBy === 'all') {
-      setOrderBy('guest');
+      setOrderBy('order_date');
     } else if (filterBy === 'check_in' || filterBy === 'check_out') {
       setOrderBy(filterBy);
     } else {
-      setBookings(bookings_json.filter((b) => {
-        const dateA = moment(b.check_in, "MMM Do, YYYY").toDate();
-        const dateB = moment(b.check_out, "MMM Do, YYYY").toDate();
-        
-        if (dateA < Date.now() && dateB > Date.now()) return b
-      }))
+      let newBookings = bookings_json.filter(({ status }) => status === 'In Progress');
+      setBookings(newBookings);
+      setSliceBookings(newBookings.slice(0, 7))
     }
   }, [filterBy])
-
-  useEffect(() => setSliceBookings(bookings.slice(0, 7)), [bookings])
 
   return (
     <div className='bookings'>
@@ -108,8 +103,8 @@ const BookingList = () => {
           >In Progress</li>
         </ul>
         <select className='bookings__top__select' value={orderBy} onChange={(e) => changeOrder(e)}>
-          <option className='bookings__top__select__text' value="guest">Guest</option>
           <option className='bookings__top__select__text' value="order_date">Order Date</option>
+          <option className='bookings__top__select__text' value="guest">Guest</option>
           <option className='bookings__top__select__text' value="check_in">Check In</option>
           <option className='bookings__top__select__text' value="check_out">Check Out</option>
         </select>
@@ -127,16 +122,14 @@ const BookingList = () => {
         <ul style={{ listStyle: 'none' }}>
           {sliceBookings.map((b) => {
             let statusClass;
-            if (b.status === 'Booked') {
+            if (b.status === 'Check In') {
               statusClass = 'bookings__table__row__item__status--green';
-            } else if (b.status === 'Refund') {
+            } else if (b.status === 'Check Out') {
               statusClass  = 'bookings__table__row__item__status--red'
-            } else if (b.status === 'Pending') {
-              statusClass  = 'bookings__table__row__item__status--gray'
-            } else if (b.status === 'Canceled') {
-              statusClass  = 'bookings__table__row__item__status--black'
+            } else if (b.status === 'In Progress') {
+              statusClass  = 'bookings__table__row__item__status--yellow'
             }
-              
+        
             return (  
               <div key={b.id} onClick={() => navigate(`/bookings/${b.id}`)} className='bookings__table__row'>
                 <div className='bookings__table__row__item'>

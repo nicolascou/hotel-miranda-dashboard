@@ -178,26 +178,27 @@
       right: 0;
       
       p {
-        color: white;
         text-transform: uppercase;
         transform: rotate(45deg);
         margin-left: 45px;
         margin-bottom: 45px;
-        font-size: 18px;
         font-weight: 500;
       }
 
       &--green {
         background-color: #5AD07A;
+        color: white;
+        font-size: 18px;
       }
       &--red {
         background-color: #E23428;
+        color: white;
+        font-size: 18px;
       }
-      &--gray {
-        background-color: #6D6D6D;
-      }
-      &--black {
-        background-color: #575757;
+      &--yellow {
+        color: #363636;
+        background-color: #fffee9;
+        font-size: 16px;
       }
     }
     

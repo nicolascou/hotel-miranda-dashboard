@@ -613,13 +613,9 @@
   color: #5AD07A;
   background-color: #E8FFEE;
 }
-.bookings__table__row__item__status--gray {
-  color: #6D6D6D;
-  background-color: #E2E2E2;
-}
-.bookings__table__row__item__status--black {
-  background-color: #575757;
-  color: #BEBEBE;
+.bookings__table__row__item__status--yellow {
+  color: #c09f0a;
+  background-color: #fffee9;
 }
 .bookings__table__row__ellipsis {
   position: absolute;
@@ -902,25 +898,26 @@
   right: 0;
 }
 .booking-details__right__status-tag p {
-  color: white;
   text-transform: uppercase;
   transform: rotate(45deg);
   margin-left: 45px;
   margin-bottom: 45px;
-  font-size: 18px;
   font-weight: 500;
 }
 .booking-details__right__status-tag--green {
   background-color: #5AD07A;
+  color: white;
+  font-size: 18px;
 }
 .booking-details__right__status-tag--red {
   background-color: #E23428;
+  color: white;
+  font-size: 18px;
 }
-.booking-details__right__status-tag--gray {
-  background-color: #6D6D6D;
-}
-.booking-details__right__status-tag--black {
-  background-color: #575757;
+.booking-details__right__status-tag--yellow {
+  color: #363636;
+  background-color: #fffee9;
+  font-size: 16px;
 }
 .booking-details__right__img {
   z-index: -1;
