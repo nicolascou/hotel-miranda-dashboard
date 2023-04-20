@@ -78,11 +78,26 @@ const BookingList = () => {
         return 0;
       }))
     }
-
-    setSliceBookings(bookings.slice(0, 8))
+    setSliceBookings(bookings_json.slice(0, 8))
   }, [orderBy])
 
-  
+  useEffect(() => {
+    if (filterBy === 'all') {
+      setOrderBy('guest');
+    } else if (filterBy === 'check_in' || filterBy === 'check_out') {
+      setOrderBy(filterBy);
+    } else {
+      setBookings(bookings_json.filter((b) => {
+        const dateA = moment(b.check_in, "MMM Do, YYYY").toDate();
+        const dateB = moment(b.check_out, "MMM Do, YYYY").toDate();
+        
+        if (dateA < Date.now() && dateB > Date.now()) return b
+      }))
+    }
+  }, [filterBy])
+
+  useEffect(() => setSliceBookings(bookings.slice(0, 8)), [bookings])
+
   return (
     <div className='bookings'>
       <div className='bookings__top'>
