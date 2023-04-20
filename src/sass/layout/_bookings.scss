@@ -217,4 +217,31 @@
       }
     }
   }
+
+  &__notes-modal-wrapper {
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    cursor: auto;
+    backdrop-filter: blur(5px);
+  }
+  &__notes-modal {
+    position: absolute;
+    top: 50%;
+    left: 56%;
+    transform: translateY(-50%);
+    min-width: 200px;
+    min-height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid $gray-color;
+    cursor: auto;
+  }
 }

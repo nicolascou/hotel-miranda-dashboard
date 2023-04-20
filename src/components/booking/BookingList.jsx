@@ -21,18 +21,20 @@ const BookingList = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  const showNotes = (e) => {
+    e.target.nextElementSibling.style.display = 'block';
+    e.stopPropagation();
+  }
+
+  const hideNotes = (e) => {
+    e.target.style.display = 'none';
+    e.stopPropagation(e);
+  }
+
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*7+1;
     setSliceBookings(bookings.slice(index, index+8));
   }, [pagination])
-
-  // useEffect(() => {
-  //   if (filterBy === 'all') {
-  //     setBookings(bookings_json);
-  //   } else if (filterBy === 'progress') {
-  //     setBookings(bookings_json.filter(({ status }) => status === 'Pending'))
-  //   }
-  // }, [filterBy])
   
   return (
     <div className='bookings'>
@@ -106,7 +108,12 @@ const BookingList = () => {
                   <p className='small-text'>9.00AM</p>
                 </div>
                 <div className='bookings__table__row__item'>
-                  <button onClick={(e) => e.stopPropagation()} className='bookings__table__row__item__btn'>View Notes</button>
+                  <button onClick={(e) => showNotes(e)} className='bookings__table__row__item__btn'>View Notes</button>
+                  <div className='bookings__notes-modal-wrapper' onClick={(e) => hideNotes(e)}>
+                    <div className='bookings__notes-modal' onClick={(e) => e.stopPropagation() }>
+                      <p>{b.special_request || 'No special requests'}</p>
+                    </div>
+                  </div>
                 </div>
                 <p className='bookings__table__row__item weight-500'>{b.room_type}</p>
                 <div className='bookings__table__row__item'>

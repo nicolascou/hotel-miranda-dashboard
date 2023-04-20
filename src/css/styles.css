@@ -685,6 +685,32 @@
   color: white;
   background-color: #135846;
 }
+.bookings__notes-modal-wrapper {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  cursor: auto;
+  backdrop-filter: blur(5px);
+}
+.bookings__notes-modal {
+  position: absolute;
+  top: 50%;
+  left: 56%;
+  transform: translateY(-50%);
+  min-width: 200px;
+  min-height: 50px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid #B2B2B2;
+  cursor: auto;
+}
 
 .page-content {
   width: calc(100% - 300px);
