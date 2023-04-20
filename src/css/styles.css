@@ -439,14 +439,18 @@
   border-radius: 12px;
   padding: 10px 0;
 }
-.dashboard__row__calendar .react-calendar__tile--active {
+.dashboard__row__calendar .react-calendar__tile abbr {
+  padding: 10px 15px;
+  border-radius: 12px;
+}
+.dashboard__row__calendar .react-calendar__tile--active abbr {
   background-color: #135846;
   color: white;
 }
 .dashboard__row__calendar .react-calendar__month-view__weekdays__weekday {
   color: #799283;
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 .dashboard__row__calendar .react-calendar__month-view__weekdays__weekday abbr {
   text-decoration: none;
