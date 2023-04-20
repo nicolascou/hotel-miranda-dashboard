@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import bookings_json from '../../data/bookings.json';
 import { useNavigate } from 'react-router-dom';
+import sort from 'array-sort';
 
 const BookingList = () => {
   const [bookings, setBookings] = useState(bookings_json);
@@ -37,6 +38,19 @@ const BookingList = () => {
     let index = pagination === 1 ? 0 : (pagination-1)*7+1;
     setSliceBookings(bookings.slice(index, index+8));
   }, [pagination])
+
+  useEffect(() => {
+    if (orderBy === 'guest') {
+      setBookings(sort(bookings_json, 'guest'));
+    } else if (orderBy === 'order_date') {
+      setBookings(sort(bookings_json, 'order_date'));
+    } else if (orderBy === 'check_in') {
+      setBookings(sort(bookings_json, 'check_in'));
+    }
+    
+  }, [orderBy])
+
+  useEffect(() => setSliceBookings(bookings.slice(0, 8)), []); 
   
   return (
     <div className='bookings'>
@@ -57,9 +71,9 @@ const BookingList = () => {
         </ul>
         <select className='bookings__top__select' value={orderBy} onChange={(e) => changeOrder(e)}>
           <option className='bookings__top__select__text' value="guest">Guest</option>
-          <option className='bookings__top__select__text' value="order_date">Check In</option>
-          <option className='bookings__top__select__text' value="check_in">Check Out</option>
-          <option className='bookings__top__select__text' value="check_out">Other</option>
+          <option className='bookings__top__select__text' value="order_date">Order Date</option>
+          <option className='bookings__top__select__text' value="check_in">Check In</option>
+          <option className='bookings__top__select__text' value="check_out">Check Out</option>
         </select>
       </div>
       <div className='bookings__table'>
