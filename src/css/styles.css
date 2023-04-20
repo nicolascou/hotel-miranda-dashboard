@@ -871,6 +871,38 @@
   overflow: hidden;
   position: relative;
 }
+.booking-details__right__status-tag {
+  position: absolute;
+  z-index: 5;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(0 0, 50% 0, 100% 50%, 100% 100%);
+  right: 0;
+}
+.booking-details__right__status-tag p {
+  color: white;
+  text-transform: uppercase;
+  transform: rotate(45deg);
+  margin-left: 40px;
+  margin-bottom: 40px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.booking-details__right__status-tag--green {
+  background-color: #5AD07A;
+}
+.booking-details__right__status-tag--red {
+  background-color: #E23428;
+}
+.booking-details__right__status-tag--gray {
+  background-color: #6D6D6D;
+}
+.booking-details__right__status-tag--black {
+  background-color: #575757;
+}
 .booking-details__right__img {
   z-index: -1;
   width: 100%;
@@ -929,6 +961,10 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-width: 1500px;
 }
 
 /*# sourceMappingURL=styles.css.map */

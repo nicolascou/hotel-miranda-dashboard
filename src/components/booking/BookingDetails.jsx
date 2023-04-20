@@ -88,6 +88,9 @@ const BookingDetails = () => {
         </div>
       </div>  
       <div className='booking-details__right'>
+        <div className='booking-details__right__status-tag'>
+          <p>{booking.status}</p>
+        </div>
         <Swiper
           loop={true}
           spaceBetween={0}
