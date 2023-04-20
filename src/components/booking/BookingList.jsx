@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import bookings_json from '../../data/bookings.json';
 import { useNavigate } from 'react-router-dom';
-import moment from 'moment';
 import Pagination from '../Pagination';
+import sortBookingsBy from '../../utils/sortBookingsBy';
 
 const BookingList = () => {
   const [bookings, setBookings] = useState(bookings_json);
   const [sliceBookings, setSliceBookings] = useState(bookings.slice(0, 7));
   const [pagination, setPagination] = useState(1);
   const [orderBy, setOrderBy] = useState('order_date');
-  const [filterBy, setFilterBy] = useState('all');
 
   const navigate = useNavigate();
-
-  const changeOrder = (e) => {
-    setOrderBy(e.target.value);
-  }
 
   const showNotes = (e) => {
     e.target.nextElementSibling.style.display = 'block';
@@ -27,43 +22,10 @@ const BookingList = () => {
   }
 
   useEffect(() => {
-    if (orderBy === 'guest') {
-      setBookings(bookings_json.sort((a, b) => {
-        if (a.guest < b.guest) return -1;
-        if (a.guest > b.guest) return 1;
-        return 0;
-      }))
-
-    } else if (orderBy === 'order_date') {
-      setBookings(bookings_json.sort((a, b) => {
-        const dateA = moment(a.order_date, "MMM Do YYYY hh:mm A").toDate();
-        const dateB = moment(b.order_date, "MMM Do YYYY hh:mm A").toDate();
-        
-        if (dateA < dateB) return -1;
-        if (dateA > dateB) return 1;
-        return 0;
-      }))
-
-    } else if (orderBy === 'check_in') {
-      setBookings(bookings_json.sort((a, b) => {
-        const dateA = moment(a.check_in, "MMM Do, YYYY").toDate();
-        const dateB = moment(b.check_in, "MMM Do, YYYY").toDate();
-        
-        if (dateA < dateB) return -1;
-        if (dateA > dateB) return 1;
-        return 0;
-      }))
-    } else if (orderBy === 'check_out') {
-      setBookings(bookings_json.sort((a, b) => {
-        const dateA = moment(a.check_out, "MMM Do, YYYY").toDate();
-        const dateB = moment(b.check_out, "MMM Do, YYYY").toDate();
-        
-        if (dateA < dateB) return -1;
-        if (dateA > dateB) return 1;
-        return 0;
-      }))
-    }
-    setSliceBookings(bookings_json.slice(0, 7))
+    const sortedBookings = sortBookingsBy(orderBy);
+    setBookings(sortedBookings);
+    setSliceBookings(sortedBookings.slice(0, 7));
+    setPagination(1);
   }, [orderBy])
 
   useEffect(() => {
@@ -73,36 +35,24 @@ const BookingList = () => {
     // eslint-disable-next-line
   }, [pagination])
 
-  useEffect(() => {
-    if (filterBy === 'all') {
-      setOrderBy('order_date');
-    } else if (filterBy === 'check_in' || filterBy === 'check_out') {
-      setOrderBy(filterBy);
-    } else {
-      let newBookings = bookings_json.filter(({ status }) => status === 'In Progress');
-      setBookings(newBookings);
-      setSliceBookings(newBookings.slice(0, 7))
-    }
-  }, [filterBy])
-
   return (
     <div className='bookings'>
       <div className='bookings__top'>
         <ul className='bookings__top__menu'>
-          <li onClick={() => setFilterBy('all')}
-            className={`bookings__top__menu__item ${filterBy === 'all' ? 'bookings__top__menu__item--active' : ''}`}
+          <li onClick={() => setOrderBy('order_date')}
+            className={`bookings__top__menu__item ${orderBy === 'order_date' ? 'bookings__top__menu__item--active' : ''}`}
           >All Bookings</li>
-          <li onClick={() => setFilterBy('check_in')}
-            className={`bookings__top__menu__item ${filterBy === 'check_in' ? 'bookings__top__menu__item--active' : ''}`}
+          <li onClick={() => setOrderBy('check_in')}
+            className={`bookings__top__menu__item ${orderBy === 'check_in' ? 'bookings__top__menu__item--active' : ''}`}
           >Checking In</li>
-          <li onClick={() => setFilterBy('check_out')}
-            className={`bookings__top__menu__item ${filterBy === 'check_out' ? 'bookings__top__menu__item--active' : ''}`}
+          <li onClick={() => setOrderBy('check_out')}
+            className={`bookings__top__menu__item ${orderBy === 'check_out' ? 'bookings__top__menu__item--active' : ''}`}
           >Checking Out</li>
-          <li onClick={() => setFilterBy('progress')}
-            className={`bookings__top__menu__item ${filterBy === 'progress' ? 'bookings__top__menu__item--active' : ''}`}
+          <li onClick={() => setOrderBy('progress')}
+            className={`bookings__top__menu__item ${orderBy === 'progress' ? 'bookings__top__menu__item--active' : ''}`}
           >In Progress</li>
         </ul>
-        <select className='bookings__top__select' value={orderBy} onChange={(e) => changeOrder(e)}>
+        <select className='bookings__top__select' value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
           <option className='bookings__top__select__text' value="order_date">Order Date</option>
           <option className='bookings__top__select__text' value="guest">Guest</option>
           <option className='bookings__top__select__text' value="check_in">Check In</option>
