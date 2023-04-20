@@ -24,4 +24,18 @@
       color: #787878;
     }
   }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+
+    &__calendar {
+      width: 48%;
+      height: 400px;
+      border-radius: 20px;
+      background-color: white;
+      box-shadow: 0px 4px 4px #00000005;
+    }
+  }
 }

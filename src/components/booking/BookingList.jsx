@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import allBookings from '../../data/bookings.json';
+import bookings_json from '../../data/bookings.json';
 import { useNavigate } from 'react-router-dom';
 
 const BookingList = () => {
-  const [bookings, setBookings] = useState(allBookings.slice(0, 8));
+  const [bookings, setBookings] = useState(bookings_json);
+  const [sliceBookings, setSliceBookings] = useState(bookings.slice(0, 8));
+
   const [pagination, setPagination] = useState(1);
   const [orderByNewest, setOrderByNewest] = useState(true);
-  // const [filterBy, setFilterBy] = useState('all');
+  const [filterBy, setFilterBy] = useState('all');
 
   const navigate = useNavigate();
 
   const handlePagination = (page) => {
-    if (page <= 0) {
-      setPagination(1);
-    } else if (allBookings.length < page*8 ) {
-      return;
+    if (page <= 0 || bookings.length < page*8) {
+      return
     } else {
       setPagination(page);
     }
@@ -23,14 +23,14 @@ const BookingList = () => {
 
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*7+1;
-    setBookings(allBookings.slice(index, index+8));
+    setSliceBookings(bookings.slice(index, index+8));
   }, [pagination])
 
   // useEffect(() => {
   //   if (filterBy === 'all') {
-  //     setBookings(allBookings.slice(0, 8));
-  //   } else if (filterBy === 'in_progress') {
-  //     setBookings(allBookings.filter((b) => b.))
+  //     setBookings(bookings_json);
+  //   } else if (filterBy === 'progress') {
+  //     setBookings(bookings_json.filter(({ status }) => status === 'Pending'))
   //   }
   // }, [filterBy])
   
@@ -38,10 +38,18 @@ const BookingList = () => {
     <div className='bookings'>
       <div className='bookings__top'>
         <ul className='bookings__top__menu'>
-          <li className='bookings__top__menu__item bookings__top__menu__item--active'>All Bookings</li>
-          <li className='bookings__top__menu__item'>Checking In</li>
-          <li className='bookings__top__menu__item'>Checking Out</li>
-          <li className='bookings__top__menu__item'>In Progress</li>
+          <li onClick={() => setFilterBy('all')}
+            className={`bookings__top__menu__item ${filterBy === 'all' ? 'bookings__top__menu__item--active' : ''}`}
+          >All Bookings</li>
+          <li onClick={() => setFilterBy('check_in')}
+            className={`bookings__top__menu__item ${filterBy === 'check_in' ? 'bookings__top__menu__item--active' : ''}`}
+          >Checking In</li>
+          <li onClick={() => setFilterBy('check_out')}
+            className={`bookings__top__menu__item ${filterBy === 'check_out' ? 'bookings__top__menu__item--active' : ''}`}
+          >Checking Out</li>
+          <li onClick={() => setFilterBy('progress')}
+            className={`bookings__top__menu__item ${filterBy === 'progress' ? 'bookings__top__menu__item--active' : ''}`}
+          >In Progress</li>
         </ul>
         <div className='bookings__top__select'>
           <p className='bookings__top__select__text'>{orderByNewest ? 'newest' : 'oldest'}</p>
@@ -65,7 +73,7 @@ const BookingList = () => {
           <p className='bookings__table__row__item'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
-          {bookings.map((b) => {
+          {sliceBookings.map((b) => {
             let statusClass;
             if (b.status === 'Booked') {
               statusClass = 'bookings__table__row__item__status--green';

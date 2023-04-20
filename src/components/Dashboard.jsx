@@ -42,6 +42,11 @@ const Dashboard = () => {
           </div>
         </Card>
       </div>
+      <div className='dashboard__row'>
+        <div className='dashboard__row__calendar'>
+          
+        </div>
+      </div>
     </div>
   )
 }

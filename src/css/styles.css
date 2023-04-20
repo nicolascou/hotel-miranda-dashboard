@@ -387,6 +387,18 @@
   font-weight: 300;
   color: #787878;
 }
+.dashboard__row {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+}
+.dashboard__row__calendar {
+  width: 48%;
+  height: 400px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0196078431);
+}
 
 .page-content {
   width: calc(100% - 300px);
