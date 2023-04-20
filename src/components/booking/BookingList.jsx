@@ -53,16 +53,12 @@ const BookingList = () => {
             className={`bookings__top__menu__item ${filterBy === 'progress' ? 'bookings__top__menu__item--active' : ''}`}
           >In Progress</li>
         </ul>
-        <div className='bookings__top__select'>
-          <p className='bookings__top__select__text'>{orderByNewest ? 'newest' : 'oldest'}</p>
-          <i className='fa-solid fa-chevron-down'></i>
-          {
-            false &&
-            <div onClick={() => setOrderByNewest(prev => !prev)} className='bookings__top__select__options'>
-              <p>{orderByNewest ? 'Oldest' : 'Newest'}</p>
-            </div>
-          }
-        </div>
+        <select className='bookings__top__select'>
+          <option className='bookings__top__select__text' value="0">Guest</option>
+          <option className='bookings__top__select__text' value="1">Check In</option>
+          <option className='bookings__top__select__text' value="2">Check Out</option>
+          <option className='bookings__top__select__text' value="3">Other</option>
+        </select>
       </div>
       <div className='bookings__table'>
         <div className='bookings__table__row bookings__table__row--first'>

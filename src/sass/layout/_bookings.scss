@@ -28,10 +28,13 @@
     &__select {
       border-radius: 12px;
       border: 1px solid $primary-color;
-      padding: 10px 25px;
+      padding: 10px 15px;
       color: $primary-color;
       cursor: pointer;
       position: relative;
+      outline: none;
+      font-weight: 600;
+      
       &__text {
         text-transform: capitalize;
         display: inline-block;
@@ -41,16 +44,6 @@
         outline: none;
         background: none;
         margin-right: 10px;
-      }
-      &__options {
-        position: absolute;
-        font-weight: 500;
-        background-color: #ccc;
-        border-radius: 12px;
-        padding: 10px 30px;
-        bottom: -50px;
-        left: 50%;
-        transform: translateX(-50%);
       }
     }
   }
