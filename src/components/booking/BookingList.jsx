@@ -5,9 +5,8 @@ import { useNavigate } from 'react-router-dom';
 const BookingList = () => {
   const [bookings, setBookings] = useState(bookings_json);
   const [sliceBookings, setSliceBookings] = useState(bookings.slice(0, 8));
-
   const [pagination, setPagination] = useState(1);
-  const [orderByNewest, setOrderByNewest] = useState(true);
+  const [orderBy, setOrderBy] = useState('guest');
   const [filterBy, setFilterBy] = useState('all');
 
   const navigate = useNavigate();
@@ -21,11 +20,14 @@ const BookingList = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  const changeOrder = (e) => {
+    setOrderBy(e.target.value);
+  }
+
   const showNotes = (e) => {
     e.target.nextElementSibling.style.display = 'block';
     e.stopPropagation();
   }
-
   const hideNotes = (e) => {
     e.target.style.display = 'none';
     e.stopPropagation(e);
@@ -53,11 +55,11 @@ const BookingList = () => {
             className={`bookings__top__menu__item ${filterBy === 'progress' ? 'bookings__top__menu__item--active' : ''}`}
           >In Progress</li>
         </ul>
-        <select className='bookings__top__select'>
-          <option className='bookings__top__select__text' value="0">Guest</option>
-          <option className='bookings__top__select__text' value="1">Check In</option>
-          <option className='bookings__top__select__text' value="2">Check Out</option>
-          <option className='bookings__top__select__text' value="3">Other</option>
+        <select className='bookings__top__select' value={orderBy} onChange={(e) => changeOrder(e)}>
+          <option className='bookings__top__select__text' value="guest">Guest</option>
+          <option className='bookings__top__select__text' value="order_date">Check In</option>
+          <option className='bookings__top__select__text' value="check_in">Check Out</option>
+          <option className='bookings__top__select__text' value="check_out">Other</option>
         </select>
       </div>
       <div className='bookings__table'>
