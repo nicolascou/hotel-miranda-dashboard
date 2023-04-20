@@ -1,6 +1,6 @@
 import React from 'react'
 import allBookings from '../../data/bookings.json';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { useParams } from 'react-router-dom';
 import SwiperButtonNext from '../layout/SwiperButtonNext';
 
@@ -11,7 +11,17 @@ import SwiperButtonPrev from '../layout/SwiperButtonPrev';
 const BookingDetails = () => {
   const params = useParams();
   const booking = allBookings.find(b => b.id === Number(params.id));
-  const swiper = useSwiper();
+  
+  let statusTagClass;
+  if (booking.status === 'Booked') {
+    statusTagClass = 'booking-details__right__status-tag--green';
+  } else if (booking.status === 'Refund') {
+    statusTagClass = 'booking-details__right__status-tag--red';
+  } else if (booking.status === 'Pending') {
+    statusTagClass = 'booking-details__right__status-tag--gray';
+  } else {
+    statusTagClass = 'booking-details__right__status-tag--black';
+  }
 
   if (!booking) {
     return <h2>This booking does not exist</h2>
@@ -88,7 +98,7 @@ const BookingDetails = () => {
         </div>
       </div>  
       <div className='booking-details__right'>
-        <div className='booking-details__right__status-tag'>
+        <div className={`booking-details__right__status-tag ${statusTagClass}`}>
           <p>{booking.status}</p>
         </div>
         <Swiper
