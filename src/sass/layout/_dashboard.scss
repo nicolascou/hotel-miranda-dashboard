@@ -32,10 +32,75 @@
 
     &__calendar {
       width: 48%;
-      height: 400px;
+      max-width: 600px;
       border-radius: 20px;
       background-color: white;
       box-shadow: 0px 4px 4px #00000005;
+      padding: 30px;
+      position: relative;
+      
+      button {
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+      }
+
+      &__title {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        font-weight: 500;
+        color: #393939;
+      }
+
+      .react-calendar {
+        &__navigation {
+          text-align: right;
+          margin-bottom: 30px;
+          &__prev2-button {
+            display: none;
+          }
+          &__next2-button {
+            display: none;
+          }
+          &__prev-button, &__next-button {
+            font-size: 18px;
+            color: $gray-color;
+          }
+          &__label {
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0 5px;
+            color: #393939;
+          }
+        }
+        
+        &__tile {
+          font-size: 16px;
+          font-weight: 500;
+          border-radius: 12px;
+          padding: 10px 0;
+  
+          &:hover {
+            background-color: #EBF1EF;
+          }
+        }
+        &__month-view {
+          &__weekdays__weekday {
+            color: $text-color;
+            text-align: center;
+            margin-bottom: 5px;
+            abbr {
+              text-decoration: none;
+              font-size: 14px;
+              font-weight: 300;
+            }
+          }
+          &__days__day--neighboringMonth {
+            color: $gray-color;
+          }
+        }
+      }
     }
   }
 }
