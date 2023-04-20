@@ -15,7 +15,7 @@
         "id": 2,
         "guest": "John Johnson",
         "guest_id": "#23456789",
-        "order_date": "Apr 4th 2023 09:27 AM",
+        "order_date": "Mar 7th 2023 09:27 AM",
         "check_in": "Apr 20th, 2023",
         "check_out": "Apr 25th, 2023",
         "room_type": "Deluxe A-02",
@@ -29,7 +29,7 @@
         "guest_id": "#34567890",
         "order_date": "Apr 5th 2023 04:51 PM",
         "check_in": "Apr 21st, 2023",
-        "check_out": "Apr 26th, 2023",
+        "check_out": "Apr 24th, 2023",
         "room_type": "Standard C-01",
         "special_request": "",
         "status": "Refund"

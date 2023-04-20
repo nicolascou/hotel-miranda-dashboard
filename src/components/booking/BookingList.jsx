@@ -51,22 +51,37 @@ const BookingList = () => {
 
     } else if (orderBy === 'order_date') {
       setBookings(bookings_json.sort((a, b) => {
-        const dateA = moment(a.order_date, "MMM Do YYYY h:mm A").toDate();
+        const dateA = moment(a.order_date, "MMM Do YYYY hh:mm A").toDate();
         const dateB = moment(b.order_date, "MMM Do YYYY hh:mm A").toDate();
-        console.log(dateA)
-      
+        
         if (dateA < dateB) return -1;
         if (dateA > dateB) return 1;
         return 0;
       }))
 
     } else if (orderBy === 'check_in') {
-      setBookings([])
+      setBookings(bookings_json.sort((a, b) => {
+        const dateA = moment(a.check_in, "MMM Do, YYYY").toDate();
+        const dateB = moment(b.check_in, "MMM Do, YYYY").toDate();
+        
+        if (dateA < dateB) return -1;
+        if (dateA > dateB) return 1;
+        return 0;
+      }))
+    } else if (orderBy === 'check_out') {
+      setBookings(bookings_json.sort((a, b) => {
+        const dateA = moment(a.check_out, "MMM Do, YYYY").toDate();
+        const dateB = moment(b.check_out, "MMM Do, YYYY").toDate();
+        
+        if (dateA < dateB) return -1;
+        if (dateA > dateB) return 1;
+        return 0;
+      }))
     }
-    
+
+    setSliceBookings(bookings.slice(0, 8))
   }, [orderBy])
 
-  useEffect(() => setSliceBookings(bookings.slice(0, 8)), [bookings]); 
   
   return (
     <div className='bookings'>
