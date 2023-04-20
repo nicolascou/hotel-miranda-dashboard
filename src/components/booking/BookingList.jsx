@@ -2,24 +2,16 @@ import React, { useEffect, useState } from 'react';
 import bookings_json from '../../data/bookings.json';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
+import Pagination from '../Pagination';
 
 const BookingList = () => {
   const [bookings, setBookings] = useState(bookings_json);
-  const [sliceBookings, setSliceBookings] = useState(bookings.slice(0, 8));
+  const [sliceBookings, setSliceBookings] = useState(bookings.slice(0, 7));
   const [pagination, setPagination] = useState(1);
   const [orderBy, setOrderBy] = useState('guest');
   const [filterBy, setFilterBy] = useState('all');
 
   const navigate = useNavigate();
-
-  const handlePagination = (page) => {
-    if (page <= 0 || bookings.length < page*8) {
-      return
-    } else {
-      setPagination(page);
-    }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
 
   const changeOrder = (e) => {
     setOrderBy(e.target.value);
@@ -33,13 +25,6 @@ const BookingList = () => {
     e.target.style.display = 'none';
     e.stopPropagation(e);
   }
-
-  useEffect(() => {
-    let index = pagination === 1 ? 0 : (pagination-1)*7+1;
-    setSliceBookings(bookings.slice(index, index+8));
-
-    // eslint-disable-next-line
-  }, [pagination])
 
   useEffect(() => {
     if (orderBy === 'guest') {
@@ -78,8 +63,15 @@ const BookingList = () => {
         return 0;
       }))
     }
-    setSliceBookings(bookings_json.slice(0, 8))
+    setSliceBookings(bookings_json.slice(0, 7))
   }, [orderBy])
+
+  useEffect(() => {
+    let index = pagination === 1 ? 0 : (pagination-1)*7+1;
+    setSliceBookings(bookings.slice(index, index+7));
+
+    // eslint-disable-next-line
+  }, [pagination])
 
   useEffect(() => {
     if (filterBy === 'all') {
@@ -96,7 +88,7 @@ const BookingList = () => {
     }
   }, [filterBy])
 
-  useEffect(() => setSliceBookings(bookings.slice(0, 8)), [bookings])
+  useEffect(() => setSliceBookings(bookings.slice(0, 7)), [bookings])
 
   return (
     <div className='bookings'>
@@ -185,23 +177,8 @@ const BookingList = () => {
         </ul>
       </div>
       <div className='bookings__bottom'>
-        <p className='bookings__bottom__text'>Showing 8 of 102 Data</p>
-        <div className='bookings__bottom__pagination'>
-          <button onClick={() => handlePagination(pagination-1)} className='bookings__bottom__pagination__btn1'>Prev</button>
-          <button onClick={() => handlePagination(1)} className={`bookings__bottom__pagination__btn2 
-            ${pagination === 1 ? 'bookings__bottom__pagination__btn2--active' : ''}`}
-          >1</button>
-          <button onClick={() => handlePagination(2)} className={`bookings__bottom__pagination__btn2 
-            ${pagination === 2 ? 'bookings__bottom__pagination__btn2--active' : ''}`}
-          >2</button>
-          <button onClick={() => handlePagination(3)} className={`bookings__bottom__pagination__btn2 
-            ${pagination === 3 ? 'bookings__bottom__pagination__btn2--active' : ''}`}
-          >3</button>
-          <button onClick={() => handlePagination(4)} className={`bookings__bottom__pagination__btn2 
-            ${pagination === 4 ? 'bookings__bottom__pagination__btn2--active' : ''}`}
-          >4</button>
-          <button onClick={() => handlePagination(pagination+1)} className='bookings__bottom__pagination__btn1'>Next</button>
-        </div>
+        <p className='bookings__bottom__text'>Showing 7 of 102 Data</p>
+        <Pagination pagination={pagination} setPagination={setPagination} bookingsLength={bookings.length} />
       </div>
     </div>
   )
