@@ -31,7 +31,9 @@ function App() {
 
   const [hideSidebar, setHideSidebar] = useState(false);
   const [auth, setAuth] = useState(localStorage.getItem('auth-miranda') === '1');
-  
+
+  const BASENAME = '/hotel-miranda-dashboard'
+
   const router = createBrowserRouter([
     { path: '/login', element: <Login setAuth={setAuth} /> },
     { path: '/', 
@@ -66,7 +68,7 @@ function App() {
       element: <PrivateRoute auth={auth}><ContactCreate /></PrivateRoute> },
     { path: '/contact/:id', 
       element: <PrivateRoute auth={auth}><ContactDetails /></PrivateRoute> },
-  ]);
+  ], { basename: BASENAME });
 
   useEffect(() => {
     if (auth === true) {

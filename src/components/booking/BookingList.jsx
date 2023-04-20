@@ -51,8 +51,8 @@ const BookingList = () => {
 
     } else if (orderBy === 'order_date') {
       setBookings(bookings_json.sort((a, b) => {
-        const dateA = moment(a.date, "MMM Do YYYY h:mm A").toDate();
-        const dateB = moment(b.date, "MMM Do YYYY hh:mm A").toDate();
+        const dateA = moment(a.order_date, "MMM Do YYYY h:mm A").toDate();
+        const dateB = moment(b.order_date, "MMM Do YYYY hh:mm A").toDate();
         console.log(dateA)
       
         if (dateA < dateB) return -1;

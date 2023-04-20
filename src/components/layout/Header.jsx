@@ -5,14 +5,14 @@ const Header = ({ hideSidebar, setHideSidebar }) => {
   
   const handleLogout = () => {
     localStorage.removeItem('auth-miranda');
-    window.location.href = '/login'
+    window.location.href = '/hotel-miranda-dashboard/login'
   }
   
   return (
     <header className='header'>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <i onClick={() => setHideSidebar(!hideSidebar)} className="fa-solid fa-bars-staggered header__hamburger"></i>
-        <h2 className='header__title'>{window.location.pathname.split('/')[1] || 'Dashboard'}</h2>
+        <h2 className='header__title'>{window.location.pathname.split('/')[2] || 'Dashboard'}</h2>
       </div>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div className='header__search'>

@@ -4,7 +4,7 @@ import { Button } from './styled';
 import profilePic from '../../img/profile-pic.jpg';
 
 const Sidebar = ({ hideSidebar }) => { 
-  const route = window.location.pathname.split('/')[1];
+  const route = window.location.pathname.split('/')[2];
   
   return (
     <>
@@ -20,23 +20,23 @@ const Sidebar = ({ hideSidebar }) => {
           <div className='sidebar__nav'>
             <div className={`sidebar__nav__box ${!route ? 'sidebar__nav__box--active' : ''}`}>
               <i className="fa-solid fa-table-columns"></i>
-              <a href='/'>Dashboard</a>
+              <a href='/hotel-miranda-dashboard/'>Dashboard</a>
             </div>
             <div className={`sidebar__nav__box ${route === 'rooms' ? 'sidebar__nav__box--active' : ''}`}>
               <i className='fa-solid fa-key'></i>
-              <a href='/rooms'>Room</a>
+              <a href='/hotel-miranda-dashboard/rooms'>Room</a>
             </div>
             <div className={`sidebar__nav__box ${route === 'bookings' ? 'sidebar__nav__box--active' : ''}`}>
               <i className="fa-regular fa-calendar-check"></i>
-              <a href='/bookings'>Bookings</a>
+              <a href='/hotel-miranda-dashboard/bookings'>Bookings</a>
             </div>
             <div className={`sidebar__nav__box ${route === 'users' ? 'sidebar__nav__box--active' : ''}`}>
               <i className="fa-solid fa-user"></i>
-              <a href='/users'>Users</a>
+              <a href='/hotel-miranda-dashboard/users'>Users</a>
             </div>
             <div className={`sidebar__nav__box ${route === 'contact' ? 'sidebar__nav__box--active' : ''}`}>
               <i className="fa-solid fa-puzzle-piece"></i>
-              <a href='/contact'>Contact</a>
+              <a href='/hotel-miranda-dashboard/contact'>Contact</a>
             </div>
           </div>
           <div className='sidebar__card'>
