@@ -49,6 +49,20 @@ const Dashboard = () => {
           <Calendar locale='en-US' className='dashboard__row__calendar__component' />
         </div>
       </div>
+      <div className='dashboard__bookings'>
+        <div className='dashboard__bookings__card'>
+          <div className='dashboard__bookings__card__img'></div>
+          <div className='dashboard__bookings__card__content'>
+            <p>Premium B-01</p>
+            <div>
+              <i className='fa-solid fa-user'></i>
+              <p>Michael Brown</p>
+              <p>15 minutes ago</p>
+            </div>
+          </div>
+          <div className='dashboard__bookings__card__number'>3</div>
+        </div>
+      </div>
     </div>
   )
 }

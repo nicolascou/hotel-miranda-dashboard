@@ -111,4 +111,24 @@
       }
     }
   }
+
+  &__bookings {
+    background-color: white;
+    box-shadow: 0px 4px 4px #00000005;
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 30px;
+
+    &__card {
+      display: flex;
+      margin: 10px;
+
+      &__img {
+        width: 150px;
+        height: 100px;
+        background: url('../img/rooms-3.jpg') center / cover;
+        border-radius: 8px;
+      }
+    }
+  }
 }
