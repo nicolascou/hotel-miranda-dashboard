@@ -23,13 +23,10 @@ import ContactList from './components/contact/ContactList';
 import ContactDetails from './components/contact/ContactDetails';
 import ContactCreate from './components/contact/ContactCreate';
 
-import Sidebar from './components/layout/Sidebar';
-import Header from './components/layout/Header';
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
 
-  const [hideSidebar, setHideSidebar] = useState(false);
   const [auth, setAuth] = useState(localStorage.getItem('auth-miranda') === '1');
 
   const BASENAME = '/hotel-miranda-dashboard'
@@ -73,18 +70,14 @@ function App() {
   useEffect(() => {
     if (auth) {
       localStorage.setItem('auth-miranda', '1');
+    } else {
+      localStorage.removeItem('auth-miranda');
     }
   }, [auth])
   
   return (
     <>
-      <Sidebar hideSidebar={hideSidebar} />
-      <div className={`page-content ${hideSidebar ? 'page-content--100w' : ''}`}> 
-        <Header hideSidebar={hideSidebar} setHideSidebar={setHideSidebar} />
-        <div style={{ padding: '50px' }}>
-          <RouterProvider router={router} />
-        </div>
-      </div>
+      <RouterProvider router={router} />
     </>
   );
 }

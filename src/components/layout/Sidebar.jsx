@@ -2,9 +2,11 @@ import React from 'react'
 import hotelIcon from '../../img/icons/hotel.svg';
 import { Button } from './styled';
 import profilePic from '../../img/profile-pic.jpg';
+import { Link, useLocation } from 'react-router-dom';
 
 const Sidebar = ({ hideSidebar }) => { 
-  const route = window.location.pathname.split('/')[2];
+  const location = useLocation();
+  const route = location.pathname.split('/')[1];
   
   return (
     <>
@@ -20,23 +22,23 @@ const Sidebar = ({ hideSidebar }) => {
           <div className='sidebar__nav'>
             <div className={`sidebar__nav__box ${!route ? 'sidebar__nav__box--active' : ''}`}>
               <i className="fa-solid fa-table-columns"></i>
-              <a href='/hotel-miranda-dashboard/'>Dashboard</a>
+              <Link to='/'>Dashboard</Link>
             </div>
             <div className={`sidebar__nav__box ${route === 'rooms' ? 'sidebar__nav__box--active' : ''}`}>
               <i className='fa-solid fa-key'></i>
-              <a href='/hotel-miranda-dashboard/rooms'>Room</a>
+              <Link to='/rooms'>Room</Link>
             </div>
             <div className={`sidebar__nav__box ${route === 'bookings' ? 'sidebar__nav__box--active' : ''}`}>
               <i className="fa-regular fa-calendar-check"></i>
-              <a href='/hotel-miranda-dashboard/bookings'>Bookings</a>
+              <Link to='/bookings'>Bookings</Link>
             </div>
             <div className={`sidebar__nav__box ${route === 'users' ? 'sidebar__nav__box--active' : ''}`}>
               <i className="fa-solid fa-user"></i>
-              <a href='/hotel-miranda-dashboard/users'>Users</a>
+              <Link to='/users'>Users</Link>
             </div>
             <div className={`sidebar__nav__box ${route === 'contact' ? 'sidebar__nav__box--active' : ''}`}>
               <i className="fa-solid fa-puzzle-piece"></i>
-              <a href='/hotel-miranda-dashboard/contact'>Contact</a>
+              <Link to='/contact'>Contact</Link>
             </div>
           </div>
           <div className='sidebar__card'>

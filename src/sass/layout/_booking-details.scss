@@ -14,10 +14,9 @@
   &__left {
     width: 50%;
     background-color: white;
-    height: 100%;
+    min-height: 100%;
     padding: 40px;
     border-radius: 20px 0 0 20px;
-    overflow: hidden;
 
     &__photo {
       height: 120px;
