@@ -81,6 +81,25 @@
           border-radius: 12px;
           padding: 10px 0;
 
+          &:nth-child(15) {
+            abbr {
+              background-color: $primary-color;
+              color: white;
+            }
+          }
+          &:nth-child(20), &:nth-child(21), &:nth-child(22) {
+            abbr {
+              background-color: $secondary-color;
+              color: white;
+            }
+          }
+          &:nth-child(26) {
+            abbr {
+              background-color: rgb(251, 159, 68);
+              color: white;
+            }
+          }
+
           abbr {
             padding: 10px 15px;
             border-radius: 12px;
@@ -114,6 +133,7 @@
 
   &__bookings {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     background-color: white;
@@ -121,10 +141,11 @@
     width: 100%;
     border-radius: 20px;
     margin-top: 40px;
-    padding: 30px;
+    padding: 0 30px;
 
     &__card {
       display: flex;
+      margin: 30px 0;
 
       &__img {
         border-radius: 8px;
