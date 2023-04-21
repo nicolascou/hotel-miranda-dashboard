@@ -81,25 +81,6 @@
           border-radius: 12px;
           padding: 10px 0;
 
-          &:nth-child(15) {
-            abbr {
-              background-color: $primary-color;
-              color: white;
-            }
-          }
-          &:nth-child(20), &:nth-child(21), &:nth-child(22) {
-            abbr {
-              background-color: $secondary-color;
-              color: white;
-            }
-          }
-          &:nth-child(26) {
-            abbr {
-              background-color: rgb(251, 159, 68);
-              color: white;
-            }
-          }
-
           abbr {
             padding: 10px 15px;
             border-radius: 12px;

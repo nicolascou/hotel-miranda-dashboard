@@ -311,18 +311,6 @@
   border-radius: 12px;
   padding: 10px 0;
 }
-.dashboard__row__calendar .react-calendar__tile:nth-child(15) abbr {
-  background-color: #135846;
-  color: white;
-}
-.dashboard__row__calendar .react-calendar__tile:nth-child(20) abbr, .dashboard__row__calendar .react-calendar__tile:nth-child(21) abbr, .dashboard__row__calendar .react-calendar__tile:nth-child(22) abbr {
-  background-color: #E23428;
-  color: white;
-}
-.dashboard__row__calendar .react-calendar__tile:nth-child(26) abbr {
-  background-color: rgb(251, 159, 68);
-  color: white;
-}
 .dashboard__row__calendar .react-calendar__tile abbr {
   padding: 10px 15px;
   border-radius: 12px;

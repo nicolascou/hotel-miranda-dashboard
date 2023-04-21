@@ -70,8 +70,6 @@ function App() {
   useEffect(() => {
     if (auth) {
       localStorage.setItem('auth-miranda', '1');
-    } else {
-      localStorage.removeItem('auth-miranda');
     }
   }, [auth])
   
