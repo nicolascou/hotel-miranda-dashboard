@@ -78,13 +78,10 @@ const BookingList = () => {
         </div>
         <ul style={{ listStyle: 'none' }}>
           {sliceBookings.map((b) => {
-            let statusClass;
-            if (b.status === 'Check In') {
-              statusClass = 'bookings__table__row__item__status--green';
-            } else if (b.status === 'Check Out') {
-              statusClass  = 'bookings__table__row__item__status--red'
-            } else if (b.status === 'In Progress') {
-              statusClass  = 'bookings__table__row__item__status--yellow'
+            let statusClassMap = {
+              'Check In': 'bookings__table__row__item__status--green',
+              'Check Out': 'bookings__table__row__item__status--red',
+              'In Progress': 'bookings__table__row__item__status--yellow'
             }
         
             return (  
@@ -117,7 +114,7 @@ const BookingList = () => {
                 </div>
                 <p className='bookings__table__row__item weight-500'>{b.room_type}</p>
                 <div className='bookings__table__row__item'>
-                  <p className={`bookings__table__row__item__status ${statusClass}`}>
+                  <p className={`bookings__table__row__item__status ${statusClassMap[b.status]}`}>
                     {b.status}
                   </p>
                 </div>

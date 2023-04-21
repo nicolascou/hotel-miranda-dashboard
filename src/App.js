@@ -71,7 +71,7 @@ function App() {
   ], { basename: BASENAME });
 
   useEffect(() => {
-    if (auth === true) {
+    if (auth) {
       localStorage.setItem('auth-miranda', '1');
     }
   }, [auth])
