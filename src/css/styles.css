@@ -1,35 +1,3 @@
-.page-content {
-  width: calc(100% - 300px);
-  min-height: 100vh;
-  margin-left: 300px;
-  background-color: #f8f8f8;
-  transition: all 0.3s;
-}
-.page-content--100w {
-  width: 100%;
-  margin-left: 0;
-}
-
-.small-text {
-  font-size: 14px;
-}
-
-.weight-500 {
-  font-weight: 500;
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 .login {
   top: 0;
   left: 0;
@@ -98,38 +66,6 @@
   margin-top: 20px;
 }
 
-.page-content {
-  width: calc(100% - 300px);
-  min-height: 100vh;
-  margin-left: 300px;
-  background-color: #f8f8f8;
-  transition: all 0.3s;
-}
-.page-content--100w {
-  width: 100%;
-  margin-left: 0;
-}
-
-.small-text {
-  font-size: 14px;
-}
-
-.weight-500 {
-  font-weight: 500;
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 .sidebar {
   width: 300px;
   box-shadow: 13px 3px 40px rgba(0, 0, 0, 0.0196078431);
@@ -236,38 +172,6 @@
   font-size: 14px;
 }
 
-.page-content {
-  width: calc(100% - 300px);
-  min-height: 100vh;
-  margin-left: 300px;
-  background-color: #f8f8f8;
-  transition: all 0.3s;
-}
-.page-content--100w {
-  width: 100%;
-  margin-left: 0;
-}
-
-.small-text {
-  font-size: 14px;
-}
-
-.weight-500 {
-  font-weight: 500;
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 .header {
   width: 100%;
   height: 100px;
@@ -335,38 +239,6 @@
   margin-right: 10px;
 }
 
-.page-content {
-  width: calc(100% - 300px);
-  min-height: 100vh;
-  margin-left: 300px;
-  background-color: #f8f8f8;
-  transition: all 0.3s;
-}
-.page-content--100w {
-  width: 100%;
-  margin-left: 0;
-}
-
-.small-text {
-  font-size: 14px;
-}
-
-.weight-500 {
-  font-weight: 500;
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 .dashboard__kpis {
   display: flex;
   align-items: center;
@@ -536,38 +408,6 @@
   align-items: center;
 }
 
-.page-content {
-  width: calc(100% - 300px);
-  min-height: 100vh;
-  margin-left: 300px;
-  background-color: #f8f8f8;
-  transition: all 0.3s;
-}
-.page-content--100w {
-  width: 100%;
-  margin-left: 0;
-}
-
-.small-text {
-  font-size: 14px;
-}
-
-.weight-500 {
-  font-weight: 500;
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 .bookings__top {
   display: flex;
   align-items: center;
@@ -712,6 +552,18 @@
 .bookings__table__row__ellipsis:active {
   background-color: #B2B2B2;
 }
+.bookings__table__row__delete {
+  position: absolute;
+  right: -25px;
+  top: -6px;
+  padding: 5px 10px;
+  background-color: #ddd;
+  border-radius: 8px;
+  animation: fadeIn 0.2s ease-in-out;
+}
+.bookings__table__row__delete:active {
+  background-color: #B2B2B2;
+}
 .bookings__bottom {
   display: flex;
   align-items: center;
@@ -776,38 +628,6 @@
   cursor: auto;
 }
 
-.page-content {
-  width: calc(100% - 300px);
-  min-height: 100vh;
-  margin-left: 300px;
-  background-color: #f8f8f8;
-  transition: all 0.3s;
-}
-.page-content--100w {
-  width: 100%;
-  margin-left: 0;
-}
-
-.small-text {
-  font-size: 14px;
-}
-
-.weight-500 {
-  font-weight: 500;
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 .booking-details {
   width: 100%;
   display: flex;
@@ -1056,6 +876,43 @@
 
 body {
   min-width: 1000px;
+}
+
+.page-content {
+  width: calc(100% - 300px);
+  min-height: 100vh;
+  margin-left: 300px;
+  background-color: #f8f8f8;
+  transition: all 0.3s;
+}
+.page-content--100w {
+  width: 100%;
+  margin-left: 0;
+}
+
+.small-text {
+  font-size: 14px;
+}
+
+.weight-500 {
+  font-weight: 500;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.d-none {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

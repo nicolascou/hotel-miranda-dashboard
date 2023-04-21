@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import bookings_json from '../../data/bookings.json';
 import { useNavigate } from 'react-router-dom';
 import Pagination from '../Pagination';
+import RemoveRow from '../RemoveRow';
 import sortBookingsBy from '../../utils/sortBookingsBy';
 
 const BookingList = () => {
@@ -118,7 +119,7 @@ const BookingList = () => {
                     {b.status}
                   </p>
                 </div>
-                <i onClick={(e) => handleDelete(e, b.id)} className='fa-solid fa-ellipsis-vertical bookings__table__row__ellipsis'></i>
+                <RemoveRow handleDelete={handleDelete} id={b.id} />
               </div> 
             )})}
         </ul>
