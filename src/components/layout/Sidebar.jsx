@@ -45,7 +45,7 @@ const Sidebar = ({ hideSidebar }) => {
             <img className='sidebar__card__img' src={profilePic} alt="" />
             <p className='sidebar__card__name'>Nicolás Cousillas</p>
             <p className='sidebar__card__mail'>nicolascousillas1@gmail.com</p>
-            <Button className='sidebar__card__btn'>Contact us</Button>
+            <Button className='sidebar__card__btn'>Edit</Button>
           </div>
           <div className='sidebar__rights'>
             <p className='sidebar__rights__bold'>Travl Hotel Admin Dashboard</p>

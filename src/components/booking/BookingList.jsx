@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import bookings_json from '../../data/bookings.json';
 import { useNavigate } from 'react-router-dom';
-import Pagination from '../Pagination';
-import RemoveRow from '../RemoveRow';
+import Pagination from '../partials/Pagination';
+import RemoveRow from '../partials/RemoveRow';
 import sortBookingsBy from '../../utils/sortBookingsBy';
 
 const BookingList = () => {

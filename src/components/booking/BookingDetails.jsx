@@ -2,11 +2,11 @@ import React from 'react'
 import allBookings from '../../data/bookings.json';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useParams } from 'react-router-dom';
-import SwiperButtonNext from '../layout/SwiperButtonNext';
+import SwiperButtonNext from '../partials/SwiperButtonNext';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import SwiperButtonPrev from '../layout/SwiperButtonPrev';
+import SwiperButtonPrev from '../partials/SwiperButtonPrev';
 
 const BookingDetails = () => {
   const params = useParams();
