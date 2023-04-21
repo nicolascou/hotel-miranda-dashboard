@@ -21,6 +21,13 @@ const BookingList = () => {
     e.stopPropagation(e);
   }
 
+  const handleDelete = (e, bookingId) => {
+    let newBookings = bookings.filter(({ id }) => id !== bookingId);
+    setBookings(newBookings);
+    setSliceBookings(newBookings.slice(0, 7));
+    e.stopPropagation(e);
+  }
+
   useEffect(() => {
     const sortedBookings = sortBookingsBy(orderBy);
     setBookings(sortedBookings);
@@ -40,7 +47,7 @@ const BookingList = () => {
       <div className='bookings__top'>
         <ul className='bookings__top__menu'>
           <li onClick={() => setOrderBy('order_date')}
-            className={`bookings__top__menu__item ${orderBy === 'order_date' ? 'bookings__top__menu__item--active' : ''}`}
+            className={`bookings__top__menu__item ${orderBy === 'order_date' || orderBy === 'guest' ? 'bookings__top__menu__item--active' : ''}`}
           >All Bookings</li>
           <li onClick={() => setOrderBy('check_in')}
             className={`bookings__top__menu__item ${orderBy === 'check_in' ? 'bookings__top__menu__item--active' : ''}`}
@@ -114,7 +121,7 @@ const BookingList = () => {
                     {b.status}
                   </p>
                 </div>
-                <i onClick={(e) => e.stopPropagation()} className='fa-solid fa-ellipsis-vertical bookings__table__row__ellipsis'></i>
+                <i onClick={(e) => handleDelete(e, b.id)} className='fa-solid fa-ellipsis-vertical bookings__table__row__ellipsis'></i>
               </div> 
             )})}
         </ul>
