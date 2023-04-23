@@ -524,6 +524,13 @@
   display: flex;
   flex-direction: column;
 }
+.list__table__row__item__room-photo {
+  width: 160px;
+  object-fit: cover;
+  object-position: center;
+  height: 80px;
+  border-radius: 8px;
+}
 .list__table__row__ellipsis {
   position: absolute;
   right: 30px;
@@ -856,12 +863,6 @@
 .booking-details__right__text p {
   color: #B2B2B2;
   font-size: 15px;
-}
-
-.rooms__photo {
-  width: 150px;
-  height: 80px;
-  border-radius: 8px;
 }
 
 * {

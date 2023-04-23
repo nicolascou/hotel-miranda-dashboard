@@ -39,13 +39,13 @@ const RoomList = () => {
       </div>
       <div className='list__table'>
         <div className='list__table__row list__table__row--first'>
-          <p className='list__table__row__item'>Photo</p>
-          <p className='list__table__row__item'>Room Name</p>
-          <p className='list__table__row__item'>Room Type</p>
-          <p className='list__table__row__item'>Amenities</p>
-          <p className='list__table__row__item'>Price</p>
-          <p className='list__table__row__item'>Offer</p>
-          <p className='list__table__row__item'>Status</p>
+          <p className='list__table__row__item weight-700'>Photo</p>
+          <p className='list__table__row__item weight-700'>Room Name</p>
+          <p className='list__table__row__item weight-700'>Room Type</p>
+          <p className='list__table__row__item weight-700'>Amenities</p>
+          <p className='list__table__row__item weight-700'>Price</p>
+          <p className='list__table__row__item weight-700'>Offer</p>
+          <p className='list__table__row__item weight-700'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
           {sliceRooms.map((room) => {
@@ -55,17 +55,17 @@ const RoomList = () => {
               'In Progress': 'list__table__row__item__status--yellow'
             }
         
-            return (  
+            return (
               <div key={room.id} onClick={() => navigate(`/rooms/${room.id}`)} className='list__table__row'>
                 <div className='list__table__row__item'>
-                  <img className='rooms__photo' src={room.photo} alt="fdsa" />
+                  <img className='list__table__row__item__room-photo' src={room.photo} alt="" />
                 </div>
                 <div className='list__table__row__item list__table__row__item__room-name'>
                   <p className='list__table__row__item__id'>#0001</p>
                   <p className='weight-500'>{room.name}</p>
                 </div>
                 <p className='list__table__row__item weight-500'>{room.bed_type}</p>
-                <p className='list__table__row__item weight-500'>
+                <p className='list__table__row__item'>
                   {room.amenities.map((a) => a + ', ')} Coffee Set, AC, Extra Pillows
                 </p>
                 <p className='list__table__row__item weight-500'>{room.rate}</p>
