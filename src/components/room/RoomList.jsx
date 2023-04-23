@@ -48,27 +48,22 @@ const RoomList = () => {
         </div>
         <ul style={{ listStyle: 'none' }}>
           {sliceRooms.map((room) => {
-            let statusClassMap = {
-              'Check In': 'list__table__row__item__status--green',
-              'Check Out': 'list__table__row__item__status--red',
-              'In Progress': 'list__table__row__item__status--yellow'
-            }
         
             return (
               <div key={room.id} onClick={() => navigate(`/rooms/${room.id}`)} className='list__table__row'>
                 <div className='list__table__row__item'>
-                  <img className='list__table__row__item__room-photo' src={room.photo} alt="" />
+                  <img className='rooms__photo' src={room.photo} alt="" />
                 </div>
-                <div className='list__table__row__item list__table__row__item__room-name'>
-                  <p className='list__table__row__item__id'>#{room.id}</p>
+                <div className='list__table__row__item rooms__name'>
+                  <p className='list__table__row__item__id'>#{room.id.toString().padStart(2, '0')}</p>
                   <p className='weight-500'>{room.name}</p>
                 </div>
                 <p className='list__table__row__item weight-500'>{room.bed_type}</p>
                 <p className='list__table__row__item'>
                   AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi
                 </p>
-                <p className='list__table__row__item weight-500' style={{ justifyContent: 'center' }}>{room.rate}</p>
-                <p className='list__table__row__item weight-500' style={{ justifyContent: 'center' }}>{Math.floor(room.rate / 1.5)}</p>
+                <p className='list__table__row__item weight-500' style={{ justifyContent: 'center' }}>{room.rate}$<span className='rooms__night'>/night</span></p>
+                <p className='list__table__row__item weight-500' style={{ justifyContent: 'center' }}>{Math.floor(room.rate / 1.5)}$<span className='rooms__night'>/night</span></p>
                 <p className='list__table__row__item weight-500'>{room.status}</p>
                 <RemoveRow id={room.id} />
               </div> 

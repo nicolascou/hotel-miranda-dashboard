@@ -139,20 +139,6 @@
             background-color: #fffee9;
           }
         }
-
-        // Room List
-        &__room-name {
-          display: flex;
-          flex-direction: column;
-        }
-
-        &__room-photo {
-          width: 160px;
-          object-fit: cover;
-          object-position: center;
-          height: 80px;
-          border-radius: 8px;
-        }
       }
 
       &__ellipsis {
