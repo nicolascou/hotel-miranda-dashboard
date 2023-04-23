@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { roomsJson } from '../../data/rooms';
 import { useNavigate } from 'react-router-dom';
-import sortBookingsBy from '../../utils/sortBookingsBy';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
 
@@ -43,8 +42,8 @@ const RoomList = () => {
           <p className='list__table__row__item weight-700'>Room Name</p>
           <p className='list__table__row__item weight-700'>Room Type</p>
           <p className='list__table__row__item weight-700'>Amenities</p>
-          <p className='list__table__row__item weight-700'>Price</p>
-          <p className='list__table__row__item weight-700'>Offer</p>
+          <p className='list__table__row__item weight-700' style={{ justifyContent: 'center' }}>Price</p>
+          <p className='list__table__row__item weight-700' style={{ justifyContent: 'center' }}>Offer</p>
           <p className='list__table__row__item weight-700'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
@@ -61,15 +60,15 @@ const RoomList = () => {
                   <img className='list__table__row__item__room-photo' src={room.photo} alt="" />
                 </div>
                 <div className='list__table__row__item list__table__row__item__room-name'>
-                  <p className='list__table__row__item__id'>#0001</p>
+                  <p className='list__table__row__item__id'>#{room.id}</p>
                   <p className='weight-500'>{room.name}</p>
                 </div>
                 <p className='list__table__row__item weight-500'>{room.bed_type}</p>
                 <p className='list__table__row__item'>
-                  {room.amenities.map((a) => a + ', ')} Coffee Set, AC, Extra Pillows
+                  AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi
                 </p>
-                <p className='list__table__row__item weight-500'>{room.rate}</p>
-                <p className='list__table__row__item weight-500'>{Math.floor(room.rate / 1.5)}</p>
+                <p className='list__table__row__item weight-500' style={{ justifyContent: 'center' }}>{room.rate}</p>
+                <p className='list__table__row__item weight-500' style={{ justifyContent: 'center' }}>{Math.floor(room.rate / 1.5)}</p>
                 <p className='list__table__row__item weight-500'>{room.status}</p>
                 <RemoveRow id={room.id} />
               </div> 
