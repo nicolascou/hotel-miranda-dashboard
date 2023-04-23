@@ -1,0 +1,9 @@
+@import '../globals';
+
+.rooms {
+  &__photo {
+    width: 150px;
+    height: 80px;
+    border-radius: 8px;
+  }
+}

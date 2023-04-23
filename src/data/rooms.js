@@ -1,180 +1,185 @@
-[
+import room1 from '../img/rooms-1.jpg';
+import room2 from '../img/rooms-2.jpg';
+import room3 from '../img/rooms-3.jpg';
+import room4 from '../img/rooms-4.jpg';
+
+export const roomsJson = [
   {
     "id": 1,
-    "room_name": "Deluxe A-123",
+    "name": "Deluxe A-123",
     "bed_type": "Double Bed",
-    "photo": "rooms-3",
+    "photo": room3,
     "amenities": ["Wifi", "Towels", "LED TV"],
     "rate": 245,
     "status": "Available"
   },
   {
     "id": 2,
-    "room_name": "Deluxe B-234",
+    "name": "Deluxe B-234",
     "bed_type": "Single Bed",
-    "photo": "rooms-4",
+    "photo": room4,
     "amenities": ["Wifi", "Towels", "Shower"],
     "rate": 168,
     "status": "Booked"
   },
   {
     "id": 3,
-    "room_name": "Deluxe C-345",
+    "name": "Deluxe C-345",
     "bed_type": "Double Bed",
-    "photo": "rooms-3",
+    "photo": room3,
     "amenities": ["Wifi", "Towels", "LED TV", "Shower"],
     "rate": 305,
     "status": "Available"
   },
   {
     "id": 4,
-    "room_name": "Deluxe D-456",
+    "name": "Deluxe D-456",
     "bed_type": "Suite",
-    "photo": "rooms-2",
+    "photo": room2,
     "amenities": ["Wifi", "Towels", "Shower"],
     "rate": 114,
     "status": "Available"
   },
   {
     "id": 5,
-    "room_name": "Deluxe E-567",
+    "name": "Deluxe E-567",
     "bed_type": "Double Superior",
-    "photo": "rooms-2",
+    "photo": room1,
     "amenities": ["Wifi", "Towels", "LED TV"],
     "rate": 563,
     "status": "Booked"
   },
   {
     "id": 6,
-    "room_name": "Deluxe F-678",
+    "name": "Deluxe F-678",
     "bed_type": "Single Bed",
-    "photo": "rooms-4",
+    "photo": room4,
     "amenities": ["Wifi", "Towels", "Shower"],
     "rate": 214,
     "status": "Available"
   },
   {
     "id": 7,
-    "room_name": "Deluxe G-789",
+    "name": "Deluxe G-789",
     "bed_type": "Double Bed",
-    "photo": "rooms-3",
+    "photo": room3,
     "amenities": ["Wifi", "Towels", "LED TV", "Shower"],
     "rate": 503,
     "status": "Available"
   },
   {
     "id": 8,
-    "room_name": "Deluxe H-890",
+    "name": "Deluxe H-890",
     "bed_type": "Single Bed",
-    "photo": "rooms-4",
+    "photo": room4,
     "amenities": ["Wifi", "Towels", "Shower"],
     "rate": 77,
     "status": "Booked"
   },
   {
     "id": 9,
-    "room_name": "Deluxe I-901",
+    "name": "Deluxe I-901",
     "bed_type": "Double Bed",
-    "photo": "rooms-3",
+    "photo": room3,
     "amenities": ["Wifi", "Towels", "LED TV"],
     "rate": 325,
     "status": "Available"
   },
   {
     "id": 10,
-    "room_name": "Deluxe J-012",
+    "name": "Deluxe J-012",
     "bed_type": "Single Bed",
-    "photo": "rooms-4",
+    "photo": room4,
     "amenities": ["Wifi", "Towels", "LED TV", "Shower"],
     "rate": 432,
     "status": "Available"
   },
   {
     "id": 11,
-    "room_name": "Deluxe K-123",
+    "name": "Deluxe K-123",
     "bed_type": "Double Bed",
-    "photo": "rooms-3",
+    "photo": room3,
     "amenities": ["Wifi", "Towels", "LED TV"],
     "rate": 457,
     "status": "Booked"
   },
   {
     "id": 12,
-    "room_name": "Deluxe L-234",
+    "name": "Deluxe L-234",
     "bed_type": "Single Bed",
-    "photo": "rooms-4",
+    "photo": room4,
     "amenities": ["Wifi", "Towels", "Shower"],
     "rate": 177,
     "status": "Available"
   },
   {
     "id": 13,
-    "room_name": "Deluxe M-345",
+    "name": "Deluxe M-345",
     "bed_type": "Double Bed",
-    "photo": "rooms-3",
+    "photo": room3,
     "amenities": ["Wifi", "Towels", "LED TV", "Shower"],
     "rate": 589,
     "status": "Available"
   },
   {
     "id": 14,
-    "room_name": "Deluxe N-456",
+    "name": "Deluxe N-456",
     "bed_type": "Single Bed",
-    "photo": "rooms-4",
+    "photo": room4,
     "amenities": ["Wifi", "Towels", "LED TV"],
     "rate": 102,
     "status": "Booked"
   },
   {
     "id": 15,
-    "room_name": "Deluxe O-567",
+    "name": "Deluxe O-567",
     "bed_type": "Double Bed",
-    "photo": "rooms-3",
+    "photo": room3,
     "amenities": ["Wifi", "Towels", "Shower"],
     "rate": 372,
     "status": "Available"
   },
   {
     "id": 16,
-    "room_name": "Deluxe P-678",
+    "name": "Deluxe P-678",
     "bed_type": "Single Bed",
-    "photo": "rooms-4",
+    "photo": room4,
     "amenities": ["Wifi", "Towels", "LED TV", "Shower"],
     "rate": 217,
     "status": "Booked"
   },
   {
     "id": 17,
-    "room_name": "Deluxe Q-789",
+    "name": "Deluxe Q-789",
     "bed_type": "Double Bed",
-    "photo": "rooms-3",
+    "photo": room3,
     "amenities": ["Wifi", "Towels", "LED TV"],
     "rate": 321,
     "status": "Available"
   },
   {
     "id": 18,
-    "room_name": "Deluxe R-890",
+    "name": "Deluxe R-890",
     "bed_type": "Single Bed",
-    "photo": "rooms-4",
+    "photo": room4,
     "amenities": ["Wifi", "Towels", "Shower"],
     "rate": 78,
     "status": "Available"
   },
   {
     "id": 19,
-    "room_name": "Deluxe S-901",
+    "name": "Deluxe S-901",
     "bed_type": "Double Bed",
-    "photo": "rooms-3",
+    "photo": room3,
     "amenities": ["Wifi", "Towels", "LED TV", "Shower"],
     "rate": 555,
     "status": "Booked"
   },
   {
     "id": 20,
-    "room_name": "Deluxe T-012",
+    "name": "Deluxe T-012",
     "bed_type": "Single Bed",
-    "photo": "rooms-4",
+    "photo": room4,
     "amenities": ["Wifi", "Towels", "LED TV"],
     "rate": 198,
     "status": "Available"

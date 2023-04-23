@@ -854,6 +854,12 @@
   font-size: 15px;
 }
 
+.rooms__photo {
+  width: 150px;
+  height: 80px;
+  border-radius: 8px;
+}
+
 * {
   margin: 0;
   padding: 0;
