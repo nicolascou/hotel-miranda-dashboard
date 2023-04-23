@@ -396,28 +396,28 @@
   align-items: center;
 }
 
-.bookings__top {
+.list__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.bookings__top__menu {
+.list__top__menu {
   display: flex;
   align-items: center;
   list-style: none;
 }
-.bookings__top__menu__item {
+.list__top__menu__item {
   cursor: pointer;
   color: #6e6e6e;
   padding: 13px 26px;
   border-bottom: #6e6e6e solid 1px;
 }
-.bookings__top__menu__item--active {
+.list__top__menu__item--active {
   border-bottom: #135846 solid 2px;
   font-weight: 600;
   color: #135846;
 }
-.bookings__top__select {
+.list__top__select {
   border-radius: 12px;
   border: 1px solid #135846;
   padding: 10px 15px;
@@ -427,7 +427,7 @@
   outline: none;
   font-weight: 600;
 }
-.bookings__top__select__text {
+.list__top__select__text {
   text-transform: capitalize;
   display: inline-block;
   font-weight: 600;
@@ -437,12 +437,12 @@
   background: none;
   margin-right: 10px;
 }
-.bookings__table {
+.list__table {
   margin: 30px 0;
   border-radius: 20px;
   background-color: white;
 }
-.bookings__table__row {
+.list__table__row {
   position: relative;
   color: #393939;
   display: flex;
@@ -451,21 +451,21 @@
   border-bottom: 2px solid #f8f8f8;
   cursor: pointer;
 }
-.bookings__table__row:hover {
+.list__table__row:hover {
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1019607843);
 }
-.bookings__table__row--first {
+.list__table__row--first {
   font-weight: 600;
   cursor: auto;
 }
-.bookings__table__row--first:hover {
+.list__table__row--first:hover {
   box-shadow: none;
 }
-.bookings__table__row__item {
+.list__table__row__item {
   display: flex;
   width: 100%;
 }
-.bookings__table__row__item__photo {
+.list__table__row__item__photo {
   width: 50px;
   height: 50px;
   background-color: #EEF9F2;
@@ -475,15 +475,15 @@
   align-items: center;
   justify-content: center;
 }
-.bookings__table__row__item__photo i {
+.list__table__row__item__photo i {
   font-size: 28px;
   color: #135846;
 }
-.bookings__table__row__item__id {
+.list__table__row__item__id {
   font-size: 14px;
   color: #135846;
 }
-.bookings__table__row__item__btn {
+.list__table__row__item__btn {
   background: none;
   border: none;
   color: #135846;
@@ -495,11 +495,11 @@
   border-radius: 12px;
   border: 1px solid transparent;
 }
-.bookings__table__row__item__btn:hover {
+.list__table__row__item__btn:hover {
   background-color: white;
   border: 1px solid #135846;
 }
-.bookings__table__row__item__status {
+.list__table__row__item__status {
   width: 115px;
   height: 50px;
   border-radius: 12px;
@@ -508,19 +508,19 @@
   align-items: center;
   justify-content: center;
 }
-.bookings__table__row__item__status--red {
+.list__table__row__item__status--red {
   color: #E23428;
   background-color: #FFEDEC;
 }
-.bookings__table__row__item__status--green {
+.list__table__row__item__status--green {
   color: #5AD07A;
   background-color: #E8FFEE;
 }
-.bookings__table__row__item__status--yellow {
+.list__table__row__item__status--yellow {
   color: #c09f0a;
   background-color: #fffee9;
 }
-.bookings__table__row__ellipsis {
+.list__table__row__ellipsis {
   position: absolute;
   right: 30px;
   width: 30px;
@@ -534,13 +534,13 @@
   align-items: center;
   justify-content: center;
 }
-.bookings__table__row__ellipsis:hover {
+.list__table__row__ellipsis:hover {
   background-color: rgba(178, 178, 178, 0.5);
 }
-.bookings__table__row__ellipsis:active {
+.list__table__row__ellipsis:active {
   background-color: #B2B2B2;
 }
-.bookings__table__row__delete {
+.list__table__row__delete {
   position: absolute;
   right: -25px;
   top: -6px;
@@ -549,47 +549,47 @@
   border-radius: 8px;
   animation: fadeIn 0.2s ease-in-out;
 }
-.bookings__table__row__delete:active {
+.list__table__row__delete:active {
   background-color: #B2B2B2;
 }
-.bookings__bottom {
+.list__bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 5px;
 }
-.bookings__bottom__text {
+.list__bottom__text {
   font-size: 15px;
   color: #393939;
 }
-.bookings__bottom__pagination button {
+.list__bottom__pagination button {
   height: 40px;
   border-radius: 12px;
   font-weight: 500;
   cursor: pointer;
 }
-.bookings__bottom__pagination__btn1 {
+.list__bottom__pagination__btn1 {
   background-color: white;
   color: #135846;
   border: 1px solid #135846;
   width: 70px;
 }
-.bookings__bottom__pagination__btn1:first-child {
+.list__bottom__pagination__btn1:first-child {
   margin-right: 20px;
 }
-.bookings__bottom__pagination__btn1:last-child {
+.list__bottom__pagination__btn1:last-child {
   margin-left: 20px;
 }
-.bookings__bottom__pagination__btn2 {
+.list__bottom__pagination__btn2 {
   background: none;
   border: none;
   width: 40px;
 }
-.bookings__bottom__pagination__btn2--active {
+.list__bottom__pagination__btn2--active {
   color: white;
   background-color: #135846;
 }
-.bookings__notes-modal-wrapper {
+.list__notes-modal-wrapper {
   display: none;
   height: 100%;
   width: 100%;
@@ -600,7 +600,7 @@
   cursor: auto;
   backdrop-filter: blur(5px);
 }
-.bookings__notes-modal {
+.list__notes-modal {
   position: absolute;
   top: 50%;
   left: 56%;
