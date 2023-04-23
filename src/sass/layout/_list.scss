@@ -139,6 +139,11 @@
             background-color: #fffee9;
           }
         }
+
+        &__room-name {
+          display: flex;
+          flex-direction: column;
+        }
       }
 
       &__ellipsis {

@@ -44,7 +44,7 @@ const BookingList = () => {
   }, [pagination])
 
   return (
-    <div className='bookings'>
+    <div className='list'>
       <div className='list__top'>
         <ul className='list__top__menu'>
           <li onClick={() => setOrderBy('order_date')}

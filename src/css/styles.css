@@ -520,6 +520,10 @@
   color: #c09f0a;
   background-color: #fffee9;
 }
+.list__table__row__item__room-name {
+  display: flex;
+  flex-direction: column;
+}
 .list__table__row__ellipsis {
   position: absolute;
   right: 30px;
@@ -889,6 +893,10 @@ body {
 
 .weight-500 {
   font-weight: 500;
+}
+
+.weight-700 {
+  font-weight: 700;
 }
 
 .animate-fadeIn {
