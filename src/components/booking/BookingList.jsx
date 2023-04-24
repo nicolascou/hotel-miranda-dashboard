@@ -6,10 +6,10 @@ import sortBookingsBy from '../../utils/sortBookingsBy';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBookingList } from '../../features/bookings/getBookingList';
 import { deleteBookingById } from '../../features/bookings/deleteBookingById';
-import { reorderBookings } from '../../features/bookings/bookingSlice';
 
 const BookingList = () => {
   const { data } = useSelector(state => state.booking);
+  const [bookings, setBookings] = useState([]);
   const [showBookings, setShowBookings] = useState([]);
   const [pagination, setPagination] = useState(1);
   const [orderBy, setOrderBy] = useState('order_date');
@@ -19,21 +19,29 @@ const BookingList = () => {
 
   useEffect(() => {
     dispatch(getBookingList());
-  }, []) 
+    // eslint-disable-next-line
+  }, [])
 
   useEffect(() => {
-    setShowBookings(data.slice(0, 7));
+    setBookings(data);
+    // eslint-disable-next-line
   }, [data])
 
   useEffect(() => {
-    const sortedBookings = sortBookingsBy(orderBy, [...data]);
-    dispatch(reorderBookings(sortedBookings));
+    setShowBookings(bookings.slice(0, 7));
+    // eslint-disable-next-line
+  }, [bookings])
+
+  useEffect(() => {
+    const sortedBookings = sortBookingsBy(orderBy, [...bookings]);
+    setBookings(sortedBookings);
     setPagination(1);
+    // eslint-disable-next-line
   }, [orderBy])
 
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*7;
-    setShowBookings(data.slice(index, index+7));
+    setShowBookings(bookings.slice(index, index+7));
 
     // eslint-disable-next-line
   }, [pagination])
