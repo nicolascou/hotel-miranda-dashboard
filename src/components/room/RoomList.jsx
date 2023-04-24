@@ -18,16 +18,16 @@ const RoomList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getRoomList());
+  }, [])
+  
+  useEffect(() => {
     setRooms(data);
   }, [data])
   
   useEffect(() => {
-    setShowRooms(data.slice(0, 10));
+    setShowRooms(rooms.slice(0, 10));
   }, [rooms])
-
-  useEffect(() => {
-    dispatch(getRoomList());
-  }, [])
 
   useEffect(() => {
     let sortedRooms = [...data];
@@ -41,14 +41,20 @@ const RoomList = () => {
       })
     } else if (changeBy === 'price') {
       sortedRooms = sortedRooms.sort((a, b) => a.rate - b.rate);
+    } else if (changeBy === 'available') {
+      sortedRooms = sortedRooms.filter(({ status }) => status === 'Available');
+    } else if (changeBy === 'booked') {
+      sortedRooms = sortedRooms.filter(({status}) => status === 'Booked');
+    } else {
+      sortedRooms = data;
     }
-    dispatch(reorderRooms(sortedRooms));
+    setRooms(sortedRooms);
     setPagination(1);
   }, [changeBy])
 
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*10;
-    setShowRooms(data.slice(index, index+10));
+    setShowRooms(rooms.slice(index, index+10));
 
     // eslint-disable-next-line
   }, [pagination])
@@ -62,11 +68,14 @@ const RoomList = () => {
     <div className='list'>
       <div className='list__top'>
         <ul className='list__top__menu'>
-          <li className={`list__top__menu__item list__top__menu__item--active`}
+          <li className={`list__top__menu__item ${changeBy === 'all' ? 'list__top__menu__item--active' : ''}`} 
+            onClick={() => setChangeBy('all')}
           >All Rooms</li>
-          <li className={`list__top__menu__item`}
+          <li className={`list__top__menu__item ${changeBy === 'available' ? 'list__top__menu__item--active' : ''}`} 
+            onClick={() => setChangeBy('available')}
           >Available</li>
-          <li className={`list__top__menu__item`}
+          <li className={`list__top__menu__item ${changeBy === 'booked' ? 'list__top__menu__item--active' : ''}`} 
+            onClick={() => setChangeBy('booked')}
           >Booked</li>
         </ul>
         <select className='list__top__select' value={changeBy} onChange={(e) => setChangeBy(e.target.value)}>
@@ -114,7 +123,7 @@ const RoomList = () => {
       </div>
       <div className='list__bottom'>
         <p className='list__bottom__text'>Showing 10 of 20 Data</p>
-        <Pagination pagination={pagination} setPagination={setPagination} maxPage={2} />
+        <Pagination pagination={pagination} setPagination={setPagination} maxPage={rooms.length / 10 + .99} />
       </div>
     </div>
   )
