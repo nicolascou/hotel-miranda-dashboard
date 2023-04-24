@@ -50,7 +50,6 @@ const RoomList = () => {
         </div>
         <ul style={{ listStyle: 'none' }}>
           {sliceRooms.map((room) => {
-        
             return (
               <div key={room.id} onClick={() => navigate(`/rooms/${room.id}`)} className='list__table__row'>
                 <div className='list__table__row__item'>
@@ -66,7 +65,11 @@ const RoomList = () => {
                 </p>
                 <p className='list__table__row__item weight-500' style={{ justifyContent: 'center' }}>{room.rate}$<span className='rooms__night'>/night</span></p>
                 <p className='list__table__row__item weight-500' style={{ justifyContent: 'center' }}>{Math.floor(room.rate / 1.5)}$<span className='rooms__night'>/night</span></p>
-                <p className='list__table__row__item weight-500'>{room.status}</p>
+                <div className='list__table__row__item'>
+                  <p className={`rooms__status 
+                    ${room.status === 'Available' ? 'rooms__status--green' : 'rooms__status--red'}`}
+                  >{room.status}</p>
+                </div>
                 <RemoveRow id={room.id} />
               </div> 
             )})}

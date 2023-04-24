@@ -867,6 +867,21 @@
 }
 .rooms__night {
   color: #799283;
+  font-size: 12px;
+  align-self: center;
+}
+.rooms__status {
+  padding: 10px 20px;
+  color: white;
+  border-radius: 12px;
+  width: 120px;
+  text-align: center;
+}
+.rooms__status--green {
+  background-color: #5AD07A;
+}
+.rooms__status--red {
+  background-color: #E23428;
 }
 
 * {

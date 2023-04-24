@@ -16,5 +16,20 @@
   &__night {
     color: $text-color;
     font-size: 12px; 
+    align-self: center;
+  }
+  &__status {
+    padding: 10px 20px;
+    color: white;
+    border-radius: 12px;
+    width: 120px;
+    text-align: center;
+
+    &--green {
+      background-color: #5AD07A;
+    }
+    &--red {
+      background-color: #E23428;
+    }
   }
 }
