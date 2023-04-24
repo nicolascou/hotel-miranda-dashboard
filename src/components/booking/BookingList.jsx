@@ -6,6 +6,7 @@ import sortBookingsBy from '../../utils/sortBookingsBy';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBookingList } from '../../features/bookings/getBookingList';
 import { deleteBookingById } from '../../features/bookings/deleteBookingById';
+import { reorderBookings } from '../../features/bookings/bookingSlice';
 
 const BookingList = () => {
   const { data, loading } = useSelector(state => state.booking);
@@ -41,7 +42,7 @@ const BookingList = () => {
 
   useEffect(() => {
     const sortedBookings = sortBookingsBy(orderBy, [...data]);
-    setSliceBookings(sortedBookings.slice(0, 7));
+    dispatch(reorderBookings(sortedBookings));
     setPagination(1);
   }, [orderBy])
 

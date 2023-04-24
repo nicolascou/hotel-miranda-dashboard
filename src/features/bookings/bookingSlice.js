@@ -10,18 +10,23 @@ const initialState = {
 export const bookingSlice = createSlice({
   name: 'booking',
   initialState,
-  reducers: {},
+  reducers: {
+    reorderBookings: (state, action) => {
+      state.data = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getBookingList.fulfilled, (state, action) => {
-        state.data = [...action.payload];
+        state.data = action.payload;
         state.loading = 'fulfilled';
       })
       .addCase(deleteBookingById.fulfilled, (state, action) => {
-        state.data = [...action.payload];
+        state.data = action.payload;
         state.loading = 'fulfilled';
       });
   }
 })
 
+export const { reorderBookings } = bookingSlice.actions
 export const bookingReducer = bookingSlice.reducer
