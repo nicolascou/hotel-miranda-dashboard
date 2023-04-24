@@ -18,7 +18,7 @@ const BookingList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBookingList())
+    dispatch(getBookingList());
   }, []) 
 
   useEffect(() => {
@@ -37,7 +37,6 @@ const BookingList = () => {
 
     // eslint-disable-next-line
   }, [pagination])
-
 
   const showNotes = (e) => {
     e.target.nextElementSibling.style.display = 'block';
