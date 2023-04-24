@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getRoomList } from '../../features/rooms/getRoomList';
 import { reorderRooms } from '../../features/rooms/roomSlice';
 import { deleteRoomById } from '../../features/rooms/deleteRoomById';
+import { changeRoomsBy } from '../../utils/changeRoomsBy';
 
 const RoomList = () => {
   const data = useSelector(state => state.room.data);
@@ -30,25 +31,7 @@ const RoomList = () => {
   }, [rooms])
 
   useEffect(() => {
-    let sortedRooms = [...data];
-    if (changeBy === 'number') {
-      sortedRooms = sortedRooms.sort((a, b) => a.id - b.id);
-    } else if (changeBy === 'status') {
-      sortedRooms = sortedRooms.sort((a, b) => {
-        if (a.status === 'Available' && b.status === 'Booked') return -1;
-        else if (a.status === 'Booked' && b.status === 'Available') return 1; 
-        else return 0;
-      })
-    } else if (changeBy === 'price') {
-      sortedRooms = sortedRooms.sort((a, b) => a.rate - b.rate);
-    } else if (changeBy === 'available') {
-      sortedRooms = sortedRooms.filter(({ status }) => status === 'Available');
-    } else if (changeBy === 'booked') {
-      sortedRooms = sortedRooms.filter(({status}) => status === 'Booked');
-    } else {
-      sortedRooms = data;
-    }
-    setRooms(sortedRooms);
+    setRooms(changeRoomsBy(changeBy, [...data]));
     setPagination(1);
   }, [changeBy])
 
