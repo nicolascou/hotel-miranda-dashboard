@@ -16,10 +16,14 @@ export const roomSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getRoomList.fulfilled, (state, action) => {
-        state.data = action.payload;
-        state.loading = 'fulfilled';
-      })
+    .addCase(getRoomList.fulfilled, (state, action) => {
+      state.data = action.payload;
+      state.loading = 'fulfilled';
+    })
+    // .addCase(deleteRoomById.fulfilled, (state, action) => {
+    //   state.data = action.payload;
+    //   state.loading = 'fulfilled';
+    // });
   }
 })
 
