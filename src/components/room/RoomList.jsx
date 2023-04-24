@@ -38,8 +38,15 @@ const RoomList = () => {
       sortedRooms = sortedRooms.sort((a, b) => a.rate - b.rate);
     }
     dispatch(reorderRooms(sortedRooms));
-
+    setPagination(1);
   }, [orderBy])
+
+  useEffect(() => {
+    let index = pagination === 1 ? 0 : (pagination-1)*10;
+    setSliceRooms(data.slice(index, index+10));
+
+    // eslint-disable-next-line
+  }, [pagination])
 
   return (
     <div className='list'>
