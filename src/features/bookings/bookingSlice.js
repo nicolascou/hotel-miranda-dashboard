@@ -10,11 +10,7 @@ const initialState = {
 export const bookingSlice = createSlice({
   name: 'booking',
   initialState,
-  reducers: {
-    reorderBookings: (state, action) => {
-      state.data = action.payload;
-    }
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
     .addCase(getBookingList.fulfilled, (state, action) => {
@@ -28,5 +24,4 @@ export const bookingSlice = createSlice({
   }
 })
 
-export const { reorderBookings } = bookingSlice.actions
 export const bookingReducer = bookingSlice.reducer

@@ -9,17 +9,21 @@ import { deleteRoomById } from '../../features/rooms/deleteRoomById';
 
 const RoomList = () => {
   const data = useSelector(state => state.room.data);
+  const [rooms, setRooms] = useState([]);
   const [showRooms, setShowRooms] = useState([]);
   const [pagination, setPagination] = useState(1);
-  const [orderBy, setOrderBy] = useState('number');
+  const [changeBy, setChangeBy] = useState('number');
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setShowRooms(data.slice(0, 10));
-
+    setRooms(data);
   }, [data])
+  
+  useEffect(() => {
+    setShowRooms(data.slice(0, 10));
+  }, [rooms])
 
   useEffect(() => {
     dispatch(getRoomList());
@@ -27,20 +31,20 @@ const RoomList = () => {
 
   useEffect(() => {
     let sortedRooms = [...data];
-    if (orderBy === 'number') {
+    if (changeBy === 'number') {
       sortedRooms = sortedRooms.sort((a, b) => a.id - b.id);
-    } else if (orderBy === 'status') {
+    } else if (changeBy === 'status') {
       sortedRooms = sortedRooms.sort((a, b) => {
         if (a.status === 'Available' && b.status === 'Booked') return -1;
         else if (a.status === 'Booked' && b.status === 'Available') return 1; 
         else return 0;
       })
-    } else if (orderBy === 'price') {
+    } else if (changeBy === 'price') {
       sortedRooms = sortedRooms.sort((a, b) => a.rate - b.rate);
     }
     dispatch(reorderRooms(sortedRooms));
     setPagination(1);
-  }, [orderBy])
+  }, [changeBy])
 
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*10;
@@ -65,7 +69,7 @@ const RoomList = () => {
           <li className={`list__top__menu__item`}
           >Booked</li>
         </ul>
-        <select className='list__top__select' value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
+        <select className='list__top__select' value={changeBy} onChange={(e) => setChangeBy(e.target.value)}>
           <option className='list__top__select__text' value="number">Room number</option>
           <option className='list__top__select__text' value="status">Status</option>
           <option className='list__top__select__text' value="price">Price</option>
