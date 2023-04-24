@@ -9,11 +9,14 @@ const initialState = {
 export const bookingSlice = createSlice({
   name: 'booking',
   initialState,
-  reducers: {
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getBookingList.fulfilled, (state, action) => {
+        state.data = [...action.payload];
+        state.loading = 'fulfilled';
+      })
+      .addCase(deleteBookingById.fulfilled, (state, action) => {
         state.data = [...action.payload];
         state.loading = 'fulfilled';
       });
