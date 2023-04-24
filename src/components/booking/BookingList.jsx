@@ -5,6 +5,7 @@ import RemoveRow from '../partials/RemoveRow';
 import sortBookingsBy from '../../utils/sortBookingsBy';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBookingList } from '../../features/bookings/getBookingList';
+import { deleteBookingById } from '../../features/bookings/deleteBookingById';
 
 const BookingList = () => {
   const { data, loading } = useSelector(state => state.booking);
@@ -34,9 +35,7 @@ const BookingList = () => {
   }
 
   const handleDelete = (e, bookingId) => {
-    // let newBookings = bookings.filter(({ id }) => id !== bookingId);
-    // setBookings(newBookings);
-    // setSliceBookings(newBookings.slice(0, 7));
+    dispatch(deleteBookingById(bookingId));
     e.stopPropagation(e);
   }
 

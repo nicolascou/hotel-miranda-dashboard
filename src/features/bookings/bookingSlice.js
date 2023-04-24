@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { getBookingList } from './getBookingList';
+import { deleteBookingById } from './deleteBookingById';
 
 const initialState = {
   data: [],

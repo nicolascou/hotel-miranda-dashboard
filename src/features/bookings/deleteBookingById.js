@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import bookingsJson from '../../data/bookings.json';
 
-const deleteBookingById = createAsyncThunk(() => {
+export const deleteBookingById = createAsyncThunk(
   'booking/deleteBookingByIdStatus',
-  async(bookingId, thunkAPI) => {
+  async(bookingId) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(
@@ -12,4 +12,4 @@ const deleteBookingById = createAsyncThunk(() => {
       }, 200);
     });
   }
-})
+)
