@@ -32,7 +32,7 @@ const BookingList = () => {
   }, [orderBy])
 
   useEffect(() => {
-    let index = pagination === 1 ? 0 : (pagination-1)*7+1;
+    let index = pagination === 1 ? 0 : (pagination-1)*7;
     setSliceBookings(data.slice(index, index+7));
 
     // eslint-disable-next-line
