@@ -10,7 +10,7 @@ import { reorderBookings } from '../../features/bookings/bookingSlice';
 
 const BookingList = () => {
   const { data } = useSelector(state => state.booking);
-  const [sliceBookings, setSliceBookings] = useState([]);
+  const [showBookings, setShowBookings] = useState([]);
   const [pagination, setPagination] = useState(1);
   const [orderBy, setOrderBy] = useState('order_date');
 
@@ -22,7 +22,7 @@ const BookingList = () => {
   }, []) 
 
   useEffect(() => {
-    setSliceBookings(data.slice(0, 7));
+    setShowBookings(data.slice(0, 7));
   }, [data])
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const BookingList = () => {
 
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*7;
-    setSliceBookings(data.slice(index, index+7));
+    setShowBookings(data.slice(index, index+7));
 
     // eslint-disable-next-line
   }, [pagination])
@@ -88,7 +88,7 @@ const BookingList = () => {
           <p className='list__table__row__item'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
-          {sliceBookings.map((b) => {
+          {showBookings.map((b) => {
             let statusClassMap = {
               'Check In': 'list__table__row__item__status--green',
               'Check Out': 'list__table__row__item__status--red',
@@ -135,7 +135,7 @@ const BookingList = () => {
         </ul>
       </div>
       <div className='list__bottom'>
-        <p className='list__bottom__text'>Showing {sliceBookings.length} of {data.length} Data</p>
+        <p className='list__bottom__text'>Showing {showBookings.length} of {data.length} Data</p>
         <Pagination pagination={pagination} setPagination={setPagination} maxPage={data.length / 7 + 1} />
       </div>
     </div>

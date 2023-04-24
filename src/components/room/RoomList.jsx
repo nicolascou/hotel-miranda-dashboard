@@ -8,7 +8,7 @@ import { reorderRooms } from '../../features/rooms/roomSlice';
 
 const RoomList = () => {
   const data = useSelector(state => state.room.data);
-  const [sliceRooms, setSliceRooms] = useState([]);
+  const [showRooms, setShowRooms] = useState([]);
   const [pagination, setPagination] = useState(1);
   const [orderBy, setOrderBy] = useState('number');
 
@@ -16,7 +16,7 @@ const RoomList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setSliceRooms(data.slice(0, 10));
+    setShowRooms(data.slice(0, 10));
 
   }, [data])
 
@@ -43,7 +43,7 @@ const RoomList = () => {
 
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*10;
-    setSliceRooms(data.slice(index, index+10));
+    setShowRooms(data.slice(index, index+10));
 
     // eslint-disable-next-line
   }, [pagination])
@@ -76,7 +76,7 @@ const RoomList = () => {
           <p className='list__table__row__item weight-700'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
-          {sliceRooms.map((room) => {
+          {showRooms.map((room) => {
             return (
               <div key={room.id} onClick={() => navigate(`/rooms/${room.id}`)} className='list__table__row'>
                 <div className='list__table__row__item'>
