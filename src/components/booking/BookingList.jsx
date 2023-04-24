@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import bookings_json from '../../data/bookings.json';
 import { useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
@@ -8,10 +7,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBookingList } from '../../features/bookings/getBookingList';
 
 const BookingList = () => {
-  const [bookings, setBookings] = useState(bookings_json);
-  const [sliceBookings, setSliceBookings] = useState(bookings.slice(0, 7));
+  const { data, loading } = useSelector(state => state.booking);
+  const [sliceBookings, setSliceBookings] = useState([]);
   const [pagination, setPagination] = useState(1);
   const [orderBy, setOrderBy] = useState('order_date');
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBookingList())
+  }, [dispatch]) 
+
+  useEffect(() => {
+    setSliceBookings(data.slice(0, 7));
+  }, [data])
 
   const navigate = useNavigate();
 
@@ -25,34 +34,24 @@ const BookingList = () => {
   }
 
   const handleDelete = (e, bookingId) => {
-    let newBookings = bookings.filter(({ id }) => id !== bookingId);
-    setBookings(newBookings);
-    setSliceBookings(newBookings.slice(0, 7));
+    // let newBookings = bookings.filter(({ id }) => id !== bookingId);
+    // setBookings(newBookings);
+    // setSliceBookings(newBookings.slice(0, 7));
     e.stopPropagation(e);
   }
 
   useEffect(() => {
-    const sortedBookings = sortBookingsBy(orderBy);
-    setBookings(sortedBookings);
+    const sortedBookings = sortBookingsBy(orderBy, [...data]);
     setSliceBookings(sortedBookings.slice(0, 7));
     setPagination(1);
   }, [orderBy])
 
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*7+1;
-    setSliceBookings(bookings.slice(index, index+7));
+    setSliceBookings(data.slice(index, index+7));
 
     // eslint-disable-next-line
   }, [pagination])
-
-  const dispatch = useDispatch();
-  const data = useSelector(state => state.booking.data);
-
-  useEffect(() => {
-    dispatch(getBookingList())
-    console.log(data)
-  }, [])
-  
 
   return (
     <div className='list'>
@@ -137,7 +136,7 @@ const BookingList = () => {
       </div>
       <div className='list__bottom'>
         <p className='list__bottom__text'>Showing 7 of 102 Data</p>
-        <Pagination pagination={pagination} setPagination={setPagination} bookingsLength={bookings.length} />
+        <Pagination pagination={pagination} setPagination={setPagination} bookingsLength={data.length} />
       </div>
     </div>
   )

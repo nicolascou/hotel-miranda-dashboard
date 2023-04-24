@@ -3,6 +3,6 @@ import { bookingReducer } from '../features/bookings/bookingSlice';
 
 export const store = configureStore({
   reducer: {
-    bookingReducer
+    booking: bookingReducer
   },
 });
