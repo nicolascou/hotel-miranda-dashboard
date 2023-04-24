@@ -33,7 +33,7 @@ const BookingList = () => {
   }, [bookings])
 
   useEffect(() => {
-    const sortedBookings = sortBookingsBy(orderBy, [...bookings]);
+    const sortedBookings = sortBookingsBy(orderBy, [...data]);
     setBookings(sortedBookings);
     setPagination(1);
     // eslint-disable-next-line
@@ -143,7 +143,7 @@ const BookingList = () => {
       </div>
       <div className='list__bottom'>
         <p className='list__bottom__text'>Showing {showBookings.length} of {data.length} Data</p>
-        <Pagination pagination={pagination} setPagination={setPagination} maxPage={data.length / 7 + 1} />
+        <Pagination pagination={pagination} setPagination={setPagination} maxPage={bookings.length / 7 + 1} />
       </div>
     </div>
   )
