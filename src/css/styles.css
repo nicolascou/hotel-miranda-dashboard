@@ -883,6 +883,15 @@
 .rooms__status--red {
   background-color: #E23428;
 }
+.rooms__price {
+  justify-content: center;
+  text-decoration: line-through;
+}
+.rooms__offer {
+  color: #5AD07A;
+  justify-content: center;
+  font-size: 22px;
+}
 
 * {
   margin: 0;
