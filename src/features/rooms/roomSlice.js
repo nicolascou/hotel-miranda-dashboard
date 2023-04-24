@@ -9,14 +9,19 @@ const initialState = {
 export const roomSlice = createSlice({
   name: 'room',
   initialState,
-  reducers: {},
+  reducers: {
+    reorderRooms: (state, action) => {
+      state.data = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getRoomList.fulfilled, (state, action) => {
-        state.data = [...action.payload];
+        state.data = action.payload;
         state.loading = 'fulfilled';
       })
   }
 })
 
+export const { reorderRooms } = roomSlice.actions
 export const roomReducer = roomSlice.reducer

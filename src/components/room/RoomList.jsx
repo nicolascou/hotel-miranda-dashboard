@@ -4,6 +4,7 @@ import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRoomList } from '../../features/rooms/getRoomList';
+import { reorderRooms } from '../../features/rooms/roomSlice';
 
 const RoomList = () => {
   const data = useSelector(state => state.room.data);
@@ -28,13 +29,15 @@ const RoomList = () => {
     if (orderBy === 'number') {
       sortedRooms = sortedRooms.sort((a, b) => a.id - b.id);
     } else if (orderBy === 'status') {
-      sortedRooms = sortedRooms.sort(room => {
-        if (room.status === 'Available') return 1;
+      sortedRooms = sortedRooms.sort((a, b) => {
+        if (a.status === 'Available' && b.status === 'Booked') return -1;
+        else if (a.status === 'Booked' && b.status === 'Available') return 1; 
         else return 0;
       })
     } else if (orderBy === 'price') {
       sortedRooms = sortedRooms.sort((a, b) => a.rate - b.rate);
     }
+    dispatch(reorderRooms(sortedRooms));
 
   }, [orderBy])
 
@@ -56,10 +59,9 @@ const RoomList = () => {
           >In Progress</li>
         </ul>
         <select className='list__top__select' value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
-          <option className='list__top__select__text' value="order_date">Order Date</option>
-          <option className='list__top__select__text' value="guest">Guest</option>
-          <option className='list__top__select__text' value="check_in">Check In</option>
-          <option className='list__top__select__text' value="check_out">Check Out</option>
+          <option className='list__top__select__text' value="number">Room number</option>
+          <option className='list__top__select__text' value="status">Status</option>
+          <option className='list__top__select__text' value="price">Price</option>
         </select>
       </div>
       <div className='list__table'>
