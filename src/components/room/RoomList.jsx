@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { roomsJson } from '../../data/rooms';
 import { useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
 
 const RoomList = () => {
+  //eslint-disable-next-line
   const [rooms, setRooms] = useState(roomsJson);
+  //eslint-disable-next-line
   const [sliceRooms, setSliceRooms] = useState(rooms.slice(0, 7));
   const [pagination, setPagination] = useState(1);
   const [orderBy, setOrderBy] = useState('order_date');

@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
 import sortBookingsBy from '../../utils/sortBookingsBy';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBookingList } from '../../features/bookings/getBookingList';
 
 const BookingList = () => {
   const [bookings, setBookings] = useState(bookings_json);
@@ -42,6 +44,15 @@ const BookingList = () => {
 
     // eslint-disable-next-line
   }, [pagination])
+
+  const dispatch = useDispatch();
+  const data = useSelector(state => state.booking.data);
+
+  useEffect(() => {
+    dispatch(getBookingList())
+    console.log(data)
+  }, [])
+  
 
   return (
     <div className='list'>
