@@ -17,7 +17,7 @@ const BookingList = () => {
 
   useEffect(() => {
     dispatch(getBookingList())
-  }, [dispatch]) 
+  }, []) 
 
   useEffect(() => {
     setSliceBookings(data.slice(0, 7));

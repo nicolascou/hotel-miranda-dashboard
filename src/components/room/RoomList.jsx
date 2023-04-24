@@ -10,7 +10,7 @@ const RoomList = () => {
   const data = useSelector(state => state.room.data);
   const [sliceRooms, setSliceRooms] = useState([]);
   const [pagination, setPagination] = useState(1);
-  const [orderBy, setOrderBy] = useState('order_date');
+  const [orderBy, setOrderBy] = useState('number');
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -23,6 +23,13 @@ const RoomList = () => {
   useEffect(() => {
     dispatch(getRoomList());
   }, [])
+
+  // useEffect(() => {
+  //   if (orderBy === 'number') {
+
+  //   }
+
+  // }, [orderBy])
 
   return (
     <div className='list'>
