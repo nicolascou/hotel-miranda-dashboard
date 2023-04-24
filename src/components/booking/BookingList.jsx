@@ -135,7 +135,7 @@ const BookingList = () => {
         </ul>
       </div>
       <div className='list__bottom'>
-        <p className='list__bottom__text'>Showing 7 of 102 Data</p>
+        <p className='list__bottom__text'>Showing {sliceBookings.length} of {data.length} Data</p>
         <Pagination pagination={pagination} setPagination={setPagination} maxPage={data.length / 7 + 1} />
       </div>
     </div>

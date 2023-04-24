@@ -52,18 +52,12 @@ const RoomList = () => {
     <div className='list'>
       <div className='list__top'>
         <ul className='list__top__menu'>
-          <li onClick={() => setOrderBy('order_date')}
-            className={`list__top__menu__item ${orderBy === 'order_date' || orderBy === 'guest' ? 'list__top__menu__item--active' : ''}`}
-          >All Bookings</li>
-          <li onClick={() => setOrderBy('check_in')}
-            className={`list__top__menu__item ${orderBy === 'check_in' ? 'list__top__menu__item--active' : ''}`}
-          >Checking In</li>
-          <li onClick={() => setOrderBy('check_out')}
-            className={`list__top__menu__item ${orderBy === 'check_out' ? 'list__top__menu__item--active' : ''}`}
-          >Checking Out</li>
-          <li onClick={() => setOrderBy('progress')}
-            className={`list__top__menu__item ${orderBy === 'progress' ? 'list__top__menu__item--active' : ''}`}
-          >In Progress</li>
+          <li className={`list__top__menu__item list__top__menu__item--active`}
+          >All Rooms</li>
+          <li className={`list__top__menu__item`}
+          >Available</li>
+          <li className={`list__top__menu__item`}
+          >Booked</li>
         </ul>
         <select className='list__top__select' value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
           <option className='list__top__select__text' value="number">Room number</option>
@@ -109,7 +103,7 @@ const RoomList = () => {
         </ul>
       </div>
       <div className='list__bottom'>
-        <p className='list__bottom__text'>Showing 7 of 102 Data</p>
+        <p className='list__bottom__text'>Showing 10 of 20 Data</p>
         <Pagination pagination={pagination} setPagination={setPagination} maxPage={2} />
       </div>
     </div>

@@ -36,10 +36,8 @@ const sortBookingsBy = (orderBy, bookings) => {
       if (dateA > dateB) return 1;
       return 0;
     })
-  } else if (orderBy === 'progress') {
-    return bookings.filter(({ status }) => status === 'In Progress')
   } else {
-    return []
+    return bookings;
   }
 }
 
