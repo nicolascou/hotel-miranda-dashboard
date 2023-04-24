@@ -1,13 +1,10 @@
 import React from 'react'
 
-const Pagination = ({ pagination, setPagination, bookingsLength }) => {
+const Pagination = ({ pagination, setPagination, maxPage }) => {
 
   const handlePagination = (page) => {
-    if (page <= 0 || page > bookingsLength / 7) {
-      return
-    } else {
-      setPagination(page);
-    }
+    if (page <= 0 || page > maxPage) return
+    else setPagination(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   
