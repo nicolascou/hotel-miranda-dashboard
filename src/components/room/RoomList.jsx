@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { roomsJson } from '../../data/rooms';
 import { useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
@@ -24,12 +23,20 @@ const RoomList = () => {
     dispatch(getRoomList());
   }, [])
 
-  // useEffect(() => {
-  //   if (orderBy === 'number') {
+  useEffect(() => {
+    let sortedRooms = [...data];
+    if (orderBy === 'number') {
+      sortedRooms = sortedRooms.sort((a, b) => a.id - b.id);
+    } else if (orderBy === 'status') {
+      sortedRooms = sortedRooms.sort(room => {
+        if (room.status === 'Available') return 1;
+        else return 0;
+      })
+    } else if (orderBy === 'price') {
+      sortedRooms = sortedRooms.sort((a, b) => a.rate - b.rate);
+    }
 
-  //   }
-
-  // }, [orderBy])
+  }, [orderBy])
 
   return (
     <div className='list'>

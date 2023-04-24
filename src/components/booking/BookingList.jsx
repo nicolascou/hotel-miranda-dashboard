@@ -9,11 +9,12 @@ import { deleteBookingById } from '../../features/bookings/deleteBookingById';
 import { reorderBookings } from '../../features/bookings/bookingSlice';
 
 const BookingList = () => {
-  const { data, loading } = useSelector(state => state.booking);
+  const { data } = useSelector(state => state.booking);
   const [sliceBookings, setSliceBookings] = useState([]);
   const [pagination, setPagination] = useState(1);
   const [orderBy, setOrderBy] = useState('order_date');
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,22 +24,6 @@ const BookingList = () => {
   useEffect(() => {
     setSliceBookings(data.slice(0, 7));
   }, [data])
-
-  const navigate = useNavigate();
-
-  const showNotes = (e) => {
-    e.target.nextElementSibling.style.display = 'block';
-    e.stopPropagation();
-  }
-  const hideNotes = (e) => {
-    e.target.style.display = 'none';
-    e.stopPropagation(e);
-  }
-
-  const handleDelete = (e, bookingId) => {
-    dispatch(deleteBookingById(bookingId));
-    e.stopPropagation(e);
-  }
 
   useEffect(() => {
     const sortedBookings = sortBookingsBy(orderBy, [...data]);
@@ -53,6 +38,21 @@ const BookingList = () => {
     // eslint-disable-next-line
   }, [pagination])
 
+
+  const showNotes = (e) => {
+    e.target.nextElementSibling.style.display = 'block';
+    e.stopPropagation();
+  }
+  const hideNotes = (e) => {
+    e.target.style.display = 'none';
+    e.stopPropagation(e);
+  }
+
+  const handleDelete = (e, bookingId) => {
+    dispatch(deleteBookingById(bookingId));
+    e.stopPropagation(e);
+  }
+  
   return (
     <div className='list'>
       <div className='list__top'>
