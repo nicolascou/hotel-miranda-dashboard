@@ -28,11 +28,6 @@ const BookingList = () => {
   }, [data])
 
   useEffect(() => {
-    setShowBookings(bookings.slice(0, 7));
-    // eslint-disable-next-line
-  }, [bookings])
-
-  useEffect(() => {
     const sortedBookings = sortBookingsBy(orderBy, [...data]);
     setBookings(sortedBookings);
     setPagination(1);
@@ -42,9 +37,7 @@ const BookingList = () => {
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*7;
     setShowBookings(bookings.slice(index, index+7));
-
-    // eslint-disable-next-line
-  }, [pagination])
+  }, [pagination, bookings])
 
   const showNotes = (e) => {
     e.target.nextElementSibling.style.display = 'block';

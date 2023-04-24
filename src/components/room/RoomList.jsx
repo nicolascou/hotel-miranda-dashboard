@@ -4,7 +4,6 @@ import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRoomList } from '../../features/rooms/getRoomList';
-import { reorderRooms } from '../../features/rooms/roomSlice';
 import { deleteRoomById } from '../../features/rooms/deleteRoomById';
 import { changeRoomsBy } from '../../utils/changeRoomsBy';
 
@@ -13,7 +12,7 @@ const RoomList = () => {
   const [rooms, setRooms] = useState([]);
   const [showRooms, setShowRooms] = useState([]);
   const [pagination, setPagination] = useState(1);
-  const [changeBy, setChangeBy] = useState('number');
+  const [changeBy, setChangeBy] = useState('all');
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,10 +24,6 @@ const RoomList = () => {
   useEffect(() => {
     setRooms(data);
   }, [data])
-  
-  useEffect(() => {
-    setShowRooms(rooms.slice(0, 10));
-  }, [rooms])
 
   useEffect(() => {
     setRooms(changeRoomsBy(changeBy, [...data]));
@@ -39,8 +34,7 @@ const RoomList = () => {
     let index = pagination === 1 ? 0 : (pagination-1)*10;
     setShowRooms(rooms.slice(index, index+10));
 
-    // eslint-disable-next-line
-  }, [pagination])
+  }, [pagination, rooms])
 
   const handleDelete = (e, roomId) => {
     dispatch(deleteRoomById(roomId));
@@ -105,7 +99,7 @@ const RoomList = () => {
         </ul>
       </div>
       <div className='list__bottom'>
-        <p className='list__bottom__text'>Showing 10 of 20 Data</p>
+        <p className='list__bottom__text'>Showing {showRooms.length} of 20 Data</p>
         <Pagination pagination={pagination} setPagination={setPagination} maxPage={rooms.length / 10 + .99} />
       </div>
     </div>
