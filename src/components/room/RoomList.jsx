@@ -1,18 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { roomsJson } from '../../data/rooms';
 import { useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRoomList } from '../../features/rooms/getRoomList';
 
 const RoomList = () => {
-  //eslint-disable-next-line
-  const [rooms, setRooms] = useState(roomsJson);
-  //eslint-disable-next-line
-  const [sliceRooms, setSliceRooms] = useState(rooms.slice(0, 7));
+  const data = useSelector(state => state.room.data);
+  const [sliceRooms, setSliceRooms] = useState([]);
   const [pagination, setPagination] = useState(1);
   const [orderBy, setOrderBy] = useState('order_date');
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setSliceRooms(data.slice(0, 10));
+
+  }, [data])
+
+  useEffect(() => {
+    dispatch(getRoomList());
+  }, [])
 
   return (
     <div className='list'>
@@ -77,7 +87,7 @@ const RoomList = () => {
       </div>
       <div className='list__bottom'>
         <p className='list__bottom__text'>Showing 7 of 102 Data</p>
-        <Pagination pagination={pagination} setPagination={setPagination} bookingsLength={rooms.length} />
+        <Pagination pagination={pagination} setPagination={setPagination} bookingsLength={data.length} />
       </div>
     </div>
   )
