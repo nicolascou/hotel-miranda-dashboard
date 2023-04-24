@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { getRoomList } from './getRoomList';
+import { deleteRoomById } from './deleteRoomById';
 
 const initialState = {
   data: [],
@@ -20,10 +21,10 @@ export const roomSlice = createSlice({
       state.data = action.payload;
       state.loading = 'fulfilled';
     })
-    // .addCase(deleteRoomById.fulfilled, (state, action) => {
-    //   state.data = action.payload;
-    //   state.loading = 'fulfilled';
-    // });
+    .addCase(deleteRoomById.fulfilled, (state, action) => {
+      state.data = action.payload;
+      state.loading = 'fulfilled';
+    });
   }
 })
 

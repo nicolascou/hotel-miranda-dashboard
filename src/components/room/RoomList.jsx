@@ -5,6 +5,7 @@ import RemoveRow from '../partials/RemoveRow';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRoomList } from '../../features/rooms/getRoomList';
 import { reorderRooms } from '../../features/rooms/roomSlice';
+import { deleteRoomById } from '../../features/rooms/deleteRoomById';
 
 const RoomList = () => {
   const data = useSelector(state => state.room.data);
@@ -47,6 +48,11 @@ const RoomList = () => {
 
     // eslint-disable-next-line
   }, [pagination])
+
+  const handleDelete = (e, roomId) => {
+    dispatch(deleteRoomById(roomId));
+    e.stopPropagation(e);
+  }
 
   return (
     <div className='list'>
@@ -97,7 +103,7 @@ const RoomList = () => {
                     ${room.status === 'Available' ? 'rooms__status--green' : 'rooms__status--red'}`}
                   >{room.status}</p>
                 </div>
-                <RemoveRow id={room.id} />
+                <RemoveRow handleDelete={handleDelete} id={room.id} />
               </div> 
             )})}
         </ul>

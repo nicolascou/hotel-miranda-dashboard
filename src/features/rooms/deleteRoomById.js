@@ -2,11 +2,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const deleteRoomById = createAsyncThunk(
   'booking/deleteRoomByIdStatus',
-  async(bookingId) => {
+  async(roomId, { getState }) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(
-          bookingsJson.filter(({ id }) => id !== bookingId)
+          getState().room.data.filter(({ id }) => id !== roomId)
         );
       }, 200);
     });
