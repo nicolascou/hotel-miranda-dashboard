@@ -87,8 +87,16 @@ const RoomList = () => {
                 <p className='list__table__row__item'>
                   AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi
                 </p>
-                <p className='list__table__row__item weight-500 rooms__price'>{room.rate}$<span className='rooms__night'>/night</span></p>
-                <p className='list__table__row__item weight-500 rooms__offer'>{Math.floor(room.rate / 1.5)}$<span className='rooms__night'>/night</span></p>
+                <p className='list__table__row__item weight-500 rooms__price'>
+                  {room.rate}$
+                  <span className='rooms__night'>/night
+                  </span>
+                </p>
+                <p className='list__table__row__item weight-500 rooms__offer'>
+                  {room.discount / 100 * room.rate || Math.floor(room.rate / 1.5)}$
+                  <span className='rooms__night'>/night
+                  </span>
+                </p>
                 <div className='list__table__row__item'>
                   <p className={`rooms__status 
                     ${room.status === 'Available' ? 'rooms__status--green' : 'rooms__status--red'}`}
