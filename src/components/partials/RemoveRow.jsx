@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 const RemoveRow = ({ handleDelete, id }) => {
   const [showDelete, setShowDelete] = useState(false);
 
-  const openDeleteBtn = (e) => {
-    setShowDelete(true);
+  const toggleDeleteBtn = (e) => {
+    setShowDelete(prev => !prev);
     e.stopPropagation(e);
   }
   const closeDeleteBtn = () => setShowDelete(false);
@@ -19,10 +19,10 @@ const RemoveRow = ({ handleDelete, id }) => {
   }, [])
   
   return (
-    <>
-      <i onClick={(e) => openDeleteBtn(e)} className='fa-solid fa-ellipsis-vertical list__table__row__ellipsis'></i>
+    <div className='list__table__row__ellipsis'>
+      <i onClick={(e) => toggleDeleteBtn(e)} className='fa-solid fa-ellipsis-vertical'></i>
       <p onClick={(e) => handleDelete(e, id)} className={`list__table__row__delete ${showDelete ? '' : 'd-none'}`}>Delete</p>
-    </>
+    </div>
   )
 }
 

@@ -57,7 +57,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 200px;
+      height: 150px;
       border-radius: 20px;
       background-color: #fff;
   
@@ -78,7 +78,7 @@
         height: 20px;
         border-radius: 50%;
         margin: 0 10px;
-        background-color: #6c5ce7;
+        background-color: $primary-color;
         animation: wave 1s ease-in-out infinite;
   
         &:nth-child(2) {
@@ -190,29 +190,31 @@
       &__ellipsis {
         position: absolute;
         right: 30px;
-        width: 30px;
-        height: 30px;
-        font-size: 20px;
-        border-radius: 50%;
-        padding: 20px;
         transition: all .3s;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-        &:hover {
-          background-color: rgba($color: $gray-color, $alpha: .5);
-        }
-        &:active {
-          background-color: $gray-color;
+        i {
+          width: 30px;
+          height: 30px;
+          font-size: 20px;
+          border-radius: 50%;
+          padding: 20px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          
+          &:hover {
+            background-color: rgba($color: $gray-color, $alpha: .5);
+          }
+          &:active {
+            background-color: $gray-color;
+          }
         }
       }
 
       &__delete {
         position: absolute;
-        right: -25px;
-        top: -6px;
+        top: -30px;
+        left: 30px;
         padding: 5px 10px;
         background-color: #ddd;
         border-radius: 8px;
