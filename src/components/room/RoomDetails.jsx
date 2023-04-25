@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useParams } from 'react-router-dom';
 import SwiperButtonNext from '../partials/SwiperButtonNext';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import SwiperButtonPrev from '../partials/SwiperButtonPrev';

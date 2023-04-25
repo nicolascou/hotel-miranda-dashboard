@@ -8,7 +8,7 @@ import { getBookingList } from '../../features/bookings/getBookingList';
 import { deleteBookingById } from '../../features/bookings/deleteBookingById';
 
 const BookingList = () => {
-  const { data } = useSelector(state => state.booking);
+  const { data, loading } = useSelector(state => state.booking);
   const [bookings, setBookings] = useState([]);
   const [showBookings, setShowBookings] = useState([]);
   const [pagination, setPagination] = useState(1);
@@ -80,7 +80,7 @@ const BookingList = () => {
           <p className='list__table__row__item'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
-          {showBookings.map((b) => {
+          { showBookings.map((b) => {
             let statusClassMap = {
               'Check In': 'list__table__row__item__status--green',
               'Check Out': 'list__table__row__item__status--red',
