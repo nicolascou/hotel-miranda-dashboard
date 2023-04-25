@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { createRoom } from '../../features/rooms/createRoom';
 import room3 from '../../img/rooms-3.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const RoomCreate = () => {
   const [offer, setOffer] = useState(false);
@@ -11,6 +12,7 @@ const RoomCreate = () => {
   const [roomDiscount, setRoomDiscount] = useState(10);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,11 +21,12 @@ const RoomCreate = () => {
       "bed_type": roomType,
       "photo": room3,
       "rate": roomPrice,
-      "discount": roomDiscount,
+      "offer": roomPrice * (1 - roomDiscount / 100),
       "amenities": ["Wifi", "Towels", "LED TV"],
       "status": "Available"
     }
     dispatch(createRoom(room))
+    navigate('/rooms');
   }
   
   return (

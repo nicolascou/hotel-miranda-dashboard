@@ -6,7 +6,6 @@ export const createRoom = createAsyncThunk(
     return new Promise((resolve) => {
       setTimeout(() => {
         room.id = getState().room.data.length + 1;
-        console.log(room);
         resolve(room);
       }, 200);
     });

@@ -93,7 +93,7 @@ const RoomList = () => {
                   </span>
                 </p>
                 <p className='list__table__row__item weight-500 rooms__offer'>
-                  {room.discount / 100 * room.rate || Math.floor(room.rate / 1.5)}$
+                  {room.offer || Math.floor(room.rate / 1.5)}$
                   <span className='rooms__night'>/night
                   </span>
                 </p>
