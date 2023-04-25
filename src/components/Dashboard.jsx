@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Card, CardActive, CardImg, CardImgActive } from './layout/styled';
 import Calendar from 'react-calendar';
+import { useDispatch } from 'react-redux';
+import { getRoomList } from '../features/rooms/getRoomList';
 
 import room1 from '../img/rooms-1.jpg';
 import room2 from '../img/rooms-2.jpg';
 import room3 from '../img/rooms-3.jpg';
 
 const Dashboard = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getRoomList());
+  })
+  
   return (
     <div className='dashboard'>
       <div className='dashboard__kpis'>

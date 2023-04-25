@@ -18,7 +18,9 @@ const RoomList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getRoomList());
+    if (data.length === 0) {
+      dispatch(getRoomList());
+    }
     // eslint-disable-next-line
   }, [])
 
