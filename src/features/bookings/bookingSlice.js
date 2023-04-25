@@ -4,7 +4,7 @@ import { deleteBookingById } from './deleteBookingById';
 
 const initialState = {
   data: [],
-  loading: 'idle'
+  status: 'idle'
 }
 
 export const bookingSlice = createSlice({
@@ -13,13 +13,19 @@ export const bookingSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+    .addCase(getBookingList.pending, (state, action) => {
+      state.status = 'pending';
+    })
     .addCase(getBookingList.fulfilled, (state, action) => {
       state.data = action.payload;
-      state.loading = 'fulfilled';
+      state.status = 'fulfilled';
+    })
+    .addCase(deleteBookingById.pending, (state, action) => {
+      state.status = 'pending';
     })
     .addCase(deleteBookingById.fulfilled, (state, action) => {
       state.data = action.payload;
-      state.loading = 'fulfilled';
+      state.status = 'fulfilled';
     });
   }
 })
