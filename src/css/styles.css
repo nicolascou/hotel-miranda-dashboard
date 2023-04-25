@@ -620,7 +620,6 @@
   width: 100%;
   display: flex;
   align-items: center;
-  height: 730px;
 }
 .booking-details__row {
   display: flex;
@@ -629,7 +628,7 @@
 .booking-details__left {
   width: 50%;
   background-color: white;
-  min-height: 100%;
+  min-height: 730px;
   padding: 40px;
   border-radius: 20px 0 0 20px;
 }
@@ -763,7 +762,7 @@
 }
 .booking-details__right {
   width: 50%;
-  height: 100%;
+  min-width: 730px;
   border-radius: 0 20px 20px 0;
   overflow: hidden;
   position: relative;

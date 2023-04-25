@@ -1,5 +1,4 @@
 import React from 'react'
-import allBookings from '../../data/bookings.json';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useParams } from 'react-router-dom';
 import SwiperButtonNext from '../partials/SwiperButtonNext';
@@ -7,10 +6,16 @@ import SwiperButtonNext from '../partials/SwiperButtonNext';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import SwiperButtonPrev from '../partials/SwiperButtonPrev';
+import { useSelector } from 'react-redux';
 
 const BookingDetails = () => {
   const params = useParams();
-  const booking = allBookings.find(b => b.id === Number(params.id));
+  const data = useSelector(state => state.booking.data);
+  const booking = data.find(b => b.id === Number(params.id));
+
+  if (!booking) {
+    return <h2>This booking does not exist</h2>
+  }
   
   let statusTagClass;
   if (booking.status === 'Check In') {
@@ -19,10 +24,6 @@ const BookingDetails = () => {
     statusTagClass = 'booking-details__right__status-tag--red';
   } else if (booking.status === 'In Progress') {
     statusTagClass = 'booking-details__right__status-tag--yellow';
-  }
-
-  if (!booking) {
-    return <h2>This booking does not exist</h2>
   }
   
   return (
