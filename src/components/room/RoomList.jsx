@@ -19,21 +19,17 @@ const RoomList = () => {
 
   useEffect(() => {
     dispatch(getRoomList());
+    // eslint-disable-next-line
   }, [])
-  
-  useEffect(() => {
-    setRooms(data);
-  }, [data])
 
   useEffect(() => {
     setRooms(changeRoomsBy(changeBy, [...data]));
     setPagination(1);
-  }, [changeBy])
+  }, [data, changeBy])
 
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*10;
     setShowRooms(rooms.slice(index, index+10));
-
   }, [pagination, rooms])
 
   const handleDelete = (e, roomId) => {

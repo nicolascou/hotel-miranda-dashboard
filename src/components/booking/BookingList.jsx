@@ -19,20 +19,14 @@ const BookingList = () => {
 
   useEffect(() => {
     dispatch(getBookingList());
+
     // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
-    setBookings(data);
-    // eslint-disable-next-line
-  }, [data])
-
-  useEffect(() => {
-    const sortedBookings = sortBookingsBy(orderBy, [...data]);
-    setBookings(sortedBookings);
+    setBookings(sortBookingsBy(orderBy, [...data]));
     setPagination(1);
-    // eslint-disable-next-line
-  }, [orderBy])
+  }, [data, orderBy])
 
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*7;
