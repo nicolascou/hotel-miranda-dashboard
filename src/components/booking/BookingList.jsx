@@ -18,12 +18,9 @@ const BookingList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBookingList());
-
-    // eslint-disable-next-line
-  }, [])
-
-  useEffect(() => {
+    if (data.length === 0) {
+      dispatch(getBookingList());
+    }
     setBookings(sortBookingsBy(orderBy, [...data]));
     setPagination(1);
   }, [data, orderBy])

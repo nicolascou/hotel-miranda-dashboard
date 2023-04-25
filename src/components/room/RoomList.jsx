@@ -21,10 +21,6 @@ const RoomList = () => {
     if (data.length === 0) {
       dispatch(getRoomList());
     }
-    // eslint-disable-next-line
-  }, [])
-
-  useEffect(() => {
     setRooms(changeRoomsBy(changeBy, [...data]));
     setPagination(1);
   }, [data, changeBy])
