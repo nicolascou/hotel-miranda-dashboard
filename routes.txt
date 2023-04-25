@@ -1,9 +1,7 @@
 url('/', dashboard or login);
 
 url('/bookings/', bookings list);
-url('/bookings/create', create booking);
 url('/bookings/:id', detalles booking);
-url('/bookings/update/:id', edit booking);
 
 url('/rooms/', rooms list);
 url('/rooms/create', create booking);

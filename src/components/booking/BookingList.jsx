@@ -23,11 +23,12 @@ const BookingList = () => {
     }
     setBookings(sortBookingsBy(orderBy, [...data]));
     setPagination(1);
+    // eslint-disable-next-line
   }, [data, orderBy])
 
   useEffect(() => {
-    let index = pagination === 1 ? 0 : (pagination-1)*7;
-    setShowBookings(bookings.slice(index, index+7));
+    let index = pagination === 1 ? 0 : (pagination-1)*10;
+    setShowBookings(bookings.slice(index, index+10));
   }, [pagination, bookings])
 
   const showNotes = (e) => {
@@ -127,7 +128,7 @@ const BookingList = () => {
       </div>
       <div className='list__bottom'>
         <p className='list__bottom__text'>Showing {showBookings.length} of {data.length} Data</p>
-        <Pagination pagination={pagination} setPagination={setPagination} maxPage={bookings.length / 7 + 1} />
+        <Pagination pagination={pagination} setPagination={setPagination} maxPage={bookings.length / 10 + 1} />
       </div>
     </div>
   )
