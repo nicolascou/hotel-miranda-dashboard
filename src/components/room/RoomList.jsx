@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
 import { useDispatch, useSelector } from 'react-redux';
@@ -51,11 +51,14 @@ const RoomList = () => {
             onClick={() => setChangeBy('booked')}
           >Booked</li>
         </ul>
-        <select className='list__top__select' value={changeBy} onChange={(e) => setChangeBy(e.target.value)}>
-          <option className='list__top__select__text' value="number">Room number</option>
-          <option className='list__top__select__text' value="status">Status</option>
-          <option className='list__top__select__text' value="price">Price</option>
-        </select>
+        <div className='d-flex-center'>
+          <Link to='/rooms/create' className='rooms__new-room'>New Room +</Link>
+          <select className='list__top__select' value={changeBy} onChange={(e) => setChangeBy(e.target.value)}>
+            <option className='list__top__select__text' value="number">Room number</option>
+            <option className='list__top__select__text' value="status">Status</option>
+            <option className='list__top__select__text' value="price">Price</option>
+          </select>
+        </div>
       </div>
       <div className='list__table'>
         <div className='list__table__row list__table__row--first'>
