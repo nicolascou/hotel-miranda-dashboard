@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useParams } from 'react-router-dom';
 import SwiperButtonNext from '../partials/SwiperButtonNext';
@@ -6,24 +6,32 @@ import SwiperButtonNext from '../partials/SwiperButtonNext';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import SwiperButtonPrev from '../partials/SwiperButtonPrev';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBookingList } from '../../features/bookings/getBookingList';
 
 const BookingDetails = () => {
   const params = useParams();
   const data = useSelector(state => state.booking.data);
   const booking = data.find(b => b.id === Number(params.id));
 
-  if (!booking) {
-    return <h2>This booking does not exist</h2>
-  }
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (data.length === 0) {
+      dispatch(getBookingList());
+    }
+  }, [])
   
   let statusTagClass;
-  if (booking.status === 'Check In') {
-    statusTagClass = 'booking-details__right__status-tag--green';
-  } else if (booking.status === 'Check Out') {
-    statusTagClass = 'booking-details__right__status-tag--red';
-  } else if (booking.status === 'In Progress') {
-    statusTagClass = 'booking-details__right__status-tag--yellow';
+  if (!booking) {
+    return <h2>This booking does not exist</h2>
+  } else {
+    if (booking.status === 'Check In') {
+      statusTagClass = 'booking-details__right__status-tag--green';
+    } else if (booking.status === 'Check Out') {
+      statusTagClass = 'booking-details__right__status-tag--red';
+    } else if (booking.status === 'In Progress') {
+      statusTagClass = 'booking-details__right__status-tag--yellow';
+    }
   }
   
   return (
