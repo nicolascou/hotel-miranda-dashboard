@@ -8,7 +8,7 @@ import { deleteRoomById } from '../../features/rooms/deleteRoomById';
 import { changeRoomsBy } from '../../utils/changeRoomsBy';
 
 const RoomList = () => {
-  const data = useSelector(state => state.room.data);
+  const { data, loading } = useSelector(state => state.room);
   const [rooms, setRooms] = useState([]);
   const [showRooms, setShowRooms] = useState([]);
   const [pagination, setPagination] = useState(1);
@@ -69,6 +69,15 @@ const RoomList = () => {
           <p className='list__table__row__item weight-700'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
+          { loading && 
+            <div className='list__table__loading'>
+              <div className='list__table__loading__ball'></div>
+              <div className='list__table__loading__ball'></div>
+              <div className='list__table__loading__ball'></div>
+              <div className='list__table__loading__ball'></div>
+              <div className='list__table__loading__ball'></div>
+            </div>
+          }
           {showRooms.map((room) => {
             return (
               <div key={room.id} onClick={() => navigate(`/rooms/${room.id}`)} className='list__table__row'>

@@ -13,14 +13,14 @@ export const bookingSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-    .addCase(getBookingList.pending, (state, action) => {
+    .addCase(getBookingList.pending, (state) => {
       state.loading = true;
     })
     .addCase(getBookingList.fulfilled, (state, action) => {
       state.data = action.payload;
       state.loading = false;
     })
-    .addCase(deleteBookingById.pending, (state, action) => {
+    .addCase(deleteBookingById.pending, (state) => {
       state.loading = true;
     })
     .addCase(deleteBookingById.fulfilled, (state, action) => {

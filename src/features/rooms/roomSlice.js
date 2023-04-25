@@ -14,21 +14,21 @@ export const roomSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-    .addCase(getRoomList.pending, (state, action) => {
+    .addCase(getRoomList.pending, (state) => {
       state.loading = true;
     })
     .addCase(getRoomList.fulfilled, (state, action) => {
       state.data = action.payload;
       state.loading = false;
     })
-    .addCase(deleteRoomById.pending, (state, action) => {
+    .addCase(deleteRoomById.pending, (state) => {
       state.loading = true;
     })
     .addCase(deleteRoomById.fulfilled, (state, action) => {
       state.data = action.payload;
       state.loading = false;
     })
-    .addCase(createRoom.pending, (state, action) => {
+    .addCase(createRoom.pending, (state) => {
       state.loading = true;
     })
     .addCase(createRoom.fulfilled, (state, action) => {

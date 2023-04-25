@@ -80,6 +80,15 @@ const BookingList = () => {
           <p className='list__table__row__item'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
+          { loading &&
+            <div className='list__table__loading'>
+              <div className='list__table__loading__ball'></div>
+              <div className='list__table__loading__ball'></div>
+              <div className='list__table__loading__ball'></div>
+              <div className='list__table__loading__ball'></div>
+              <div className='list__table__loading__ball'></div>
+            </div>
+          }
           { showBookings.map((b) => {
             let statusClassMap = {
               'Check In': 'list__table__row__item__status--green',
