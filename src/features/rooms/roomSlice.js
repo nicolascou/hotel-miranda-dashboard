@@ -16,11 +16,9 @@ export const roomSlice = createSlice({
     builder
     .addCase(getRoomList.fulfilled, (state, action) => {
       state.data = action.payload;
-      state.loading = 'fulfilled';
     })
     .addCase(deleteRoomById.fulfilled, (state, action) => {
       state.data = action.payload;
-      state.loading = 'fulfilled';
     })
     .addCase(createRoom.fulfilled, (state, action) => {
       state.data.push(action.payload);

@@ -1,25 +1,43 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { createRoom } from '../../features/rooms/createRoom';
+import room3 from '../../img/rooms-3.jpg';
 
 const RoomCreate = () => {
   const [offer, setOffer] = useState(false);
+  const [roomName, setRoomName] = useState('default');
+  const [roomType, setRoomType] = useState("Single Bed");
+  const [roomPrice, setRoomPrice] = useState(100);
+  const [roomDiscount, setRoomDiscount] = useState(10);
 
+  const dispatch = useDispatch();
+  
   const handleSubmit = (e) => {
-    console.log('hola')
     e.preventDefault();
+    const room = {
+      "name": roomName,
+      "bed_type": roomType,
+      "photo": room3,
+      "rate": roomPrice,
+      "discount": roomDiscount,
+      "amenities": ["Wifi", "Towels", "LED TV"],
+      "status": "Available"
+    }
+    dispatch(createRoom(room))
   }
   
   return (
     <div className='room-create'>
       <h2 className='room-create__title'>Add New Room</h2>
       <form className='room-create__form' onSubmit={(e) => handleSubmit(e)}>
-        <select>
-          <option value="single">Single Bed</option>
-          <option value="double">Double Bed</option>
-          <option value="lux">Double Luxury</option>
+        <select value={roomType} onChange={(e) => setRoomType(e.target.value)}>
+          <option value="Single Bed">Single Bed</option>
+          <option value="Double Bed">Double Bed</option>
+          <option value="Double Luxury">Double Luxury</option>
         </select>
         <div>
-          <label htmlFor="number">Room number</label>
-          <input type="number" id='number' />
+          <label htmlFor="name">Room name</label>
+          <input type="name" id='name' value={roomName} onChange={(e) => setRoomName(e.target.value)} />
         </div>
         <div>
           <label htmlFor="description">Description</label>
@@ -35,12 +53,12 @@ const RoomCreate = () => {
           offer &&
           <div>
             <label htmlFor="discount">Discount</label>
-            <input type="number" id='discount' />
+            <input type="number" id='discount' value={roomDiscount} onChange={(e) => setRoomDiscount(e.target.value)} />
           </div>
         }
         <div>
           <label htmlFor="price">Price</label>
-          <input type="number" />
+          <input type="number" value={roomPrice} onChange={(e) => setRoomPrice(e.target.value)} />
         </div>
         <div>
           <label htmlFor="cancel">Cancellation Policy</label>
