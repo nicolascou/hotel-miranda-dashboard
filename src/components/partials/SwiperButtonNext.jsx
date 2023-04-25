@@ -5,7 +5,7 @@ const SwiperButtonNext = () => {
   const swiper = useSwiper();
   
   return (
-    <button className='booking-details__right__btn booking-details__right__btn-next' 
+    <button className='details__right__btn details__right__btn-next' 
       onClick={() => swiper.slideNext()}
     >
       <i className='fa-solid fa-arrow-right'></i>

@@ -5,7 +5,7 @@ const SwiperButtonPrev = () => {
   const swiper = useSwiper();
   
   return (
-    <button className='booking-details__right__btn booking-details__right__btn-prev' 
+    <button className='details__right__btn details__right__btn-prev' 
       onClick={() => swiper.slidePrev()}
     >
       <i className='fa-solid fa-arrow-left'></i>
