@@ -35,43 +35,30 @@ const RoomDetails = () => {
       <div className='details__left'>
         <div className='details__row'>
           <div className='details__left__photo'>
-            <i className='fa-solid fa-user'></i>
+            <i className='fa-solid fa-bed'></i>
           </div>
           <div className='details__left__main'>
-            <h2>{room.guest}</h2>
-            <p>ID {room.guest_id}</p>
-            <div style={{ display: 'flex' }}>
+            <h2>{room.name}</h2>
+            <p className='details__left__main__id'>ID #{room.id.toString().padStart(2, '0')}</p>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
               <button className='details__left__main__phone-btn'>
-                <i className='fa-solid fa-phone'></i>
+                <i className='fa-solid fa-edit'></i>
               </button>
-              <button className='details__left__main__message-btn'>
-                <i className='fa-solid fa-message'></i>
-                Send message
-              </button>
+              <p className='rooms__big-text'>{room.bed_type}</p>
             </div>
           </div>
         </div>
         <div className='details__row'>
-          <div className='details__left__check'>
-            <p>Check In</p>
-            <p>{room.check_in}</p>
+          <div className='details__left__room'>
+            <p>Price</p>
+            <p>${room.rate}<span> /night</span></p>
           </div>
-          <div className='details__left__check'>
-            <p>Check Out</p>
-            <p>{room.check_out}</p>
+          <div className='details__left__room'>
+            <p>Offer</p>
+            <p>${room.offer || Math.floor(room.rate / 1.5)}<span> /night</span></p>
           </div>
         </div>
         <div className='details__left__bar'></div>
-        <div className='details__row'>
-          <div className='details__left__room'>
-            <p>Room Info</p>
-            <p>{room.room_type}</p>
-          </div>
-          <div className='details__left__room'>
-            <p>Price</p>
-            <p>$145<span> /night</span></p>
-          </div>
-        </div>
         <p className='details__left__text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
         <p className='details__left__facilities'>Facilities</p>
         <div className='details__left__amenities'>

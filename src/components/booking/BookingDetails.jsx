@@ -49,7 +49,7 @@ const BookingDetails = () => {
           </div>
           <div className='details__left__main'>
             <h2>{booking.guest}</h2>
-            <p>ID {booking.guest_id}</p>
+            <p className='details__left__main__id'>ID {booking.guest_id}</p>
             <div style={{ display: 'flex' }}>
               <button className='details__left__main__phone-btn'>
                 <i className='fa-solid fa-phone'></i>

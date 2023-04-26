@@ -659,7 +659,7 @@
   height: 28px;
   font-weight: 600;
 }
-.details__left__main p {
+.details__left__main__id {
   font-size: 14px;
   font-weight: 300;
   color: #135846;
@@ -901,6 +901,10 @@
   border-radius: 8px;
   padding: 9px 20px;
   margin-right: 20px;
+}
+.rooms__big-text {
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .room-create {
