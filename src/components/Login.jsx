@@ -1,17 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import hotelIcon from '../img/icons/hotel.svg';
 import { Button } from './layout/styled';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
-const Login = ({ setAuth }) => {
+const Login = () => {
   const [userInput, setUserInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const navigate = useNavigate();
+  const { actions } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (userInput === 'hola' && passwordInput === '1234') {
-      setAuth(true);
+    if (userInput === 'nico' && passwordInput === '1234') {
+      actions.login(userInput, 'fdsa');
       navigate('/');
     }
   }
@@ -31,7 +33,7 @@ const Login = ({ setAuth }) => {
             <label htmlFor="user">User:</label>
             <input className='login__card__form__input' 
               value={userInput} onChange={e => setUserInput(e.target.value)} 
-              type="text" name="user" id="user" placeholder='hola'
+              type="text" name="user" id="user" placeholder='nico'
             />
           </div> 
           <div className='login__card__form__box'>

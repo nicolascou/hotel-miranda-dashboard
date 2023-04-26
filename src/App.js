@@ -86,7 +86,7 @@ function App() {
   
   return (
     <>
-      <UserContext.Provider value={{ user, actions}}>
+      <UserContext.Provider value={{ user, actions }}>
         <RouterProvider router={router} />
       </UserContext.Provider>
     </>

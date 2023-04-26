@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import hotelIcon from '../../img/icons/hotel.svg';
 import { Button } from './styled';
 import profilePic from '../../img/profile-pic.jpg';
 import { Link, useLocation } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 const Sidebar = ({ hideSidebar }) => { 
   const location = useLocation();
   const route = location.pathname.split('/')[1];
+  const { user } = useContext(UserContext);
   
   return (
     <>
@@ -43,8 +45,8 @@ const Sidebar = ({ hideSidebar }) => {
           </div>
           <div className='sidebar__card'>
             <img className='sidebar__card__img' src={profilePic} alt="" />
-            <p className='sidebar__card__name'>Nicolás Cousillas</p>
-            <p className='sidebar__card__mail'>nicolascousillas1@gmail.com</p>
+            <p className='sidebar__card__name'>{user.username}</p>
+            <p className='sidebar__card__mail'>{user.email}</p>
             <Button className='sidebar__card__btn'>Edit</Button>
           </div>
           <div className='sidebar__rights'>

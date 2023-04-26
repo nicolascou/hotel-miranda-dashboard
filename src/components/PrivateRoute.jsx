@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Navigate } from 'react-router-dom';
 import Sidebar from './layout/Sidebar';
 import Header from './layout/Header';
+import { UserContext } from '../context/UserContext';
 
 const PrivateRoute = ({ auth, children }) => {
   const [hideSidebar, setHideSidebar] = useState(false);
+  const { user } = useContext(UserContext);
 
-  if (!auth) {
+  if (!user.isAuthenticated) {
     return <Navigate to="/login" replace={true} />
   } 
   

@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import profilePic from '../../img/profile-pic.jpg';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 const Header = ({ hideSidebar, setHideSidebar }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { actions } = useContext(UserContext);
   
   const handleLogout = () => {
-    localStorage.removeItem('auth-miranda');
+    actions.logout();
     navigate('/login');
   }
   
