@@ -6,6 +6,7 @@ import sortBookingsBy from '../../utils/sortBookingsBy';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBookingList } from '../../features/bookings/getBookingList';
 import { deleteBookingById } from '../../features/bookings/deleteBookingById';
+import Loading from '../partials/Loading';
 
 const BookingList = () => {
   const { data, loading } = useSelector(state => state.booking);
@@ -80,15 +81,7 @@ const BookingList = () => {
           <p className='list__table__row__item'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
-          { loading &&
-            <div className='list__table__loading'>
-              <div className='list__table__loading__ball'></div>
-              <div className='list__table__loading__ball'></div>
-              <div className='list__table__loading__ball'></div>
-              <div className='list__table__loading__ball'></div>
-              <div className='list__table__loading__ball'></div>
-            </div>
-          }
+          { loading && <Loading /> }
           { showBookings.map((b) => {
             let statusClassMap = {
               'Check In': 'list__table__row__item__status--green',

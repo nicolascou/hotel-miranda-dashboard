@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getRoomList } from '../../features/rooms/getRoomList';
 import { deleteRoomById } from '../../features/rooms/deleteRoomById';
 import { changeRoomsBy } from '../../utils/changeRoomsBy';
+import Loading from '../partials/Loading';
 
 const RoomList = () => {
   const { data, loading } = useSelector(state => state.room);
@@ -23,6 +24,7 @@ const RoomList = () => {
     }
     setRooms(changeRoomsBy(changeBy, [...data]));
     setPagination(1);
+    // eslint-disable-next-line
   }, [data, changeBy])
 
   useEffect(() => {
@@ -69,15 +71,7 @@ const RoomList = () => {
           <p className='list__table__row__item weight-700'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
-          { loading && 
-            <div className='list__table__loading'>
-              <div className='list__table__loading__ball'></div>
-              <div className='list__table__loading__ball'></div>
-              <div className='list__table__loading__ball'></div>
-              <div className='list__table__loading__ball'></div>
-              <div className='list__table__loading__ball'></div>
-            </div>
-          }
+          { loading && <Loading /> }
           {showRooms.map((room) => {
             return (
               <div key={room.id} onClick={() => navigate(`/rooms/${room.id}`)} className='list__table__row'>

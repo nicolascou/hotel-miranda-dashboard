@@ -6,14 +6,23 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import SwiperButtonPrev from '../partials/SwiperButtonPrev';
 import { useDispatch, useSelector } from 'react-redux';
+import { getRoomList } from '../../features/rooms/getRoomList';
 
 const RoomDetails = () => {
   const params = useParams();
   const data = useSelector(state => state.room.data);
   const room = data.find(b => b.id === Number(params.id));
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (data.length === 0) {
+      dispatch(getRoomList());
+    }
+    // eslint-disable-next-line
+  }, [])
+
   if (!room) {
-    return <h2>This booking does not exist</h2>
+    return <h2>This room does not exist</h2>
   }
   
   return (
