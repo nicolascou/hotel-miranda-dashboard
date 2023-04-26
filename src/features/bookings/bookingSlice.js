@@ -4,7 +4,8 @@ import { deleteBookingById } from './deleteBookingById';
 
 const initialState = {
   data: [],
-  loading: false
+  loading: false,
+  error: null
 }
 
 export const bookingSlice = createSlice({

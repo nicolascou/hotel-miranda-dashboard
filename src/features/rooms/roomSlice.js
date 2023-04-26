@@ -5,7 +5,8 @@ import { createRoom } from './createRoom';
 
 const initialState = {
   data: [],
-  loading: false
+  loading: false,
+  error: null
 }
 
 export const roomSlice = createSlice({
