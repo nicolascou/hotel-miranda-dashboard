@@ -20,25 +20,22 @@ const BookingDetails = () => {
     if (data.length === 0) {
       dispatch(getBookingList());
     }
+    // eslint-disable-next-line
   }, [])
   
-  let statusTagClass;
+  const statusTagClassMap = {
+    'Check In': 'details__right__status-tag--green',
+    'Check Out': 'details__right__status-tag--red',
+    'In Progress': 'details__right__status-tag--yellow'
+  };
+
   if (!booking) {
     return (
       <>
         { loading ? <Loading /> : <h2>This booking does not exist</h2> }
       </>
     )
-  } else {
-    if (booking.status === 'Check In') {
-      statusTagClass = 'details__right__status-tag--green';
-    } else if (booking.status === 'Check Out') {
-      statusTagClass = 'details__right__status-tag--red';
-    } else if (booking.status === 'In Progress') {
-      statusTagClass = 'details__right__status-tag--yellow';
-    }
-  }
-  console.log(loading)
+  } 
   
   return (
     <div className='details'>
@@ -111,7 +108,7 @@ const BookingDetails = () => {
         </div>
       </div>  
       <div className='details__right'>
-        <div className={`details__right__status-tag ${statusTagClass}`}>
+        <div className={`details__right__status-tag ${statusTagClassMap[booking.status]}`}>
           <p>{booking.status}</p>
         </div>
         <Swiper
