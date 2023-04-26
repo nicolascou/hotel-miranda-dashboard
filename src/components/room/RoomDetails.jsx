@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import SwiperButtonPrev from '../partials/SwiperButtonPrev';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRoomList } from '../../features/rooms/getRoomList';
+import { getRoomList } from '../../features/rooms/roomThunks';
 import Loading from '../partials/Loading';
 
 const RoomDetails = () => {

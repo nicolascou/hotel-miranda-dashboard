@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { createRoom } from '../../features/rooms/createRoom';
+import { createRoom } from '../../features/rooms/roomThunks';
 import room3 from '../../img/rooms-3.jpg';
 import { useNavigate } from 'react-router-dom';
 

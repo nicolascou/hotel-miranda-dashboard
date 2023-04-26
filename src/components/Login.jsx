@@ -7,8 +7,8 @@ import { UserContext } from '../context/UserContext';
 import { getUserList } from '../features/users/userThunks';
 
 const Login = () => {
-  const [userInput, setUserInput] = useState('');
-  const [passwordInput, setPasswordInput] = useState('');
+  const [userInput, setUserInput] = useState('nico');
+  const [passwordInput, setPasswordInput] = useState('1234');
   const navigate = useNavigate();
   const { actions } = useContext(UserContext);
   const { data, loading } = useSelector(state => state.user);

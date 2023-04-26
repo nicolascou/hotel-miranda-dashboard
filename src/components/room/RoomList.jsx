@@ -3,8 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRoomList } from '../../features/rooms/getRoomList';
-import { deleteRoomById } from '../../features/rooms/deleteRoomById';
+import { getRoomList, deleteRoomById } from '../../features/rooms/roomThunks';
 import { changeRoomsBy } from '../../utils/changeRoomsBy';
 import Loading from '../partials/Loading';
 
