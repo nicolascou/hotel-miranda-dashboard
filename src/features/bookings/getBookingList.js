@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import bookingsJson from '../../data/bookings.json';
 
 export const getBookingList = createAsyncThunk(
-  'bookings/getBookingListStatus',
+  'booking/getBookingListStatus',
   async() => {
     return new Promise((resolve) => {
       setTimeout(() => {

@@ -21,7 +21,7 @@ import ContactList from './components/contact/ContactList';
 import ContactDetails from './components/contact/ContactDetails';
 
 import PrivateRoute from './components/PrivateRoute';
-import { userReducer } from './context/userReducer';
+import { userContextReducer } from './context/userContextReducer';
 import { UserContext } from './context/UserContext';
 
 const userInitialState = {
@@ -32,7 +32,7 @@ const userInitialState = {
 
 function App() {
   const [auth, setAuth] = useState(localStorage.getItem('auth-miranda') === '1');
-  const [user, dispatch] = useReducer(userReducer, userInitialState);
+  const [user, dispatch] = useReducer(userContextReducer, userInitialState);
 
   const BASENAME = '/hotel-miranda-dashboard'
 

@@ -1,7 +1,7 @@
 import nicoPhoto from '../img/profile-pic.jpg' 
 
 
-export const users = [
+export const usersJson = [
     {
         "id": 1,
         "full_name": "Nicolás Cousillas",
