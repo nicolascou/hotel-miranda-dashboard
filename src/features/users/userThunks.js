@@ -64,19 +64,3 @@ export const updateUser = createAsyncThunk(
     }
   }
 )
-
-export const findUserByUserName = createAsyncThunk(
-  'user/findUserByUsernameStatus',
-  async(name, { getState }) => {
-    try {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          const user = getState().user.data.find(({ username }) => username === name);
-          resolve(user);
-        }, 200);
-      });
-    } catch (error) {
-      return error;
-    }
-  }
-)
