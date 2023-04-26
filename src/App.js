@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Login from './components/Login';
@@ -21,10 +21,18 @@ import ContactList from './components/contact/ContactList';
 import ContactDetails from './components/contact/ContactDetails';
 
 import PrivateRoute from './components/PrivateRoute';
+import { userReducer } from './context/userReducer';
+import { UserContext } from './context/UserContext';
+
+const userInitialState = {
+  isAuthenticated: false,
+  username: '',
+  email: ''
+}
 
 function App() {
-
   const [auth, setAuth] = useState(localStorage.getItem('auth-miranda') === '1');
+  const [user, dispatch] = useReducer(userReducer, userInitialState);
 
   const BASENAME = '/hotel-miranda-dashboard'
 
@@ -63,10 +71,24 @@ function App() {
       localStorage.setItem('auth-miranda', '1');
     }
   }, [auth])
+
+  const actions = {
+    login: function(username, email) {
+      dispatch({ type: 'login', payload: {username, email} });
+    },
+    logout: function() {
+      dispatch({ type: 'logout'});
+    },
+    updateUser: function(username, email) {
+      dispatch({ type: 'updateUser', payload: {username, email} });
+    }
+  }
   
   return (
     <>
-      <RouterProvider router={router} />
+      <UserContext.Provider value={{ user, actions}}>
+        <RouterProvider router={router} />
+      </UserContext.Provider>
     </>
   );
 }
