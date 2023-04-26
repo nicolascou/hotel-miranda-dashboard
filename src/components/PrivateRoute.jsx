@@ -4,7 +4,7 @@ import Sidebar from './layout/Sidebar';
 import Header from './layout/Header';
 import { UserContext } from '../context/UserContext';
 
-const PrivateRoute = ({ auth, children }) => {
+const PrivateRoute = ({ children }) => {
   const [hideSidebar, setHideSidebar] = useState(false);
   const { user } = useContext(UserContext);
 

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import profilePic from '../../img/profile-pic.jpg';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
+import profilePic from '../../img/profile-pic.jpg';
 
 const Header = ({ hideSidebar, setHideSidebar }) => {
   const location = useLocation();
@@ -12,6 +12,7 @@ const Header = ({ hideSidebar, setHideSidebar }) => {
     actions.logout();
     navigate('/login');
   }
+  
   
   return (
     <header className='header'>

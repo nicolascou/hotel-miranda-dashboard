@@ -31,46 +31,39 @@ const userInitialState = {
 }
 
 function App() {
-  const [auth, setAuth] = useState(localStorage.getItem('auth-miranda') === '1');
   const [user, dispatch] = useReducer(userContextReducer, userInitialState);
 
   const BASENAME = '/hotel-miranda-dashboard'
 
   const router = createBrowserRouter([
-    { path: '/login', element: <Login setAuth={setAuth} /> },
+    { path: '/login', element: <Login /> },
     { path: '/', 
-      element: <PrivateRoute auth={auth}><Dashboard /></PrivateRoute> },
+      element: <PrivateRoute><Dashboard /></PrivateRoute> },
     { path: '/bookings', 
-      element: <PrivateRoute auth={auth}><BookingList /></PrivateRoute> },
+      element: <PrivateRoute><BookingList /></PrivateRoute> },
     { path: '/bookings/:id', 
-      element: <PrivateRoute auth={auth}><BookingDetails /></PrivateRoute> },
+      element: <PrivateRoute><BookingDetails /></PrivateRoute> },
     { path: '/rooms/', 
-      element: <PrivateRoute auth={auth}><RoomList /></PrivateRoute> },
+      element: <PrivateRoute><RoomList /></PrivateRoute> },
     { path: '/rooms/create', 
-      element: <PrivateRoute auth={auth}><RoomCreate /></PrivateRoute> },
+      element: <PrivateRoute><RoomCreate /></PrivateRoute> },
     { path: '/rooms/:id', 
-      element: <PrivateRoute auth={auth}><RoomDetails /></PrivateRoute> },
+      element: <PrivateRoute><RoomDetails /></PrivateRoute> },
     { path: '/rooms/update/:id', 
-      element: <PrivateRoute auth={auth}><RoomUpdate /></PrivateRoute> },
+      element: <PrivateRoute><RoomUpdate /></PrivateRoute> },
     { path: '/users/', 
-      element: <PrivateRoute auth={auth}><UserList /></PrivateRoute> },
+      element: <PrivateRoute><UserList /></PrivateRoute> },
     { path: '/users/create', 
-      element: <PrivateRoute auth={auth}><UserCreate /></PrivateRoute> },
+      element: <PrivateRoute><UserCreate /></PrivateRoute> },
     { path: '/users/:id', 
-      element: <PrivateRoute auth={auth}><UserDetails /></PrivateRoute> },
+      element: <PrivateRoute><UserDetails /></PrivateRoute> },
     { path: '/users/update/:id', 
-      element: <PrivateRoute auth={auth}><UserUpdate /></PrivateRoute> },
+      element: <PrivateRoute><UserUpdate /></PrivateRoute> },
     { path: '/contact/', 
-      element: <PrivateRoute auth={auth}><ContactList /></PrivateRoute> },
+      element: <PrivateRoute><ContactList /></PrivateRoute> },
     { path: '/contact/:id', 
-      element: <PrivateRoute auth={auth}><ContactDetails /></PrivateRoute> },
+      element: <PrivateRoute><ContactDetails /></PrivateRoute> },
   ], { basename: BASENAME });
-
-  useEffect(() => {
-    if (auth) {
-      localStorage.setItem('auth-miranda', '1');
-    }
-  }, [auth])
 
   const actions = {
     login: function(username, email) {
