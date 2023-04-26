@@ -18,5 +18,7 @@ export const userContextReducer = (state, action) => {
         username: action.payload.username,
         email: action.payload.email
       }
+    default:
+      return state;
   }
 }

@@ -1,22 +1,36 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'; 
 import hotelIcon from '../img/icons/hotel.svg';
 import { Button } from './layout/styled';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
+import { getUserList } from '../features/users/userThunks';
 
 const Login = () => {
   const [userInput, setUserInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const navigate = useNavigate();
   const { actions } = useContext(UserContext);
+  const { data, loading } = useSelector(state => state.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (userInput === 'nico' && passwordInput === '1234') {
-      actions.login(userInput, 'fdsa');
+    const user = data.find(({ username }) => username === userInput);
+    if (user && passwordInput === user.password) {
+      actions.login(user.username, user.email);
       navigate('/');
+    } else if (!loading) {
+      console.log('not valid credentials')
     }
   }
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (data.length === 0) {
+      dispatch(getUserList());
+    }
+    // eslint-disable-next-line
+  }, [])
   
   return (
     <div className='login'>

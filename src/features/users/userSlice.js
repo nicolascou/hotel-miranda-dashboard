@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { updateUser, deleteUserById, get, updateUserUserList, findUserByUserName } from './userThunks'
+import { updateUser, deleteUserById, createUser, getUserList } from './userThunks'
 
 const initialState = {
   data: [],
