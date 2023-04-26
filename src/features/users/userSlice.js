@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { deleteUserById, getUserList } from './userThunks'
+import { updateUser, deleteUserById, get, updateUserUserList, findUserByUserName } from './userThunks'
 
 const initialState = {
   data: [],
@@ -14,7 +14,7 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addCase(getUserList.rejected, (state, action) => {
-      state.data = action.payload;
+      state.error = action.payload;
       state.loading = false;
     })
     .addCase(getUserList.pending, (state) => {
@@ -26,7 +26,7 @@ export const userSlice = createSlice({
     })
 
     .addCase(deleteUserById.rejected, (state, action) => {
-      state.data = action.payload;
+      state.error = action.payload;
       state.loading = false;
     })
     .addCase(deleteUserById.pending, (state) => {
@@ -34,6 +34,30 @@ export const userSlice = createSlice({
     })
     .addCase(deleteUserById.fulfilled, (state, action) => {
       state.data = action.payload;
+      state.loading = false;
+    })
+   
+    .addCase(createUser.rejected, (state, action) => {
+      state.error = action.payload;
+      state.loading = false;
+    })
+    .addCase(createUser.pending, (state) => {
+      state.loading = true;
+    })
+    .addCase(createUser.fulfilled, (state, action) => {
+      state.data.push(action.payload);
+      state.loading = false;
+    })
+
+    .addCase(updateUser.rejected, (state, action) => {
+      state.error = action.payload;
+      state.loading = false;
+    })
+    .addCase(updateUser.pending, (state) => {
+      state.loading = true;
+    })
+    .addCase(updateUser.fulfilled, (state, action) => {
+      state.data.push(action.payload);
       state.loading = false;
     })
   }
