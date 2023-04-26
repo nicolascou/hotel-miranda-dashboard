@@ -152,6 +152,12 @@
   background-color: #EBF1EF;
   text-transform: capitalize;
 }
+.sidebar__card__input {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #B2B2B2;
+  padding: 2px 5px;
+}
 .sidebar__rights {
   font-size: 12px;
   color: #B2B2B2;

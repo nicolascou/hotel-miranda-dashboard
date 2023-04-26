@@ -98,6 +98,13 @@
       background-color: #EBF1EF;
       text-transform: capitalize;
     }
+
+    &__input {
+      border: none;
+      outline: none;
+      border-bottom: 1px solid $gray-color;
+      padding: 2px 5px;
+    }
   }
 
   &__rights {
