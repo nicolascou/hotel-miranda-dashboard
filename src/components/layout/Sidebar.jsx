@@ -1,14 +1,33 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import hotelIcon from '../../img/icons/hotel.svg';
 import { Button } from './styled';
-import profilePic from '../../img/profile-pic.jpg';
 import { Link, useLocation } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 
 const Sidebar = ({ hideSidebar }) => { 
   const location = useLocation();
   const route = location.pathname.split('/')[1];
-  const { user } = useContext(UserContext);
+
+  const { user, actions } = useContext(UserContext);
+
+  const data = useSelector(state => state.user.data);
+  useEffect(() => {
+    const { photo } = data.find(({ username }) => username === user.username);
+    setPhoto(photo);
+    // eslint-disable-next-line
+  }, [])
+
+  const [name, setName] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
+  const [photo, setPhoto] = useState();
+
+  const [showEditUser, setShowEditUser] = useState(false);
+  
+  const handleEditUser = () => {
+    actions.updateUser(name, email);
+    setShowEditUser(false);
+  }
   
   return (
     <>
@@ -44,15 +63,26 @@ const Sidebar = ({ hideSidebar }) => {
             </div>
           </div>
           <div className='sidebar__card'>
-            <img className='sidebar__card__img' src={profilePic} alt="" />
-            <p className='sidebar__card__name'>{user.username}</p>
-            <p className='sidebar__card__mail'>{user.email}</p>
-            <Button className='sidebar__card__btn'>Edit</Button>
+            <img className='sidebar__card__img' src={photo} alt="" />
+            {
+              showEditUser ? 
+              <>
+                <input type="text" className='sidebar__card__input' value={name} onChange={(e) => setName(e.target.value)} />
+                <input type="text" className='sidebar__card__input' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <Button onClick={() => handleEditUser() } className='sidebar__card__btn'>Save</Button>
+              </>
+              :
+              <>
+                <p className='sidebar__card__name'>{name}</p>
+                <p className='sidebar__card__mail'>{email}</p>
+                <Button onClick={() => setShowEditUser(true)} className='sidebar__card__btn'>Edit</Button>
+              </>
+            }
           </div>
           <div className='sidebar__rights'>
             <p className='sidebar__rights__bold'>Travl Hotel Admin Dashboard</p>
             <p>© 2020 All Rights Reserved</p>
-            <p className='sidebar__rights__bottom-text'>Made with ♥ by Peterdraw</p>
+            <p className='sidebar__rights__bottom-text'>Made with ♥ by Nicolás Cousillas</p>
           </div>
         </div>
       </div>

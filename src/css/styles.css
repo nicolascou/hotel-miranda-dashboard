@@ -145,9 +145,9 @@
 .sidebar__card__mail {
   font-size: 10px;
   color: #B2B2B2;
-  margin-bottom: 15px;
 }
 .sidebar__card__btn {
+  margin-top: 15px;
   color: #135846;
   background-color: #EBF1EF;
   text-transform: capitalize;
