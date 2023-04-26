@@ -20,6 +20,7 @@ export const roomSlice = createSlice({
       state.data = action.payload;
       state.loading = false;
     })
+
     .addCase(deleteRoomById.pending, (state) => {
       state.loading = true;
     })
@@ -27,6 +28,7 @@ export const roomSlice = createSlice({
       state.data = action.payload;
       state.loading = false;
     })
+
     .addCase(createRoom.pending, (state) => {
       state.loading = true;
     })
@@ -34,6 +36,7 @@ export const roomSlice = createSlice({
       state.data.push(action.payload);
       state.loading = false;
     })
+    
     .addCase(updateRoom.pending, (state) => {
       state.loading = true;
     })

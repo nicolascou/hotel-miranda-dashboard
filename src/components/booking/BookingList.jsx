@@ -4,8 +4,7 @@ import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
 import sortBookingsBy from '../../utils/sortBookingsBy';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBookingList } from '../../features/bookings/getBookingList';
-import { deleteBookingById } from '../../features/bookings/deleteBookingById';
+import { getBookingList, deleteBookingById } from '../../features/bookings/bookingThunks';
 import Loading from '../partials/Loading';
 
 const BookingList = () => {
