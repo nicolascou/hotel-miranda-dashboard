@@ -8,10 +8,11 @@ import 'swiper/css/navigation';
 import SwiperButtonPrev from '../partials/SwiperButtonPrev';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBookingList } from '../../features/bookings/getBookingList';
+import Loading from '../partials/Loading';
 
 const BookingDetails = () => {
   const params = useParams();
-  const data = useSelector(state => state.booking.data);
+  const { data, loading } = useSelector(state => state.booking);
   const booking = data.find(b => b.id === Number(params.id));
 
   const dispatch = useDispatch();
@@ -23,7 +24,11 @@ const BookingDetails = () => {
   
   let statusTagClass;
   if (!booking) {
-    return <h2>This booking does not exist</h2>
+    return (
+      <>
+        { loading ? <Loading /> : <h2>This booking does not exist</h2> }
+      </>
+    )
   } else {
     if (booking.status === 'Check In') {
       statusTagClass = 'details__right__status-tag--green';
@@ -33,6 +38,7 @@ const BookingDetails = () => {
       statusTagClass = 'details__right__status-tag--yellow';
     }
   }
+  console.log(loading)
   
   return (
     <div className='details'>
