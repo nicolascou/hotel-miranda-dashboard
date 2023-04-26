@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getRoomList, createRoom, deleteRoomById } from './roomThunks';
+import { getRoomList, createRoom, deleteRoomById, updateRoom } from './roomThunks';
 
 const initialState = {
   data: [],
@@ -31,6 +31,13 @@ export const roomSlice = createSlice({
       state.loading = true;
     })
     .addCase(createRoom.fulfilled, (state, action) => {
+      state.data.push(action.payload);
+      state.loading = false;
+    })
+    .addCase(updateRoom.pending, (state) => {
+      state.loading = true;
+    })
+    .addCase(updateRoom.fulfilled, (state, action) => {
       state.data.push(action.payload);
       state.loading = false;
     })
