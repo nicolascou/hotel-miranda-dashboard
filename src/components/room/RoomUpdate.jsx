@@ -3,20 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateRoom } from '../../features/rooms/roomThunks';
 import room3 from '../../img/rooms-3.jpg';
 import { useNavigate, useParams } from 'react-router-dom';
-import Loading from '../partials/Loading';
 
 const RoomUpdate = () => {
   const params = useParams();
-  const { data, loading } = useSelector(state => state.room);
+  const { data } = useSelector(state => state.room);
   const room = data.find(b => b.id === Number(params.id));
   
-  // if (!room) {
-  //   return (
-  //     <>
-  //       { loading ? <Loading /> : <h2>This room does not exist</h2> }
-  //     </>
-  //   )
-  // }
   const [roomName, setRoomName] = useState(room.name);
   const [roomType, setRoomType] = useState(room.bed_type);
   const [roomPrice, setRoomPrice] = useState(room.rate);
@@ -28,6 +20,7 @@ const RoomUpdate = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const room = {
+      "id": Number(params.id),
       "name": roomName,
       "bed_type": roomType,
       "photo": room3,

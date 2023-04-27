@@ -41,7 +41,13 @@ export const roomSlice = createSlice({
       state.loading = true;
     })
     .addCase(updateRoom.fulfilled, (state, action) => {
-      state.data.push(action.payload);
+      state.data = state.data.map((room) => {
+        if (room.id === action.payload.id) {
+          return action.payload;
+        } else {
+          return room;
+        }
+      });
       state.loading = false;
     })
   }

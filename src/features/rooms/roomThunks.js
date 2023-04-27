@@ -39,10 +39,9 @@ export const createRoom = createAsyncThunk(
 
 export const updateRoom = createAsyncThunk(
   'room/updateRoomStatus',
-  async(room, { dispatch }) => {
+  async(room) => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        dispatch(deleteRoomById(room.id));
         resolve(room);
       }, 200);
     });
