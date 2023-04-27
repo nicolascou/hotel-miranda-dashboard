@@ -51,11 +51,10 @@ export const createUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   'user/updateUserStatus',
-  async(user, { dispatch }) => {
+  async(user) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
-          dispatch(deleteUserById(user.id));
           resolve(user);
         }, 200);
       });

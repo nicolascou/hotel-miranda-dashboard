@@ -57,7 +57,13 @@ export const contactSlice = createSlice({
       state.loading = true;
     })
     .addCase(updateContact.fulfilled, (state, action) => {
-      state.data.push(action.payload);
+      state.data = state.data.map((contact) => {
+        if (contact.id === action.payload.id) {
+          return action.payload;
+        } else {
+          return contact;
+        }
+      });
       state.loading = false;
     })
   }

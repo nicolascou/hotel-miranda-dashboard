@@ -57,7 +57,13 @@ export const userSlice = createSlice({
       state.loading = true;
     })
     .addCase(updateUser.fulfilled, (state, action) => {
-      state.data.push(action.payload);
+      state.data = state.data.map((user) => {
+        if (user.id === action.payload.id) {
+          return action.payload;
+        } else {
+          return user;
+        }
+      });
       state.loading = false;
     })
   }

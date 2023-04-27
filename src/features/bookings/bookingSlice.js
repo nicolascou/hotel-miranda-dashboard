@@ -41,7 +41,13 @@ export const bookingSlice = createSlice({
       state.loading = true;
     })
     .addCase(updateBooking.fulfilled, (state, action) => {
-      state.data.push(action.payload);
+      state.data = state.data.map((booking) => {
+        if (booking.id === action.payload.id) {
+          return action.payload;
+        } else {
+          return booking;
+        }
+      });
       state.loading = false;
     })
   }

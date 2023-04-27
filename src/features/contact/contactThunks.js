@@ -51,11 +51,10 @@ export const createContact = createAsyncThunk(
 
 export const updateContact = createAsyncThunk(
   'contact/updateContactStatus',
-  async(contact, { dispatch }) => {
+  async(contact) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
-          dispatch(deleteContactById(contact.id));
           resolve(contact);
         }, 200);
       });

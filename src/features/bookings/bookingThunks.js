@@ -39,10 +39,9 @@ export const createBooking = createAsyncThunk(
 
 export const updateBooking = createAsyncThunk(
   'booking/updateBooking',
-  async(booking, { dispatch }) => {
+  async(booking) => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        dispatch(deleteBookingById(booking.id));
         resolve(booking);
       }, 200);
     });
