@@ -13,6 +13,7 @@ const RoomUpdate = () => {
   const [roomType, setRoomType] = useState(room.bed_type);
   const [roomPrice, setRoomPrice] = useState(room.rate);
   const [roomOffer, setRoomOffer] = useState(room.offer || Math.floor(room.rate / 1.5));
+  const [roomDescription, setRoomDescription] = useState(room.description || '');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,8 +27,9 @@ const RoomUpdate = () => {
       "photo": room3,
       "rate": roomPrice,
       "offer": roomOffer,
+      "description": roomDescription,
       "amenities": ["Wifi", "Towels", "LED TV"],
-      "status": "Available"
+      "status": "Available",
     }
     dispatch(updateRoom(room))
     navigate('/rooms');
@@ -48,7 +50,7 @@ const RoomUpdate = () => {
         </div>
         <div>
           <label htmlFor="description">Description</label>
-          <textarea id="description" cols="30" rows="10"></textarea>
+          <textarea id="description" cols="30" rows="10" value={roomDescription} onChange={(e) => setRoomDescription(e.target.value)}></textarea>
         </div>
         <div>
           <label htmlFor="price">Price</label>

@@ -40,7 +40,7 @@ const RoomList = () => {
     <div className='list'>
       <div className='list__top'>
         <ul className='list__top__menu'>
-          <li className={`list__top__menu__item ${changeBy === 'all' ? 'list__top__menu__item--active' : ''}`} 
+          <li className={`list__top__menu__item ${changeBy !== 'available' && changeBy !== 'booked' ? 'list__top__menu__item--active' : ''}`} 
             onClick={() => setChangeBy('all')}
           >All Rooms</li>
           <li className={`list__top__menu__item ${changeBy === 'available' ? 'list__top__menu__item--active' : ''}`} 
