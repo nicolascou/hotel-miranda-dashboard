@@ -448,16 +448,8 @@
 .list__table__row__item__photo {
   width: 50px;
   height: 50px;
-  background-color: #EEF9F2;
   border-radius: 8px;
   margin-right: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.list__table__row__item__photo i {
-  font-size: 28px;
-  color: #135846;
 }
 .list__table__row__item__id {
   font-size: 14px;

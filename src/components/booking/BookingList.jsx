@@ -91,9 +91,7 @@ const BookingList = () => {
             return (  
               <div key={b.id} onClick={() => navigate(`/bookings/${b.id}`)} className='list__table__row'>
                 <div className='list__table__row__item'>
-                  <div className='list__table__row__item__photo'>
-                    <i className='fa-solid fa-user'></i>
-                  </div>
+                  <img src={b.photo} alt='' className='list__table__row__item__photo'></img>
                   <div>
                     <p className='weight-500'>{b.guest}</p>
                     <p className='list__table__row__item__id'>{b.guest_id}</p>
