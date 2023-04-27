@@ -644,6 +644,15 @@
   font-weight: 300;
   color: #135846;
 }
+.details__left__main a {
+  text-decoration: none;
+  color: #135846;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .details__left__main button {
   height: 50px;
   display: flex;

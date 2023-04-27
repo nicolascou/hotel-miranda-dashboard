@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import SwiperButtonNext from '../partials/SwiperButtonNext';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -47,7 +47,9 @@ const RoomDetails = () => {
             <p className='details__left__main__id'>ID #{room.id.toString().padStart(2, '0')}</p>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <button className='details__left__main__phone-btn'>
-                <i className='fa-solid fa-edit'></i>
+                <Link to={`/rooms/update/${room.id}`}>
+                  <i className='fa-solid fa-edit'></i>
+                </Link>
               </button>
               <p className='rooms__big-text'>{room.bed_type}</p>
             </div>
