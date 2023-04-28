@@ -41,9 +41,7 @@ const BookingDetails = () => {
     <div className='details'>
       <div className='details__left'>
         <div className='details__row'>
-          <div className='details__left__photo'>
-            <i className='fa-solid fa-user'></i>
-          </div>
+          <img src={booking.photo} alt='' className='details__left__photo'></img>
           <div className='details__left__main'>
             <h2>{booking.guest}</h2>
             <p className='details__left__main__id'>ID {booking.guest_id}</p>

@@ -888,22 +888,27 @@
   font-weight: 500;
 }
 
-.room-create {
+.create {
   width: 100%;
   border-radius: 20px;
   background-color: white;
-  padding: 30px;
+  padding: 50px;
 }
-.room-create__title {
+.create__title {
   font-size: 32px;
   text-align: center;
   color: #212121;
   margin-bottom: 40px;
 }
-.room-create__form {
+.create__form {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
+}
+.create__form__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .loading {
