@@ -17,7 +17,7 @@ const BookingDetails = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if (data.length === 0) {
+    if (status === 'idle') {
       dispatch(getBookingList());
     }
     // eslint-disable-next-line

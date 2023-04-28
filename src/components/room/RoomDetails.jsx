@@ -16,7 +16,7 @@ const RoomDetails = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if (data.length === 0) {
+    if (status === 'idle') {
       dispatch(getRoomList());
     }
     // eslint-disable-next-line

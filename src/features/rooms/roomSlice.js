@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getRoomList, createRoom, deleteRoomById, updateRoom } from './roomThunks';
+import { getRoomList, createRoom, deleteRoomById, updateRoom, getRoom } from './roomThunks';
 
 const initialState = {
   data: [],

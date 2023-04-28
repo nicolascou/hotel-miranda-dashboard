@@ -18,7 +18,7 @@ const UserList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (data.length === 0) {
+    if (status === 'idle') {
       dispatch(getUserList());
     }
     setUsers(changeRoomsBy(changeBy, [...data]));

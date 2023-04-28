@@ -18,7 +18,7 @@ const BookingList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (data.length === 0) {
+    if (status === 'idle') {
       dispatch(getBookingList());
     }
     setBookings(sortBookingsBy(orderBy, [...data]));

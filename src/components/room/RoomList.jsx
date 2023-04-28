@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRoomList, deleteRoomById } from '../../features/rooms/roomThunks';
+import { getRoomList, deleteRoomById, getRoom } from '../../features/rooms/roomThunks';
 import { changeRoomsBy } from '../../utils/changeRoomsBy';
 import Loading from '../partials/Loading';
 
@@ -16,9 +16,11 @@ const RoomList = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const test = dispatch(getRoom())
+  console.log(test)
 
   useEffect(() => {
-    if (data.length === 0) {
+    if (status === 'idle') {
       dispatch(getRoomList());
     }
     setRooms(changeRoomsBy(changeBy, [...data]));

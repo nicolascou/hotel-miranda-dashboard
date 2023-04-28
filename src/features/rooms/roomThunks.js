@@ -12,6 +12,18 @@ export const getRoomList = createAsyncThunk(
   }
 )
 
+export const getRoom = createAsyncThunk(
+  'bookings/getRoomStatus',
+  async(roomId) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const room = roomsJson.find(({ id }) => id === roomId);
+        resolve(room);
+      }, 200);
+    })
+  }
+)
+
 export const deleteRoomById = createAsyncThunk(
   'booking/deleteRoomByIdStatus',
   async(roomId, { getState }) => {

@@ -26,7 +26,7 @@ const Login = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if (data.length === 0) {
+    if (status === 'idle') {
       dispatch(getUserList());
     }
     // eslint-disable-next-line
