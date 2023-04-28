@@ -106,7 +106,7 @@ const RoomList = () => {
         </ul>
       </div>
       <div className='list__bottom'>
-        <p className='list__bottom__text'>Showing {showRooms.length} of 20 Data</p>
+        <p className='list__bottom__text'>Showing {showRooms.length} of {data.length} Data</p>
         <Pagination pagination={pagination} setPagination={setPagination} maxPage={rooms.length / 10 + .99} />
       </div>
     </div>

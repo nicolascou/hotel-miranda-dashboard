@@ -51,7 +51,7 @@ const UserList = () => {
           >Booked</li>
         </ul>
         <div className='d-flex-center'>
-          <Link to='/rooms/create' className='rooms__new-room'>New Room +</Link>
+          <Link to='/rooms/create' className='rooms__new-room'>New User +</Link>
           <select className='list__top__select' value={changeBy} onChange={(e) => setChangeBy(e.target.value)}>
             <option className='list__top__select__text' value="number">Room number</option>
             <option className='list__top__select__text' value="status">Status</option>
@@ -101,7 +101,7 @@ const UserList = () => {
         </ul>
       </div>
       <div className='list__bottom'>
-        <p className='list__bottom__text'>Showing {showUsers.length} of 20 Data</p>
+        <p className='list__bottom__text'>Showing {showUsers.length} of {data.length} Data</p>
         <Pagination pagination={pagination} setPagination={setPagination} maxPage={users.length / 10 + .99} />
       </div>
     </div>
