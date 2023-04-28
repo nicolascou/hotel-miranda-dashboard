@@ -8,7 +8,7 @@ import { getBookingList, deleteBookingById } from '../../features/bookings/booki
 import Loading from '../partials/Loading';
 
 const BookingList = () => {
-  const { data, loading } = useSelector(state => state.booking);
+  const { data, status } = useSelector(state => state.booking);
   const [bookings, setBookings] = useState([]);
   const [showBookings, setShowBookings] = useState([]);
   const [pagination, setPagination] = useState(1);
@@ -80,7 +80,7 @@ const BookingList = () => {
           <p className='list__table__row__item'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
-          { loading && <Loading /> }
+          { status === 'pending' && <Loading /> }
           { showBookings.map((b) => {
             let statusClassMap = {
               'Check In': 'list__table__row__item__status--green',

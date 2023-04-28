@@ -3,7 +3,7 @@ import { updateUser, deleteUserById, createUser, getUserList } from './userThunk
 
 const initialState = {
   data: [],
-  loading: false,
+  status: 'idle',
   error: null
 }
 
@@ -15,46 +15,46 @@ export const userSlice = createSlice({
     builder
     .addCase(getUserList.rejected, (state, action) => {
       state.error = action.payload;
-      state.loading = false;
+      state.status = 'rejected';
     })
     .addCase(getUserList.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(getUserList.fulfilled, (state, action) => {
       state.data = action.payload;
-      state.loading = false;
+      state.status = 'fulfilled';
     })
 
     .addCase(deleteUserById.rejected, (state, action) => {
       state.error = action.payload;
-      state.loading = false;
+      state.status = 'rejected';
     })
     .addCase(deleteUserById.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(deleteUserById.fulfilled, (state, action) => {
       state.data = action.payload;
-      state.loading = false;
+      state.status = 'fulfilled';
     })
    
     .addCase(createUser.rejected, (state, action) => {
       state.error = action.payload;
-      state.loading = false;
+      state.status = 'rejected';
     })
     .addCase(createUser.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(createUser.fulfilled, (state, action) => {
       state.data.push(action.payload);
-      state.loading = false;
+      state.status = 'fulfilled';
     })
 
     .addCase(updateUser.rejected, (state, action) => {
       state.error = action.payload;
-      state.loading = false;
+      state.status = 'rejected';
     })
     .addCase(updateUser.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(updateUser.fulfilled, (state, action) => {
       state.data = state.data.map((user) => {
@@ -64,7 +64,7 @@ export const userSlice = createSlice({
           return user;
         }
       });
-      state.loading = false;
+      state.status = 'fulfilled';
     })
   }
 })

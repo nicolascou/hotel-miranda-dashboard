@@ -12,7 +12,7 @@ import Loading from '../partials/Loading';
 
 const BookingDetails = () => {
   const params = useParams();
-  const { data, loading } = useSelector(state => state.booking);
+  const { data, status } = useSelector(state => state.booking);
   const booking = data.find(b => b.id === Number(params.id));
 
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const BookingDetails = () => {
   if (!booking) {
     return (
       <>
-        { loading ? <Loading /> : <h2>This booking does not exist</h2> }
+        { status === 'pending' ? <Loading /> : <h2>This booking does not exist</h2> }
       </>
     )
   } 

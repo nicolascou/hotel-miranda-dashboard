@@ -8,7 +8,7 @@ import Loading from '../partials/Loading';
 import { changeRoomsBy } from '../../utils/changeRoomsBy';
 
 const UserList = () => {
-  const { data, loading } = useSelector(state => state.user);
+  const { data, status } = useSelector(state => state.user);
   const [users, setUsers] = useState([]);
   const [showUsers, setShowUsers] = useState([]);
   const [pagination, setPagination] = useState(1);
@@ -68,7 +68,7 @@ const UserList = () => {
           <p className='list__table__row__item weight-700'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
-          { loading && <Loading /> }
+          { status === 'pending' && <Loading /> }
           {showUsers.map((user) => {
             return (
               <div key={user.id} onClick={() => navigate(`/rooms/${user.id}`)} className='list__table__row'>

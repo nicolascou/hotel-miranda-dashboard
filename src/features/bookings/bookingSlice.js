@@ -3,7 +3,7 @@ import { getBookingList, deleteBookingById, createBooking, updateBooking } from 
 
 const initialState = {
   data: [],
-  loading: false,
+  status: 'idle',
   error: null
 }
 
@@ -14,31 +14,31 @@ export const bookingSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addCase(getBookingList.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(getBookingList.fulfilled, (state, action) => {
       state.data = action.payload;
-      state.loading = false;
+      state.status = 'fulfilled';
     })
 
     .addCase(deleteBookingById.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(deleteBookingById.fulfilled, (state, action) => {
       state.data = action.payload;
-      state.loading = false;
+      state.status = 'fulfilled';
     })
 
     .addCase(createBooking.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(createBooking.fulfilled, (state, action) => {
       state.data.push(action.payload);
-      state.loading = false;
+      state.status = 'fulfilled';
     })
     
     .addCase(updateBooking.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(updateBooking.fulfilled, (state, action) => {
       state.data = state.data.map((booking) => {
@@ -48,7 +48,7 @@ export const bookingSlice = createSlice({
           return booking;
         }
       });
-      state.loading = false;
+      state.status = 'fulfilled';
     })
   }
 })

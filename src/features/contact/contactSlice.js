@@ -3,7 +3,7 @@ import { getContactList, deleteContactById, createContact, updateContact } from 
 
 const initialState = {
   data: [],
-  loading: false,
+  status: 'idle',
   error: null
 }
 
@@ -15,46 +15,46 @@ export const contactSlice = createSlice({
     builder
     .addCase(getContactList.rejected, (state, action) => {
       state.error = action.payload;
-      state.loading = false;
+      state.status = 'rejected';
     })
     .addCase(getContactList.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(getContactList.fulfilled, (state, action) => {
       state.data = action.payload;
-      state.loading = false;
+      state.status = 'fulfilled';
     })
 
     .addCase(deleteContactById.rejected, (state, action) => {
       state.error = action.payload;
-      state.loading = false;
+      state.status = 'rejected';
     })
     .addCase(deleteContactById.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(deleteContactById.fulfilled, (state, action) => {
       state.data = action.payload;
-      state.loading = false;
+      state.status = 'fulfilled';
     })
    
     .addCase(createContact.rejected, (state, action) => {
       state.error = action.payload;
-      state.loading = false;
+      state.status = 'rejected';
     })
     .addCase(createContact.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(createContact.fulfilled, (state, action) => {
       state.data.push(action.payload);
-      state.loading = false;
+      state.status = 'fulfilled';
     })
 
     .addCase(updateContact.rejected, (state, action) => {
       state.error = action.payload;
-      state.loading = false;
+      state.status = 'rejected';
     })
     .addCase(updateContact.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(updateContact.fulfilled, (state, action) => {
       state.data = state.data.map((contact) => {
@@ -64,7 +64,7 @@ export const contactSlice = createSlice({
           return contact;
         }
       });
-      state.loading = false;
+      state.status = 'fulfilled';
     })
   }
 })

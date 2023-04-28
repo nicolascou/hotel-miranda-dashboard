@@ -11,7 +11,7 @@ const Login = () => {
   const [passwordInput, setPasswordInput] = useState('1234');
   const navigate = useNavigate();
   const { actions } = useContext(UserContext);
-  const { data, loading } = useSelector(state => state.user);
+  const { data, status } = useSelector(state => state.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ const Login = () => {
     if (user && passwordInput === user.password) {
       actions.login(user.username, user.email);
       navigate('/');
-    } else if (!loading) {
+    } else if (status !== 'pending') {
       alert('Invalid Credentials');
     }
   }
