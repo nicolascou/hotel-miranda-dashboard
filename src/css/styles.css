@@ -901,13 +901,24 @@
   margin-bottom: 40px;
 }
 .create__form {
-  max-width: 800px;
+  max-width: 500px;
   margin: 0 auto;
   text-align: center;
 }
 .create__form__row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.create__form__row__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.create__form__row__second-col {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 

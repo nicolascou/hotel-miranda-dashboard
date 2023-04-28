@@ -34,46 +34,48 @@ const RoomCreate = () => {
       <h2 className='create__title'>Add New Room</h2>
       <form className='create__form' onSubmit={(e) => handleSubmit(e)}>
         <div className='create__form__row'>
-          <select value={roomType} onChange={(e) => setRoomType(e.target.value)}>
+          <select className='create__form__row__cell' value={roomType} onChange={(e) => setRoomType(e.target.value)}>
             <option value="0">Room Type</option>
             <option value="Single Bed">Single Bed</option>
             <option value="Double Bed">Double Bed</option>
             <option value="Double Luxury">Double Luxury</option>
           </select>
-          <div>
+          <div className='create__form__row__cell'>
             <label htmlFor="name">Room name</label>
             <input type="name" id='name' value={roomName} onChange={(e) => setRoomName(e.target.value)} />
           </div>
         </div>
         <div className='create__form__row'>
-          <div>
+          <div className='create__form__row__cell'>
             <label htmlFor="description">Description</label>
             <textarea id="description" cols="30" rows="10"></textarea>
           </div>
-          <div>
-            <label htmlFor="offerYes">Yes</label>
-            <input type="radio" name='offer' id='offerYes' onChange={() => setOffer(true)} checked={offer} />
-            <label htmlFor="offerNo">No</label>
-            <input type="radio" name='offer' id='offerNo' onChange={() => setOffer(false)} checked={!offer} />
-          </div>
-          {
-            offer &&
+          <div className='create__form__row__second-col'>
             <div>
-              <label htmlFor="discount">Discount</label>
-              <input type="number" id='discount' value={roomDiscount} onChange={(e) => setRoomDiscount(e.target.value)} />
+              <label htmlFor="offerYes">Yes</label>
+              <input type="radio" name='offer' id='offerYes' onChange={() => setOffer(true)} checked={offer} />
+              <label htmlFor="offerNo">No</label>
+              <input type="radio" name='offer' id='offerNo' onChange={() => setOffer(false)} checked={!offer} />
             </div>
-          }
-          <div>
-            <label htmlFor="price">Price</label>
-            <input type="number" value={roomPrice} onChange={(e) => setRoomPrice(e.target.value)} />
+            {
+              offer &&
+              <div className='create__form__row__cell'>
+                <label htmlFor="discount">Discount</label>
+                <input type="number" id='discount' value={roomDiscount} onChange={(e) => setRoomDiscount(e.target.value)} />
+              </div>
+            }
+            <div className='create__form__row__cell'>
+              <label htmlFor="price">Price</label>
+              <input type="number" value={roomPrice} onChange={(e) => setRoomPrice(e.target.value)} />
+            </div>
           </div>
         </div>
         <div className='create__form__row'>
-          <div>
+          <div className='create__form__row__cell'>
             <label htmlFor="cancel">Cancellation Policy</label>
             <textarea cols="30" rows="10" id='cancel'></textarea>
           </div>
-          <div>
+          <div className='create__form__row__cell'>
             <label htmlFor="amenities">Amenities</label>
             <div>
               <div>

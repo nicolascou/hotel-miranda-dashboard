@@ -14,7 +14,7 @@
   }
 
   &__form {
-    max-width: 800px;
+    max-width: 500px;
     margin: 0 auto;
     text-align: center;
 
@@ -22,6 +22,18 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 20px;
+  
+      &__cell {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      &__second-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
     }
   }
 }
