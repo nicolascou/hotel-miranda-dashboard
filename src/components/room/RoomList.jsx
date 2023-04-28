@@ -8,7 +8,7 @@ import { changeRoomsBy } from '../../utils/changeRoomsBy';
 import Loading from '../partials/Loading';
 
 const RoomList = () => {
-  const { data, loading } = useSelector(state => state.room);
+  const { data, status } = useSelector(state => state.room);
   const [rooms, setRooms] = useState([]);
   const [showRooms, setShowRooms] = useState([]);
   const [pagination, setPagination] = useState(1);
@@ -70,7 +70,7 @@ const RoomList = () => {
           <p className='list__table__row__item weight-700'>Status</p>
         </div>
         <ul style={{ listStyle: 'none' }}>
-          { loading && <Loading /> }
+          { status === 'pending' && <Loading /> }
           {showRooms.map((room) => {
             return (
               <div key={room.id} onClick={() => navigate(`/rooms/${room.id}`)} className='list__table__row'>

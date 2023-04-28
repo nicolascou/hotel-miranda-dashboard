@@ -11,7 +11,7 @@ import Loading from '../partials/Loading';
 
 const RoomDetails = () => {
   const params = useParams();
-  const { data, loading } = useSelector(state => state.room);
+  const { data, status } = useSelector(state => state.room);
   const room = data.find(b => b.id === Number(params.id));
 
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const RoomDetails = () => {
   if (!room) {
     return (
       <>
-        { loading ? <Loading /> : <h2>This room does not exist</h2> }
+        { status === 'pending' ? <Loading /> : <h2>This room does not exist</h2> }
       </>
     )
   }

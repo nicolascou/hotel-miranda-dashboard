@@ -3,7 +3,7 @@ import { getRoomList, createRoom, deleteRoomById, updateRoom } from './roomThunk
 
 const initialState = {
   data: [],
-  loading: false,
+  status: 'idle',
   error: null
 }
 
@@ -14,31 +14,31 @@ export const roomSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addCase(getRoomList.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(getRoomList.fulfilled, (state, action) => {
       state.data = action.payload;
-      state.loading = false;
+      state.status = 'fulfilled';
     })
 
     .addCase(deleteRoomById.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(deleteRoomById.fulfilled, (state, action) => {
       state.data = action.payload;
-      state.loading = false;
+      state.status = 'fulfilled';
     })
 
     .addCase(createRoom.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(createRoom.fulfilled, (state, action) => {
       state.data.push(action.payload);
-      state.loading = false;
+      state.status = 'fulfilled';
     })
     
     .addCase(updateRoom.pending, (state) => {
-      state.loading = true;
+      state.status = 'pending';
     })
     .addCase(updateRoom.fulfilled, (state, action) => {
       state.data = state.data.map((room) => {
@@ -48,7 +48,7 @@ export const roomSlice = createSlice({
           return room;
         }
       });
-      state.loading = false;
+      state.status = 'fulfilled';
     })
   }
 })
