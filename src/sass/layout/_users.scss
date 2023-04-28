@@ -1,0 +1,14 @@
+.users {
+
+  &__photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    margin-right: 20px;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}

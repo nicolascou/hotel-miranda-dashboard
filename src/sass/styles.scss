@@ -5,10 +5,11 @@
 @import "layout/dashboard";
 @import "layout/list";
 @import "layout/details";
-
-@import "layout/rooms";
 @import "layout/create";
 @import "layout/loading";
+
+@import "layout/rooms";
+@import "layout/users";
 
 * {
   margin: 0;

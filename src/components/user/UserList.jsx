@@ -51,7 +51,7 @@ const UserList = () => {
           >Booked</li>
         </ul>
         <div className='d-flex-center'>
-          <Link to='/rooms/create' className='rooms__new-room'>New User +</Link>
+          <Link to='/' className='rooms__new-room'>New User +</Link>
           <select className='list__top__select' value={changeBy} onChange={(e) => setChangeBy(e.target.value)}>
             <option className='list__top__select__text' value="number">Room number</option>
             <option className='list__top__select__text' value="status">Status</option>
@@ -73,10 +73,11 @@ const UserList = () => {
             return (
               <div key={user.id} onClick={() => navigate(`/rooms/${user.id}`)} className='list__table__row'>
                 <div className='list__table__row__item'>
-                  <img className='list__table__row__item__photo' src={user.photo} alt="" />
-                  <div className='rooms__name'>
+                  <img className='users__photo' src={user.photo} alt="" />
+                  <div className='users__info'>
+                    <p className='weight-500'>{user.full_name}</p>
                     <p className='list__table__row__item__id'>#{user.id.toString().padStart(2, '0')}</p>
-                    <p className='weight-500'>{user.name}</p>
+                    <p className='small-text'>Joined on {user.start_date}</p>
                   </div>
                 </div>
                 <p className='list__table__row__item'>
