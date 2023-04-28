@@ -42,7 +42,7 @@ const UserList = () => {
         <ul className='list__top__menu'>
           <li className={`list__top__menu__item ${changeBy !== 'available' && changeBy !== 'booked' ? 'list__top__menu__item--active' : ''}`} 
             onClick={() => setChangeBy('all')}
-          >All Rooms</li>
+          >All Users</li>
           <li className={`list__top__menu__item ${changeBy === 'available' ? 'list__top__menu__item--active' : ''}`} 
             onClick={() => setChangeBy('available')}
           >Available</li>
@@ -81,11 +81,11 @@ const UserList = () => {
                   </div>
                 </div>
                 <p className='list__table__row__item'>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. sunt eaque.
+                  {user.position}
                 </p>
                 <div className='list__table__row__item'>
                   <p>Monday, Friday</p>
-                  <a href="">Check Schedule</a>
+                  <p>Check Schedule</p>
                 </div>
                 <div className='list__table__row__item'>
                   <i className='fa-solid fa-phone'></i>
