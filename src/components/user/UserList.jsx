@@ -80,8 +80,21 @@ const UserList = () => {
                   </div>
                 </div>
                 <p className='list__table__row__item'>
-                  AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. sunt eaque.
                 </p>
+                <div className='list__table__row__item'>
+                  <p>Monday, Friday</p>
+                  <a href="">Check Schedule</a>
+                </div>
+                <div className='list__table__row__item'>
+                  <i className='fa-solid fa-phone'></i>
+                  <p>012 345 678 901</p>
+                </div>
+                <div className='list__table__row__item'>
+                  <p className={`rooms__status 
+                    ${user.state === 'active' ? 'rooms__status--green' : 'rooms__status--red'}`}
+                  >{user.state}</p>
+                </div>
                 <RemoveRow handleDelete={handleDelete} id={user.id} />
               </div> 
             )})}
