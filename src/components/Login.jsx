@@ -20,7 +20,7 @@ const Login = () => {
       actions.login(user.username, user.email);
       navigate('/');
     } else if (!loading) {
-      console.log('not valid credentials')
+      alert('Invalid Credentials');
     }
   }
 

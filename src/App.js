@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Login from './components/Login';
@@ -31,40 +31,40 @@ const userInitialState = {
 }
 
 function App() {
-  const [user, dispatch] = useReducer(userContextReducer, userInitialState);
-
   const BASENAME = '/hotel-miranda-dashboard'
 
   const router = createBrowserRouter([
     { path: '/login', element: <Login /> },
     { path: '/', 
       element: <PrivateRoute><Dashboard /></PrivateRoute> },
-    { path: '/bookings', 
+      { path: '/bookings', 
       element: <PrivateRoute><BookingList /></PrivateRoute> },
-    { path: '/bookings/:id',
+      { path: '/bookings/:id',
       element: <PrivateRoute><BookingDetails /></PrivateRoute> },
-    { path: '/rooms/',
+      { path: '/rooms/',
       element: <PrivateRoute><RoomList /></PrivateRoute> },
-    { path: '/rooms/create',
+      { path: '/rooms/create',
       element: <PrivateRoute><RoomCreate /></PrivateRoute> },
-    { path: '/rooms/:id', 
+      { path: '/rooms/:id', 
       element: <PrivateRoute><RoomDetails /></PrivateRoute> },
-    { path: '/rooms/update/:id', 
+      { path: '/rooms/update/:id', 
       element: <PrivateRoute><RoomUpdate /></PrivateRoute> },
-    { path: '/users/', 
+      { path: '/users/', 
       element: <PrivateRoute><UserList /></PrivateRoute> },
-    { path: '/users/create', 
+      { path: '/users/create', 
       element: <PrivateRoute><UserCreate /></PrivateRoute> },
-    { path: '/users/:id', 
+      { path: '/users/:id', 
       element: <PrivateRoute><UserDetails /></PrivateRoute> },
-    { path: '/users/update/:id', 
+      { path: '/users/update/:id', 
       element: <PrivateRoute><UserUpdate /></PrivateRoute> },
-    { path: '/contact/', 
+      { path: '/contact/', 
       element: <PrivateRoute><ContactList /></PrivateRoute> },
-    { path: '/contact/:id', 
+      { path: '/contact/:id', 
       element: <PrivateRoute><ContactDetails /></PrivateRoute> },
-  ], { basename: BASENAME });
-
+    ], { basename: BASENAME });
+    
+  const [user, dispatch] = useReducer(userContextReducer, userInitialState);
+  
   const actions = {
     login: function(username, email) {
       dispatch({ type: 'login', payload: {username, email} });
