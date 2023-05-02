@@ -840,7 +840,7 @@
   width: 100%;
   border-radius: 20px;
   background-color: white;
-  padding: 50px;
+  padding: 50px 100px;
 }
 .create__title {
   font-size: 32px;
@@ -849,25 +849,66 @@
   margin-bottom: 40px;
 }
 .create__form {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   text-align: center;
 }
-.create__form__row {
+.create__form__grid {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  justify-content: space-around;
+  align-items: flex-start;
 }
-.create__form__row__cell {
+.create__form__column {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.create__form__column__cell {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 20px;
 }
-.create__form__row__second-col {
+.create__form__column__cell input, .create__form__column__cell textarea {
+  background-color: #eee;
+  outline: none;
+  padding: 8px 13px;
+  border: none;
+}
+.create__form__column select {
+  background-color: #eee;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  width: 150px;
+}
+.create__form__radio {
   display: flex;
-  flex-direction: column;
+  margin-bottom: 20px;
+}
+.create__form__radio i {
+  margin-right: 10px;
+}
+.create__form__radio input {
+  margin: 0 5px;
+}
+.create__form__amenities {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
+}
+.create__form__amenities input {
+  margin: 0 5px;
+}
+.create__form__btn {
+  padding: 12px 20px;
+  border-radius: 12px;
+  color: white;
+  font-weight: 500;
+  background-color: #135846;
+  cursor: pointer;
+  border: none;
 }
 
 .loading {
@@ -1002,6 +1043,10 @@ body {
 
 .weight-500 {
   font-weight: 500;
+}
+
+.weight-600 {
+  font-weight: 600;
 }
 
 .weight-700 {

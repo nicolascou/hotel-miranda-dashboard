@@ -4,7 +4,7 @@
   width: 100%;
   border-radius: 20px;
   background-color: white;
-  padding: 50px;
+  padding: 50px 100px;
 
   &__title {
     font-size: 32px;
@@ -14,26 +14,74 @@
   }
 
   &__form {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
     text-align: center;
 
-    &__row {
+    &__grid {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: space-around;
+      align-items: flex-start;
+    }
+    
+    &__column {
       margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
   
       &__cell {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        margin-bottom: 20px;
+
+        input, textarea {
+          background-color: #eee;
+          outline: none;
+          padding: 8px 13px;
+          border: none;
+        }
       }
-      &__second-col {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      select {
+        background-color: #eee;
+        border: none;
+        outline: none;
+        padding: 5px 10px;
+        width: 150px;
       }
+    }
+
+    &__radio {
+      display: flex;
+      margin-bottom: 20px;
+      
+      i {
+        margin-right: 10px;
+      }
+      input {
+        margin: 0 5px;
+      }
+    }
+
+    &__amenities {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      input {
+        margin: 0 5px;
+      }
+    }
+
+    &__btn {
+      padding: 12px 20px;
+      border-radius: 12px;
+      color: white;
+      font-weight: 500;
+      background-color: $primary-color;
+      cursor: pointer;
+      border: none;
     }
   }
 }
