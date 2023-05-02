@@ -2,7 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 import { getRoomList, createRoom, deleteRoomById, updateRoom, getRoom } from './roomThunks';
 
 const initialState = {
-  data: [],
+  data: {
+    roomList: [],
+    selectedRoom: null
+  },
   status: 'idle',
   error: null
 }
@@ -17,7 +20,15 @@ export const roomSlice = createSlice({
       state.status = 'pending';
     })
     .addCase(getRoomList.fulfilled, (state, action) => {
-      state.data = action.payload;
+      state.data.roomList = action.payload;
+      state.status = 'fulfilled';
+    })
+
+    .addCase(getRoom.pending, (state) => {
+      state.status = 'pending';
+    })
+    .addCase(getRoom.fulfilled, (state, action) => {
+      state.data.selectedRoom = action.payload;
       state.status = 'fulfilled';
     })
 
@@ -25,7 +36,7 @@ export const roomSlice = createSlice({
       state.status = 'pending';
     })
     .addCase(deleteRoomById.fulfilled, (state, action) => {
-      state.data = action.payload;
+      state.data.roomList = action.payload;
       state.status = 'fulfilled';
     })
 
@@ -33,7 +44,7 @@ export const roomSlice = createSlice({
       state.status = 'pending';
     })
     .addCase(createRoom.fulfilled, (state, action) => {
-      state.data.push(action.payload);
+      state.data.roomList.push(action.payload);
       state.status = 'fulfilled';
     })
     
@@ -41,7 +52,7 @@ export const roomSlice = createSlice({
       state.status = 'pending';
     })
     .addCase(updateRoom.fulfilled, (state, action) => {
-      state.data = state.data.map((room) => {
+      state.data.roomList = state.data.roomList.map((room) => {
         if (room.id === action.payload.id) {
           return action.payload;
         } else {

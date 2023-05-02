@@ -3,12 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRoomList, deleteRoomById, getRoom } from '../../features/rooms/roomThunks';
+import { getRoomList, deleteRoomById } from '../../features/rooms/roomThunks';
 import { changeRoomsBy } from '../../utils/changeRoomsBy';
 import Loading from '../partials/Loading';
 
 const RoomList = () => {
   const { data, status } = useSelector(state => state.room);
+  const { roomList } = data;
   const [rooms, setRooms] = useState([]);
   const [showRooms, setShowRooms] = useState([]);
   const [pagination, setPagination] = useState(1);
@@ -16,17 +17,15 @@ const RoomList = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const test = dispatch(getRoom())
-  console.log(test)
 
   useEffect(() => {
     if (status === 'idle') {
       dispatch(getRoomList());
     }
-    setRooms(changeRoomsBy(changeBy, [...data]));
+    setRooms(changeRoomsBy(changeBy, [...roomList]));
     setPagination(1);
     // eslint-disable-next-line
-  }, [data, changeBy])
+  }, [roomList, changeBy])
 
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*10;
@@ -108,7 +107,7 @@ const RoomList = () => {
         </ul>
       </div>
       <div className='list__bottom'>
-        <p className='list__bottom__text'>Showing {showRooms.length} of {data.length} Data</p>
+        <p className='list__bottom__text'>Showing {showRooms.length} of {roomList.length} Data</p>
         <Pagination pagination={pagination} setPagination={setPagination} maxPage={rooms.length / 10 + .99} />
       </div>
     </div>

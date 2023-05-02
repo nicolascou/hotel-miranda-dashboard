@@ -7,13 +7,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 const RoomUpdate = () => {
   const params = useParams();
   const { data } = useSelector(state => state.room);
-  const room = data.find(b => b.id === Number(params.id));
+  const { selectedRoom } = data;
   
-  const [roomName, setRoomName] = useState(room.name);
-  const [roomType, setRoomType] = useState(room.bed_type);
-  const [roomPrice, setRoomPrice] = useState(room.rate);
-  const [roomOffer, setRoomOffer] = useState(room.offer || Math.floor(room.rate / 1.5));
-  const [roomDescription, setRoomDescription] = useState(room.description || '');
+  const [roomName, setRoomName] = useState(selectedRoom.name);
+  const [roomType, setRoomType] = useState(selectedRoom.bed_type);
+  const [roomPrice, setRoomPrice] = useState(selectedRoom.rate);
+  const [roomOffer, setRoomOffer] = useState(selectedRoom.offer || Math.floor(selectedRoom.rate / 1.5));
+  const [roomDescription, setRoomDescription] = useState(selectedRoom.description || '');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
