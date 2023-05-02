@@ -30,7 +30,7 @@ export const deleteRoomById = createAsyncThunk(
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(
-          getState().room.data.filter(({ id }) => id !== roomId)
+          getState().room.data.roomList.filter(({ id }) => id !== roomId)
         );
       }, 200);
     });
@@ -42,7 +42,8 @@ export const createRoom = createAsyncThunk(
   async(room, { getState }) => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        room.id = getState().room.data[getState().room.data.length-1].id + 1;
+        const { roomList } = getState().room.data;
+        room.id = roomList[roomList.length-1].id + 1;
         resolve(room);
       }, 200);
     });

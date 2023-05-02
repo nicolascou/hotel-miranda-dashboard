@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useDispatch } from 'react-redux';
 import { createRoom } from '../../features/rooms/roomThunks';
 import room3 from '../../img/rooms-3.jpg';
@@ -6,23 +6,21 @@ import { useNavigate } from 'react-router-dom';
 
 const RoomCreate = () => {
   const [offer, setOffer] = useState(false);
-  const [roomName, setRoomName] = useState('default');
-  const [roomType, setRoomType] = useState("");
-  const [roomPrice, setRoomPrice] = useState(100);
-  const [roomDiscount, setRoomDiscount] = useState(10);
+  const formRef = useRef(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData(formRef.current);
+    console.log(formData.get('bed_type'));
     const room = {
-      "name": roomName,
-      "bed_type": roomType,
+      "name": formData.get('name'),
+      "bed_type": formData.get('bed_type'),
       "photo": room3,
-      "rate": roomPrice,
-      "offer": roomPrice * (1 - roomDiscount / 100),
-      "amenities": ["Wifi", "Towels", "LED TV"],
+      "rate": formData.get('price'),
+      "offer": formData.get('price') * (1 - formData.get('discount') / 100),
       "status": "Available"
     }
     dispatch(createRoom(room))
@@ -32,23 +30,22 @@ const RoomCreate = () => {
   return (
     <div className='create'>
       <h2 className='create__title'>Add New Room</h2>
-      <form className='create__form' onSubmit={(e) => handleSubmit(e)}>
+      <form ref={formRef} className='create__form' onSubmit={(e) => handleSubmit(e)}>
         <div className='create__form__row'>
-          <select className='create__form__row__cell' value={roomType} onChange={(e) => setRoomType(e.target.value)}>
-            <option value="0">Room Type</option>
+          <select name='bed_type' className='create__form__row__cell'>
             <option value="Single Bed">Single Bed</option>
             <option value="Double Bed">Double Bed</option>
             <option value="Double Luxury">Double Luxury</option>
           </select>
           <div className='create__form__row__cell'>
             <label htmlFor="name">Room name</label>
-            <input type="name" id='name' value={roomName} onChange={(e) => setRoomName(e.target.value)} />
+            <input name='name' type="name" id='name' />
           </div>
         </div>
         <div className='create__form__row'>
           <div className='create__form__row__cell'>
             <label htmlFor="description">Description</label>
-            <textarea id="description" cols="30" rows="10"></textarea>
+            <textarea name='description' id="description" cols="30" rows="10"></textarea>
           </div>
           <div className='create__form__row__second-col'>
             <div>
@@ -61,19 +58,19 @@ const RoomCreate = () => {
               offer &&
               <div className='create__form__row__cell'>
                 <label htmlFor="discount">Discount</label>
-                <input type="number" id='discount' value={roomDiscount} onChange={(e) => setRoomDiscount(e.target.value)} />
+                <input name='discount' type="number" id='discount' />
               </div>
             }
             <div className='create__form__row__cell'>
               <label htmlFor="price">Price</label>
-              <input type="number" value={roomPrice} onChange={(e) => setRoomPrice(e.target.value)} />
+              <input name='price' type="number" />
             </div>
           </div>
         </div>
         <div className='create__form__row'>
           <div className='create__form__row__cell'>
             <label htmlFor="cancel">Cancellation Policy</label>
-            <textarea cols="30" rows="10" id='cancel'></textarea>
+            <textarea name='cancellation' cols="30" rows="10" id='cancel'></textarea>
           </div>
           <div className='create__form__row__cell'>
             <label htmlFor="amenities">Amenities</label>

@@ -12,7 +12,7 @@ import Loading from '../partials/Loading';
 const RoomDetails = () => {
   const params = useParams();
   const { data, status } = useSelector(state => state.room);
-  const { selectedRoom } = data;
+  const room = data.roomList.find(({ id }) => id === Number(params.id));
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -25,7 +25,7 @@ const RoomDetails = () => {
     'Booked': 'details__right__status-tag--red'
   };
 
-  if (!selectedRoom) {
+  if (!room) {
     return (
       <>
         { status === 'pending' ? <Loading /> : <h2>This room does not exist</h2> }
@@ -41,31 +41,31 @@ const RoomDetails = () => {
             <i className='fa-solid fa-bed'></i>
           </div>
           <div className='details__left__main'>
-            <h2>{selectedRoom.name}</h2>
-            <p className='details__left__main__id'>ID #{selectedRoom.id.toString().padStart(2, '0')}</p>
+            <h2>{room.name}</h2>
+            <p className='details__left__main__id'>ID #{room.id.toString().padStart(2, '0')}</p>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <button className='details__left__main__phone-btn'>
-                <Link to={`/rooms/update/${selectedRoom.id}`}>
+                <Link to={`/rooms/update/${room.id}`}>
                   <i className='fa-solid fa-edit'></i>
                 </Link>
               </button>
-              <p className='rooms__big-text'>{selectedRoom.bed_type}</p>
+              <p className='rooms__big-text'>{room.bed_type}</p>
             </div>
           </div>
         </div>
         <div className='details__row'>
           <div className='details__left__room'>
             <p>Price</p>
-            <p>${selectedRoom.rate}<span> /night</span></p>
+            <p>${room.rate}<span> /night</span></p>
           </div>
           <div className='details__left__room'>
             <p>Offer</p>
-            <p>${selectedRoom.offer || Math.floor(selectedRoom.rate / 1.5)}<span> /night</span></p>
+            <p>${room.offer || Math.floor(room.rate / 1.5)}<span> /night</span></p>
           </div>
         </div>
         <div className='details__left__bar'></div>
           <p style={{ margin: '50px 0' }} className='details__left__text'>
-            { selectedRoom.description || 
+            { room.description || 
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'}
           </p>
           <p className='details__left__facilities'>Facilities</p>
@@ -96,8 +96,8 @@ const RoomDetails = () => {
           </div>
       </div>  
       <div className='details__right'>
-        <div className={`details__right__status-tag ${statusTagClassMap[selectedRoom.status]}`}>
-          <p>{selectedRoom.status}</p>
+        <div className={`details__right__status-tag ${statusTagClassMap[room.status]}`}>
+          <p>{room.status}</p>
         </div>
         <Swiper
           loop={true}
