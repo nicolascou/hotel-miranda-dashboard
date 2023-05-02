@@ -84,7 +84,7 @@ const RoomList = () => {
                 </div>
                 <p className='list__table__row__item weight-500'>{room.bed_type}</p>
                 <p className='list__table__row__item'>
-                  AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi
+                  AC, Shower, LED TV, Wifi
                 </p>
                 <p className='list__table__row__item weight-500 rooms__price'>
                   {room.rate}$

@@ -18,6 +18,7 @@ const RoomCreate = () => {
       "name": formData.get('name'),
       "bed_type": formData.get('bed_type'),
       "photo": room3,
+      "description": formData.get('description'),
       "rate": formData.get('price'),
       "offer": formData.get('price') * (1 - formData.get('discount') / 100),
       "status": "Available"
