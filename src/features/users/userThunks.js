@@ -23,7 +23,7 @@ export const deleteUserById = createAsyncThunk(
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve(
-            getState().user.data.userList.filter(({ id }) => id !== userId)
+            getState().user.data.filter(({ id }) => id !== userId)
           );
         }, 200);
       });
@@ -39,7 +39,7 @@ export const createUser = createAsyncThunk(
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
-          user.id = getState().user.data.userList.length + 1;
+          user.id = getState().user.data.length + 1;
           resolve(user);
         }, 200);
       });

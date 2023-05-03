@@ -1013,6 +1013,13 @@
   flex-direction: column;
   justify-content: space-around;
 }
+.users__phone {
+  display: flex;
+  align-items: center;
+}
+.users__phone i {
+  margin-right: 10px;
+}
 
 * {
   margin: 0;

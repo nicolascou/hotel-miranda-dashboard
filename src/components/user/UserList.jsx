@@ -62,8 +62,8 @@ const UserList = () => {
       <div className='list__table'>
         <div className='list__table__row list__table__row--first'>
           <p className='list__table__row__item weight-700'>Name</p>
-          <p className='list__table__row__item weight-700'>Job Desk</p>
-          <p className='list__table__row__item weight-700'>Schedule</p>
+          <p className='list__table__row__item weight-700'>Description</p>
+          <p className='list__table__row__item weight-700' style={{ justifyContent: 'center' }}>Start Date</p>
           <p className='list__table__row__item weight-700'>Contact</p>
           <p className='list__table__row__item weight-700'>Status</p>
         </div>
@@ -77,17 +77,16 @@ const UserList = () => {
                   <div className='users__info'>
                     <p className='weight-500'>{user.full_name}</p>
                     <p className='list__table__row__item__id'>#{user.id.toString().padStart(2, '0')}</p>
-                    <p className='small-text'>Joined on {user.start_date}</p>
+                    <p style={{ fontSize: '10px' }}>{user.email}</p>
                   </div>
                 </div>
-                <p className='list__table__row__item'>
-                  {user.position}
+                <p className='list__table__row__item' style={{ fontSize: '15px' }}>
+                  Answering guest inquiries, directing phone calls, coordinating travel plans, and more.
                 </p>
-                <div className='list__table__row__item'>
-                  <p>Monday, Friday</p>
-                  <p>Check Schedule</p>
+                <div className='list__table__row__item users__schedule' style={{ justifyContent: 'center' }}>
+                  {user.start_date}
                 </div>
-                <div className='list__table__row__item'>
+                <div className='list__table__row__item users__phone'>
                   <i className='fa-solid fa-phone'></i>
                   <p>012 345 678 901</p>
                 </div>

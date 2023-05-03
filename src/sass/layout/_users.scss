@@ -1,5 +1,6 @@
-.users {
+@import '../globals';
 
+.users {
   &__photo {
     width: 80px;
     height: 80px;
@@ -10,5 +11,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+  }
+  &__phone {
+    display: flex;
+    align-items: center;
+    i {
+      margin-right: 10px;
+    }
   }
 }

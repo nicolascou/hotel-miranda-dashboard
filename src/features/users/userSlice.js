@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { updateUser, deleteUserById, createUser, getUserList, getUser } from './userThunks'
+import { updateUser, deleteUserById, createUser, getUserList } from './userThunks'
 
 const initialState = {
   data: [],
@@ -21,7 +21,7 @@ export const userSlice = createSlice({
       state.status = 'pending';
     })
     .addCase(getUserList.fulfilled, (state, action) => {
-      state.data.userList = action.payload;
+      state.data = action.payload;
       state.status = 'fulfilled';
     })
 
@@ -33,7 +33,7 @@ export const userSlice = createSlice({
       state.status = 'pending';
     })
     .addCase(deleteUserById.fulfilled, (state, action) => {
-      state.data.userList = action.payload;
+      state.data = action.payload;
       state.status = 'fulfilled';
     })
    
@@ -45,7 +45,7 @@ export const userSlice = createSlice({
       state.status = 'pending';
     })
     .addCase(createUser.fulfilled, (state, action) => {
-      state.data.userList.push(action.payload);
+      state.data.push(action.payload);
       state.status = 'fulfilled';
     })
 
@@ -57,7 +57,7 @@ export const userSlice = createSlice({
       state.status = 'pending';
     })
     .addCase(updateUser.fulfilled, (state, action) => {
-      state.data.userList = state.data.userList.map((user) => {
+      state.data = state.data.map((user) => {
         if (user.id === action.payload.id) {
           return action.payload;
         } else {
