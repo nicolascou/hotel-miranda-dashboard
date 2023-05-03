@@ -13,6 +13,7 @@ const UserList = () => {
   const [showUsers, setShowUsers] = useState([]);
   const [pagination, setPagination] = useState(1);
   const [changeBy, setChangeBy] = useState('all');
+  const [searchInput, setSearchInput] = useState(undefined);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -30,6 +31,12 @@ const UserList = () => {
     let index = pagination === 1 ? 0 : (pagination-1)*10;
     setShowUsers(users.slice(index, index+10));
   }, [pagination, users])
+
+  useEffect(() => {
+    if (searchInput !== undefined) {
+      setUsers(data.filter(({ full_name }) => full_name.toLowerCase().includes(searchInput.toLowerCase())));
+    }
+  }, [searchInput])
 
   const handleDelete = (e, userId) => {
     dispatch(deleteUserById(userId));
@@ -51,6 +58,10 @@ const UserList = () => {
           >Inactive</li>
         </ul>
         <div className='d-flex-center'>
+          <div className='users__search'>
+            <i className='fa-solid fa-magnifying-glass'></i>
+            <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+          </div>
           <Link to='/users/create' className='rooms__new-room'>New User +</Link>
           <select className='list__top__select' value={changeBy} onChange={(e) => setChangeBy(e.target.value)}>
             <option className='list__top__select__text' value="date">Start Date</option>

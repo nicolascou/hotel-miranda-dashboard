@@ -19,4 +19,21 @@
       margin-right: 10px;
     }
   }
+  &__search {
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    margin-right: 30px;
+    padding: 10px 20px;
+    
+    input {
+      margin-left: 10px;
+      background: none;
+      border: none;
+      outline: none;
+      padding: 3px 10px;
+    }
+  }
 }
