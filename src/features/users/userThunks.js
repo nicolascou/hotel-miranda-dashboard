@@ -16,23 +16,6 @@ export const getUserList = createAsyncThunk(
   }
 )
 
-export const getUser = createAsyncThunk(
-  'user/getUserStatus',
-  async(userId, {getState}) => {
-    try {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          const { userList } = getState().user.data.userList;
-          const loggedUser = userList.find(({ id }) => id === userId);
-          resolve(loggedUser);
-        }, 200); 
-      })
-    } catch (error) {
-      return error;
-    }
-  }
-)
-
 export const deleteUserById = createAsyncThunk(
   'user/deleteUserByIdStatus',
   async(userId, { getState }) => {

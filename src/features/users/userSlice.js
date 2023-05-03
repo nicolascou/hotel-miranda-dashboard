@@ -1,12 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { updateUser, deleteUserById, createUser, getUserList } from './userThunks'
-import { getUser } from 'gh-pages/lib/util'
+import { updateUser, deleteUserById, createUser, getUserList, getUser } from './userThunks'
 
 const initialState = {
-  data: {
-    'userList': [],
-    'loggedUser': null
-  },
+  data: [],
   status: 'idle',
   error: null
 }
@@ -26,18 +22,6 @@ export const userSlice = createSlice({
     })
     .addCase(getUserList.fulfilled, (state, action) => {
       state.data.userList = action.payload;
-      state.status = 'fulfilled';
-    })
-
-    .addCase(getUser.rejected, (state, action) => {
-      state.error = action.payload;
-      state.status = 'rejected';
-    })
-    .addCase(getUser.pending, (state) => {
-      state.status = 'pending';
-    })
-    .addCase(getUser.fulfilled, (state, action) => {
-      state.data.loggedUser = action.payload;
       state.status = 'fulfilled';
     })
 
