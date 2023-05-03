@@ -81,7 +81,7 @@ const UserList = () => {
                   </div>
                 </div>
                 <p className='list__table__row__item' style={{ fontSize: '15px' }}>
-                  Answering guest inquiries, directing phone calls, coordinating travel plans, and more.
+                  {user.description}
                 </p>
                 <div className='list__table__row__item users__schedule' style={{ justifyContent: 'center' }}>
                   {user.start_date}
