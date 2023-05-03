@@ -16,6 +16,23 @@ export const getUserList = createAsyncThunk(
   }
 )
 
+export const getUser = createAsyncThunk(
+  'user/getUserStatus',
+  async(userId, {getState}) => {
+    try {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const { userList } = getState().user.data.userList;
+          const loggedUser = userList.find(({ id }) => id === userId);
+          resolve(loggedUser);
+        }, 200); 
+      })
+    } catch (error) {
+      return error;
+    }
+  }
+)
+
 export const deleteUserById = createAsyncThunk(
   'user/deleteUserByIdStatus',
   async(userId, { getState }) => {
@@ -23,7 +40,7 @@ export const deleteUserById = createAsyncThunk(
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve(
-            getState().user.data.filter(({ id }) => id !== userId)
+            getState().user.data.userList.filter(({ id }) => id !== userId)
           );
         }, 200);
       });
@@ -39,7 +56,7 @@ export const createUser = createAsyncThunk(
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
-          user.id = getState().user.data.length + 1;
+          user.id = getState().user.data.userList.length + 1;
           resolve(user);
         }, 200);
       });
