@@ -47,27 +47,6 @@ const UserCreate = () => {
               <option value="Double Bed">Double Bed</option>
               <option value="Double Luxury">Double Luxury</option>
             </select>
-            <div className='create__form__column__cell create__form__amenities'>
-              <label className='weight-600' htmlFor="amenities">Amenities</label>
-              <div>
-                <div className='create__form__amenities__box'>
-                  <label htmlFor="shower">Shower</label>
-                  <input type="checkbox" id="shower" />
-                </div>
-                <div className='create__form__amenities__box'>
-                  <label htmlFor="ac">AC</label>
-                  <input type="checkbox" id="ac" />
-                </div>
-                <div className='create__form__amenities__box'>
-                  <label htmlFor="wifi">Wifi</label>
-                  <input type="checkbox" id="wifi" />
-                </div>
-                <div className='create__form__amenities__box'>
-                  <label htmlFor="ledtv">LED TV</label>
-                  <input type="checkbox" id="ledtv" />
-                </div>
-              </div>
-            </div>
           </div>
           <div className='create__form__column'>
             <div className='create__form__column__cell'>
