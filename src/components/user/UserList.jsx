@@ -5,7 +5,7 @@ import RemoveRow from '../partials/RemoveRow';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserList, deleteUserById } from '../../features/users/userThunks';
 import Loading from '../partials/Loading';
-import { changeRoomsBy } from '../../utils/changeRoomsBy';
+import { orderUsersBy } from '../../utils/orderUsersBy';
 
 const UserList = () => {
   const { data, status } = useSelector(state => state.user);
@@ -21,7 +21,7 @@ const UserList = () => {
     if (status === 'idle') {
       dispatch(getUserList());
     }
-    setUsers(changeRoomsBy(changeBy, [...data]));
+    setUsers(orderUsersBy(changeBy, [...data]));
     setPagination(1);
     // eslint-disable-next-line
   }, [data, changeBy])
@@ -40,22 +40,21 @@ const UserList = () => {
     <div className='list'>
       <div className='list__top'>
         <ul className='list__top__menu'>
-          <li className={`list__top__menu__item ${changeBy !== 'available' && changeBy !== 'booked' ? 'list__top__menu__item--active' : ''}`} 
+          <li className={`list__top__menu__item ${changeBy !== 'active' && changeBy !== 'inactive' ? 'list__top__menu__item--active' : ''}`} 
             onClick={() => setChangeBy('all')}
           >All Users</li>
-          <li className={`list__top__menu__item ${changeBy === 'available' ? 'list__top__menu__item--active' : ''}`} 
-            onClick={() => setChangeBy('available')}
-          >Available</li>
-          <li className={`list__top__menu__item ${changeBy === 'booked' ? 'list__top__menu__item--active' : ''}`} 
-            onClick={() => setChangeBy('booked')}
-          >Booked</li>
+          <li className={`list__top__menu__item ${changeBy === 'active' ? 'list__top__menu__item--active' : ''}`} 
+            onClick={() => setChangeBy('active')}
+          >Active</li>
+          <li className={`list__top__menu__item ${changeBy === 'inactive' ? 'list__top__menu__item--active' : ''}`} 
+            onClick={() => setChangeBy('inactive')}
+          >Inactive</li>
         </ul>
         <div className='d-flex-center'>
-          <Link to='/' className='rooms__new-room'>New User +</Link>
+          <Link to='/users/create' className='rooms__new-room'>New User +</Link>
           <select className='list__top__select' value={changeBy} onChange={(e) => setChangeBy(e.target.value)}>
-            <option className='list__top__select__text' value="number">Room number</option>
-            <option className='list__top__select__text' value="status">Status</option>
-            <option className='list__top__select__text' value="price">Price</option>
+            <option className='list__top__select__text' value="date">Start Date</option>
+            <option className='list__top__select__text' value="name">Name</option>
           </select>
         </div>
       </div>
@@ -71,7 +70,7 @@ const UserList = () => {
           { status === 'pending' && <Loading /> }
           {showUsers.map((user) => {
             return (
-              <div key={user.id} onClick={() => navigate(`/rooms/${user.id}`)} className='list__table__row'>
+              <div key={user.id} onClick={() => navigate(`/users/${user.id}`)} className='list__table__row'>
                 <div className='list__table__row__item'>
                   <img className='users__photo' src={user.photo} alt="" />
                   <div className='users__info'>

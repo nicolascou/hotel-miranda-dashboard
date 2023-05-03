@@ -972,6 +972,7 @@
   border-radius: 12px;
   width: 120px;
   text-align: center;
+  text-transform: capitalize;
 }
 .rooms__status--green {
   background-color: #5AD07A;
