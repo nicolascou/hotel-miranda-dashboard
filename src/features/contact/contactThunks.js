@@ -16,14 +16,23 @@ export const getContactList = createAsyncThunk(
   }
 )
 
-export const deleteContactById = createAsyncThunk(
-  'contact/deleteContactByIdStatus',
+export const archiveContactById = createAsyncThunk(
+  'contact/archiveContactByIdStatus',
   async(contactId, { getState }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve(
-            getState().contact.data.filter(({ id }) => id !== contactId)
+            getState().contact.data.map((contact) => {
+              if (contact.id === contactId) {
+                return {
+                  ...contact,
+                  archived: true
+                }
+              } else {
+                return contact;
+              }
+            })
           );
         }, 200);
       });

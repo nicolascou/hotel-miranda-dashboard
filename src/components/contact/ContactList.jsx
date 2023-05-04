@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContactList } from '../../features/contact/contactThunks';
+import { archiveContactById, getContactList } from '../../features/contact/contactThunks';
 import Loading from '../partials/Loading';
 import moment from 'moment';
 import { sortOrFilterContactsBy } from '../../utils/sortOrFilterContactsBy';
@@ -12,7 +12,7 @@ const ContactList = () => {
   const [contacts, setContacts] = useState([]);
   const [showContacts, setShowContacts] = useState([]);
   const [pagination, setPagination] = useState(1);
-  const [sortOrFilterBy, setSortOrFilterBy] = useState('all');
+  const [sortOrFilterBy, setSortOrFilterBy] = useState('newest');
 
   const dispatch = useDispatch();
 
@@ -31,7 +31,7 @@ const ContactList = () => {
   }, [pagination, contacts])
 
   const handleArchive = (e, contactId) => {
-    // dispatch(deleteContactById(contactId));
+    dispatch(archiveContactById(contactId));
     e.stopPropagation(e);
   }
 
@@ -75,7 +75,7 @@ const ContactList = () => {
                   <p className='small-text'>{contact.comment}</p>
                 </div>
                 <div className='list__table__row__item contacts__archive'>
-                  <button onClick={handleArchive}>Archive</button>
+                  <button onClick={(e) => handleArchive(e, contact.id)}>Archive</button>
                 </div>
               </div> 
             )})}
