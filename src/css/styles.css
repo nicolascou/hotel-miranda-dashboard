@@ -1038,6 +1038,28 @@
   padding: 3px 10px;
 }
 
+.contacts__col-cell {
+  display: flex;
+  flex-direction: column;
+}
+.contacts__archive {
+  justify-content: center;
+}
+.contacts__archive button {
+  background-color: #EBF1EF;
+  font-weight: 600;
+  font-size: 16px;
+  color: #135846;
+  border-radius: 8px;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.contacts__archive button:hover {
+  background-color: #cddcd7;
+}
+
 * {
   margin: 0;
   padding: 0;

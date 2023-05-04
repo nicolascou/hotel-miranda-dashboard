@@ -1,0 +1,28 @@
+@import '../globals';
+
+.contacts {
+  &__col-cell {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__archive {
+    justify-content: center;
+
+    button {
+      background-color: #EBF1EF;
+      font-weight: 600;
+      font-size: 16px;
+      color: $primary-color;
+      border-radius: 8px;
+      padding: 8px 15px;
+      border: none;
+      cursor: pointer;
+      transition: all .3s;
+
+      &:hover {
+        background-color: darken(#EBF1EF, 10);
+      }
+    }
+  }
+}
