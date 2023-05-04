@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContactById, getContactList } from '../../features/contact/contactThunks';
+import { getContactList } from '../../features/contact/contactThunks';
 import Loading from '../partials/Loading';
-import { orderUsersBy } from '../../utils/orderUsersBy';
+import moment from 'moment';
+import { sortOrFilterContactsBy } from '../../utils/sortOrFilterContactsBy';
 
 const ContactList = () => {
   const { data, status } = useSelector(state => state.contact);
   const [contacts, setContacts] = useState([]);
   const [showContacts, setShowContacts] = useState([]);
   const [pagination, setPagination] = useState(1);
-  const [changeBy, setChangeBy] = useState('all');
+  const [sortOrFilterBy, setSortOrFilterBy] = useState('all');
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (status === 'idle') {
       dispatch(getContactList());
     }
-    setContacts(orderUsersBy(changeBy, [...data]));
+    setContacts(sortOrFilterContactsBy(sortOrFilterBy, [...data]));
     setPagination(1);
     // eslint-disable-next-line
-  }, [data, changeBy])
+  }, [data, sortOrFilterBy])
 
   useEffect(() => {
     let index = pagination === 1 ? 0 : (pagination-1)*10;
@@ -39,18 +39,18 @@ const ContactList = () => {
     <div className='list'>
       <div className='list__top'>
         <ul className='list__top__menu'>
-          <li className={`list__top__menu__item ${changeBy !== 'active' && changeBy !== 'inactive' ? 'list__top__menu__item--active' : ''}`} 
-            onClick={() => setChangeBy('all')}
+          <li className={`list__top__menu__item ${sortOrFilterBy !== 'archived' ? 'list__top__menu__item--active' : ''}`} 
+            onClick={() => setSortOrFilterBy('newest')}
           >All Contacts</li>
-          <li className={`list__top__menu__item ${changeBy === 'active' ? 'list__top__menu__item--active' : ''}`} 
-            onClick={() => setChangeBy('active')}
+          <li className={`list__top__menu__item ${sortOrFilterBy === 'archived' ? 'list__top__menu__item--active' : ''}`} 
+            onClick={() => setSortOrFilterBy('archived')}
           >Archived</li>
         </ul>
         <div className='d-flex-center'>
           <Link to='/contact/create' className='rooms__new-room'>New Contact +</Link>
-          <select className='list__top__select' value={changeBy} onChange={(e) => setChangeBy(e.target.value)}>
-            <option className='list__top__select__text' value="date">Start Date</option>
-            <option className='list__top__select__text' value="name">Name</option>
+          <select className='list__top__select' value={sortOrFilterBy} onChange={(e) => setSortOrFilterBy(e.target.value)}>
+            <option className='list__top__select__text' value="newest">Newest</option>
+            <option className='list__top__select__text' value="oldest">Oldest</option>
           </select>
         </div>
       </div>
@@ -65,8 +65,8 @@ const ContactList = () => {
           { status === 'pending' && <Loading /> }
           {showContacts.map((contact) => {
             return (
-              <div key={contact.id} onClick={() => navigate(`/users/${contact.id}`)} className='list__table__row'>
-                <p className='list__table__row__item weight-500'>{contact.date}</p>
+              <div key={contact.id} className='list__table__row'>
+                <p className='list__table__row__item weight-500'>{moment(contact.date).format('MMM Do, YYYY')}</p>
                 <p className='list__table__row__item weight-600'>
                   {contact.name}
                 </p>
