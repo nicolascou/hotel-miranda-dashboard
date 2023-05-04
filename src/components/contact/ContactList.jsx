@@ -6,6 +6,7 @@ import { archiveContactById, getContactList } from '../../features/contact/conta
 import Loading from '../partials/Loading';
 import moment from 'moment';
 import { sortOrFilterContactsBy } from '../../utils/sortOrFilterContactsBy';
+import ContactCards from './ContactCards';
 
 const ContactList = () => {
   const { data, status } = useSelector(state => state.contact);
@@ -37,27 +38,7 @@ const ContactList = () => {
 
   return (
     <>
-      <div className='contacts__cards'>
-        {
-          data.slice().reverse().slice(0, 5).map((contact) => (
-              <div key={contact.id} className='contacts__cards__card'>
-                <p className='contacts__cards__card__text'>{contact.comment}</p>
-                <div className='contacts__cards__card__flex'>
-                  <i className='fa-solid fa-user contacts__cards__card__flex__img'></i>
-                  <div className='contacts__cards__card__flex__main'>
-                    <p className='contacts__cards__card__flex__main__name'>{contact.name}</p>
-                    <p className='contacts__cards__card__flex__main__time'>4 hours ago</p>
-                  </div>
-                  <div className='contacts__cards__card__flex__read'>
-                    <i className='fa-regular fa-circle-check contacts__cards__card__flex__read__true'></i>
-                    <i className='fa-regular fa-circle-xmark contacts__cards__card__flex__read__false'></i>
-                  </div>
-                </div>
-              </div>
-          ))
-        }
-      </div>
-
+      <ContactCards />
       <div className='list'>
         <div className='list__top'>
           <ul className='list__top__menu'>
