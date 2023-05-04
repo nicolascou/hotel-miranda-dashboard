@@ -219,6 +219,9 @@
   margin-right: 10px;
 }
 
+.dashboard {
+  margin-bottom: -50px;
+}
 .dashboard__kpis {
   display: flex;
   align-items: center;
@@ -318,10 +321,11 @@
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0196078431);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0352941176);
   width: 100%;
   border-radius: 20px;
   margin-top: 40px;
+  margin-bottom: 50px;
   padding: 0 30px;
 }
 .dashboard__bookings__card {
@@ -1049,14 +1053,14 @@
 .contacts__cards {
   display: flex;
   flex-wrap: nowrap;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
   overflow-x: hidden;
   width: calc(100% + 50px);
 }
 .contacts__cards__card {
   background-color: white;
   border-radius: 20px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0196078431);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0352941176);
   padding: 30px;
   min-width: 26%;
   max-width: 26%;

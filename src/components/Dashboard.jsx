@@ -5,6 +5,7 @@ import Calendar from 'react-calendar';
 import room1 from '../img/rooms-1.jpg';
 import room2 from '../img/rooms-2.jpg';
 import room3 from '../img/rooms-3.jpg';
+import ContactCards from './contact/ContactCards';
 
 const Dashboard = () => {
   return (
@@ -97,6 +98,7 @@ const Dashboard = () => {
           <div style={{ background: '#FB9F44' }} className='dashboard__bookings__card__number'>20</div>
         </div>
       </div>
+      <ContactCards />
     </div>
   )
 }
