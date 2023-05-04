@@ -36,6 +36,7 @@ const UserList = () => {
     if (searchInput !== undefined) {
       setUsers(data.filter(({ full_name }) => full_name.toLowerCase().includes(searchInput.toLowerCase())));
     }
+    // eslint-disable-next-line
   }, [searchInput])
 
   const handleDelete = (e, userId) => {
@@ -79,6 +80,9 @@ const UserList = () => {
         </div>
         <ul style={{ listStyle: 'none' }}>
           { status === 'pending' && <Loading /> }
+          { 
+            showUsers.length === 0 && <p className='list__table__nothing'>Nothing to show here</p>
+          }
           {showUsers.map((user) => {
             return (
               <div key={user.id} onClick={() => navigate(`/users/${user.id}`)} className='list__table__row'>

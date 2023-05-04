@@ -72,6 +72,9 @@ const RoomList = () => {
         </div>
         <ul style={{ listStyle: 'none' }}>
           { status === 'pending' && <Loading /> }
+          { 
+            showRooms.length === 0 && <p className='list__table__nothing'>Nothing to show here</p>
+          }
           {showRooms.map((room) => {
             return (
               <div key={room.id} onClick={() => navigate(`/rooms/${room.id}`)} className='list__table__row'>

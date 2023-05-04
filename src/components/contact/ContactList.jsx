@@ -63,6 +63,10 @@ const ContactList = () => {
         </div>
         <ul style={{ listStyle: 'none' }}>
           { status === 'pending' && <Loading /> }
+          {
+            showContacts.length === 0 &&
+            <p className='list__table__nothing'>Nothing to show here</p>
+          }
           {showContacts.map((contact) => {
             return (
               <div key={contact.id} className='list__table__row'>

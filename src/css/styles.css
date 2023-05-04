@@ -422,6 +422,14 @@
   border-radius: 20px;
   background-color: white;
 }
+.list__table__nothing {
+  font-size: 24px;
+  color: #393939;
+  text-align: center;
+  margin-top: 30px;
+  padding-bottom: 30px;
+  font-weight: 600;
+}
 .list__table__row {
   position: relative;
   color: #393939;

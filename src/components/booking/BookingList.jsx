@@ -81,6 +81,9 @@ const BookingList = () => {
         </div>
         <ul style={{ listStyle: 'none' }}>
           { status === 'pending' && <Loading /> }
+          { 
+            showBookings.length === 0 && <p className='list__table__nothing'>Nothing to show here</p>
+          }
           { showBookings.map((b) => {
             let statusClassMap = {
               'Check In': 'list__table__row__item__status--green',
