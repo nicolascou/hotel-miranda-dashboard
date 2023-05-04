@@ -17,6 +17,7 @@ const UserCreate = () => {
       "full_name": formData.get('full_name'),
       "username": formData.get('username'),
       "position": formData.get('position'),
+      "photo": formData.get('image'),
       "email": formData.get('email'),
       "phone": formData.get('phone'),
       "description": formData.get('description'),
@@ -30,32 +31,56 @@ const UserCreate = () => {
   
   return (
     <div className='create'>
-      <h2 className='create__title'>Add New Room</h2>
+      <h2 className='create__title'>Add New User</h2>
       <form ref={formRef} className='create__form' onSubmit={(e) => handleSubmit(e)}>
         <div className='create__form__grid'>
           <div className='create__form__column'>
             <div className='create__form__column__cell'>
-              <label className='weight-600' htmlFor="name">Room name</label>
-              <input name='name' type="name" id='name' />
+              <label className='weight-600' htmlFor="full_name">Full name</label>
+              <input name='full_name' type="text" id='full_name' />
             </div>
             <div className='create__form__column__cell'>
-              <label className='weight-600' htmlFor="price">Price</label>
-              <input name='price' type="number" />
+              <label className='weight-600' htmlFor="email">Email</label>
+              <input name='email' type="email" id='email' />
             </div>
-            <select name='bed_type' className='create__form__column__cell weight-600'>
-              <option value="Single Bed">Single Bed</option>
-              <option value="Double Bed">Double Bed</option>
-              <option value="Double Luxury">Double Luxury</option>
-            </select>
+            <div className='create__form__column__cell'>
+              <label className='weight-600' htmlFor="image">Image Url</label>
+              <input name='image' type="text" id='image' />
+            </div>
           </div>
           <div className='create__form__column'>
             <div className='create__form__column__cell'>
-              <label className='weight-600' htmlFor="description">Description</label>
-              <textarea name='description' id="description" cols="30" rows="10"></textarea>
+              <label className='weight-600' htmlFor="username">Username</label>
+              <input name='username' type="text" id='username' />
             </div>
             <div className='create__form__column__cell'>
-              <label className='weight-600' htmlFor="cancel">Cancellation Policy</label>
-              <textarea name='cancellation' cols="30" rows="10" id='cancel'></textarea>
+              <label className='weight-600' htmlFor="phone">Phone</label>
+              <input name='phone' type="tel" id='phone' />
+            </div>
+            <div className='create__form__column__cell'>
+              <label className='weight-600' htmlFor="position">Position</label>
+              <select name='position' id='position' className='weight-600'>
+                <option value="Manager">Manager</option>
+                <option value="Room Service">Room Service</option>
+                <option value="Receipt">Receipt</option>
+              </select>
+            </div>
+          </div>
+          <div className='create__form__column'>
+            <div className='create__form__column__cell'>
+              <label className='weight-600' htmlFor="password">Password</label>
+              <input name='password' type="password" id='password' />
+            </div>
+            <div className='create__form__column__cell'>
+              <label className='weight-600' htmlFor="state">State</label>
+              <select name='state' id='state' className='weight-600'>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+            <div className='create__form__column__cell'>
+              <label className='weight-600' htmlFor="description">Description of job</label>
+              <textarea name='description' id="description" cols="30" rows="5"></textarea>
             </div>
           </div>
         </div>

@@ -101,7 +101,7 @@ const UserList = () => {
                 </div>
                 <div className='list__table__row__item users__phone'>
                   <i className='fa-solid fa-phone'></i>
-                  <p>012 345 678 901</p>
+                  <p>{user.phone || '012 345 678 901'}</p>
                 </div>
                 <div className='list__table__row__item'>
                   <p className={`rooms__status 

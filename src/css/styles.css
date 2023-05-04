@@ -220,7 +220,7 @@
 }
 
 .dashboard {
-  margin-bottom: -50px;
+  margin-bottom: -40px;
 }
 .dashboard__kpis {
   display: flex;
@@ -325,7 +325,7 @@
   width: 100%;
   border-radius: 20px;
   margin-top: 40px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   padding: 0 30px;
 }
 .dashboard__bookings__card {
@@ -861,14 +861,14 @@
   margin-bottom: 40px;
 }
 .create__form {
-  max-width: 600px;
   margin: 0 auto;
+  max-width: 700px;
   text-align: center;
 }
 .create__form__grid {
   display: flex;
-  justify-content: space-around;
   align-items: flex-start;
+  justify-content: space-between;
 }
 .create__form__column {
   margin-bottom: 20px;
@@ -1048,12 +1048,13 @@
   border: none;
   outline: none;
   padding: 3px 10px;
+  width: 200px;
 }
 
 .contacts__cards {
   display: flex;
   flex-wrap: nowrap;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
   overflow-x: hidden;
   width: calc(100% + 50px);
 }

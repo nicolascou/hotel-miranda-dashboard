@@ -35,7 +35,7 @@ const RoomCreate = () => {
           <div className='create__form__column'>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="name">Room name</label>
-              <input name='name' type="name" id='name' />
+              <input name='name' type="text" id='name' />
             </div>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="price">Price</label>
