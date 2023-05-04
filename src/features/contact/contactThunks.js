@@ -51,11 +51,18 @@ export const createContact = createAsyncThunk(
 
 export const updateContact = createAsyncThunk(
   'contact/updateContactStatus',
-  async(contact) => {
+  async(updatedContact, { getState }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
-          resolve(contact);
+          const updatedContacts = getState().contact.data.map((contact) => {
+            if (contact.id === updatedContact.id) {
+              return updatedContact;
+            } else {
+              return contact;
+            }
+          })
+          resolve(updatedContacts);
         }, 200);
       });
     } catch (error) {

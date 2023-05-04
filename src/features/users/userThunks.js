@@ -51,11 +51,18 @@ export const createUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   'user/updateUserStatus',
-  async(user) => {
+  async(updatedUser, { getState }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
-          resolve(user);
+          const updatedUsers = getState().user.data.map((user) => {
+            if (user.id === updateUser.id) {
+              return updatedUser;
+            } else {
+              return user;
+            }
+          });
+          resolve(updatedUsers);
         }, 200);
       });
     } catch (error) {

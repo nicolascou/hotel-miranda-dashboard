@@ -52,10 +52,17 @@ export const createRoom = createAsyncThunk(
 
 export const updateRoom = createAsyncThunk(
   'room/updateRoomStatus',
-  async(room) => {
+  async(updatedRoom, { getState }) => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(room);
+        const updatedRooms = getState().room.data.roomList.map((room) => {
+          if (room.id === updatedRoom.id) {
+            return updatedRoom;
+          } else {
+            return room;
+          }
+        });
+        resolve(updatedRooms);
       }, 200);
     });
   }

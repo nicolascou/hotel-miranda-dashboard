@@ -52,13 +52,7 @@ export const roomSlice = createSlice({
       state.status = 'pending';
     })
     .addCase(updateRoom.fulfilled, (state, action) => {
-      state.data.roomList = state.data.roomList.map((room) => {
-        if (room.id === action.payload.id) {
-          return action.payload;
-        } else {
-          return room;
-        }
-      });
+      state.data.roomList = action.payload;
       state.status = 'fulfilled';
     })
   }

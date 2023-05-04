@@ -39,10 +39,17 @@ export const createBooking = createAsyncThunk(
 
 export const updateBooking = createAsyncThunk(
   'booking/updateBooking',
-  async(booking) => {
+  async(updatedBooking, { getState }) => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(booking);
+        const updatedBookings = getState().booking.data.map((booking) => {
+          if (booking.id === updatedBooking.id) {
+            return updatedBooking;
+          } else {
+            return booking;
+          }
+        })
+        resolve(updatedBookings);
       }, 200);
     });
   }

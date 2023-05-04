@@ -57,13 +57,7 @@ export const userSlice = createSlice({
       state.status = 'pending';
     })
     .addCase(updateUser.fulfilled, (state, action) => {
-      state.data = state.data.map((user) => {
-        if (user.id === action.payload.id) {
-          return action.payload;
-        } else {
-          return user;
-        }
-      });
+      state.data = action.payload;
       state.status = 'fulfilled';
     })
   }
