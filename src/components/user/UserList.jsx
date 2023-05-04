@@ -36,8 +36,7 @@ const UserList = () => {
     if (searchInput !== undefined) {
       setUsers(data.filter(({ full_name }) => full_name.toLowerCase().includes(searchInput.toLowerCase())));
     }
-    // eslint-disable-next-line
-  }, [searchInput])
+  }, [searchInput, data])
 
   const handleDelete = (e, userId) => {
     dispatch(deleteUserById(userId));

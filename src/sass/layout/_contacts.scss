@@ -1,6 +1,69 @@
 @import '../globals';
 
 .contacts {
+  &__cards {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 50px;
+    overflow-x: hidden;
+    width: calc(100% + 50px);
+
+    &__card {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0px 4px 4px #00000005;
+      padding: 30px;
+      min-width: 28%;
+      margin-right: 40px;
+
+      &__text {
+        color: #4E4E4E;
+      }
+
+      &__flex {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+
+        &__img {
+          width: 50px;
+          height: 50px;
+          border-radius: 8px;
+          background-color: #EBF1EF;
+          margin-right: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        &__main {
+          margin-right: auto;
+          &__name {
+            font-weight: 600;
+          }
+          &__time {
+            font-size: 13px;
+            color: #799283;
+          }
+        }
+
+        &__read {
+          i {
+            font-size: 24px;
+            margin: 0 3px;
+            cursor: pointer;
+          }
+          &__true {
+            color: #5AD07A;
+          }
+          &__false {
+            color: $secondary-color;
+          }
+        }
+      }
+    }
+  }
+  
   &__col-cell {
     display: flex;
     flex-direction: column;
