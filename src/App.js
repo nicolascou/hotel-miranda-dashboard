@@ -13,7 +13,6 @@ import RoomCreate from './components/room/RoomCreate';
 import RoomUpdate from './components/room/RoomUpdate';
 
 import UserList from './components/user/UserList';
-import UserDetails from './components/user/UserDetails';
 import UserCreate from './components/user/UserCreate';
 import UserUpdate from './components/user/UserUpdate';
 
@@ -54,8 +53,6 @@ function App() {
       { path: '/users/create', 
       element: <PrivateRoute><UserCreate /></PrivateRoute> },
       { path: '/users/:id', 
-      element: <PrivateRoute><UserDetails /></PrivateRoute> },
-      { path: '/users/update/:id', 
       element: <PrivateRoute><UserUpdate /></PrivateRoute> },
       { path: '/contact/', 
       element: <PrivateRoute><ContactList /></PrivateRoute> },

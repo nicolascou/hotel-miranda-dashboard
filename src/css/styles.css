@@ -868,7 +868,7 @@
 .create__form__grid {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .create__form__column {
   margin-bottom: 20px;
