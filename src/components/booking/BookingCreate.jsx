@@ -15,7 +15,7 @@ const BookingCreate = () => {
     const formData = new FormData(formRef.current);
     const booking = {
       "guest": formData.get('full_name'),
-      "guest_id": "",
+      "guest_id": Math.floor(Math.random() * 100000000).toString().padStart(8, '0'),
       "photo": formData.get('photo'),
       "order_date": moment().format('MMM Do, YYYY'),
       "check_in": formData.get('check_in'),
@@ -30,7 +30,7 @@ const BookingCreate = () => {
   
   return (
     <div className='create'>
-      <h2 className='create__title'>Add New User</h2>
+      <h2 className='create__title'>Add New Booking</h2>
       <form ref={formRef} className='create__form' onSubmit={(e) => handleSubmit(e)}>
         <div className='create__form__grid'>
           <div className='create__form__column'>
@@ -39,51 +39,36 @@ const BookingCreate = () => {
               <input name='full_name' type="text" id='full_name' />
             </div>
             <div className='create__form__column__cell'>
-              <label className='weight-600' htmlFor="email">Email</label>
-              <input name='email' type="email" id='email' />
-            </div>
-            <div className='create__form__column__cell'>
-              <label className='weight-600' htmlFor="photo">Image Url</label>
+              <label className='weight-600' htmlFor="photo">Photo Url</label>
               <input name='photo' type="text" id='photo' />
             </div>
           </div>
           <div className='create__form__column'>
             <div className='create__form__column__cell'>
-              <label className='weight-600' htmlFor="username">Username</label>
-              <input name='username' type="text" id='username' />
+              <label className='weight-600' htmlFor="check_in">Check In</label>
+              <input name='check_in' type="date" id='check_in' />
             </div>
             <div className='create__form__column__cell'>
-              <label className='weight-600' htmlFor="phone">Phone</label>
-              <input name='phone' type="tel" id='phone' />
-            </div>
-            <div className='create__form__column__cell'>
-              <label className='weight-600' htmlFor="position">Position</label>
-              <select name='position' id='position' className='weight-600'>
-                <option value="Manager">Manager</option>
-                <option value="Room Service">Room Service</option>
-                <option value="Receipt">Receipt</option>
-              </select>
+              <label className='weight-600' htmlFor="check_out">Check Out</label>
+              <input name='check_out' type="date" id='check_out' />
             </div>
           </div>
           <div className='create__form__column'>
             <div className='create__form__column__cell'>
-              <label className='weight-600' htmlFor="password">Password</label>
-              <input name='password' type="password" id='password' />
-            </div>
-            <div className='create__form__column__cell'>
-              <label className='weight-600' htmlFor="state">State</label>
-              <select name='state' id='state' className='weight-600'>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
+              <label className='weight-600' htmlFor="room_type">Room Type</label>
+              <select name='room_type' id='room_type' className='weight-600'>
+                <option value="Single Bed">Single Bed</option>
+                <option value="Double Bed">Double Bed</option>
+                <option value="Double Luxury">Double Luxury</option>
               </select>
             </div>
             <div className='create__form__column__cell'>
-              <label className='weight-600' htmlFor="description">Description of job</label>
-              <textarea name='description' id="description" cols="30" rows="5"></textarea>
+              <label className='weight-600' htmlFor="special_request">Special Request</label>
+              <textarea name='special_request' id="special_request" cols="30" rows="5"></textarea>
             </div>
           </div>
         </div>
-        <button type='submit' className='create__form__btn'>Create Room</button>
+        <button type='submit' className='create__form__btn'>Create Booking</button>
       </form>
     </div>
   )
