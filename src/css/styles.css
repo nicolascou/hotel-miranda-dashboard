@@ -857,6 +857,53 @@
   font-size: 15px;
 }
 
+.details-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.details-modal--hidden {
+  display: none;
+}
+.details-modal__card {
+  background-color: white;
+  border: #135846 4px solid;
+  border-radius: 12px;
+  min-width: 650px;
+  min-height: 450px;
+  padding: 30px 50px;
+  position: relative;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0352941176);
+}
+.details-modal__card__title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #232323;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.details-modal__card__close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  cursor: pointer;
+}
+
 .create {
   width: 100%;
   border-radius: 20px;

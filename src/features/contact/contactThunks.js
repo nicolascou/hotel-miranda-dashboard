@@ -60,13 +60,13 @@ export const createContact = createAsyncThunk(
 
 export const updateContact = createAsyncThunk(
   'contact/updateContactStatus',
-  async(updatedContact, { getState }) => {
+  async(newContact, { getState }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
           const updatedContacts = getState().contact.data.map((contact) => {
-            if (contact.id === updatedContact.id) {
-              return updatedContact;
+            if (contact.id === newContact.id) {
+              return newContact;
             } else {
               return contact;
             }

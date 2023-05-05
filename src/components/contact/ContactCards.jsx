@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getContactList } from '../../features/contact/contactThunks';
+import ContactDetails from './ContactDetails';
 
 const ContactCards = () => {
   const { data, status } = useSelector(state => state.contact);
@@ -31,7 +32,7 @@ const ContactCards = () => {
                   <i className='fa-solid fa-user contacts__cards__card__flex__img'></i>
                   <div className='contacts__cards__card__flex__main'>
                     <p className='contacts__cards__card__flex__main__name'>{contact.name}</p>
-                    <p className='contacts__cards__card__flex__main__time'>4 hours ago</p>
+                    <p className='contacts__cards__card__flex__main__time'>1 day ago</p>
                   </div>
                   <div className='contacts__cards__card__flex__read'>
                     <i onClick={() => handleCheck(contact.id)} className='fa-regular fa-circle-check contacts__cards__card__flex__read__true'></i>
@@ -41,8 +42,9 @@ const ContactCards = () => {
               </div>
           ))
         }
-      </div>
-    }</>
+      </div>}
+      <ContactDetails />
+    </>
   )
 }
 

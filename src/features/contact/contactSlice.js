@@ -57,13 +57,7 @@ export const contactSlice = createSlice({
       state.status = 'pending';
     })
     .addCase(updateContact.fulfilled, (state, action) => {
-      state.data = state.data.map((contact) => {
-        if (contact.id === action.payload.id) {
-          return action.payload;
-        } else {
-          return contact;
-        }
-      });
+      state.data = action.payload;
       state.status = 'fulfilled';
     })
   }
