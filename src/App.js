@@ -19,7 +19,8 @@ import UserCreate from './components/user/UserCreate';
 import UserUpdate from './components/user/UserUpdate';
 
 import ContactList from './components/contact/ContactList';
-import ContactDetails from './components/contact/ContactDetails';
+import ContactCreate from './components/contact/ContactCreate';
+import ContactUpdate from './components/contact/ContactUpdate';
 
 import PrivateRoute from './components/PrivateRoute';
 import { userContextReducer } from './context/userContextReducer';
@@ -62,8 +63,10 @@ function App() {
       element: <PrivateRoute><UserUpdate /></PrivateRoute> },
       { path: '/contact/', 
       element: <PrivateRoute><ContactList /></PrivateRoute> },
+      { path: '/contact/create', 
+      element: <PrivateRoute><ContactCreate /></PrivateRoute> },
       { path: '/contact/:id', 
-      element: <PrivateRoute><ContactDetails /></PrivateRoute> },
+      element: <PrivateRoute><ContactUpdate /></PrivateRoute> },
     ], { basename: BASENAME });
     
   const [user, dispatch] = useReducer(userContextReducer, userInitialState);

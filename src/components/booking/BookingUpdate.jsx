@@ -31,7 +31,7 @@ const BookingUpdate = () => {
   
   return (
     <div className='create'>
-      <h2 className='create__title'>Add New Booking</h2>
+      <h2 className='create__title'>Edit Booking</h2>
       <form ref={formRef} className='create__form' onSubmit={(e) => handleSubmit(e)}>
         <div className='create__form__grid'>
           <div className='create__form__column'>
@@ -70,7 +70,7 @@ const BookingUpdate = () => {
             </div>
           </div>
         </div>
-        <button type='submit' className='create__form__btn'>Create Booking</button>
+        <button type='submit' className='create__form__btn'>Update Booking</button>
       </form>
     </div>
   )
