@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
 import { archiveContactById, getContactList } from '../../features/contact/contactThunks';
@@ -16,6 +16,7 @@ const ContactList = () => {
   const [sortOrFilterBy, setSortOrFilterBy] = useState('newest');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (status === 'idle') {
@@ -72,7 +73,7 @@ const ContactList = () => {
             }
             {showContacts.map((contact) => {
               return (
-                <div key={contact.id} className='list__table__row'>
+                <div key={contact.id} onClick={() => navigate(`/contact/${contact.id}`)} className='list__table__row'>
                   <p className='list__table__row__item weight-500'>{moment(contact.date).format('MMM Do, YYYY')}</p>
                   <p className='list__table__row__item weight-600'>
                     {contact.name}
