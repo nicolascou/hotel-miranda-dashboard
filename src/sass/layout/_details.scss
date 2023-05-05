@@ -29,23 +29,23 @@
     &__user-status {
       text-align: center;
       margin: 0 auto;
-      margin-top: 40px;
+      margin-top: 50px;
       width: fit-content;
       padding: 10px 20px;
       border-radius: 12px;
       p {
-        color: white;
         font-weight: 600;
         text-transform: uppercase;
         font-size: 22px;
-        letter-spacing: 1.2px;
       }
 
       &--green {
-        background-color: $primary-color;
+        background-color: #E8F2EF;
+        color: $primary-color;
       }
       &--red {
         background-color: $secondary-color;
+        color: white;
       }
     }
 
