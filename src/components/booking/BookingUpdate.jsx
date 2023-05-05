@@ -47,11 +47,11 @@ const BookingUpdate = () => {
           <div className='create__form__column'>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="check_in">Check In</label>
-              <input name='check_in' type="date" id='check_in' defaultValue={booking.check_in} />
+              <input name='check_in' type="date" id='check_in' defaultValue={moment(booking.check_in, 'MMM Do, YYYY').format('YYYY-MM-DD')} />
             </div>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="check_out">Check Out</label>
-              <input name='check_out' type="date" id='check_out' defaultValue={booking.check_out} />
+              <input name='check_out' type="date" id='check_out' defaultValue={moment(booking.check_out, 'MMM Do, YYYY').format('YYYY-MM-DD')} />
             </div>
           </div>
           <div className='create__form__column'>
