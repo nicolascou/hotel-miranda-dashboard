@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
 import sortBookingsBy from '../../utils/sortBookingsBy';
@@ -62,12 +62,15 @@ const BookingList = () => {
             className={`list__top__menu__item ${orderBy === 'progress' ? 'list__top__menu__item--active' : ''}`}
           >In Progress</li>
         </ul>
-        <select className='list__top__select' value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
-          <option className='list__top__select__text' value="order_date">Order Date</option>
-          <option className='list__top__select__text' value="guest">Guest</option>
-          <option className='list__top__select__text' value="check_in">Check In</option>
-          <option className='list__top__select__text' value="check_out">Check Out</option>
-        </select>
+        <div className='d-flex-center'>
+          <Link to='/bookings/create' className='list__top__new-room'>New Booking +</Link>
+          <select className='list__top__select' value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
+            <option className='list__top__select__text' value="order_date">Order Date</option>
+            <option className='list__top__select__text' value="guest">Guest</option>
+            <option className='list__top__select__text' value="check_in">Check In</option>
+            <option className='list__top__select__text' value="check_out">Check Out</option>
+          </select>
+        </div>
       </div>
       <div className='list__table'>
         <div className='list__table__row list__table__row--first'>

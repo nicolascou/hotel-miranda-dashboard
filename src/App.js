@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 
 import BookingList from './components/booking/BookingList';
 import BookingDetails from './components/booking/BookingDetails';
+import BookingCreate from './components/booking/BookingCreate';
 
 import RoomList from './components/room/RoomList';
 import RoomDetails from './components/room/RoomDetails';
@@ -39,6 +40,10 @@ function App() {
       { path: '/bookings', 
       element: <PrivateRoute><BookingList /></PrivateRoute> },
       { path: '/bookings/:id',
+      element: <PrivateRoute><BookingDetails /></PrivateRoute> },
+      { path: '/bookings/create',
+      element: <PrivateRoute><BookingCreate /></PrivateRoute> },
+      { path: '/bookings/update/:id',
       element: <PrivateRoute><BookingDetails /></PrivateRoute> },
       { path: '/rooms/',
       element: <PrivateRoute><RoomList /></PrivateRoute> },

@@ -50,7 +50,7 @@ const ContactList = () => {
             >Archived</li>
           </ul>
           <div className='d-flex-center'>
-            <Link to='/contact/create' className='rooms__new-room'>New Contact +</Link>
+            <Link to='/contact/create' className='list__top__new-room'>New Contact +</Link>
             <select className='list__top__select' value={sortOrFilterBy} onChange={(e) => setSortOrFilterBy(e.target.value)}>
               <option className='list__top__select__text' value="newest">Newest</option>
               <option className='list__top__select__text' value="oldest">Oldest</option>

@@ -62,7 +62,7 @@ const UserList = () => {
             <i className='fa-solid fa-magnifying-glass'></i>
             <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
           </div>
-          <Link to='/users/create' className='rooms__new-room'>New User +</Link>
+          <Link to='/users/create' className='list__top__new-room'>New User +</Link>
           <select className='list__top__select' value={changeBy} onChange={(e) => setChangeBy(e.target.value)}>
             <option className='list__top__select__text' value="date">Start Date</option>
             <option className='list__top__select__text' value="name">Name</option>

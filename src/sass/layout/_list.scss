@@ -25,6 +25,16 @@
       }
     }
 
+    &__new-room {
+      text-decoration: none;
+      color: white;
+      background-color: $primary-color;
+      font-weight: 500;
+      border-radius: 8px;
+      padding: 9px 30px;
+      margin-right: 20px;
+    }
+
     &__select {
       border-radius: 12px;
       border: 1px solid $primary-color;
