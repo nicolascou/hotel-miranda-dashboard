@@ -6,6 +6,7 @@ import ContactDetails from './ContactDetails';
 const ContactCards = () => {
   const { data, status } = useSelector(state => state.contact);
   const [unreadContacts, setUnreadContacts] = useState([]);
+  const [editContact, setEditContact] = useState(null);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -26,7 +27,7 @@ const ContactCards = () => {
       <div className='contacts__cards'>
         {
           unreadContacts.map((contact) => (
-              <div key={contact.id} className='contacts__cards__card'>
+              <div key={contact.id} onClick={() => setEditContact(contact)} className='contacts__cards__card'>
                 <p className='contacts__cards__card__text'>{contact.comment}</p>
                 <div className='contacts__cards__card__flex'>
                   <i className='fa-solid fa-user contacts__cards__card__flex__img'></i>
@@ -43,7 +44,7 @@ const ContactCards = () => {
           ))
         }
       </div>}
-      <ContactDetails />
+      <ContactDetails editContact={editContact} />
     </>
   )
 }

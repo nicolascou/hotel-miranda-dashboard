@@ -875,8 +875,8 @@
   background-color: white;
   border: #135846 4px solid;
   border-radius: 12px;
-  min-width: 650px;
-  min-height: 450px;
+  width: 600px;
+  height: fit-content;
   padding: 30px 50px;
   position: relative;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0352941176);
@@ -885,23 +885,34 @@
   font-size: 24px;
   font-weight: 600;
   color: #232323;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   text-align: center;
 }
 .details-modal__card__close {
   position: absolute;
-  top: 20px;
-  right: 25px;
-  font-size: 30px;
+  top: 25px;
+  right: 30px;
+  font-size: 24px;
   border: 1px solid black;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: none;
   cursor: pointer;
+}
+.details-modal__card__btn {
+  text-align: center;
+  margin-top: 30px;
+}
+.details-modal__card__btn a {
+  text-decoration: none;
+  border-radius: 8px;
+  color: white;
+  background-color: #135846;
+  padding: 5px 15px;
 }
 
 .create {
@@ -1113,6 +1124,7 @@
   min-width: 26%;
   max-width: 26%;
   margin-right: 40px;
+  cursor: pointer;
 }
 .contacts__cards__card__text {
   color: #4E4E4E;
