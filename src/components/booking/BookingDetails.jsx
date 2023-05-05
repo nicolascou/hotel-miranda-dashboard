@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import SwiperButtonNext from '../partials/SwiperButtonNext';
 
 import 'swiper/css';
@@ -47,7 +47,9 @@ const BookingDetails = () => {
             <p className='details__left__main__id'>ID {booking.guest_id}</p>
             <div style={{ display: 'flex' }}>
               <button className='details__left__main__phone-btn'>
-                <i className='fa-solid fa-phone'></i>
+                <Link to={`/bookings/update/${booking.id}`}>
+                  <i className='fa-solid fa-edit'></i>
+                </Link>
               </button>
               <button className='details__left__main__message-btn'>
                 <i className='fa-solid fa-message'></i>

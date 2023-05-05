@@ -15,11 +15,11 @@ const BookingCreate = () => {
     const formData = new FormData(formRef.current);
     const booking = {
       "guest": formData.get('full_name'),
-      "guest_id": Math.floor(Math.random() * 100000000).toString().padStart(8, '0'),
+      "guest_id": `#${Math.floor(Math.random() * 100000000).toString().padStart(8, '0')}`,
       "photo": formData.get('photo'),
-      "order_date": moment().format('MMM Do, YYYY'),
-      "check_in": formData.get('check_in'),
-      "check_out": formData.get('check_out'),
+      "order_date": moment().format('MMM Do YYYY h:mm A'),
+      "check_in": moment(formData.get('check_in')).format('MMM Do, YYYY'),
+      "check_out": moment(formData.get('check_out')).format('MMM Do, YYYY'),
       "room_type": formData.get('room_type'),
       "special_request": formData.get('special_request'),
       "status": "In Progress"
