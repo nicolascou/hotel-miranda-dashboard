@@ -18,7 +18,8 @@ const ContactCards = () => {
     // eslint-disable-next-line
   }, [data])
 
-  const handleCheck = (contactId) => {
+  const handleCheck = (e, contactId) => {
+    e.stopPropagation();
     setUnreadContacts(unreadContacts.filter(({ id }) => id !== contactId));
   }
   
@@ -36,8 +37,8 @@ const ContactCards = () => {
                     <p className='contacts__cards__card__flex__main__time'>1 day ago</p>
                   </div>
                   <div className='contacts__cards__card__flex__read'>
-                    <i onClick={() => handleCheck(contact.id)} className='fa-regular fa-circle-check contacts__cards__card__flex__read__true'></i>
-                    <i onClick={() => handleCheck(contact.id)} className='fa-regular fa-circle-xmark contacts__cards__card__flex__read__false'></i>
+                    <i onClick={(e) => handleCheck(e, contact.id)} className='fa-regular fa-circle-check contacts__cards__card__flex__read__true'></i>
+                    <i onClick={(e) => handleCheck(e, contact.id)} className='fa-regular fa-circle-xmark contacts__cards__card__flex__read__false'></i>
                   </div>
                 </div>
               </div>
