@@ -87,7 +87,8 @@ const RoomList = () => {
                 </div>
                 <p className='list__table__row__item weight-500'>{room.bed_type}</p>
                 <p className='list__table__row__item'>
-                  AC, Shower, LED TV, Wifi
+                  {room.amenities.slice(0, -1).map(amenity => amenity + ', ')}
+                  {room.amenities.slice(-1)[0]}
                 </p>
                 <p className='list__table__row__item weight-500 rooms__price'>
                   {room.rate}$

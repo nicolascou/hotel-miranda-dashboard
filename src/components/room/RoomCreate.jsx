@@ -1,15 +1,23 @@
 import React, { useState, useRef } from 'react'
 import { useDispatch } from 'react-redux';
 import { createRoom } from '../../features/rooms/roomThunks';
-import room3 from '../../img/rooms-3.jpg';
 import { useNavigate } from 'react-router-dom';
 
 const RoomCreate = () => {
   const [offer, setOffer] = useState(false);
+  const [amenities, setAmenities] = useState(['AC', 'Shower', 'LED TV', 'Wifi']);
   const formRef = useRef(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleAmenities = (e) => {
+    if (e.target.checked) {
+      setAmenities((prevState) => [...prevState, e.target.name]);
+    } else {
+      setAmenities((prevState) => prevState.filter((amenity) => amenity !== e.target.name));
+    }
+  };
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,11 +25,12 @@ const RoomCreate = () => {
     const room = {
       "name": formData.get('name'),
       "bed_type": formData.get('bed_type'),
-      "photo": room3,
+      "photo": formData.get('photo'),
       "description": formData.get('description'),
       "rate": formData.get('price'),
       "offer": formData.get('price') * (1 - formData.get('discount') / 100),
-      "status": "Available"
+      "status": "Available",
+      "amenities": amenities
     }
     dispatch(createRoom(room))
     navigate('/rooms');
@@ -51,7 +60,7 @@ const RoomCreate = () => {
             {
               offer &&
               <div className='create__form__column__cell'>
-                <label className='weight-600' htmlFor="discount">Discount</label>
+                <label className='weight-600' htmlFor="discount">Discount (%)</label>
                 <input name='discount' type="number" id='discount' />
               </div>
             }
@@ -60,24 +69,28 @@ const RoomCreate = () => {
               <option value="Double Bed">Double Bed</option>
               <option value="Double Luxury">Double Luxury</option>
             </select>
+            <div className='create__form__column__cell'>
+              <label htmlFor="photo" className='weight-600'>Image URL</label>
+              <input type="text" name='photo' />
+            </div>
             <div className='create__form__column__cell create__form__amenities'>
               <label className='weight-600' htmlFor="amenities">Amenities</label>
               <div>
                 <div className='create__form__amenities__box'>
                   <label htmlFor="shower">Shower</label>
-                  <input type="checkbox" id="shower" />
+                  <input type="checkbox" id="shower" name='Shower' defaultChecked onChange={(e) => handleAmenities(e)} />
                 </div>
                 <div className='create__form__amenities__box'>
                   <label htmlFor="ac">AC</label>
-                  <input type="checkbox" id="ac" />
+                  <input type="checkbox" id="ac" name='AC' defaultChecked onChange={(e) => handleAmenities(e)} />
                 </div>
                 <div className='create__form__amenities__box'>
                   <label htmlFor="wifi">Wifi</label>
-                  <input type="checkbox" id="wifi" />
+                  <input type="checkbox" id="wifi" name='Wifi' defaultChecked onChange={(e) => handleAmenities(e)} />
                 </div>
                 <div className='create__form__amenities__box'>
                   <label htmlFor="ledtv">LED TV</label>
-                  <input type="checkbox" id="ledtv" />
+                  <input type="checkbox" id="ledtv" name='LED TV' defaultChecked onChange={(e) => handleAmenities(e)} />
                 </div>
               </div>
             </div>
