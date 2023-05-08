@@ -60,11 +60,6 @@
   width: 100%;
   padding: 5px 10px;
 }
-.login__card__form button {
-  background-color: #E23428;
-  color: white;
-  margin-top: 20px;
-}
 
 .sidebar {
   width: 300px;

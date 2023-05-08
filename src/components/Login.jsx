@@ -57,7 +57,7 @@ const Login = () => {
               type="password" name="password" id="password" placeholder='1234'
             />
           </div>    
-          <Button onClick={(e) => handleSubmit(e)} type='submit'>Log In</Button>
+          <Button backgroundColor='#E23428' onClick={(e) => handleSubmit(e)} type='submit'>Log In</Button>
         </form>
       </div>
     </div>
