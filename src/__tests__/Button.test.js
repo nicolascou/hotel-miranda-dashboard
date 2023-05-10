@@ -1,13 +1,12 @@
 import React from 'react'
-import { render, cleanup } from '@testing-library/react'
+import { render, cleanup, screen } from '@testing-library/react'
 import { Button } from '../components/layout/styled';
+import '@testing-library/jest-dom';
 
 afterEach(cleanup)
 test('button has background color of prop', () => {
-  const { getByTestId } = render(
+  render(
     <Button backgroundColor='rgb(226, 52, 40)' data-testid="test-button" />
   );
-  const button = getByTestId('test-button');
-  const style = window.getComputedStyle(button);
-  expect(style.backgroundColor).toBe('rgb(226, 52, 40)');
+  expect(screen.getByTestId('test-button')).toHaveStyle('backgroundColor: rgb(226, 52, 40)');
 })
