@@ -7,6 +7,9 @@ export const Button = styled.button`
   padding 12px 40px;
   border: none;
   outline: none;
+  background-color: ${(props) => props.backgroundColor};
+  color: white;
+  margin-top: 20px;
 `
 
 export const Card = styled.div`

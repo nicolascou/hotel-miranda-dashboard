@@ -7,8 +7,8 @@ import { UserContext } from '../context/UserContext';
 import { getUserList } from '../features/users/userThunks';
 
 const Login = () => {
-  const [userInput, setUserInput] = useState('nico');
-  const [passwordInput, setPasswordInput] = useState('1234');
+  const [userInput, setUserInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
   const navigate = useNavigate();
   const { actions } = useContext(UserContext);
   const { data, status } = useSelector(state => state.user);
@@ -47,17 +47,17 @@ const Login = () => {
             <label htmlFor="user">User:</label>
             <input className='login__card__form__input' 
               value={userInput} onChange={e => setUserInput(e.target.value)} 
-              type="text" name="user" id="user" placeholder='nico'
+              type="text" name="user" id="user" placeholder='nico' data-cy="user-test"
             />
           </div> 
           <div className='login__card__form__box'>
             <label htmlFor="password">Password:</label>
             <input className='login__card__form__input' 
               value={passwordInput} onChange={e => setPasswordInput(e.target.value)} 
-              type="password" name="password" id="password" placeholder='1234'
+              type="password" name="password" id="password" placeholder='1234' data-cy="password-test"
             />
           </div>    
-          <Button onClick={(e) => handleSubmit(e)} type='submit'>Log In</Button>
+          <Button backgroundColor='#E23428' data-cy="login-test" onClick={(e) => handleSubmit(e)} type='submit'>Log In</Button>
         </form>
       </div>
     </div>
