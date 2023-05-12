@@ -9,7 +9,7 @@ import ContactCards from './contact/ContactCards';
 
 const Dashboard = () => {
   return (
-    <div className='dashboard'>
+    <div className='dashboard' data-cy="dashboard-test">
       <div className='dashboard__kpis'>
         <Card>
           <CardImg>
