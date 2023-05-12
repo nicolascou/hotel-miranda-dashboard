@@ -240,6 +240,7 @@
 .dashboard__row {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-top: 40px;
 }
 .dashboard__row__calendar {
@@ -309,6 +310,18 @@
 }
 .dashboard__row__calendar .react-calendar__month-view__days__day--neighboringMonth {
   color: #B2B2B2;
+}
+.dashboard__row__chart {
+  width: 48%;
+  max-width: 600px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0196078431);
+  padding: 30px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .dashboard__bookings {
   display: flex;

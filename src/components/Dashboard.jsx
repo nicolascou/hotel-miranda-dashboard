@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 import { Card, CardActive, CardImg, CardImgActive } from './layout/styled';
 import Calendar from 'react-calendar';
-
 import room1 from '../img/rooms-1.jpg';
 import room2 from '../img/rooms-2.jpg';
 import room3 from '../img/rooms-3.jpg';
 import ContactCards from './contact/ContactCards';
+import VerticalBarChart from './partials/VerticalBarChart';
 
 const Dashboard = () => {
   return (
@@ -52,6 +52,9 @@ const Dashboard = () => {
         <div className='dashboard__row__calendar'>
           <h3 className='dashboard__row__calendar__title'>Recent Booking Schedule</h3>
           <Calendar locale='en-US' className='dashboard__row__calendar__component' />
+        </div>
+        <div className='dashboard__row__chart'>
+          <VerticalBarChart />
         </div>
       </div>
       <div className='dashboard__bookings'>
