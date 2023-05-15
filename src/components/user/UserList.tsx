@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getUserList, deleteUserById } from '../../features/users/userThunks';
 import Loading from '../partials/Loading';
 import { orderUsersBy } from '../../utils/orderUsersBy';
+import { useAppSelector } from '../../app/hooks';
 
 const UserList = () => {
-  const { data, status } = useSelector(state => state.user);
+  const { data, status } = useAppSelector(state => state.user);
   const [users, setUsers] = useState([]);
   const [showUsers, setShowUsers] = useState([]);
   const [pagination, setPagination] = useState(1);

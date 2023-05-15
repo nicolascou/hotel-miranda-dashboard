@@ -1,18 +1,18 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { updateUser, deleteUserById, createUser, getUserList } from './userThunks'
 import { Status, User } from '../../types/features';
 
 interface UserState {
   data: User[];
   status: Status;
-  error: Error | null;
+  error: Error | undefined;
 }
 
-const initialState: UserState = {
+const initialState = {
   data: [],
   status: 'idle',
-  error: null
-}
+  error: undefined
+} as UserState
 
 export const userSlice = createSlice({
   name: 'user',

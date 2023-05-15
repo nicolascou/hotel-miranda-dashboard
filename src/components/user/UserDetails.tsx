@@ -1,24 +1,23 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getUserList } from '../../features/users/userThunks';
 import Loading from '../partials/Loading';
 import moment from 'moment';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 const UserDetails: React.FC = () => {
   const params = useParams();
-  const { data, status } = useSelector(state => state.user);
+  const { data, status } = useAppSelector(state => state.user);
   const user = data.find(user => user.id === Number(params.id));
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (status === 'idle') {
       dispatch(getUserList());
     }
-    console.log('hola')
   }, [dispatch, status])
 
-  const statusTagClassMap = {
+  const statusTagClassMap: { [key: string]: string } = {
     'active': 'details__left__user-status--green',
     'inactive': 'details__left__user-status--red'
   };

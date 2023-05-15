@@ -2,41 +2,41 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { usersJson } from '../../data/users';
 import { User } from "../../types/features.js";
 
-export const getUserList = createAsyncThunk(
+export const getUserList = createAsyncThunk<User[], void, { rejectValue: Error }>(
   'user/getUserListStatus',
-  async() => {
+  async(_, { rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
-          resolve(usersJson);
+          resolve(usersJson as User[]);
         }, 200);
       });
     } catch (error) {
-      return error;
+      return rejectWithValue(error as Error);
     }
   }
 )
-
-export const deleteUserById = createAsyncThunk(
+ 
+export const deleteUserById = createAsyncThunk<User[], number, { state: any, rejectValue: Error }>(
   'user/deleteUserByIdStatus',
-  async(userId, { getState }) => {
+  async(userId, { getState, rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve(
-            getState().user.data.filter(({ id }) => id !== userId)
+            getState().user.data.filter((user: User) => user.id !== userId) as User[]
           );
         }, 200);
       });
     } catch (error) {
-      return error;
+      return rejectWithValue(error as Error);
     }
   }
 )
 
-export const createUser = createAsyncThunk(
+export const createUser = createAsyncThunk<User, User, { state: any, rejectValue: Error }>(
   'user/createUserStatus',
-  async(user: User, { getState }) => {
+  async(user, { getState, rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -45,14 +45,14 @@ export const createUser = createAsyncThunk(
         }, 200);
       });
     } catch (error) {
-      return error;
+      return rejectWithValue(error as Error);
     }
   }
 )
 
-export const updateUser = createAsyncThunk(
+export const updateUser = createAsyncThunk<User[], User, { state: any, rejectValue: Error }>(
   'user/updateUserStatus',
-  async(newUser, { getState }) => {
+  async(newUser, { getState, rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -67,7 +67,7 @@ export const updateUser = createAsyncThunk(
         }, 200);
       });
     } catch (error) {
-      return error;
+      return rejectWithValue(error as Error);
     }
   }
 )
