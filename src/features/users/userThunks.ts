@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { usersJson } from '../../data/users';
 import { User } from "../../types/features.js";
+import { RootState } from "../../app/store";
 
 export const getUserList = createAsyncThunk<User[], void, { rejectValue: Error }>(
   'user/getUserListStatus',
@@ -17,7 +18,7 @@ export const getUserList = createAsyncThunk<User[], void, { rejectValue: Error }
   }
 )
  
-export const deleteUserById = createAsyncThunk<User[], number, { state: any, rejectValue: Error }>(
+export const deleteUserById = createAsyncThunk<User[], number, { state: RootState, rejectValue: Error }>(
   'user/deleteUserByIdStatus',
   async(userId, { getState, rejectWithValue }) => {
     try {
@@ -34,14 +35,15 @@ export const deleteUserById = createAsyncThunk<User[], number, { state: any, rej
   }
 )
 
-export const createUser = createAsyncThunk<User, Omit<User, 'id'>, { state: any, rejectValue: Error }>(
+export const createUser = createAsyncThunk<User, Omit<User, 'id'>, { state: RootState, rejectValue: Error }>(
   'user/createUserStatus',
   async(user, { getState, rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
+          const userList = getState().user.data;
           resolve({
-            id: getState().user.data.length + 1,
+            id: userList[userList.length-1].id + 1,
             ...user
           });
         }, 200);
@@ -52,7 +54,7 @@ export const createUser = createAsyncThunk<User, Omit<User, 'id'>, { state: any,
   }
 )
 
-export const updateUser = createAsyncThunk<User[], User, { state: any, rejectValue: Error }>(
+export const updateUser = createAsyncThunk<User[], User, { state: RootState, rejectValue: Error }>(
   'user/updateUserStatus',
   async(newUser, { getState, rejectWithValue }) => {
     try {

@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { roomsJson } from '../../data/rooms.js';
 import { Room } from "../../types/features.js";
+import { RootState } from "../../app/store.js";
 
 export const getRoomList = createAsyncThunk<Room[], void, { rejectValue: Error }>(
   'bookings/getRoomListStatus',
@@ -33,7 +34,7 @@ export const getRoom = createAsyncThunk<Room, number, { rejectValue: Error}>(
   }
 )
 
-export const deleteRoomById = createAsyncThunk<Room[], number, { state: any, rejectValue: Error }>(
+export const deleteRoomById = createAsyncThunk<Room[], number, { state: RootState, rejectValue: Error }>(
   'booking/deleteRoomByIdStatus',
   async(roomId, { getState, rejectWithValue }) => {
     try {
@@ -50,15 +51,17 @@ export const deleteRoomById = createAsyncThunk<Room[], number, { state: any, rej
   }
 )
 
-export const createRoom = createAsyncThunk<Room, Room, { state: any, rejectValue: Error }>(
+export const createRoom = createAsyncThunk<Room, Omit<Room, 'id'>, { state: RootState, rejectValue: Error }>(
   'room/createRoomStatus',
   async(room, { getState, rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
           const { roomList } = getState().room.data;
-          room.id = roomList[roomList.length-1].id + 1;
-          resolve(room);
+          resolve({
+            id: roomList[roomList.length-1].id + 1,
+            ...room
+          });
         }, 200);
       });
     } catch (error) {
@@ -67,7 +70,7 @@ export const createRoom = createAsyncThunk<Room, Room, { state: any, rejectValue
   }
 )
 
-export const updateRoom = createAsyncThunk<Room[], Room, { state: any, rejectValue: Error }>(
+export const updateRoom = createAsyncThunk<Room[], Room, { state: RootState, rejectValue: Error }>(
   'room/updateRoomStatus',
   async(updatedRoom, { getState, rejectWithValue }) => {
     try {

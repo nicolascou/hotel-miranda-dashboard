@@ -29,11 +29,13 @@ export interface Booking {
 
 export interface Room {
   id: number;
-  name: string;
-  bed_type: string;
-  photo: string;
+  name: string | undefined;
+  bed_type: string | undefined;
+  photo: string | undefined;
+  description: string | undefined;
   amenities: string[];
   rate: number;
+  offer: number;
   status: string;
 }
 

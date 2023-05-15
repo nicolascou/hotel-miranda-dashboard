@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import contactJson from '../../data/contact.json';
 import { Contact } from "../../types/features";
+import { RootState } from "../../app/store";
 
 export const getContactList = createAsyncThunk<Contact[], void, { rejectValue: Error }>(
   'contact/getContactListStatus',
@@ -17,7 +18,7 @@ export const getContactList = createAsyncThunk<Contact[], void, { rejectValue: E
   }
 )
 
-export const archiveContactById = createAsyncThunk<Contact[], string, { state: any, rejectValue: Error }>(
+export const archiveContactById = createAsyncThunk<Contact[], string, { state: RootState, rejectValue: Error }>(
   'contact/archiveContactByIdStatus',
   async(contactId, { getState, rejectWithValue }) => {
     try {
@@ -43,14 +44,17 @@ export const archiveContactById = createAsyncThunk<Contact[], string, { state: a
   }
 )
 
-export const createContact = createAsyncThunk<Contact, Contact, { state: any, rejectValue: Error }>(
+export const createContact = createAsyncThunk<Contact, Omit<Contact, 'id'>, { state: RootState, rejectValue: Error }>(
   'contact/createContactStatus',
   async(contact, { getState, rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
-          contact.id = getState().contact.data.length + 1;
-          resolve(contact);
+          const contactList = getState().contact.data;
+          resolve({
+            id: (Number(contactList[contactList.length-1].id) + 1).toString(),
+            ...contact
+          });
         }, 200);
       });
     } catch (error) {
@@ -59,7 +63,7 @@ export const createContact = createAsyncThunk<Contact, Contact, { state: any, re
   }
 )
 
-export const updateContact = createAsyncThunk<Contact[], Contact, { state: any, rejectValue: Error }>(
+export const updateContact = createAsyncThunk<Contact[], Contact, { state: RootState, rejectValue: Error }>(
   'contact/updateContactStatus',
   async(newContact, { getState, rejectWithValue }) => {
     try {

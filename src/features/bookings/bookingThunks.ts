@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import bookingsJson from '../../data/bookings.json';
 import { Booking } from "../../types/features";
+import { RootState } from "../../app/store";
 
 export const getBookingList = createAsyncThunk<Booking[], void, { rejectValue: Error }>(
   'booking/getBookingListStatus',
@@ -17,7 +18,7 @@ export const getBookingList = createAsyncThunk<Booking[], void, { rejectValue: E
   }
 )
 
-export const deleteBookingById = createAsyncThunk<Booking[], number, { state: any, rejectValue: Error }>(
+export const deleteBookingById = createAsyncThunk<Booking[], number, { state: RootState, rejectValue: Error }>(
   'booking/deleteBookingByIdStatus',
   async(bookingId, { getState, rejectWithValue }) => {
     try {
@@ -34,13 +35,14 @@ export const deleteBookingById = createAsyncThunk<Booking[], number, { state: an
   }
 )
 
-export const createBooking = createAsyncThunk<Booking, Booking, { state: any, rejectValue: Error }>(
+export const createBooking = createAsyncThunk<Booking, Booking, { state: RootState, rejectValue: Error }>(
   'booking/createBooking',
   async(booking, { getState, rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
+        const bookingList = getState().booking.data;
         setTimeout(() => {
-          booking.id = getState().booking.data[getState().booking.data.length-1].id + 1;
+          booking.id = bookingList[bookingList.length-1].id + 1;
           resolve(booking);
         }, 200);
       });
@@ -50,7 +52,7 @@ export const createBooking = createAsyncThunk<Booking, Booking, { state: any, re
   }
 )
 
-export const updateBooking = createAsyncThunk<Booking[], Booking, { state: any, rejectValue: Error }>(
+export const updateBooking = createAsyncThunk<Booking[], Booking, { state: RootState, rejectValue: Error }>(
   'booking/updateBooking',
   async(updatedBooking, { getState, rejectWithValue }) => {
     try {

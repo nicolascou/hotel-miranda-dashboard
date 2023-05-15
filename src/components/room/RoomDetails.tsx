@@ -5,22 +5,24 @@ import SwiperButtonNext from '../partials/SwiperButtonNext';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import SwiperButtonPrev from '../partials/SwiperButtonPrev';
-import { useDispatch, useSelector } from 'react-redux';
-import { getRoom } from '../../features/rooms/roomThunks';
+import { getRoomList } from '../../features/rooms/roomThunks';
 import Loading from '../partials/Loading';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 const RoomDetails = () => {
   const params = useParams();
-  const { data, status } = useSelector(state => state.room);
+  const { data, status } = useAppSelector(state => state.room);
   const room = data.roomList.find(({ id }) => id === Number(params.id));
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getRoom(Number(params.id)));
+    if (status === 'idle') {
+      dispatch(getRoomList());
+    }
     // eslint-disable-next-line
   }, [])
 
-  const statusTagClassMap = {
+  const statusTagClassMap: {[key: string]: string} = {
     'Available': 'details__right__status-tag--green',
     'Booked': 'details__right__status-tag--red'
   };

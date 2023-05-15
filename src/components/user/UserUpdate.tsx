@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 const UserUpdate: React.FC = () => {
   const { data } = useAppSelector(state => state.user);
   const params = useParams();
-  const user = data.find((user) => user.id === Number(params.id));
+  const user = data.find(({ id }) => id === Number(params.id));
   const formRef = useRef(null);
 
   const dispatch = useAppDispatch();

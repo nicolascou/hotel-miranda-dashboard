@@ -2,21 +2,22 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
-import { useDispatch, useSelector } from 'react-redux';
 import { getRoomList, deleteRoomById } from '../../features/rooms/roomThunks';
 import { changeRoomsBy } from '../../utils/changeRoomsBy';
 import Loading from '../partials/Loading';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { Room } from '../../types/features';
 
 const RoomList = () => {
-  const { data, status } = useSelector(state => state.room);
+  const { data, status } = useAppSelector(state => state.room);
   const { roomList } = data;
-  const [rooms, setRooms] = useState([]);
-  const [showRooms, setShowRooms] = useState([]);
+  const [rooms, setRooms] = useState<Room[]>([]);
+  const [showRooms, setShowRooms] = useState<Room[]>([]);
   const [pagination, setPagination] = useState(1);
   const [changeBy, setChangeBy] = useState('all');
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (status === 'idle') {
@@ -32,9 +33,9 @@ const RoomList = () => {
     setShowRooms(rooms.slice(index, index+10));
   }, [pagination, rooms])
 
-  const handleDelete = (e, roomId) => {
+  const handleDelete = (e: React.MouseEvent<HTMLElement>, roomId: number) => {
     dispatch(deleteRoomById(roomId));
-    e.stopPropagation(e);
+    e.stopPropagation();
   }
 
   return (
