@@ -1,31 +1,36 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import hotelIcon from '../../img/icons/hotel.svg';
 import { Button } from './styled';
 import { Link, useLocation } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
+import { useAppSelector } from '../../app/hooks';
+import { User } from '../../types/features';
 
-const Sidebar = ({ hideSidebar }) => { 
+interface ISidebar {
+  hideSidebar: boolean;
+}
+
+const Sidebar: React.FC<ISidebar> = ({ hideSidebar }) => { 
   const location = useLocation();
   const route = location.pathname.split('/')[1];
 
   const { user, actions } = useContext(UserContext);
 
-  const data = useSelector(state => state.user.data);
+  const data = useAppSelector(state => state.user.data);
   useEffect(() => {
-    const { photo } = data.find(({ username }) => username === user.username);
-    setPhoto(photo);
+    const foundUser: User | undefined = data.find(({ username }) => username === user.username);
+    setPhoto(foundUser?.photo || '');
     // eslint-disable-next-line
   }, [])
 
   const [name, setName] = useState(user.username);
   const [email, setEmail] = useState(user.email);
-  const [photo, setPhoto] = useState();
+  const [photo, setPhoto] = useState('');
 
   const [showEditUser, setShowEditUser] = useState(false);
   
   const handleEditUser = () => {
-    actions.updateUser(name, email);
+    actions?.updateUser(name, email);
     setShowEditUser(false);
   }
   
