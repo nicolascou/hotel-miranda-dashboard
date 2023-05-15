@@ -1,7 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { updateUser, deleteUserById, createUser, getUserList } from './userThunks'
+import { Status, User } from '../../types/features';
 
-const initialState = {
+interface UserState {
+  data: User[];
+  status: Status;
+  error: Error | null;
+}
+
+const initialState: UserState = {
   data: [],
   status: 'idle',
   error: null

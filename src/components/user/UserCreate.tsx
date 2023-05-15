@@ -82,7 +82,7 @@ const UserCreate: React.FC = () => {
             </div>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="description">Description of job</label>
-              <textarea name='description' id="description" cols="30" rows="5"></textarea>
+              <textarea name='description' id="description" cols={30} rows={5}></textarea>
             </div>
           </div>
         </div>

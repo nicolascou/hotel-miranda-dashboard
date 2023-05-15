@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { usersJson } from '../../data/users.js';
+import { usersJson } from '../../data/users';
+import { User } from "../../types/features.js";
 
 export const getUserList = createAsyncThunk(
   'user/getUserListStatus',
@@ -35,7 +36,7 @@ export const deleteUserById = createAsyncThunk(
 
 export const createUser = createAsyncThunk(
   'user/createUserStatus',
-  async(user, { getState }) => {
+  async(user: User, { getState }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -55,8 +56,7 @@ export const updateUser = createAsyncThunk(
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
-          console.log(newUser);
-          const updatedUsers = getState().user.data.map((user) => {
+          const updatedUsers = getState().user.data.map((user: User) => {
             if (user.id === newUser.id) {
               return newUser;
             } else {
