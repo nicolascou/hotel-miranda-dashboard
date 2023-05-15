@@ -1,5 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { getRoomList, createRoom, deleteRoomById, updateRoom, getRoom } from './roomThunks';
+import { Room, Status } from '../../types/features';
+
+interface RoomState {
+  data: {
+    roomList: Room[],
+    selectedRoom: Room | null
+  };
+  status: Status;
+  error: Error | undefined;
+}
 
 const initialState = {
   data: {
@@ -7,8 +17,8 @@ const initialState = {
     selectedRoom: null
   },
   status: 'idle',
-  error: null
-}
+  error: undefined
+} as RoomState;
 
 export const roomSlice = createSlice({
   name: 'room',
@@ -16,6 +26,10 @@ export const roomSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+    .addCase(getRoomList.rejected, (state, action) => {
+      state.error = action.payload;
+      state.status = 'rejected';
+    })
     .addCase(getRoomList.pending, (state) => {
       state.status = 'pending';
     })
@@ -24,6 +38,10 @@ export const roomSlice = createSlice({
       state.status = 'fulfilled';
     })
 
+    .addCase(getRoom.rejected, (state, action) => {
+      state.error = action.payload;
+      state.status = 'rejected';
+    })
     .addCase(getRoom.pending, (state) => {
       state.status = 'pending';
     })
@@ -32,6 +50,10 @@ export const roomSlice = createSlice({
       state.status = 'fulfilled';
     })
 
+    .addCase(deleteRoomById.rejected, (state, action) => {
+      state.error = action.payload;
+      state.status = 'rejected';
+    })
     .addCase(deleteRoomById.pending, (state) => {
       state.status = 'pending';
     })
@@ -40,6 +62,10 @@ export const roomSlice = createSlice({
       state.status = 'fulfilled';
     })
 
+    .addCase(createRoom.rejected, (state, action) => {
+      state.error = action.payload;
+      state.status = 'rejected';
+    })
     .addCase(createRoom.pending, (state) => {
       state.status = 'pending';
     })
@@ -48,6 +74,10 @@ export const roomSlice = createSlice({
       state.status = 'fulfilled';
     })
     
+    .addCase(updateRoom.rejected, (state, action) => {
+      state.error = action.payload;
+      state.status = 'rejected';
+    })
     .addCase(updateRoom.pending, (state) => {
       state.status = 'pending';
     })

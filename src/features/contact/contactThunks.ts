@@ -1,29 +1,30 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import contactJson from '../../data/contact.json';
+import { Contact } from "../../types/features";
 
-export const getContactList = createAsyncThunk(
+export const getContactList = createAsyncThunk<Contact[], void, { rejectValue: Error }>(
   'contact/getContactListStatus',
-  async() => {
+  async(_, { rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
-          resolve(contactJson);
+          resolve(contactJson as Contact[]);
         }, 200);
       });
     } catch (error) {
-      return error;
+      return rejectWithValue(error as Error);
     }
   }
 )
 
-export const archiveContactById = createAsyncThunk(
+export const archiveContactById = createAsyncThunk<Contact[], string, { state: any, rejectValue: Error }>(
   'contact/archiveContactByIdStatus',
-  async(contactId, { getState }) => {
+  async(contactId, { getState, rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve(
-            getState().contact.data.map((contact) => {
+            getState().contact.data.map((contact: Contact) => {
               if (contact.id === contactId) {
                 return {
                   ...contact,
@@ -37,14 +38,14 @@ export const archiveContactById = createAsyncThunk(
         }, 200);
       });
     } catch (error) {
-      return error;
+      return rejectWithValue(error as Error);
     }
   }
 )
 
-export const createContact = createAsyncThunk(
+export const createContact = createAsyncThunk<Contact, Contact, { state: any, rejectValue: Error }>(
   'contact/createContactStatus',
-  async(contact, { getState }) => {
+  async(contact, { getState, rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -53,18 +54,18 @@ export const createContact = createAsyncThunk(
         }, 200);
       });
     } catch (error) {
-      return error;
+      return rejectWithValue(error as Error);
     }
   }
 )
 
-export const updateContact = createAsyncThunk(
+export const updateContact = createAsyncThunk<Contact[], Contact, { state: any, rejectValue: Error }>(
   'contact/updateContactStatus',
-  async(newContact, { getState }) => {
+  async(newContact, { getState, rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
-          const updatedContacts = getState().contact.data.map((contact) => {
+          const updatedContacts = getState().contact.data.map((contact: Contact) => {
             if (contact.id === newContact.id) {
               return newContact;
             } else {
@@ -75,7 +76,7 @@ export const updateContact = createAsyncThunk(
         }, 200);
       });
     } catch (error) {
-      return error;
+      return rejectWithValue(error as Error);
     }
   }
 )
