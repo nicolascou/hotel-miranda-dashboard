@@ -57,7 +57,7 @@ const Login = () => {
               type="password" name="password" id="password" placeholder='1234' data-cy="password-test"
             />
           </div>    
-          <Button backgroundColor='#E23428' data-cy="login-test" onClick={(e) => handleSubmit(e)} type='submit'>Log In</Button>
+          <Button backgroundColor='#E23428' color='white' data-cy="login-test" onClick={(e) => handleSubmit(e)} type='submit'>Log In</Button>
         </form>
       </div>
     </div>

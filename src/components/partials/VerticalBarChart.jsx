@@ -36,8 +36,8 @@ export const options = {
       font: {
         size: 22
       }
-    }
-  },
+    },
+  }
 };
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
@@ -54,8 +54,8 @@ export const data = {
       label: 'Check In',
       data: labels.map(() => faker.datatype.number({ min: 2, max: 20 })),
       backgroundColor: '#135846'
-    },
-  ],
+    }
+  ]
 };
 
 const VerticalBarChart = () => {

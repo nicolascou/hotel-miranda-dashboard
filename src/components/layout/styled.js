@@ -8,7 +8,7 @@ export const Button = styled.button`
   border: none;
   outline: none;
   background-color: ${(props) => props.backgroundColor};
-  color: white;
+  color: ${(props) => props.color};
   margin-top: 20px;
 `
 
