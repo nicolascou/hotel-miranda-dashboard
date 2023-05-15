@@ -1,11 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { getBookingList, deleteBookingById, createBooking, updateBooking } from './bookingThunks';
+import { Booking, Status } from '../../types/features';
+
+interface BookingState {
+  data: Booking[];
+  status: Status;
+  error: Error | undefined;
+}
 
 const initialState = {
   data: [],
   status: 'idle',
-  error: null
-}
+  error: undefined
+} as BookingState;
 
 export const bookingSlice = createSlice({
   name: 'booking',
@@ -13,6 +20,10 @@ export const bookingSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+    .addCase(getBookingList.rejected, (state, action) => {
+      state.error = action.payload;
+      state.status = 'rejected';
+    })
     .addCase(getBookingList.pending, (state) => {
       state.status = 'pending';
     })
@@ -21,6 +32,10 @@ export const bookingSlice = createSlice({
       state.status = 'fulfilled';
     })
 
+    .addCase(deleteBookingById.rejected, (state, action) => {
+      state.error = action.payload;
+      state.status = 'rejected';
+    })
     .addCase(deleteBookingById.pending, (state) => {
       state.status = 'pending';
     })
@@ -29,6 +44,10 @@ export const bookingSlice = createSlice({
       state.status = 'fulfilled';
     })
 
+    .addCase(createBooking.rejected, (state, action) => {
+      state.error = action.payload;
+      state.status = 'rejected';
+    })
     .addCase(createBooking.pending, (state) => {
       state.status = 'pending';
     })
@@ -37,6 +56,10 @@ export const bookingSlice = createSlice({
       state.status = 'fulfilled';
     })
     
+    .addCase(updateBooking.rejected, (state, action) => {
+      state.error = action.payload;
+      state.status = 'rejected';
+    })
     .addCase(updateBooking.pending, (state) => {
       state.status = 'pending';
     })

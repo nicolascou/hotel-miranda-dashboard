@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { getContactList } from '../../features/contact/contactThunks';
 import ContactDetails from './ContactDetails';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { Contact } from '../../types/features';
 
 const ContactCards = () => {
-  const { data, status } = useSelector(state => state.contact);
-  const [unreadContacts, setUnreadContacts] = useState([]);
-  const [editContact, setEditContact] = useState(null);
+  const { data, status } = useAppSelector(state => state.contact);
+  const [unreadContacts, setUnreadContacts] = useState<Contact[]>([]);
+  const [editContact, setEditContact] = useState<Contact | null>(null);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (status === 'idle') {
       dispatch(getContactList());
@@ -18,7 +19,7 @@ const ContactCards = () => {
     // eslint-disable-next-line
   }, [data])
 
-  const handleCheck = (e, contactId) => {
+  const handleCheck = (e: React.MouseEvent<HTMLElement>, contactId: string) => {
     e.stopPropagation();
     setUnreadContacts(unreadContacts.filter(({ id }) => id !== contactId));
   }

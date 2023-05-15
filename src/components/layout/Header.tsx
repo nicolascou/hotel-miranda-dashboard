@@ -2,13 +2,18 @@ import React, { useContext } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 
-const Header = ({ hideSidebar, setHideSidebar }) => {
+interface IHeader {
+  hideSidebar: boolean;
+  setHideSidebar: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header: React.FC<IHeader> = ({ hideSidebar, setHideSidebar }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { actions } = useContext(UserContext);
   
   const handleLogout = () => {
-    actions.logout();
+    actions?.logout();
     navigate('/login');
   }
   

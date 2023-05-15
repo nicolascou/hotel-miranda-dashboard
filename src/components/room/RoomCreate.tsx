@@ -1,17 +1,18 @@
 import React, { useState, useRef } from 'react'
-import { useDispatch } from 'react-redux';
 import { createRoom } from '../../features/rooms/roomThunks';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../app/hooks';
+import { Room } from '../../types/features';
 
 const RoomCreate = () => {
   const [offer, setOffer] = useState(false);
   const [amenities, setAmenities] = useState(['AC', 'Shower', 'LED TV', 'Wifi']);
   const formRef = useRef(null);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handleAmenities = (e) => {
+  const handleAmenities = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
       setAmenities((prevState) => [...prevState, e.target.name]);
     } else {
@@ -19,21 +20,23 @@ const RoomCreate = () => {
     }
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(formRef.current);
-    const room = {
-      "name": formData.get('name'),
-      "bed_type": formData.get('bed_type'),
-      "photo": formData.get('photo'),
-      "description": formData.get('description'),
-      "rate": formData.get('price'),
-      "offer": formData.get('price') * (1 - formData.get('discount') / 100),
-      "status": "Available",
-      "amenities": amenities
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
+      const room: Omit<Room, 'id'> = {
+        "name": formData.get('name')?.toString(),
+        "bed_type": formData.get('bed_type')?.toString(),
+        "photo": formData.get('photo')?.toString(),
+        "description": formData.get('description')?.toString(),
+        "rate": Number(formData.get('price')),
+        "offer": Number(formData.get('price')) * (1 - Number(formData.get('discount')) / 100),
+        "status": "Available",
+        "amenities": amenities
+      }
+      dispatch(createRoom(room))
+      navigate('/rooms');
     }
-    dispatch(createRoom(room))
-    navigate('/rooms');
   }
   
   return (
@@ -98,11 +101,11 @@ const RoomCreate = () => {
           <div className='create__form__column'>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="description">Description</label>
-              <textarea name='description' id="description" cols="30" rows="10"></textarea>
+              <textarea name='description' id="description" cols={30} rows={10}></textarea>
             </div>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="cancel">Cancellation Policy</label>
-              <textarea name='cancellation' cols="30" rows="10" id='cancel'></textarea>
+              <textarea name='cancellation' cols={30} rows={10} id='cancel'></textarea>
             </div>
           </div>
         </div>

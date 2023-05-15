@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const Button = styled.button<{ backgroundColor: string }>`
   font-weight: 700;
   border-radius: 12px;
   cursor: pointer;

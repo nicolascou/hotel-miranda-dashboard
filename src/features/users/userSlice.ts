@@ -12,7 +12,7 @@ const initialState = {
   data: [],
   status: 'idle',
   error: undefined
-} as UserState
+} as UserState;
 
 export const userSlice = createSlice({
   name: 'user',

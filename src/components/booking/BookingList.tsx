@@ -3,19 +3,20 @@ import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
 import sortBookingsBy from '../../utils/sortBookingsBy';
-import { useDispatch, useSelector } from 'react-redux';
 import { getBookingList, deleteBookingById } from '../../features/bookings/bookingThunks';
 import Loading from '../partials/Loading';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { Booking } from '../../types/features';
 
 const BookingList = () => {
-  const { data, status } = useSelector(state => state.booking);
-  const [bookings, setBookings] = useState([]);
-  const [showBookings, setShowBookings] = useState([]);
+  const { data, status } = useAppSelector(state => state.booking);
+  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [showBookings, setShowBookings] = useState<Booking[]>([]);
   const [pagination, setPagination] = useState(1);
   const [orderBy, setOrderBy] = useState('order_date');
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (status === 'idle') {
@@ -31,18 +32,20 @@ const BookingList = () => {
     setShowBookings(bookings.slice(index, index+10));
   }, [pagination, bookings])
 
-  const showNotes = (e) => {
-    e.target.nextElementSibling.style.display = 'block';
+  const showNotes = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLElement;
+    const nextSibling = target.nextElementSibling as HTMLElement;
+    nextSibling.style.display = 'block';
     e.stopPropagation();
   }
-  const hideNotes = (e) => {
-    e.target.style.display = 'none';
-    e.stopPropagation(e);
+  const hideNotes = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.display = 'none';
+    e.stopPropagation();
   }
 
-  const handleDelete = (e, bookingId) => {
+  const handleDelete = (e: React.MouseEvent<HTMLElement>, bookingId: number) => {
     dispatch(deleteBookingById(bookingId));
-    e.stopPropagation(e);
+    e.stopPropagation();
   }
   
   return (

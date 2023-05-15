@@ -1,8 +1,14 @@
 import React from 'react'
 
-const Pagination = ({ pagination, setPagination, maxPage }) => {
+interface IPagination {
+  pagination: number;
+  setPagination: React.Dispatch<React.SetStateAction<number>>;
+  maxPage: number;
+}
 
-  const handlePagination = (page) => {
+const Pagination: React.FC<IPagination> = ({ pagination, setPagination, maxPage }) => {
+
+  const handlePagination = (page: number) => {
     if (page <= 0 || page > maxPage) return
     else setPagination(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });

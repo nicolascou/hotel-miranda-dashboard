@@ -1,30 +1,30 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'; 
 import hotelIcon from '../img/icons/hotel.svg';
 import { Button } from './layout/styled';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import { getUserList } from '../features/users/userThunks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 
 const Login: React.FC = () => {
   const [userInput, setUserInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const navigate = useNavigate();
   const { actions } = useContext(UserContext);
-  const { data, status } = useSelector(state => state.user);
+  const { data, status } = useAppSelector(state => state.user);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const user = data.find(({ username }) => username === userInput);
     if (user && passwordInput === user.password) {
-      actions.login(user.username, user.email);
+      actions?.login(user.username || '', user.email || '');
       navigate('/');
     } else if (status !== 'pending') {
       alert('Invalid Credentials');
     }
   }
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (status === 'idle') {
       dispatch(getUserList());
@@ -58,7 +58,7 @@ const Login: React.FC = () => {
             />
           </div> 
           <Button backgroundColor='#E23428' color='white' data-cy="login-test" 
-          onClick={(e: React.MouseEventHandler<HTMLButtonElement>) => handleSubmit(e)} type='submit'>Log In</Button>
+            onClick={(e) => handleSubmit(e)} type='submit'>Log In</Button>
         </form>
       </div>
     </div>

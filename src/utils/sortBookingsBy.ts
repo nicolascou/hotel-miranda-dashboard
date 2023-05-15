@@ -1,10 +1,13 @@
 import moment from 'moment';
+import { Booking } from '../types/features';
 
-const sortBookingsBy = (orderBy, data) => {
+const sortBookingsBy = (orderBy: string, data: Booking[]) => {
   if (orderBy === 'guest') {
     return data.sort((a, b) => {
-      if (a.guest < b.guest) return -1;
-      if (a.guest > b.guest) return 1;
+      if (a.guest && b.guest) {
+        if (a.guest < b.guest) return -1;
+        if (a.guest > b.guest) return 1;
+      }
       return 0;
     })
 

@@ -2,22 +2,22 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
-import { useDispatch } from 'react-redux';
 import { getUserList, deleteUserById } from '../../features/users/userThunks';
 import Loading from '../partials/Loading';
 import { orderUsersBy } from '../../utils/orderUsersBy';
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { User } from '../../types/features';
 
 const UserList = () => {
   const { data, status } = useAppSelector(state => state.user);
-  const [users, setUsers] = useState([]);
-  const [showUsers, setShowUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
+  const [showUsers, setShowUsers] = useState<User[]>([]);
   const [pagination, setPagination] = useState(1);
   const [changeBy, setChangeBy] = useState('all');
   const [searchInput, setSearchInput] = useState<null | string>(null);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (status === 'idle') {
@@ -35,11 +35,11 @@ const UserList = () => {
 
   useEffect(() => {
     if (searchInput !== null) {
-      setUsers(data.filter(({ full_name }) => full_name.toLowerCase().includes(searchInput.toLowerCase())));
+      setUsers(data.filter(({ full_name }) => full_name?.toLowerCase().includes(searchInput.toLowerCase())));
     }
   }, [searchInput, data])
 
-  const handleDelete = (e: React.MouseEvent<HTMLParagraphElement>, userId: number) => {
+  const handleDelete = (e: React.MouseEvent<HTMLElement>, userId: number) => {
     dispatch(deleteUserById(userId));
     e.stopPropagation();
   }

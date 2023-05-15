@@ -1,35 +1,38 @@
 import React, { useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
 import { updateRoom } from '../../features/rooms/roomThunks';
 import room3 from '../../img/rooms-3.jpg';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Room } from '../../types/features';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 const RoomUpdate = () => {
   const params = useParams();
-  const { data } = useSelector(state => state.room);
+  const { data } = useAppSelector(state => state.room);
   const room = data.roomList.find(({ id }) => id === Number(params.id));
   
   const formRef = useRef(null);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(formRef.current);
-    const room = {
-      "id": Number(params.id),
-      "name": formData.get('name'),
-      "bed_type": formData.get('bed_type'),
-      "photo": room3,
-      "rate": formData.get('price'),
-      "offer": formData.get('offer'),
-      "description": formData.get('description'),
-      "amenities": ["Wifi", "Towels", "LED TV"],
-      "status": "Available",
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
+      const room: Room = {
+        "id": Number(params.id),
+        "name": formData.get('name')?.toString(),
+        "bed_type": formData.get('bed_type')?.toString(),
+        "photo": room3,
+        "rate": Number(formData.get('price')),
+        "offer": Number(formData.get('offer')),
+        "description": formData.get('description')?.toString(),
+        "amenities": ["Wifi", "Towels", "LED TV"],
+        "status": "Available",
+      }
+      dispatch(updateRoom(room))
+      navigate('/rooms');
     }
-    dispatch(updateRoom(room))
-    navigate('/rooms');
   }
   
   return (
@@ -40,17 +43,17 @@ const RoomUpdate = () => {
           <div className='create__form__column'>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="name">Room name</label>
-              <input name='name' type="name" id='name' defaultValue={room.name} />
+              <input name='name' type="name" id='name' defaultValue={room?.name} />
             </div>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="price">Price</label>
-              <input name='price' type="number" defaultValue={room.rate} />
+              <input name='price' type="number" defaultValue={room?.rate} />
             </div>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="offer">Offer Price</label>
-              <input name='offer' type="number" id='offer' defaultValue={room.offer || Math.floor(room.rate / 1.5)} />
+              <input name='offer' type="number" id='offer' defaultValue={room?.offer || Math.floor(room?.rate || 0 / 1.5)} />
             </div>
-            <select name='bed_type' className='create__form__column__cell weight-600' defaultValue={room.bed_type}>
+            <select name='bed_type' className='create__form__column__cell weight-600' defaultValue={room?.bed_type}>
               <option value="Single Bed">Single Bed</option>
               <option value="Double Bed">Double Bed</option>
               <option value="Double Luxury">Double Luxury</option>
@@ -80,11 +83,11 @@ const RoomUpdate = () => {
           <div className='create__form__column'>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="description">Description</label>
-              <textarea name='description' id="description" cols="30" rows="10" defaultValue={room.description || ''}></textarea>
+              <textarea name='description' id="description" cols={30} rows={10} defaultValue={room?.description || ''}></textarea>
             </div>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="cancel">Cancellation Policy</label>
-              <textarea name='cancellation' cols="30" rows="10" id='cancel'></textarea>
+              <textarea name='cancellation' cols={30} rows={10} id='cancel'></textarea>
             </div>
           </div>
         </div>

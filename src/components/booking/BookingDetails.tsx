@@ -6,16 +6,16 @@ import SwiperButtonNext from '../partials/SwiperButtonNext';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import SwiperButtonPrev from '../partials/SwiperButtonPrev';
-import { useDispatch, useSelector } from 'react-redux';
 import { getBookingList } from '../../features/bookings/bookingThunks';
 import Loading from '../partials/Loading';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 const BookingDetails = () => {
   const params = useParams();
-  const { data, status } = useSelector(state => state.booking);
+  const { data, status } = useAppSelector(state => state.booking);
   const booking = data.find(b => b.id === Number(params.id));
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (status === 'idle') {
       dispatch(getBookingList());
@@ -23,7 +23,7 @@ const BookingDetails = () => {
     // eslint-disable-next-line
   }, [])
   
-  const statusTagClassMap = {
+  const statusTagClassMap: {[key: string]: string} = {
     'Check In': 'details__right__status-tag--green',
     'Check Out': 'details__right__status-tag--red',
     'In Progress': 'details__right__status-tag--yellow'
