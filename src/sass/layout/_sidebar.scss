@@ -97,6 +97,13 @@
       color: $primary-color;
       background-color: #EBF1EF;
       text-transform: capitalize;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      padding: 12px 40px;
+      border: none;
+      outline: none;
+      margin-top: 20px;
     }
 
     &__input {

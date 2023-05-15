@@ -3,6 +3,10 @@ describe('Routing', () => {
     cy.visit('http://localhost:3000/hotel-miranda-dashboard');
     cy.get('[data-cy="user-test"]').should('exist');
   });
+  it('it should not allow to access rooms', () => {
+    cy.visit('http://localhost:3000/hotel-miranda-dashboard/rooms');
+    cy.get('[data-cy="user-test"]').should('exist');
+  });
 });
 
 describe('Login', () => {

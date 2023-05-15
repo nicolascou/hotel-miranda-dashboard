@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { usersJson } from '../../data/users';
-import { User } from "../../types/features.js";
+import { User } from "../../types/features";
 import { RootState } from "../../app/store";
 
 export const getUserList = createAsyncThunk<User[], void, { rejectValue: Error }>(

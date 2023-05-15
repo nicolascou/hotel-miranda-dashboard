@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { roomsJson } from '../../data/rooms.js';
-import { Room } from "../../types/features.js";
-import { RootState } from "../../app/store.js";
+import { roomsJson } from '../../data/rooms';
+import { Room } from "../../types/features";
+import { RootState } from "../../app/store";
 
 export const getRoomList = createAsyncThunk<Room[], void, { rejectValue: Error }>(
   'bookings/getRoomListStatus',

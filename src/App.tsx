@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 
-import BookingList from './components/booking/BookingList.jsx';
+import BookingList from './components/booking/BookingList';
 import BookingDetails from './components/booking/BookingDetails';
 import BookingCreate from './components/booking/BookingCreate';
 import BookingUpdate from './components/booking/BookingUpdate';

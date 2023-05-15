@@ -5,7 +5,7 @@ export interface User {
   full_name: string | undefined;
   username: string | undefined;
   photo: string | undefined;
-  phone: string | undefined;
+  phone?: string | undefined;
   position: string | undefined;
   description: string | undefined;
   email: string | undefined;
@@ -32,7 +32,7 @@ export interface Room {
   name: string | undefined;
   bed_type: string | undefined;
   photo: string | undefined;
-  description: string | undefined;
+  description?: string | undefined;
   amenities: string[];
   rate: number;
   offer: number;

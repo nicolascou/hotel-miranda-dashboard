@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import hotelIcon from '../../img/icons/hotel.svg';
-import { Button } from './styled';
 import { Link, useLocation } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { useAppSelector } from '../../app/hooks';
@@ -74,13 +73,13 @@ const Sidebar: React.FC<ISidebar> = ({ hideSidebar }) => {
               <>
                 <input type="text" className='sidebar__card__input' value={name} onChange={(e) => setName(e.target.value)} />
                 <input type="text" className='sidebar__card__input' value={email} onChange={(e) => setEmail(e.target.value)} />
-                <Button onClick={() => handleEditUser() } className='sidebar__card__btn'>Save</Button>
+                <button onClick={() => handleEditUser() } className='sidebar__card__btn'>Save</button>
               </>
               :
               <>
                 <p className='sidebar__card__name'>{name}</p>
                 <p className='sidebar__card__mail'>{email}</p>
-                <Button onClick={() => setShowEditUser(true)} className='sidebar__card__btn'>Edit</Button>
+                <button onClick={() => setShowEditUser(true)} className='sidebar__card__btn'>Edit</button>
               </>
             }
           </div>
