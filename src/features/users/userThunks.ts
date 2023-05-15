@@ -34,14 +34,16 @@ export const deleteUserById = createAsyncThunk<User[], number, { state: any, rej
   }
 )
 
-export const createUser = createAsyncThunk<User, User, { state: any, rejectValue: Error }>(
+export const createUser = createAsyncThunk<User, Omit<User, 'id'>, { state: any, rejectValue: Error }>(
   'user/createUserStatus',
   async(user, { getState, rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
         setTimeout(() => {
-          user.id = getState().user.data.length + 1;
-          resolve(user);
+          resolve({
+            id: getState().user.data.length + 1,
+            ...user
+          });
         }, 200);
       });
     } catch (error) {

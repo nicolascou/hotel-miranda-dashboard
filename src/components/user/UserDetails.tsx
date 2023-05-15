@@ -73,7 +73,7 @@ const UserDetails: React.FC = () => {
       </div>
       <p className='details__left__facilities'>Job Description</p>
       <p className='details__left__user-description'>{user.description}</p>
-      <div className={`details__left__user-status ${statusTagClassMap[user.state]}`}>
+      <div className={`details__left__user-status ${statusTagClassMap[user.state || 'active']}`}>
         <p>{user.state}</p>
       </div>
     </div>

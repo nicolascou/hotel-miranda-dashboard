@@ -2,16 +2,16 @@ export type Status = 'idle' | 'fulfilled' | 'pending' | 'rejected';
 
 export interface User {
   id: number;
-  full_name: string;
-  username: string;
-  photo: string;
-  phone?: string;
-  position: string;
-  description: string;
-  email: string;
+  full_name: string | undefined;
+  username: string | undefined;
+  photo: string | undefined;
+  phone: string | undefined;
+  position: string | undefined;
+  description: string | undefined;
+  email: string | undefined;
   start_date: string;
-  state: string;
-  password: string;
+  state: string | undefined;
+  password: string | undefined;
 }
 
 export interface Booking {

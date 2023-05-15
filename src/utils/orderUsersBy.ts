@@ -1,10 +1,13 @@
 import moment from 'moment';
+import { User } from '../types/features';
 
-export const orderUsersBy = (changeBy, data) => {
+export const orderUsersBy = (changeBy: string, data: User[]) => {
   if (changeBy === 'name') {
     return data.sort((a, b) => {
-      if (a.full_name < b.full_name) return -1;
-      if (a.full_name > b.full_name) return 1;
+      if (a.full_name && b.full_name) {
+        if (a.full_name < b.full_name) return -1;
+        if (a.full_name > b.full_name) return 1;
+      }
       return 0;
     })
   } else if (changeBy === 'date') {

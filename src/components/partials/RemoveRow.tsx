@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
 
-const RemoveRow = ({ handleDelete, id }) => {
+interface IRemoveRow {
+  handleDelete: (e: React.MouseEvent<HTMLElement>, id: number) => void;
+  id: number;
+}
+
+const RemoveRow: React.FC<IRemoveRow> = ({ handleDelete, id }) => {
   const [showDelete, setShowDelete] = useState(false);
 
-  const toggleDeleteBtn = (e) => {
+  const toggleDeleteBtn = (e: React.MouseEvent<HTMLElement>) => {
     setShowDelete(prev => !prev);
-    e.stopPropagation(e);
+    e.stopPropagation();
   }
   const closeDeleteBtn = () => setShowDelete(false);
 

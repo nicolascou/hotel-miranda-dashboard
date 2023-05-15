@@ -1,13 +1,13 @@
 import React, { useRef } from 'react'
-import { useDispatch } from 'react-redux';
 import { createUser } from '../../features/users/userThunks';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
+import { useAppDispatch } from '../../app/hooks';
 
 const UserCreate: React.FC = () => {
   const formRef = useRef(null);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -15,18 +15,18 @@ const UserCreate: React.FC = () => {
     if (formRef.current) {
       const formData = new FormData(formRef.current);
       const user = {
-        "full_name": formData.get('full_name'),
-        "username": formData.get('username'),
-        "position": formData.get('position'),
-        "photo": formData.get('image'),
-        "email": formData.get('email'),
-        "phone": formData.get('phone'),
-        "description": formData.get('description'),
-        "start_date": moment().format('YYYY-MM-DD'),
-        "state": formData.get('state'),
-        "password": formData.get('password')
+        "full_name": formData.get('full_name')?.toString(),
+        "username": formData.get('username')?.toString(),
+        "position": formData.get('position')?.toString(),
+        "photo": formData.get('image')?.toString(),
+        "email": formData.get('email')?.toString(),
+        "phone": formData.get('phone')?.toString(),
+        "description": formData.get('description')?.toString(),
+        "start_date": moment().format('YYYY-MM-DD')?.toString(),
+        "state": formData.get('state')?.toString(),
+        "password": formData.get('password')?.toString()
       }
-      dispatch(createUser(user))
+      dispatch(createUser(user));
       navigate('/users');
     }
   }
