@@ -1,31 +1,34 @@
 import React, { useRef } from 'react'
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createBooking } from '../../features/bookings/bookingThunks';
 import moment from 'moment';
+import { Booking } from '../../types/features';
+import { useAppDispatch } from '../../app/hooks';
 
 const BookingCreate = () => {
   const formRef = useRef(null);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(formRef.current);
-    const booking = {
-      "guest": formData.get('full_name'),
-      "guest_id": `#${Math.floor(Math.random() * 100000000).toString().padStart(8, '0')}`,
-      "photo": formData.get('photo'),
-      "order_date": moment().format('MMM Do YYYY h:mm A'),
-      "check_in": moment(formData.get('check_in')).format('MMM Do, YYYY'),
-      "check_out": moment(formData.get('check_out')).format('MMM Do, YYYY'),
-      "room_type": formData.get('room_type'),
-      "special_request": formData.get('special_request'),
-      "status": "In Progress"
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
+      const booking: Omit<Booking, 'id'> = {
+        "guest": formData.get('full_name')?.toString(),
+        "guest_id": `#${Math.floor(Math.random() * 100000000).toString().padStart(8, '0')}`,
+        "photo": formData.get('photo')?.toString(),
+        "order_date": moment().format('MMM Do YYYY h:mm A'),
+        "check_in": moment(formData.get('check_in')?.toString()).format('MMM Do, YYYY'),
+        "check_out": moment(formData.get('check_out')?.toString()).format('MMM Do, YYYY'),
+        "room_type": formData.get('room_type')?.toString(),
+        "special_request": formData.get('special_request')?.toString(),
+        "status": "In Progress"
+      }
+      dispatch(createBooking(booking))
+      navigate('/bookings');
     }
-    dispatch(createBooking(booking))
-    navigate('/bookings');
   }
   
   return (
@@ -64,7 +67,7 @@ const BookingCreate = () => {
             </div>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="special_request">Special Request</label>
-              <textarea name='special_request' id="special_request" cols="30" rows="5"></textarea>
+              <textarea name='special_request' id="special_request" cols={30} rows={5}></textarea>
             </div>
           </div>
         </div>

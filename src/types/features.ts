@@ -16,15 +16,15 @@ export interface User {
 
 export interface Booking {
   id: number;
-  guest: string;
+  guest: string | undefined;
   guest_id: string;
-  photo: string;
+  photo: string | undefined;
   order_date: string;
   check_in: string;
   check_out: string;
-  room_type: string;
-  special_request: string;
-  status: string;
+  room_type: string | undefined;
+  special_request: string | undefined;
+  status: 'Check In' | 'In Progress' | 'Check Out';
 }
 
 export interface Room {
@@ -42,10 +42,10 @@ export interface Room {
 export interface Contact {
   id: string;
   date: string;
-  name: string;
-  email: string;
-  phone: string;
-  subject: string;
-  comment: string;
+  name: string | undefined;
+  email: string | undefined;
+  phone: string | undefined;
+  subject: string | undefined;
+  comment: string | undefined;
   archived: boolean;
 }

@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import { Contact } from '../../types/features';
 
-const ContactDetails = ({ editContact }) => {
+interface IContactDetails {
+  editContact: Contact | null;
+}
+
+const ContactDetails: React.FC<IContactDetails> = ({ editContact }) => {
   const [hide, setHide] = useState(!!editContact); 
 
   useEffect(() => {

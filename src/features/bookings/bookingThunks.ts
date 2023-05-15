@@ -35,15 +35,17 @@ export const deleteBookingById = createAsyncThunk<Booking[], number, { state: Ro
   }
 )
 
-export const createBooking = createAsyncThunk<Booking, Booking, { state: RootState, rejectValue: Error }>(
+export const createBooking = createAsyncThunk<Booking, Omit<Booking, 'id'>, { state: RootState, rejectValue: Error }>(
   'booking/createBooking',
   async(booking, { getState, rejectWithValue }) => {
     try {
       return new Promise((resolve) => {
         const bookingList = getState().booking.data;
         setTimeout(() => {
-          booking.id = bookingList[bookingList.length-1].id + 1;
-          resolve(booking);
+          resolve({
+            id: bookingList[bookingList.length-1].id + 1,
+            ...booking
+          });
         }, 200);
       });
     } catch (error) {

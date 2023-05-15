@@ -1,29 +1,32 @@
 import React, { useRef } from 'react'
-import { useDispatch } from 'react-redux';
 import { createContact } from '../../features/contact/contactThunks';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
+import { Contact } from '../../types/features';
+import { useAppDispatch } from '../../app/hooks';
 
 const ContactCreate = () => {
   const formRef = useRef(null);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(formRef.current);
-    const contact = {
-      "date": moment().format('YYYY-MM-DD'),
-      "name": formData.get('full_name'),
-      "email": formData.get('email'),
-      "phone": formData.get('phone'),
-      "subject": formData.get('subject'),
-      "comment": formData.get('comment'),
-      "archived": false
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
+      const contact: Omit<Contact, 'id'> = {
+        "date": moment().format('YYYY-MM-DD'),
+        "name": formData.get('full_name')?.toString(),
+        "email": formData.get('email')?.toString(),
+        "phone": formData.get('phone')?.toString(),
+        "subject": formData.get('subject')?.toString(),
+        "comment": formData.get('comment')?.toString(),
+        "archived": false
+      }
+      dispatch(createContact(contact))
+      navigate('/contact');
     }
-    dispatch(createContact(contact))
-    navigate('/contact');
   }
   
   return (
@@ -52,7 +55,7 @@ const ContactCreate = () => {
             </div>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="comment">Comment</label>
-              <textarea name='comment' id="comment" cols="30" rows="5"></textarea>
+              <textarea name='comment' id="comment" cols={30} rows={5}></textarea>
             </div>
           </div>
         </div>

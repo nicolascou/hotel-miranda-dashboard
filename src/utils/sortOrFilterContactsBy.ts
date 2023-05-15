@@ -1,6 +1,7 @@
 import moment from 'moment';
+import { Contact } from '../types/features';
 
-export const sortOrFilterContactsBy = (sortOrFilterBy, data) => {
+export const sortOrFilterContactsBy = (sortOrFilterBy: string, data: Contact[]) => {
   if (sortOrFilterBy === 'archived') {
     return data.filter(({ archived }) => archived);
   } else {

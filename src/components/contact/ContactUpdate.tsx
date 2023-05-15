@@ -1,30 +1,32 @@
 import React, { useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { updateContact } from '../../features/contact/contactThunks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 const ContactUpdate = () => {
-  const { data } = useSelector(state => state.contact);
+  const { data } = useAppSelector(state => state.contact);
   const params = useParams();
   const contact = data.find((contact) => contact.id === params.id);
   const formRef = useRef(null);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
-    const formData = new FormData(formRef.current);
-    const newContact = {
-      ...contact,
-      "name": formData.get('full_name'),
-      "email": formData.get('email'),
-      "phone": formData.get('phone'),
-      "subject": formData.get('subject'),
-      "comment": formData.get('comment')
+    if (formRef.current && contact?.id) {
+      const formData = new FormData(formRef.current);
+      const newContact = {
+        ...contact,
+        "name": formData.get('full_name')?.toString(),
+        "email": formData.get('email')?.toString(),
+        "phone": formData.get('phone')?.toString(),
+        "subject": formData.get('subject')?.toString(),
+        "comment": formData.get('comment')?.toString()
+      }
+      dispatch(updateContact(newContact))
+      navigate('/contact');
     }
-    dispatch(updateContact(newContact))
-    navigate('/contact');
   }
 
   return (
@@ -35,25 +37,25 @@ const ContactUpdate = () => {
           <div className='create__form__column'>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="full_name">Full name</label>
-              <input name='full_name' type="text" id='full_name' defaultValue={contact.name} />
+              <input name='full_name' type="text" id='full_name' defaultValue={contact?.name} />
             </div>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="email">Email</label>
-              <input name='email' type="email" id='email' defaultValue={contact.email} />
+              <input name='email' type="email" id='email' defaultValue={contact?.email} />
             </div>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="phone">Phone</label>
-              <input name='phone' type="tel" id='phone' defaultValue={contact.phone} />
+              <input name='phone' type="tel" id='phone' defaultValue={contact?.phone} />
             </div>
           </div>
           <div className='create__form__column'>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="subject">Subject</label>
-              <input name='subject' type="text" id='subject' defaultValue={contact.subject} />
+              <input name='subject' type="text" id='subject' defaultValue={contact?.subject} />
             </div>
             <div className='create__form__column__cell'>
               <label className='weight-600' htmlFor="comment">Comment</label>
-              <textarea name='comment' id="comment" cols="30" rows="5" defaultValue={contact.comment}></textarea>
+              <textarea name='comment' id="comment" cols={30} rows={5} defaultValue={contact?.comment}></textarea>
             </div>
           </div>
         </div>

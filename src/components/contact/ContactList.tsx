@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
-import { useDispatch, useSelector } from 'react-redux';
 import { archiveContactById, getContactList } from '../../features/contact/contactThunks';
 import Loading from '../partials/Loading';
 import moment from 'moment';
 import { sortOrFilterContactsBy } from '../../utils/sortOrFilterContactsBy';
 import ContactCards from './ContactCards';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { Contact } from '../../types/features';
 
 const ContactList = () => {
-  const { data, status } = useSelector(state => state.contact);
-  const [contacts, setContacts] = useState([]);
-  const [showContacts, setShowContacts] = useState([]);
+  const { data, status } = useAppSelector(state => state.contact);
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [showContacts, setShowContacts] = useState<Contact[]>([]);
   const [pagination, setPagination] = useState(1);
   const [sortOrFilterBy, setSortOrFilterBy] = useState('newest');
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,9 +33,9 @@ const ContactList = () => {
     setShowContacts(contacts.slice(index, index+10));
   }, [pagination, contacts])
 
-  const handleArchive = (e, contactId) => {
+  const handleArchive = (e: React.MouseEvent<HTMLButtonElement>, contactId: string) => {
     dispatch(archiveContactById(contactId));
-    e.stopPropagation(e);
+    e.stopPropagation();
   }
 
   return (
