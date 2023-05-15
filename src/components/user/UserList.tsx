@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Pagination from '../partials/Pagination';
 import RemoveRow from '../partials/RemoveRow';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getUserList, deleteUserById } from '../../features/users/userThunks';
 import Loading from '../partials/Loading';
 import { orderUsersBy } from '../../utils/orderUsersBy';
+import { useAppSelector } from '../../app/hooks';
 
 const UserList = () => {
-  const { data, status } = useSelector(state => state.user);
+  const { data, status } = useAppSelector(state => state.user);
   const [users, setUsers] = useState([]);
   const [showUsers, setShowUsers] = useState([]);
   const [pagination, setPagination] = useState(1);
   const [changeBy, setChangeBy] = useState('all');
-  const [searchInput, setSearchInput] = useState(undefined);
+  const [searchInput, setSearchInput] = useState<null | string>(null);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,14 +34,14 @@ const UserList = () => {
   }, [pagination, users])
 
   useEffect(() => {
-    if (searchInput !== undefined) {
+    if (searchInput !== null) {
       setUsers(data.filter(({ full_name }) => full_name.toLowerCase().includes(searchInput.toLowerCase())));
     }
   }, [searchInput, data])
 
-  const handleDelete = (e, userId) => {
+  const handleDelete = (e: React.MouseEvent<HTMLParagraphElement>, userId: number) => {
     dispatch(deleteUserById(userId));
-    e.stopPropagation(e);
+    e.stopPropagation();
   }
 
   return (
@@ -60,7 +61,7 @@ const UserList = () => {
         <div className='d-flex-center'>
           <div className='users__search'>
             <i className='fa-solid fa-magnifying-glass'></i>
-            <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+            <input type="text" value={searchInput?.toString()} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchInput(e.target.value)} />
           </div>
           <Link to='/users/create' className='list__top__new-room'>New User +</Link>
           <select className='list__top__select' value={changeBy} onChange={(e) => setChangeBy(e.target.value)}>

@@ -1,11 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { updateUser, deleteUserById, createUser, getUserList } from './userThunks'
+import { Status, User } from '../../types/features';
+
+interface UserState {
+  data: User[];
+  status: Status;
+  error: Error | undefined;
+}
 
 const initialState = {
   data: [],
   status: 'idle',
-  error: null
-}
+  error: undefined
+} as UserState
 
 export const userSlice = createSlice({
   name: 'user',

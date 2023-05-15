@@ -24,16 +24,16 @@ import ContactCreate from './components/contact/ContactCreate';
 import ContactUpdate from './components/contact/ContactUpdate';
 
 import PrivateRoute from './components/PrivateRoute';
-import { userContextReducer } from './context/userContextReducer';
+import { IUserState, userContextReducer } from './context/userContextReducer';
 import { UserContext } from './context/UserContext';
 
-const userInitialState = {
+const userInitialState: IUserState = {
   isAuthenticated: false,
   username: '',
   email: ''
 }
 
-function App() {
+const App: React.FC = () => {
   const BASENAME = '/hotel-miranda-dashboard'
 
   const router = createBrowserRouter([
@@ -72,23 +72,23 @@ function App() {
       element: <PrivateRoute><ContactUpdate /></PrivateRoute> },
     ], { basename: BASENAME });
     
-  const [user, dispatch] = useReducer(userContextReducer, userInitialState);
+  const [userState, dispatchUserAciton] = useReducer(userContextReducer, userInitialState);
   
   const actions = {
-    login: function(username, email) {
-      dispatch({ type: 'login', payload: {username, email} });
+    login: function(username: string, email: string) {
+      dispatchUserAciton({ type: 'login', payload: {username, email} });
     },
     logout: function() {
-      dispatch({ type: 'logout'});
+      dispatchUserAciton({ type: 'logout' });
     },
-    updateUser: function(username, email) {
-      dispatch({ type: 'updateUser', payload: {username, email} });
+    updateUser: function(username: string, email: string) {
+      dispatchUserAciton({ type: 'updateUser', payload: {username, email} });
     }
   }
   
   return (
     <>
-      <UserContext.Provider value={{ user, actions }}>
+      <UserContext.Provider value={{ user: userState, actions }}>
         <RouterProvider router={router} />
       </UserContext.Provider>
     </>

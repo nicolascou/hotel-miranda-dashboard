@@ -1,7 +1,8 @@
-import nicoPhoto from '../img/profile-pic.jpg' 
+import { User } from '../types/features';
+import nicoPhoto from '../img/profile-pic.jpg';
 
 
-export const usersJson = [
+export const usersJson: User[] = [
     {
         "id": 1,
         "full_name": "Nicolás Cousillas",
