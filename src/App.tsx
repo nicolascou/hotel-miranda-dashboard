@@ -24,10 +24,10 @@ import ContactCreate from './components/contact/ContactCreate';
 import ContactUpdate from './components/contact/ContactUpdate';
 
 import PrivateRoute from './components/PrivateRoute';
-import { userContextReducer } from './context/userContextReducer';
+import { IUserState, userContextReducer } from './context/userContextReducer';
 import { UserContext } from './context/UserContext';
 
-const userInitialState = {
+const userInitialState: IUserState = {
   isAuthenticated: false,
   username: '',
   email: ''
@@ -72,23 +72,23 @@ const App: React.FC = () => {
       element: <PrivateRoute><ContactUpdate /></PrivateRoute> },
     ], { basename: BASENAME });
     
-  const [user, dispatch] = useReducer(userContextReducer, userInitialState);
+  const [userState, dispatchUserAciton] = useReducer(userContextReducer, userInitialState);
   
   const actions = {
     login: function(username: string, email: string) {
-      dispatch({ type: 'login', payload: {username, email} });
+      dispatchUserAciton({ type: 'login', payload: {username, email} });
     },
     logout: function() {
-      dispatch({ type: 'logout' });
+      dispatchUserAciton({ type: 'logout' });
     },
     updateUser: function(username: string, email: string) {
-      dispatch({ type: 'updateUser', payload: {username, email} });
+      dispatchUserAciton({ type: 'updateUser', payload: {username, email} });
     }
   }
   
   return (
     <>
-      <UserContext.Provider value={{ user, actions }}>
+      <UserContext.Provider value={{ user: userState, actions }}>
         <RouterProvider router={router} />
       </UserContext.Provider>
     </>
