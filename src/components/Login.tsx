@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import { getUserList } from '../features/users/userThunks';
 
-const Login = () => {
+const Login: React.FC = () => {
   const [userInput, setUserInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const navigate = useNavigate();
@@ -56,8 +56,9 @@ const Login = () => {
               value={passwordInput} onChange={e => setPasswordInput(e.target.value)} 
               type="password" name="password" id="password" placeholder='1234' data-cy="password-test"
             />
-          </div>    
-          <Button backgroundColor='#E23428' color='white' data-cy="login-test" onClick={(e) => handleSubmit(e)} type='submit'>Log In</Button>
+          </div> 
+          <Button backgroundColor='#E23428' color='white' data-cy="login-test" 
+          onClick={(e: React.MouseEventHandler<HTMLButtonElement>) => handleSubmit(e)} type='submit'>Log In</Button>
         </form>
       </div>
     </div>

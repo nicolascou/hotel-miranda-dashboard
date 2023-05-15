@@ -1,4 +1,14 @@
-export const userContextReducer = (state, action) => {
+import { IUserContext } from "./UserContext";
+
+interface IUserAction {
+  type: string;
+  payload?: {
+    username: string;
+    email: string;
+  }
+}
+
+export const userContextReducer = (state: IUserContext, action: IUserAction) => {
   switch (action.type) {
     case 'login':
       return {

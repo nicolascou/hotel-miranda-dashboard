@@ -7,7 +7,7 @@ import room3 from '../img/rooms-3.jpg';
 import ContactCards from './contact/ContactCards';
 import VerticalBarChart from './partials/VerticalBarChart';
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
   return (
     <div className='dashboard' data-cy="dashboard-test">
       <div className='dashboard__kpis'>

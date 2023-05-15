@@ -33,7 +33,7 @@ const userInitialState = {
   email: ''
 }
 
-function App() {
+const App: React.FC = () => {
   const BASENAME = '/hotel-miranda-dashboard'
 
   const router = createBrowserRouter([
@@ -75,13 +75,13 @@ function App() {
   const [user, dispatch] = useReducer(userContextReducer, userInitialState);
   
   const actions = {
-    login: function(username, email) {
+    login: function(username: string, email: string) {
       dispatch({ type: 'login', payload: {username, email} });
     },
     logout: function() {
-      dispatch({ type: 'logout'});
+      dispatch({ type: 'logout' });
     },
-    updateUser: function(username, email) {
+    updateUser: function(username: string, email: string) {
       dispatch({ type: 'updateUser', payload: {username, email} });
     }
   }

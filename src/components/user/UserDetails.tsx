@@ -5,7 +5,7 @@ import { getUserList } from '../../features/users/userThunks';
 import Loading from '../partials/Loading';
 import moment from 'moment';
 
-const UserDetails = () => {
+const UserDetails: React.FC = () => {
   const params = useParams();
   const { data, status } = useSelector(state => state.user);
   const user = data.find(user => user.id === Number(params.id));
