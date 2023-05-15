@@ -5,8 +5,9 @@ import { store } from './app/store';
 import App from './App';
 import './css/styles.css';
 
-const container = document.getElementById('root');
-const root = createRoot(container);
+const rootElement = document.getElementById('root');
+if (!rootElement) throw new Error('Failed to find the root element');
+const root = createRoot(rootElement);
 
 root.render(
   <>

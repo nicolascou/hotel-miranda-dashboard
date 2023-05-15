@@ -7,6 +7,10 @@
     "@reduxjs/toolkit": "^1.9.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.5.1",
+    "@types/node": "^20.1.4",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
     "gh-pages": "^5.0.0",
     "jest": "^27.5.1",
     "moment": "^2.29.4",
@@ -20,6 +24,7 @@
     "sass": "^1.62.0",
     "styled-components": "^5.3.9",
     "swiper": "^9.2.3",
+    "typescript": "^5.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -53,6 +58,7 @@
   "devDependencies": {
     "@faker-js/faker": "^8.0.0",
     "@testing-library/react": "^14.0.0",
+    "@types/react-redux": "^7.1.25",
     "cypress": "^12.12.0"
   }
 }
